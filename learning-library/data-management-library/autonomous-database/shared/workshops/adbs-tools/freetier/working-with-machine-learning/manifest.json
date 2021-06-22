@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Working with Machine Learning",
+  "workshoptitle": "Introduction to Autonomous Database Tools",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
         {
@@ -8,7 +8,7 @@
             "partnumber": "Ennnnn_X1",
             "publisheddate": "06/14/2021",
             "contentid": "14nnnn",
-            "filename": "./../adw-oml-working/adw-oml-working.md"
+            "filename": "./../adw-oml-data-prep/adw-oml-data-prep.md"
         },
         {
             "title": "Lab 2: Working with OML AutoML UI",
@@ -16,7 +16,7 @@
             "partnumber": "Ennnnn_X1",
             "publisheddate": "03/10/2020",
             "contentid": "14nnnn",
-            "filename": "./../adw-oml-working/adw-oml-working.md"
+            "filename": "./../adw-oml-automl-ui/adw-oml-automl-ui.md"
         },
         {
             "title": "Need Help?",
