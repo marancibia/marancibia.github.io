@@ -1,0 +1,1 @@
+This screenshot shows an example of a script to make predictions using the test data and display the results.

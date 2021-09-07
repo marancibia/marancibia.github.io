@@ -1,0 +1,1 @@
+This screenshot shows the script to load the datastore ds_pydata into memory.
