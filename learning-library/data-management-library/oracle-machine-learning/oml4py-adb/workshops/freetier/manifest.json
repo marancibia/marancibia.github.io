@@ -4,6 +4,7 @@
     "include": {
         "import": "../../common/import_notebook.md"
     },
+    "type": "freetier",
     "tutorials": [
         {
             "title": "Introduction",

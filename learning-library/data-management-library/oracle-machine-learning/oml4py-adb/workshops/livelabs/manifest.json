@@ -4,6 +4,7 @@
     "include": {
         "import": "../../common/import_notebook.md"
     },
+    "type": "livelabs",
     "tutorials": [
         {
             "title": "Getting Started",
