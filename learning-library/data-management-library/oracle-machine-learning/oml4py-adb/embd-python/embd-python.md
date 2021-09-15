@@ -38,11 +38,11 @@ In this lab, you will:
 * Use the Python Script Repository
 
 
-## (Optional) Download and View the Notebook File
+## Download and View the Notebook File
 
-To download the notebook version of this lab (without screenshots), click [lab5 embed python.json](./../notebooks/lab5_embed_python.json?download=1).
+[**CLICK HERE** to download the "lab5 embed python.json"](./../notebooks/lab5_embed_python.json?download=1). This is the notebook version of this lab (without screenshots).
 
-[](include:import)
+ [](include:import)
 
 ## Task 1: Import OML4Py and Supporting Libraries and Create Data Table
 
@@ -673,6 +673,6 @@ In this step, you will perform the following:
 
 
 ## Acknowledgements
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
+* **Author** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
 * **Last Updated By/Date** - Moitreyee Hazarika, July 2021

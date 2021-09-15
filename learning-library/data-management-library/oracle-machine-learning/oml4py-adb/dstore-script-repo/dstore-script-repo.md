@@ -30,11 +30,11 @@ In this lab, you will learn how to:
 * Delete datastores
 
 
-## (Optional) Download and View the Notebook File
+## Download and View the Notebook File
 
-To download the notebook version of this lab (without screenshots), click [lab4_datastores.json](./../notebooks/lab4_datastores.json?download=1).
+[**CLICK HERE** to download the "lab4_datastores.json"](./../notebooks/lab4_datastores.json?download=1). This is the notebook version of this lab (without screenshots).
 
-[](include:import)
+ [](include:import)
 
 ## Task 1: Import libraries supporting OML4Py and Create Data Table
 
@@ -338,6 +338,6 @@ This step shows how to use the `oml.ds.delete` function to delete datastores or 
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
 ## Acknowledgements
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2021
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
+* **Last Updated By/Date** - Marcos Arancibia, September 2021

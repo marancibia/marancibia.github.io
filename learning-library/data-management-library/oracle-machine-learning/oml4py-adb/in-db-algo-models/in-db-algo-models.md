@@ -17,11 +17,11 @@ In this lab, you will learn how to:
 * Use the Model Explainability feature to rank attributes
 
 
-## (Optional) Download and View the Notebook File
+## Download and View the Notebook File
 
-To download the notebook version of this lab (without screenshots), click [lab3 in-db algo.json](./../notebooks/lab3_in-db_algo.json?download=1).
+[**CLICK HERE** to download the "lab3 in-db algo.json"](./../notebooks/lab3_in-db_algo.json?download=1). This is the notebook version of this lab (without screenshots).
 
-[](include:import)
+ [](include:import)
 
 ## Task 1: Import Libraries
 
@@ -515,6 +515,6 @@ Build an in-db Random Forest model and compare the RF model's attribute importan
 
 
 ## Acknowledgements
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2021
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
+* **Last Updated By/Date** - Marcos Arancibia, September 2021

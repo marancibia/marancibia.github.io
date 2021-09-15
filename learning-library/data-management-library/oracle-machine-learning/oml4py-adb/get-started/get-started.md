@@ -1,22 +1,23 @@
 # Get started with OML4Py on Oracle Autonomous Database
 
 ## Introduction
-This lab walks you through the steps to create an Oracle Machine Learning notebook and connect to the Python interpreter.
+This lab walks you through the steps to create an Oracle Machine Learning notebook and access the Python environment.
 
 Estimated Lab Time: 15 minutes
 
 ### Objectives
 
 In this lab, you will learn how to:
-* Create an Oracle Machine Learning user
 * Access Oracle Machine Learning Notebooks
 * Create an Oracle Machine Learning Notebook
 * Familiarize with the Oracle Machine Learning Notebook toolbar
 * Familiarize with the Oracle Machine Learning Notebook interpreter bindings
 * Familiarize with the Oracle Machine Learning Notebook interpreters
-* Connect to the Python Interpreter
+* Access the Python Interpreter
 * Verify the connection to the Oracle Autonomous Database
 * View help files
+
+<if type="freetier">
 
 ## Task 1: Create an Oracle Machine Learning User
 
@@ -33,12 +34,10 @@ An administrator creates a new user account and user credentials for Oracle Mach
 3. Click **Manage Oracle ML Users** to open the Oracle Machine Learning User Administration page.
     ![Manage OML Users option in Oracle Machine Learning Administration page](images/manage_oml_users.png "Manage OML Users option")
 4. On the Oracle Machine Learning User Administration page, click **Create**.
-    <if type="freetier">![Users page in Oracle Machine Learning User Administration](images/create_option.png "Create User")</if>
-    <if type="livelabs">![Users page in Oracle Machine Learning User Administration](images/create_option_livelabs.png "Create User")</if>
+    ![Users page in Oracle Machine Learning User Administration](images/create_option.png "Create User")
 
 5. On the Create User page, enter the following details to create the user:
     ![Create User page](images/create_user_page.png "Create User page")
-    <if type="freetier">
     - **Username:** Enter `omluser` for username. Using this username, the user will log in to an Oracle Machine Learning instance.
     - **First Name:** Enter the first name of the user.
     - **Last Name:**  Enter the first name of the user.
@@ -49,30 +48,15 @@ An administrator creates a new user account and user credentials for Oracle Mach
     This option is disabled if you select the **Generate password...** option to auto generate a temporary password for the user.
     - **Confirm Password:** Enter a password to confirm the value that you entered in the Password field.
     By doing so, you create the password for the user. The user can change the password when first logging in.
-    </if>
-    <if type="livelabs">
-    - **Username:** Enter `omluser2` for username. You use this user later in the workshop to learn how to grant datastore access to a user.
-    - **Email Address:** Enter an email ID for the user.
-    - Untick the **Generate password and email account details to user. User will be required to reset the password on first sign in.** option.
-    You do not select this option, because you want to specify your own password. If you select this option, you need not enter values in the **Password** and **Confirm Password** fields; the fields are grayed out.
-    - **Password:** Enter `AAbbcc123456` for password.
-    - **Confirm Password:** Enter the same password again.
-    </if>
+    
+    Click **Create.**
 
-6. Click **Create.**
-
-<if type="livelabs">
-    ![List of users](images/omluser_2.png "List of users")
-</if>
-
-<if type="freetier">
-7. Repeat step 5 and 6 to create `omluser2` user. You use this user later in the workshop to learn how to grant datastore access to a user.
+6. Repeat step 5 and create `omluser2` user. You will use this user later in the workshop to learn how to grant datastore access to a user.
 
     ![List of users](images/omluser_2.png "List of users")
 </if>
 
-
-## Task 2: Access Oracle Machine Learning Notebooks
+## Task <if type="freetier">2</if><if type="livelabs">1</if>: Access Oracle Machine Learning Notebooks
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
@@ -94,11 +78,13 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png "Oracle Machine Learning home page")
 
-<if type="freetier">## Task 3: Create Tables and Views, and Grant Access
+
+<if type="freetier">
+## Task 3: Create Tables and Views, and Grant Access
 
 This workshop uses tables and views which need to be created before proceeding with the workshop. To create these tables and views:
 
-1. Download the [Run Me First notebook](./../notebooks/lab0_run_me_first.json?download=1). This notebook contains the scripts for creating tables and views, and granting required access.
+1. [**CLICK HERE** to download the "Run Me First notebook"](./../notebooks/lab0_run_me_first.json?download=1). This notebook contains the scripts for creating tables and views, and granting required access.
 
 2. On the Notebooks page click **Import** and select the `lab0_run_me_first.json` notebook file.
 
@@ -108,7 +94,7 @@ This workshop uses tables and views which need to be created before proceeding w
 
 4. Click the **Run all paragraphs** ![](images/run-all-paragraphs.png =20x*) icon, and then click **OK** to confirm.
 
-5. Wait until all the paragraphs have finished running and you see your current time in the last paragraph.
+5. Wait until all the paragraphs have finished running and you see your current time in the last paragraph after the message `"PL/SQL procedure successfully completed"`.
 
     ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png "Last paragraph in a notebook showing the current timestamp")
 
@@ -116,14 +102,13 @@ The prerequisite scripts have run successfully.
 
 </if>
 
-## Task <if type="freetier">4</if><if type="livelabs">3</if>: (Optional) Download and View the Notebook File
+## Task <if type="freetier">4</if><if type="livelabs">2</if>: Download and View the Notebook File
 
-To download the notebook version of this lab (without screenshots), click <if type="freetier">[lab1 get started freetier.json](./../notebooks/lab1_get_started_freetier.json?download=1)</if><if type="livelabs">[lab1 get started livelabs.json](./../notebooks/lab1_get_started_livelabs.json?download=1)</if>.
+ 1. <if type="freetier">[**CLICK HERE** to download the "lab1 get started freetier.json"](./../notebooks/lab1_get_started_freetier.json?download=1)</if><if type="livelabs">[**CLICK HERE** to download the "lab1 get started livelabs.json"](./../notebooks/lab1_get_started_livelabs.json?download=1)</if> which contains the notebook version of this lab (without screenshots).
 
-[](include:import)
+  [](include:import)
 
-<if type="livelabs">## Task 4: Create an Oracle Machine Learning Notebook</if>
-<if type="freetier">## Task 5: Create an Oracle Machine Learning Notebook</if>
+## Task <if type="freetier">5</if><if type="livelabs">3</if>: Create an Oracle Machine Learning Notebook
 
 A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. To create a notebook:
 1. <if type="freetier">Click the hamburger menu, search for Notebooks, and click on it. </if>In the Notebooks page, click **Create.** The Create Notebook window appears.
@@ -163,8 +148,7 @@ The available interpreters are:
   - `%md`&mdash;To call the Markdown interpreter and generate static html from Markdown plain text
   - `%python`&mdash;To call the Python interpreter and run Python scripts
 
-<if type="livelabs">## Task 5: Connect to the Python Interpreter</if>
-<if type="freetier">## Task 6: Connect to the Python Interpreter</if>
+## Task <if type="freetier">6</if><if type="livelabs">4</if>: Connect to the Python Interpreter
 
 To run Python commands in a notebook, you must first connect to the Python interpreter. This occurs as a result of running your first `%python` paragraph. To use OML4Py, you must import the `oml` module, which automatically establishes a connection to your database.
 In an Oracle Machine Learning notebook, you can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL or Python. This example shows you how to:
@@ -197,8 +181,7 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
     ![Python command to import oml module](images/import_oml.png "Python command to import oml module")
 
-<if type="livelabs">## Task 6: Verify Connection to the Oracle Autonomous Database</if>
-<if type="freetier">## Task 7: Verify Connection to the Oracle Autonomous Database</if>
+## Task <if type="freetier">7</if><if type="livelabs">5</if>: Verify Connection to the Oracle Autonomous Database
 
 Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
 
@@ -213,9 +196,7 @@ Using the default interpreter bindings, OML Notebooks automatically establishes 
     Once your notebook is connected, the command returns `True`.         
 
 
-<if type="livelabs">## Task 7: View Help Files</if>
-<if type="freetier">## Task 8: View Help Files</if>
-
+## Task <if type="freetier">8</if><if type="livelabs">6</if>: View Help Files
 
 The Python help function is used to display the documentation of packages, modules, functions, classes, and keywords. The help function has the following syntax:
     ```
@@ -244,6 +225,6 @@ For example:
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
 ## Acknowledgements
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2021
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
+* **Last Updated By/Date** - Marcos Arancibia, September 2021

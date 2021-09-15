@@ -27,11 +27,11 @@ In this lab, you will learn how to:
   * Use the `split` and `KFold` function
   * Use the `crosstab` and `pivot_table` functions on a DataFrame
 
-## (Optional) Download and View the Notebook File
+## Download and View the Notebook File
 
-To download the notebook version of this lab (without screenshots), click [lab2 select manipulate data.json](./../notebooks/lab2_select_manipulate_data.json?download=1).
+[**CLICK HERE** to download the "lab2 select manipulate data.json"](./../notebooks/lab2_select_manipulate_data.json?download=1). This will download the notebook version of this lab (without screenshots. 
 
-[](include:import)
+ [](include:import)
 
 ## Task 1: Import Libraries and Create Oracle Machine Learning DataFrame Proxy Object
 
@@ -49,6 +49,7 @@ To use OML4Py, you must first import the `oml` module and the Pandas library to 
     pd.set_option('display.width', 1000)</copy>
     ```
      ![Commands to import oml module and Pandas](images/oml_lib_display_options.png "Import commands")
+
 2. Here, you load the IRIS data and combine the target and predictors into a single DataFrame, which matches the form the data would have as a database table. You use the `oml.push` function to load this Pandas DataFrame into the database, which creates a temporary table and returns a proxy object that you assign to IRIS_TMP.
 
   Such temporary tables will be automatically deleted when the database connection is terminated unless saved in a datastore. You learn more about datastore in the lab Use Datastores to store Python objects.
@@ -369,7 +370,7 @@ To work with the drop function, first create a demo data table `MY_DF2.`
     MY_DF2.dropna(how='any', subset=['numeric'])</copy>
     ```
 
-    ![Drop rows with missing numeric values](images/drop_missing_num_values.png "Drop rows with missing numeric values")
+  ![Drop rows with missing numeric values](images/drop_missing_num_values.png "Drop rows with missing numeric values")
 
 4. Run the following script to drop rows where all columns values are missing:
 
@@ -380,7 +381,7 @@ To work with the drop function, first create a demo data table `MY_DF2.`
     MY_DF2.dropna(how='all')</copy>
     ```
 
-    ![Drop rows with missing column values](images/drop_rows_with_missing_col_values.png "Drop rows with missing column values")
+  ![Drop rows with missing column values](images/drop_rows_with_missing_col_values.png "Drop rows with missing column values")
 
 5. Use the `drop_duplicates()` function to drop duplicate rows:
 
@@ -390,7 +391,7 @@ To work with the drop function, first create a demo data table `MY_DF2.`
 
     MY_DF2.drop_duplicates()</copy>
     ```
-    ![Example of drop_duplicate function](images/drop_duplicate_rows.png "Example of drop_duplicate function")
+  ![Example of drop_duplicate function](images/drop_duplicate_rows.png "Example of drop_duplicate function")
 
 6. Run the following script to drop a specific column:
 
@@ -400,7 +401,7 @@ To work with the drop function, first create a demo data table `MY_DF2.`
 
     MY_DF2.drop('string2')</copy>
     ```
-    ![Example of how to drop a specific column](images/drop_specific_col.png "Drop specific column")
+  ![Example of how to drop a specific column](images/drop_specific_col.png "Drop specific column")
 
 ## Task 5: Use the split and KFold Functions
 
@@ -713,6 +714,6 @@ The `oml.cursor()` function returns a `cx_Oracle` cursor object of the current O
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
 ## Acknowledgements
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Moitreyee Hazarika, July 2021
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
+* **Last Updated By/Date** - Marcos Arancibia, September 2021

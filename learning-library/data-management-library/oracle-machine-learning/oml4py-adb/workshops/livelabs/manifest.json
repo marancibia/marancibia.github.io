@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Oracle Machine Learning for Python on Oracle Autonomous Database",
+    "workshoptitle": "Python Users: Build intelligent applications faster with Oracle Machine Learning",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "import": "../../common/import_notebook.md"
