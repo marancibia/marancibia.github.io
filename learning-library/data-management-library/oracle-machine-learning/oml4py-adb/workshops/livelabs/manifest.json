@@ -4,15 +4,16 @@
     "include": {
         "import": "../../common/import_notebook.md"
     },
-    "type": "livelabs",
     "tutorials": [
         {
             "title": "Getting Started",
-            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login-livelabs2.md"
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login-livelabs2.md",
+            "type": "livelabs"
         },
         {
             "title": "Introduction",
-            "filename": "../../introduction/introduction.md"
+            "filename": "../../introduction/introduction.md",
+            "type": "livelabs"
         },
         {
             "title": "Lab 1: Getting Started with OML4Py",
@@ -21,23 +22,28 @@
         },
         {
             "title": "Lab 2: Select and manipulate data using the Transparency Layer",
-            "filename": "../../data-slct-mnpn/data-slct-mnpn.md"
+            "filename": "../../data-slct-mnpn/data-slct-mnpn.md",
+            "type": "livelabs"
         },
         {
             "title": "Lab 3: Use in-database algorithms and models",
-            "filename": "../../in-db-algo-models/in-db-algo-models.md"
+            "filename": "../../in-db-algo-models/in-db-algo-models.md",
+            "type": "livelabs"
         },
 		    {
             "title": "Lab 4: Use Datastores to store Python objects",
-            "filename": "../../dstore-script-repo/dstore-script-repo.md"
+            "filename": "../../dstore-script-repo/dstore-script-repo.md",
+            "type": "livelabs"
         },
         {
             "title": "Lab 5: Run user-defined functions using Embedded Python Execution",
-            "filename": "../../embd-python/embd-python.md"
+            "filename": "../../embd-python/embd-python.md",
+            "type": "livelabs"
         },
         {
             "title": "Lab 6: Use AutoML",
-            "filename": "../../automl/automl.md"
+            "filename": "../../automl/automl.md",
+            "type": "livelabs"
         },
         {
             "title": "Need Help?",
