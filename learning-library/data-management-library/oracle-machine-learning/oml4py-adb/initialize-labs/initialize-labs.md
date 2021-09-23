@@ -29,7 +29,7 @@ Connect to Autonomous Database tool as the ADMIN user:
 
     ![Click on SQL from the Launchpad](images/launchpad.png " ")
 
-## Task 2:  Create the PL/SQL Procedures that Run the Prerequisite Labs
+## Task 2:  Create the USERS that are a prerequisite for the Labs
 
 Now that you're in the SQL worksheet, you will create the procedures used to initialize the labs.  
 
