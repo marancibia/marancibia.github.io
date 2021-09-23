@@ -21,6 +21,10 @@
             "type": "freetier"
         },
         {
+            "title": "Initializing Labs",
+            "filename": "../../initialize-labs/initialize-labs.md"
+        },
+        {
             "title": "Lab 1: Getting Started with OML4Py",
             "filename": "../../get-started/get-started.md",
             "type": "freetier"
