@@ -16,7 +16,7 @@ Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous 
 
 Watch the video below on a technical introduction to OML4Py.
 
-[] (youtube:P861m__PEMQ)
+[] (youtube:soVGq7rt77o)
 
 ### Objectives
 
