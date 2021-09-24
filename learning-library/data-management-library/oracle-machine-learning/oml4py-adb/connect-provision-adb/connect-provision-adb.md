@@ -171,4 +171,4 @@ Please proceed to the next lab.
 ## Acknowledgements
 
 - **Author** - Charlie Berger, Senior Director of Product Management, Machine Learning, Cognitive Analytics and AI
-- **Last Updated By/Date** - Tom McGinn, Product Manager, Database Product Management, March 2021
+- **Last Updated By/Date** - Marcos Arancibia, September 2021

@@ -1,4 +1,4 @@
-# Appendix: OML administration
+# Appendix: OML user administration
 
 ## Introduction
 This lab walks you through the steps to create and manage an Oracle Machine Learning user.
@@ -10,7 +10,7 @@ Estimated Lab Time: 5 minutes
 In this lab, you will learn how to:
 * Access Oracle Machine Learning Notebooks administration interface
 * Create an Oracle Machine Learning user
-* Familiarize with OML user settings
+* Get familiar with OML user settings
 
 ## Task 1: Access the Oracle Machine Learning administration interface
 
