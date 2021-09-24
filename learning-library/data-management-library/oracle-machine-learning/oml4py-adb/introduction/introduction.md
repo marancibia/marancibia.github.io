@@ -3,7 +3,7 @@
 ## About this Workshop
 This workshop introduces you to Oracle Machine Learning for Python (OML4Py) on Oracle Autonomous Database and how to build intelligent applications faster with Oracle Machine Learning. OML4Py supports scalable in-database data exploration and preparation using native Python syntax, invocation of in-database algorithms for model building and scoring, and embedded execution of user-defined Python functions from Python or REST APIs. OML4Py also includes the AutoML interface for automated algorithms and feature selection, and hyperparameter tuning. Join us for this tour of OML4Py.
 
-Python is a major programming language used for data science and machine learning. OML4Py is a new feature on Oracle Autonomous Database that provides Python users access to powerful in-database functionality supporting data scientists for both scalability, performance, and ease of solution deployment. It is essential that Oracle provides adequate training content to introduce users to this technology and support the Oracle Machine Learning Data Scientist Certification Exam.
+Python is a major programming language used for data science and machine learning. OML4Py is a new feature on Oracle Autonomous Database that provides Python users access to powerful in-database functionality supporting data scientists for both scalability, performance, and ease of solution deployment.
 
 Watch this quick video on OML4Py.
 
@@ -33,6 +33,7 @@ The labs in this workshop focus on the following:
 ### Prerequisites
 
 - An Oracle Cloud Account. Please view this workshop's LiveLabs landing page to see which environments are supported
+- Some knowledge in statistics and Python programming is helpful
 
 > **Note:** If you have a Free Trial account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)**
 

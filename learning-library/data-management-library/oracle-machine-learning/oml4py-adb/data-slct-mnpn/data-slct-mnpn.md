@@ -7,7 +7,7 @@ This lab shows how to use the transparency layer classes to work with data and t
 Estimated Lab Time: 20 minutes
 
 ### About , Data Selection and Manipulation
-The transparency layer classes allows you to convert select Python objects to Oracle Autonomous Database objects and also call a range of familiar Python functions that are overloaded to call the corresponding SQL on tables in the
+The transparency layer classes allow you to convert select Python objects to Oracle Autonomous Database objects and also call a range of familiar Python functions that are overloaded to call the corresponding SQL on tables in the
 database.
 The Oracle Machine Learning for Python (OML4Py) transparency layer supports functions that interact with database data and enables you to:
 * Load Python `pandas.DataFrame` objects to Oracle Database to create database tables
@@ -21,7 +21,7 @@ The Oracle Machine Learning for Python (OML4Py) transparency layer supports func
 In this lab, you will learn how to:
   * Use the `oml.push` function to create a temporary table
   * Work with table rows and columns using proxy objects
-  * Work with `pandas.DataFrame` object
+  * Work with `pandas.DataFrame` objects
   * Use the `append` function
   * Use the `concat` function
   * Use the `split` and `KFold` function
@@ -31,7 +31,7 @@ In this lab, you will learn how to:
 
 1. [**CLICK HERE** to download the lab2\_select\_manipulate\_data.json notebook file](./../notebooks/lab2_select_manipulate_data.json?download=1). This will download the notebook file for this lab to your local machine. 
 
-2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
  ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
 
@@ -41,12 +41,12 @@ In this lab, you will learn how to:
 
 4. Select the `lab2_select_manipulate_data.json` notebook file and click **Open**.
    
- ![Open Lab 1 JSON file](images/open-lab2-file.png "Open Lab 1 JSON file")
+ ![Open Lab 2 JSON file](images/open-lab2-file.png "Open Lab 2 JSON file")
 
 - After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 1 notebook](images/click-on-lab2.png "Open Lab 1 notebook")
+   ![Open Lab 2 notebook](images/click-on-lab2.png "Open Lab 2 notebook")
 
-   OML Notebooks will load a session and make the notebook available for editing.
+   OML Notebooks will create a session and make the notebook available for editing.
 
    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
@@ -55,7 +55,7 @@ In this lab, you will learn how to:
 
 ## Task 1: Import Libraries and Create Oracle Machine Learning DataFrame Proxy Object
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 1.
 
@@ -63,7 +63,7 @@ Scroll down to the beginning of Task 1.
 
 ## Task 2: Select Table Columns using Proxy Object IRIS_TMP
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 2.
 
@@ -71,7 +71,7 @@ Scroll down to the beginning of Task 2.
 
 ## Task 3: Select Table Rows using Proxy Object IRIS_TMP
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 3.
 
@@ -79,7 +79,7 @@ Scroll down to the beginning of Task 3.
 
 ## Task 4: Use Pandas DataFrame Objects
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 4.
 
@@ -87,7 +87,7 @@ Scroll down to the beginning of Task 4.
 
 ## Task 5: Use the split and KFold Functions
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 5.
 
@@ -95,7 +95,7 @@ Scroll down to the beginning of Task 5.
 
 ## Task 6: Use the crosstab and pivot_table Functions on a DataFrame Proxy Object
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 6.
 
@@ -103,7 +103,7 @@ Scroll down to the beginning of Task 6.
 
 ## Task 7: Use the oml.boxplot and oml.hist Functions
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 7.
 
@@ -111,7 +111,7 @@ Scroll down to the beginning of Task 7.
 
 ## Task 8: Manage and Explore Data Using Transparency Layer Functions
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 8.
 
@@ -119,7 +119,7 @@ Scroll down to the beginning of Task 8.
 
 ## Task 9: Use cx_Oracle functions
 
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this Lab.
+Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
 
 Scroll down to the beginning of Task 9.
 
@@ -127,7 +127,7 @@ Scroll down to the beginning of Task 9.
 
 ## Learn More
 
-* [Transparency Layer Functions](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/about-oml4py.html#GUID-2AD97DE9-B43F-4B0B-8269-C6DFB47576A9)
+* [Transparency Layer Functions](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/oml4py-advantages.html#GUID-2AD97DE9-B43F-4B0B-8269-C6DFB47576A9)
 * [Prepare and Explore Data](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/prepare-and-explore-data.html#GUID-10C55FA5-2F98-4B52-9C56-4EA43E62D786)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
