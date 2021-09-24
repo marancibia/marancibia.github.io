@@ -145,7 +145,7 @@ For example:
 <if type="livelabs">You can now move tho the next lab.</if>
 
 <if type="freetier">
-## Task 5: Load sample datasets as database tables and views, and grant access to all users 
+## Task 5: Load sample data into tables and views, and grant access to all users 
 
 Labs 2 to 6 of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will download a new notebook:
 
