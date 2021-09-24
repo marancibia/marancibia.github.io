@@ -1,7 +1,7 @@
 # Get started with OML4Py on Oracle Autonomous Database
 
 ## Introduction
-This lab walks you through the steps to create an Oracle Machine Learning notebook and access the Python environment.
+This lab walks you through the steps of accessing Oracle Machine Learning Notebooks, loading notebooks and runing OML4Py scripts.
 
 Estimated Lab Time: 15 minutes
 
@@ -9,54 +9,13 @@ Estimated Lab Time: 15 minutes
 
 In this lab, you will learn how to:
 * Access Oracle Machine Learning Notebooks
-* Create an Oracle Machine Learning Notebook
-* Familiarize with the Oracle Machine Learning Notebook toolbar
-* Familiarize with the Oracle Machine Learning Notebook interpreter bindings
-* Familiarize with the Oracle Machine Learning Notebook interpreters
-* Access the Python Interpreter
+* Get familiar with the Oracle Machine Learning Notebooks toolbar
+* Get familiar with the Oracle Machine Learning Notebooks interpreters
 * Verify the connection to the Oracle Autonomous Database
+<if type="freetier">* Load the datasets necessary to run the workshop</if>
 * View help files
 
-<if type="freetier">
-
-## Task 1: Create an Oracle Machine Learning User
-
-An administrator creates a new user account and user credentials for Oracle Machine Learning in the User Management interface.
-> **Note:** You must have the administrator role to access the Oracle Machine Learning User Management interface. To create a user account:
-
-1. On the Autonomous Database Details page, click **Service Console.**
-
-    ![Service Console on the Autonomous Database Details page](images/service_console.png "Service Console")
-
-2. On the Service Console, click **Administration.**
-    ![Autonomous Data Warehouse Administration page](images/administration.png "Administration")
-
-3. Click **Manage Oracle ML Users** to open the Oracle Machine Learning User Administration page.
-    ![Manage OML Users option in Oracle Machine Learning Administration page](images/manage_oml_users.png "Manage OML Users option")
-4. On the Oracle Machine Learning User Administration page, click **Create**.
-    ![Users page in Oracle Machine Learning User Administration](images/create_option.png "Create User")
-
-5. On the Create User page, enter the following details to create the user:
-    ![Create User page](images/create_user_page.png "Create User page")
-    - **Username:** Enter `omluser` for username. Using this username, the user will log in to an Oracle Machine Learning instance.
-    - **First Name:** Enter the first name of the user.
-    - **Last Name:**  Enter the first name of the user.
-    - **Email Address:** Enter the email ID of the user.
-    - Select the **Generate password and email account details to user. User will be required to reset the password on first sign in**  check box to auto generate a temporary password and send an email with the account credentials to the user.
-    If you select this option, you don't need to enter values in the **Password** and **Confirm Password** fields; the fields are grayed out.
-    - **Password:** Enter a password for the user, if you choose to create a password for the user.
-    This option is disabled if you select the **Generate password...** option to auto generate a temporary password for the user.
-    - **Confirm Password:** Enter a password to confirm the value that you entered in the Password field.
-    By doing so, you create the password for the user. The user can change the password when first logging in.
-    
-    Click **Create.**
-
-6. Repeat step 5 and create `omluser2` user. You will use this user later in the workshop to learn how to grant datastore access to a user.
-
-    ![List of users](images/omluser_2.png "List of users")
-</if>
-
-## Task <if type="freetier">2</if><if type="livelabs">1</if>: Access Oracle Machine Learning Notebooks
+## Task 1: Access Oracle Machine Learning Notebooks
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
@@ -70,7 +29,7 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Oracle Machine Learning Notebooks option in Development tab in Oracle ADW](images/open-oml-notebooks.png "Oracle Machine Learning Notebooks")
 
-3. <if type="livelabs">Sign in with the ``omluser`` using the password `AAbbcc123456`. </if><if type="freetier">Enter your `omluser` credentials and click **Sign in.**</if>
+3. <if type="livelabs">Sign in with the ``omluser`` using the password `AAbbcc123456`. </if><if type="freetier">Enter the `omluser` credentials using either the password `AAbbcc123456` that was suggested when creating it, or your own password if you created a different one.  Then click the blue **Sign in** button</if>
 
     ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png "Sign-in page")
 
@@ -78,79 +37,60 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png "Oracle Machine Learning home page")
 
+## Task 2: Get familiar with the OML Notebooks toolbar
 
-<if type="freetier">
-## Task 3: Create Tables and Views, and Grant Access
+ 1. [**CLICK HERE** to download the "Lab 1: Get Started with OML4Py on Autonomous Database" notebook in JSON format](./../notebooks/lab1_get_started.json?download=1) which contains the notebook version of Lab1 (without screenshots), and save it to your local machine.
 
-This workshop uses tables and views which need to be created before proceeding with the workshop. To create these tables and views:
+To view the downloaded notebook file:
+- Go to the Notebooks page, and click **Import**.  
 
-1. [**CLICK HERE** to download the "Run Me First notebook"](./../notebooks/lab0_run_me_first.json?download=1). This notebook contains the scripts for creating tables and views, and granting required access.
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
 
-2. On the Notebooks page click **Import** and select the `lab0_run_me_first.json` notebook file.
+- Select the file you have downloaded locally and click on **Open**.
+ ![Open Lab 1 JSON file](images/open-lab1-file.png "Open Lab 1 JSON file")
 
-3. Click on the notebook to open it after it is successfully imported.
+- After the notebook is successfully imported, click the notebook to view it.
+   ![Open Lab 1 notebook](images/click-on-lab1.png "Open Lab 1 notebook")
 
-    ![Notebooks page in Oracle Machine Learning Notebooks](images/import-notebook.png "Notebooks page")
+   OML Notebooks will load a session and make the notebook available for editing.
 
-4. Click the **Run all paragraphs** ![](images/run-all-paragraphs.png =20x*) icon, and then click **OK** to confirm.
-
-5. Wait until all the paragraphs have finished running and you see your current time in the last paragraph after the message `"PL/SQL procedure successfully completed"`.
-
-    ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png "Last paragraph in a notebook showing the current timestamp")
-
-The prerequisite scripts have run successfully.
-
-</if>
-
-## Task <if type="freetier">4</if><if type="livelabs">2</if>: Download and View the Notebook File
-
- 1. <if type="freetier">[**CLICK HERE** to download the "lab1 get started freetier.json"](./../notebooks/lab1_get_started_freetier.json?download=1)</if><if type="livelabs">[**CLICK HERE** to download the "lab1 get started livelabs.json"](./../notebooks/lab1_get_started_livelabs.json?download=1)</if> which contains the notebook version of this lab (without screenshots).
-
-  [](include:import)
-
-## Task <if type="freetier">5</if><if type="livelabs">3</if>: Create an Oracle Machine Learning Notebook
-
-A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. To create a notebook:
-1. <if type="freetier">Click the hamburger menu, search for Notebooks, and click on it. </if>In the Notebooks page, click **Create.** The Create Notebook window appears.
-
-    ![Create option in Notebooks page](images/create-notebook-1.png "Create option")
-
-2. In the **Name** field, provide a name for the notebook.
-3. In the **Comments** field, enter comments, if any.
-4. In the **Connections** field, select a connection in the drop-down list. By default, the **Global** connection group is assigned.
-5. Click **OK.** The notebook is created and it opens in the notebook editor.
-
-    ![Create Notebook dialog](images/create-notebook-2.png "Create Notebook dialog")
-
-> **Note:** For Oracle Autonomous Database, a connection is automatically established provided you have the appropriate interpreter binding specified and import the oml package.    
+A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. 
 
 ### About Oracle Machine Learning Notebooks
 
 The Oracle Machine Learning notebooks toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
-For example, it displays the current status and the number of users connected to the notebook. It also contains a menu item for keyboard shortcuts and options to show or hide the markdown editor and paragraph output. Additional settings are shown in the illustration here.
+For example, it displays the current status and the number of users connected to the notebook. It also contains a menu item for keyboard shortcuts and options to show or hide the markdown editor and paragraph output. Additional settings are shown in the illustration below.
     ![Notebook toolbar](images/notebook_toolbar.png "Notebook toolbar")
 
-Oracle Machine Learning notebooks contain an internal list of bindings to fetch data from the database or another data source, such as Oracle Cloud Object Storage. For this lab, we set the interpreter binding to connect to the ADW database and run queries.
+## Task 3: Getting Started with OML notebooks and interpreters
 
-Click the interpreter bindings icon in the upper right-corner of the Notebook to view the list of available interpreter bindings.
+Oracle Machine Learning notebooks contain a default list of interpreter bindings, used to run scripts against the Autonomous Database that it is linked to.  For this lab, we will set the interpreter binding to "xxxx_medium", where xxxx is the database name.
+
+Click the interpreter bindings icon (![](images/interpreter_bindings_icon_small.png "")) in the upper right-corner of the Notebook (the gear) to view the list of available interpreter bindings.
   ![Oracle Machine Learning Notebooks Interpreter Bindings](images/interpreter_bindings.png "Oracle Machine Learning Notebooks  Interpreter Bindings")
 
 The default service is low. Click to bind or unbind an interpreter. Drag-and-drop individual interpreter binding settings up or down to order which binding will be used by default. The first interpreter on the list becomes the default. Those highlighted in blue are active.
 
-An interpreter is a plug-in that allows you to use a specific data processing language in your Oracle Machine Learning notebook. You can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL or Python.
+As shown in the example, we dragged the **medium** interpreter up so it is the first in the list, and thus becomes the default.
 
-You create different paragraphs with different interpreters based on the code you want to run in the paragraphs. The interpreter is set at the top of the paragraph.
+An interpreter is a plug-in that allows you to use a specific data processing language in your Oracle Machine Learning notebook. You can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL, PL/SQL or Python.
+
+You create paragraphs with different interpreters based on the code you want to run, and the interpreter is set at the top of each paragraph.
 The available interpreters are:
 
+  - `%md`&mdash;To call the Markdown interpreter and generate static html from Markdown plain text
   - `%sql`&mdash;To call the SQL interpreter and run SQL statements
   - `%script`&mdash;To call and run PL/SQL scripts
-  - `%md`&mdash;To call the Markdown interpreter and generate static html from Markdown plain text
   - `%python`&mdash;To call the Python interpreter and run Python scripts
 
-## Task <if type="freetier">6</if><if type="livelabs">4</if>: Connect to the Python Interpreter
+## Task 4: Use the Python Interpreter
 
-To run Python commands in a notebook, you must first connect to the Python interpreter. This occurs as a result of running your first `%python` paragraph. To use OML4Py, you must import the `oml` module, which automatically establishes a connection to your database.
+Scroll down on the "Lab 1" Notebook to follow along the steps below. 
+
+  ![Scroll down notebooks](images/scroll-down-notebook.png "Scroll down notebooks")
+
+To run Python commands in a notebook, you must make use of the Python interpreter. This occurs as a result of running your first `%python` paragraph. To use OML4Py, you must import the `oml` module, which automatically establishes a connection to your database.
 In an Oracle Machine Learning notebook, you can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL or Python. This example shows you how to:
 
 * Connect to a Python interpreter to run Python commands in a notebook
@@ -159,20 +99,7 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
 **Note:** `z` is a reserved keyword and must not be used as a variable in `%python` paragraphs in Oracle Machine Learning Notebooks. You will see `z.show()` used in the examples to display Python object and proxy object content.
 
-1. Open the notebook and click the interpreter bindings ![](images/interpreter_bindings_icon.png =20x*) icon. View the available interpreter bindings.  The "low" priority binding runs operations serially (no parallelism). You can drag-and-drop individual interpreter binding settings up or down to order which binding will be used by default. Those highlighted in blue are active. Click to toggle to inactive.
-
-    ![Oracle Machine Learning Notebooks Interpreter Bindings](images/interpreter_bindings.png "Oracle Machine Learning Notebooks  Interpreter Bindings")
-
-    The available interpreter bindings are:
-    - `%sql`&mdash;To call the SQL interpreter and run SQL statements
-    - `%script`&mdash;To call and run PL/SQL scripts
-    - `%md`&mdash;To call the Markdown interpreter and generate static html from Markdown plain text
-    - `%python`&mdash;To call the Python interpreter and run Python scripts
-
-2. To connect to the Python interpreter, type `%python` at the top of a new paragraph in your notebook.
-   You are now ready to run Python scripts in your notebook.
-
-3. To use OML4Py module, you must import the oml module. Type the following Python command to import the `oml` module, and click the **run** icon. Alternatively, you can press Shift+Enter keys to run the notebook.   
+1. To use OML4Py module, you must import the oml module. Type the following Python command to import the `oml` module, and click the **run** icon. Alternatively, you can press Shift+Enter keys to run the notebook.   
 
     ```
     %python
@@ -181,11 +108,8 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
     ![Python command to import oml module](images/import_oml.png "Python command to import oml module")
 
-## Task <if type="freetier">7</if><if type="livelabs">5</if>: Verify Connection to the Oracle Autonomous Database
-
-Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
-
-1. To verify the Python interpreter has established a database connection through the `oml` module, run the command:
+2. Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
+   To verify the Python interpreter has established a database connection through the `oml` module, run the command:
 
     ```
     %python
@@ -196,9 +120,8 @@ Using the default interpreter bindings, OML Notebooks automatically establishes 
     Once your notebook is connected, the command returns `True`.         
 
 
-## Task <if type="freetier">8</if><if type="livelabs">6</if>: View Help Files
-
-The Python help function is used to display the documentation of packages, modules, functions, classes, and keywords. The help function has the following syntax:
+3. The Python help function 
+   The Python help function is used to display the documentation of packages, modules, functions,   classes, and keywords. The help function has the following syntax:
     ```
     help([object])
     ```
@@ -219,6 +142,43 @@ For example:
     help(oml)</copy>
     ```  
 
+<if type="livelabs">You can now move tho the next lab.</if>
+
+<if type="freetier">
+## Task 5: Load sample datasets as database tables and views, and grant access to all users 
+
+Labs 2 to 6 of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will download a new notebook:
+
+1. [**CLICK HERE** to download the "Lab 1a: Run Me First - OML4Py table creation and grants" noteook JSON file](./../notebooks/lab1a_run_me_first.json?download=1). This notebook contains the scripts for creating tables and views, and granting the required access.
+
+2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
+
+3. Click the **Import** button.  
+
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+
+4. Select the `lab1a_run_me_first.json` notebook file and click **Open**.
+   
+ ![Open Lab 1 JSON file](images/open-lab1a-file.png "Open Lab 1 JSON file")
+
+- After the notebook is successfully imported, click the **notebook name** to view it.
+   ![Open Lab 1 notebook](images/click-on-lab1a.png "Open Lab 1 notebook")
+
+   OML Notebooks will load a session and make the notebook available for editing.
+
+5. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm.
+    ![Notebook click on run all](images/click-run-all.png "Notebook click on run all")
+
+6. Wait until all the paragraphs have finished running and you see your current time in the last paragraph after the message `"PL/SQL procedure successfully completed"`.
+
+    ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png "Last paragraph in a notebook showing the current timestamp")
+
+The prerequisite scripts have run successfully.
+You can now move tho the next lab.
+</if>
+
 ## Learn More
 
 * [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/get-started-with-oml4py.html#GUID-B45A76E6-CE48-4E49-B803-D25CA44B09ED)
@@ -226,5 +186,5 @@ For example:
 
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
 * **Last Updated By/Date** - Marcos Arancibia, September 2021

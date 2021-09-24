@@ -46,6 +46,11 @@
             "type": "livelabs"
         },
         {
+        "title": "Appendix: OML administration",
+        "filename": "../../appendix-manage/appendix-manage.md",
+        "type": "freetier"
+        },        
+        {
             "title": "Need Help?",
             "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-livelabs.md"
         }

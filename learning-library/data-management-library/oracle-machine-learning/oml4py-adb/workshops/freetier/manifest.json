@@ -11,18 +11,20 @@
             "type": "freetier"
         },
         {
-            "title": "Get Started",
+            "title": "Get Started with Oracle Cloud",
             "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md",
             "type": "freetier"
         },
 		{
-            "title": "Get Started with LiveLabs",
+            "title": "Provision Oracle Autonomous Data Warehouse",
             "filename": "../../get-started-livelabs/get-started-livelabs.md",
             "type": "freetier"
         },
         {
-            "title": "Initializing Labs",
-            "filename": "../../initialize-labs/initialize-labs.md"
+            "title": "Run the prerequisites for the labs",
+            "filename": "../../initialize-labs/initialize-labs.md",
+            "type": "freetier"
+
         },
         {
             "title": "Lab 1: Getting Started with OML4Py",
@@ -52,6 +54,11 @@
         {
             "title": "Lab 6: Use AutoML",
             "filename": "../../automl/automl.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Appendix: OML administration",
+            "filename": "../../appendix-manage/appendix-manage.md",
             "type": "freetier"
         },
         {

@@ -1,7 +1,7 @@
-# Get started with LiveLabs
+# Provision Oracle Autonomous Data Warehouse
 
 ## Introduction
-This lab walks you through the steps to create an Oracle Machine Learning notebook and connect to the Python interpreter.
+This lab walks you through the steps to provision an Oracle Autonomous Data Warehouse instance, which is a prerequisite to access Oracle Machine Learning in this workshop.
 
 Estimated Lab Time: 15 minutes
 
@@ -83,10 +83,9 @@ To provision an Oracle Autonomous Database:
 
 ## Learn More
 
-* [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/get-started-with-oml4py.html#GUID-B45A76E6-CE48-4E49-B803-D25CA44B09ED)
-* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
+* [Provision Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-provision.html#GUID-0B230036-0A05-4CA3-AF9D-97A255AE0C08)
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
 * **Last Updated By/Date** - Marcos Arancibia, September 2021
