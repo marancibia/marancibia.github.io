@@ -1,9 +1,6 @@
 {
     "workshoptitle": "Python Users: Build intelligent applications faster with Oracle Machine Learning",
     "help": "livelabs-help-db_us@oracle.com",
-    "include": {
-        "import": "../../common/import_notebook.md"
-    },
     "tutorials": [
         {
             "title": "Introduction",
@@ -42,7 +39,7 @@
             "type": "freetier"
         },
 		    {
-            "title": "Lab 4: Use Datastores to store Python objects",
+            "title": "Lab 4: Store and manage Python objects and user-defined functions",
             "filename": "../../dstore-script-repo/dstore-script-repo.md",
             "type": "freetier"
         },

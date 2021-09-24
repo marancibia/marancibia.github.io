@@ -46,39 +46,35 @@ In this lab, you will learn how to:
    ![Lab 3 main screen](images/lab3-main.png "Lab 3 main screen")
 
 ## Task 1: Import Libraries
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
   ![Lab 3 Task 1 screen](images/lab3-task1.png "Lab 3 Task 1 screen")  
 
 ## Task 2: Work with Regression Using Generalized Liner Model (GLM)
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
   ![Lab 3 Task 2 screen](images/lab3-task2.png "Lab 3 Task 2 screen") 
 
 ## Task 3: Work with Clustering Using K-Means
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
   ![Lab 3 Task 3 screen](images/lab3-task3.png "Lab 3 Task 3 screen") 
 
 ## Task 4: Work with Partitioned Models
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
   ![Lab 3 Task 4 screen](images/lab3-task4.png "Lab 3 Task 4 screen") 
 
 ## Task 5: Rank Attribute Importance using Model Explainability
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
@@ -92,6 +88,6 @@ Scroll down to the beginning of Task 5.
 
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, September 2021
+* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, September 2021

@@ -19,30 +19,77 @@ In this lab, you will learn how to:
 * Use `automl.ModelSelection` to select the top in-database algorithm, and then tune the corresponding model
 
 
-## Download and View the Notebook File
+## Download the notebook file for this Lab
 
-[**CLICK HERE** to download the "lab6_automl.json"](./../notebooks/lab6_automl.json?download=1). This is the notebook version of this lab (without screenshots).
+1. [**CLICK HERE** to download the lab6\_automl.json notebook file](./../notebooks/lab6_automl.json?download=1). This will download the notebook file for this lab to your local machine. 
 
- [](include:import)
+2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
+
+3. Click the **Import** button.  
+
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+
+4. Select the `lab6_automl.json` notebook file and click **Open**.
+   
+ ![Open Lab 6 JSON file](images/open-lab6-file.png "Open Lab 6 JSON file")
+
+- After the notebook is successfully imported, click the **notebook name** to view it.
+   ![Open Lab 6 notebook](images/click-on-lab6.png "Open Lab 6 notebook")
+
+   OML Notebooks will create a session and make the notebook available for editing.
+
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+   
+   ![Lab 6 main screen](images/lab6-main.png "Lab 6 main screen")
+
+> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 ## Task 1: Import Libraries Supporting Oracle Machine Learning for Python (OML4Py)
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
-  
+Scroll down to the beginning of Task 1.
+
+  ![Lab 6 Task 1 screen](images/lab6-task1.png "Lab 6 Task 1 screen") 
 
 ## Task 2: Automated Algorithm Selection
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+
+Scroll down to the beginning of Task 2.
+
+  ![Lab 6 Task 2 screen](images/lab6-task2.png "Lab 6 Task 2 screen")
+
+> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 
 ## Task 3: Automated Feature Selection
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
+Scroll down to the beginning of Task 3.
+
+  ![Lab 6 Task 3 screen](images/lab6-task3.png "Lab 6 Task 3 screen")
+  
+> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 
 ## Task 4: Automated Model Tuning
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
+Scroll down to the beginning of Task 4.
 
+  ![Lab 6 Task 4 screen](images/lab6-task4.png "Lab 6 Task 4 screen")
+  
+> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 ## Task 5: Automated Model Selection
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
+Scroll down to the beginning of Task 5.
 
+  ![Lab 6 Task 5 screen](images/lab6-task5.png "Lab 6 Task 5 screen")
+  
+> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 ## Learn More
 

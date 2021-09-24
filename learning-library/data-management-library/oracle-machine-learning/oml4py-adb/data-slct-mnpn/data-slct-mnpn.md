@@ -54,72 +54,63 @@ In this lab, you will learn how to:
 
 
 ## Task 1: Import Libraries and Create Oracle Machine Learning DataFrame Proxy Object
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
   ![Lab 2 Task 1 screen](images/lab2-task1.png "Lab 2 Task 1 screen")
 
 ## Task 2: Select Table Columns using Proxy Object IRIS_TMP
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
   ![Lab 2 Task 2 screen](images/lab2-task2.png "Lab 2 Task 2 screen")
 
 ## Task 3: Select Table Rows using Proxy Object IRIS_TMP
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
   ![Lab 2 Task 3 screen](images/lab2-task3.png "Lab 2 Task 3 screen")
 
 ## Task 4: Use Pandas DataFrame Objects
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
   ![Lab 2 Task 4 screen](images/lab2-task4.png "Lab 2 Task 4 screen")
 
 ## Task 5: Use the split and KFold Functions
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
   ![Lab 2 Task 5 screen](images/lab2-task5.png "Lab 2 Task 5 screen")
 
 ## Task 6: Use the crosstab and pivot_table Functions on a DataFrame Proxy Object
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
   ![Lab 2 Task 6 screen](images/lab2-task6.png "Lab 2 Task 6 screen")
 
 ## Task 7: Use the oml.boxplot and oml.hist Functions
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
   ![Lab 2 Task 7 screen](images/lab2-task7.png "Lab 2 Task 7 screen")
 
 ## Task 8: Manage and Explore Data Using Transparency Layer Functions
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.
 
   ![Lab 2 Task 8 screen](images/lab2-task8.png "Lab 2 Task 8 screen")
 
 ## Task 9: Use cx_Oracle functions
-
-Follow the flow of the notebook by scrolling down from the right to visualize each step of each task of this lab.
+Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 9.
 
@@ -132,6 +123,6 @@ Scroll down to the beginning of Task 9.
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
 ## Acknowledgements
-* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
+* **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, September 2021
+* **Last Updated By/Date** - Marcos Arancibia and Jie Liu, September 2021
