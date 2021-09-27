@@ -86,6 +86,11 @@ The available interpreters are:
 
 ## Task 4: Use the Python Interpreter
 
+As an example of running the code, let's click on the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon in front of the name of the notebook, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.
+
+ ![Click run all Lab1](images/click-run-all-lab1.png "Click run all Lab1")
+
+
 Scroll down on the "Lab 1" Notebook to follow along the steps below. 
 
   ![Scroll down notebooks](images/scroll-down-notebook.png "Scroll down notebooks")

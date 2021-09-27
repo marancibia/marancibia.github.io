@@ -12,11 +12,11 @@ AutoML (Automated Machine Learning) provides built-in data science expertise abo
 ### Objectives
 
 In this lab, you will learn how to:
-* Create data set (wine data) as Pandas DataFrame and load into Oracle Autonomous Database
-* Use `automl.AlgorithmSelection` to rank the in-database algorithms by predicted score metric for classification or regression problems
-* Use `automl.FeatureSelection` to quickly identify the most relevant feature subsets for the provided training data set and an in-database algorithm
-* Use `automl.ModelTuning` to tune the hyperparameters for the specified algorithm and training data
-* Use `automl.ModelSelection` to select the top in-database algorithm, and then tune the corresponding model
+* Create a Pandas DataFrame (OML DataFrame) proxy object for the `CUSTOMER_INSURANCE_LTV` database table to predict who would buy insurance based on the current customer behavior
+* Use `automl.AlgorithmSelection` to rank the in-database algorithms by predicted score metric for classification of the BUY_INSURANCE target
+* Use `automl.FeatureSelection` to identify the most relevant feature subset for the training data and the selected algorithm
+* Use `automl.ModelTuning` to tune selected algorithm hyperparameters
+* Use `automl.ModelSelection` to select the top in-database algorithm and return the tuned model in a single function
 
 
 ## Download the notebook file for this Lab
