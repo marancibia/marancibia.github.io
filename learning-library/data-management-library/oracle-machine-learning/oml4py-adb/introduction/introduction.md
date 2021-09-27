@@ -1,33 +1,35 @@
 # Introduction
 
 ## About this Workshop
-This workshop introduces you to Oracle Machine Learning for Python (OML4Py) on Oracle Autonomous Database and how to build intelligent applications faster with Oracle Machine Learning. OML4Py supports scalable in-database data exploration and preparation using native Python syntax, invocation of in-database algorithms for model building and scoring, and embedded execution of user-defined Python functions from Python or REST APIs. OML4Py also includes the AutoML interface for automated algorithms and feature selection, and hyperparameter tuning. Join us for this tour of OML4Py.
+This workshop introduces you to Oracle Machine Learning for Python (OML4Py) on Oracle Autonomous Database. 
+Oracle Machine Learning for Python (OML4Py) supports scalable in-database data exploration and preparation using native Python syntax, scalable in-database algorithms for machine learning model building and scoring, and automated machine learning (AutoML). Users can also invoke user-defined Python functions from Python and REST APIs using database-spawned Python engines. OML4Py increases data scientist productivity and reduces solution deployment complexity.  Join us for this tour of OML4Py.
 
-Python is a major programming language used for data science and machine learning. OML4Py is a new feature on Oracle Autonomous Database that provides Python users access to powerful in-database functionality supporting data scientists for both scalability, performance, and ease of solution deployment.
+Python is a major programming language used for data science and machine learning. OML4Py is a new feature on Oracle Autonomous Database that provides Python users access to powerful in-database functionality supporting data scientists for both scalability, performance, and ease of solution deployment. 
 
-Watch this quick video on OML4Py.
+Watch this quick video on Oracle Machine Learning for Python (OML4Py).
 
 [] (youtube:wciO-5CyS2M)
 
 Estimated Time: 120 minutes
 
 ### About Oracle Machine Learning for Python (OML4Py)
-Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous Database, that includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). By using Oracle Machine Learning Notebooks, you can run Python functions on data for data exploration and preparation while leveraging Oracle Database as a high-performance computing environment. Oracle Machine Learning Notebooks is available through Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP) and Oracle Autonomous JSON Database (AJD) services.
+Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous Database, which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). By using Oracle Machine Learning Notebooks on Oracle Autonomous Database, you can run Python functions on database data for exploration, preparation, and modeling while leveraging Oracle Database as a high-performance computing environment. 
 
-Watch the video below on a technical introduction to OML4Py.
+Watch the video below for an introduction to Oracle Machine Learning for Python.
 
-[] (youtube:soVGq7rt77o)
+[] (youtube:P861m__PEMQ)
 
 ### Objectives
 
-The labs in this workshop focus on the following:
-* Oracle Machine Learning Notebooks and connection to an Oracle Autonomous Database from a Python session
-* Data exploration and preparation using the Transparency Layer
-* In-database algorithms and models
-* Datastores to store Python objects
-* Python script repository for user-defined functions
-* Embedded Python Execution using the Python and REST APIs
-* Automated Machine Learning (AutoML) functionality
+ The labs in this workshop focus on the following:
+
+ * Oracle Machine Learning Notebooks and connection to an Oracle Autonomous Database from a Python session
+ * Data selection and manipulation using the Transparency Layer
+ * In-database algorithms for model building and scoring
+ * Datastores to store Python objects
+ * Python script repository to store user-defined functions in the database
+ * Embedded Python Execution to run user-defined functions in database-spawned and controlled Python engines
+ * AutoML functionality supporting automated algorithm and feature selection, along with model tuning and selection
 
 
 ### Prerequisites
