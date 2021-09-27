@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This lab walks you through the steps to use and work with datastores.
+This lab walks you through the steps to use and work with OML4Py datastores and the script repository.
 
 Estimated Lab Time: 20 minutes
 
-### About Datastore
+### About Datastores
 Datastores exist in the user’s Oracle Database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.
 
 Python objects, including Oracle Machine Learning for Python (OML4Py) proxy objects, exist for the duration of the current Python session unless you explicitly save them. You can save one or more Python objects, including OML proxy objects, to a named datastore and then load those objects in a later Python session. This is also useful when using embedded Python execution.
@@ -32,17 +32,21 @@ OML4Py stores named user-defined functions called scripts in the script reposito
 ### Objectives
 
 In this lab, you will learn how to:
-* Move objects between datastore and a Python sessions
-* Save Python objects in a datastore
-* Save model objects in a datastore
-* Load datastore objects into memory
-* View datastore and its details
-* Manage datastore privileges
-* Delete datastores
-* Use the Python Script Repository
-* Create Scripts in Repository
-* Store a function as a global function
-* Drop scripts from the Script Repository
+
+**Datastores**
+  * Move objects between datastore and a Python sessions
+  * Save Python objects in a datastore
+  * Save model objects in a datastore
+  * Load datastore objects into memory
+  * View datastore and its details
+  * Manage datastore privileges
+  * Delete datastores
+
+**Python Script Repository**
+  * Use the Python Script Repository
+  * Create Scripts in Repository
+  * Store a function as a global function
+  * Drop scripts from the Script Repository
 
 
 ## Download the notebook file for this Lab

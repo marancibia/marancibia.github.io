@@ -22,7 +22,10 @@ The OML4Py Embedded Python Execution functions are:
 ### Objectives
 
 In this lab, you will:
-* Use the OML4Py Embedded Python Execution functions
+* Build an open source scikit-learn linear model and scoring script
+* Prepare the same script for use with Embedded Python Execution
+* Build one model per group using the `group_apply` function
+* Return multiple images as a result from Embedded Python Execution
 
 ## Download the notebook file for this Lab
 

@@ -15,7 +15,7 @@ In-database machine learning models are first-class objects in Oracle Database. 
 ### Objectives
 
 In this lab, you will learn how to:
-* Predict numerical values using multiple regression
+* Predict numerical values using Regression (Generalized Linear Model)
 * Work with clustering using K-means
 * Work with partitioned models
 * Use the Model Explainability feature to rank attributes

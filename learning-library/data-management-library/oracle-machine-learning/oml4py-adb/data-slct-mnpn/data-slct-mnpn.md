@@ -12,9 +12,9 @@ database.
 The Oracle Machine Learning for Python (OML4Py) transparency layer supports functions that interact with database data and enables you to:
 * Load Python `pandas.DataFrame` objects to Oracle Database to create database tables
 * Access and manipulate database tables and views through the use of proxy objects
-* Overloads Python functions, translating their functionality into SQL
-* Leverages proxy objects for database data
-* Uses familiar Python syntax to manipulate database data
+* Overload Python functions, translating their functionality into SQL
+* Leverage proxy objects for database data
+* Use familiar Python syntax to manipulate database data
 
 ### Objectives
 
@@ -22,10 +22,12 @@ In this lab, you will learn how to:
   * Use the `oml.push` function to create a temporary table
   * Work with table rows and columns using proxy objects
   * Work with `pandas.DataFrame` objects
-  * Use the `append` function
-  * Use the `concat` function
-  * Use the `split` and `KFold` function
-  * Use the `crosstab` and `pivot_table` functions on a DataFrame
+  * Use the `append`, `concat` and `merge` functions to manipulate data
+  * Use the `split` and `KFold` functions to partition the data
+  * Use the `crosstab` and `pivot_table` functions on an OML DataFrame proxy
+  * Use the `oml.boxplot` and `oml.hist` functions to create plots 
+  * Manage and explore data using OML4Py Transparency Layer functions
+  * Use `cx_Oracle` functions to submit SQL queries from Python
 
 ## Download the notebook file for this Lab
 

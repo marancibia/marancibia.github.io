@@ -86,10 +86,13 @@ The available interpreters are:
 
 ## Task 4: Use the Python Interpreter
 
-As an example of running the code, let's click on the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon in front of the name of the notebook, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.
+Let's start by running the entire notebook, so that we can see the result of each paragraph.
+
+Click on the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon in front of the name of the notebook, and then click **OK** to confirm to refresh the content with your data, as indicated below.
+
+Another option is to just scroll down and read the pre-recorded results contained in the notebooks themselves.
 
  ![Click run all Lab1](images/click-run-all-lab1.png "Click run all Lab1")
-
 
 Scroll down on the "Lab 1" Notebook to follow along the steps below. 
 
@@ -106,47 +109,21 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
 1. To use OML4Py module, you must import the oml module. Type the following Python command to import the `oml` module, and click the **run** icon. Alternatively, you can press Shift+Enter keys to run the notebook.   
 
-    ```
-    %python
-    <copy>import oml</copy>
-    ```
-
-    ![Python command to import oml module](images/import_oml.png "Python command to import oml module")
+  ![Python command to import oml module](images/import_oml.png "Python command to import oml module")
 
 2. Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
-   To verify the Python interpreter has established a database connection through the `oml` module, run the command:
+  To verify the Python interpreter has established a database connection through the `oml` module, run the command:
+   
+  ![Database Connection Verification](images/oml_connected.png "Connection Verification")
 
-    ```
-    %python
-    <copy>oml.isconnected()</copy>
-    ```
-    ![Database Connection Verification](images/oml_connected.png "Connection Verification")
+  Once your notebook is connected, the command returns `True`.         
 
-    Once your notebook is connected, the command returns `True`.         
+3. The Python `help` function 
 
+   The Python `help` function is used to display the documentation of packages, modules, functions, classes, and keywords. 
 
-3. The Python help function 
-   The Python help function is used to display the documentation of packages, modules, functions,   classes, and keywords. The help function has the following syntax:
-    ```
-    help([object])
-    ```
-
-For example:
-  - To view the help files for the `oml.create` function, type:
-    ```
-    %python
-    <copy>
-    help(oml.create)</copy>
-    ```
-
-  - To view the help files for `oml` package, type:
-
-    ```
-    %python
-    <copy>
-    help(oml)</copy>
-    ```  
-
+   Scroll down in the notebook to see examples of the use of the `help` function.
+ 
 <if type="livelabs">You can now move tho the next lab.</if>
 
 <if type="freetier">
