@@ -1,7 +1,7 @@
 # Run the prerequisites for the labs
 
 ## Introduction
-The workshop assumes that an Oracle Machine Learning user named **`OMLUSER`** has been created and configured for signing into OML Notebooks and runing all labs. 
+The workshop assumes that an Oracle Machine Learning user named **`OMLUSER`** has been created and configured for signing into OML Notebooks and running all labs. 
 
 A second user named **`OMLUSER2`** is also needed for the appropriate demonstration of the permission grants to OML4Py Datastore and Script Repository from one user to another.
 

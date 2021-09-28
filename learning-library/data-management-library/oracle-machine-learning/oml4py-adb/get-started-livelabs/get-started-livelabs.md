@@ -59,7 +59,7 @@ To provision an Oracle Autonomous Database:
 7. For Database configuration, select the following:
 
     - **Choose database version:** Select the database version. The available database version is **19c**.
-    - **OCPU Count:** Enter ``1`` . This is number of CPU cores for your database.
+    - **OCPU Count:** Enter ``1`` . This is the number of CPU cores for your database.
     - **Storage (TB):** Specify the storage you wish to make available to your database, in terabytes. Click the arrow to select ``1``.
     - **Auto Scaling:** By default auto scaling is enabled to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
 

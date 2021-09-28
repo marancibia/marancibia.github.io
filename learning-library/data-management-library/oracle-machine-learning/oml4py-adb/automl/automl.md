@@ -60,9 +60,6 @@ Scroll down to the beginning of Task 2.
 
   ![Lab 6 Task 2 screen](images/lab6-task2.png "Lab 6 Task 2 screen")
 
-> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
-
-
 ## Task 3: Automated Feature Selection
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -70,8 +67,6 @@ Scroll down to the beginning of Task 3.
 
   ![Lab 6 Task 3 screen](images/lab6-task3.png "Lab 6 Task 3 screen")
   
-> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
-
 
 ## Task 4: Automated Model Tuning
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
@@ -80,7 +75,6 @@ Scroll down to the beginning of Task 4.
 
   ![Lab 6 Task 4 screen](images/lab6-task4.png "Lab 6 Task 4 screen")
   
-> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
 ## Task 5: Automated Model Selection
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
@@ -89,8 +83,6 @@ Scroll down to the beginning of Task 5.
 
   ![Lab 6 Task 5 screen](images/lab6-task5.png "Lab 6 Task 5 screen")
   
-> **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
-
 ## Learn More
 
 * [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/automatic-machine-learning.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)

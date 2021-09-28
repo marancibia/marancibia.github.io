@@ -1,7 +1,7 @@
 # Get started with OML4Py on Oracle Autonomous Database
 
 ## Introduction
-This lab walks you through the steps of accessing Oracle Machine Learning Notebooks, loading notebooks and runing OML4Py scripts.
+This lab walks you through the steps of accessing Oracle Machine Learning Notebooks, loading notebooks and running OML4Py scripts.
 
 Estimated Lab Time: 15 minutes
 
@@ -60,7 +60,7 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 The Oracle Machine Learning notebooks toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
-For example, it displays the current status and the number of users connected to the notebook. It also contains a menu item for keyboard shortcuts and options to show or hide the markdown editor and paragraph output. Additional settings are shown in the illustration below.
+For example, it displays the status and the number of users connected to the notebook. It also contains a menu item for keyboard shortcuts and options to show or hide the markdown editor and paragraph output. Additional settings are shown in the illustration below.
     ![Notebook toolbar](images/notebook_toolbar.png "Notebook toolbar")
 
 ## Task 3: Getting Started with OML notebooks and interpreters
@@ -124,7 +124,7 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
    Scroll down in the notebook to see examples of the use of the `help` function.
  
-<if type="livelabs">You can now move tho the next lab.</if>
+<if type="livelabs">You can now move to the next lab.</if>
 
 <if type="freetier">
 ## Task 5: Load sample data into tables and views, and grant access to all users 
