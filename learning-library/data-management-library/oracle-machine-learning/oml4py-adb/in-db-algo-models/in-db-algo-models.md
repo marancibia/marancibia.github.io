@@ -26,59 +26,59 @@ In this lab, you will learn how to:
 
 2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
 3. Click the **Import** button.  
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
 
 4. Select the `lab3_in-db_algo.json` notebook file and click **Open**.
    
- ![Open Lab 3 JSON file](images/open-lab3-file.png "Open Lab 3 JSON file")
+ ![Open Lab 3 JSON file](images/open-lab3-file.png " ")
 
 - After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 3 notebook](images/click-on-lab3.png "Open Lab 3 notebook")
+   ![Open Lab 3 notebook](images/click-on-lab3.png " ")
 
    OML Notebooks will create a session and make the notebook available for editing.
 
    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
-   ![Lab 3 main screen](images/lab3-main.png "Lab 3 main screen")
+   ![Lab 3 main screen](images/lab3-main.png " ")
 
 ## Task 1: Import Libraries
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 3 Task 1 screen](images/lab3-task1.png "Lab 3 Task 1 screen")  
+  ![Lab 3 Task 1 screen](images/lab3-task1.png " ")  
 
 ## Task 2: Work with Regression Using Generalized Liner Model (GLM)
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 3 Task 2 screen](images/lab3-task2.png "Lab 3 Task 2 screen") 
+  ![Lab 3 Task 2 screen](images/lab3-task2.png " ") 
 
 ## Task 3: Work with Clustering Using K-Means
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 3 Task 3 screen](images/lab3-task3.png "Lab 3 Task 3 screen") 
+  ![Lab 3 Task 3 screen](images/lab3-task3.png " ") 
 
 ## Task 4: Work with Partitioned Models
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 3 Task 4 screen](images/lab3-task4.png "Lab 3 Task 4 screen") 
+  ![Lab 3 Task 4 screen](images/lab3-task4.png " ") 
 
 ## Task 5: Rank Attribute Importance using Model Explainability
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 3 Task 5 screen](images/lab3-task5.png "Lab 3 Task 5 screen") 
+  ![Lab 3 Task 5 screen](images/lab3-task5.png " ") 
 
 
 ## Learn More

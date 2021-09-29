@@ -21,19 +21,19 @@ Connect to Autonomous Database Actions as the ADMIN user:
 
 1. In your Autonomous Database details page, click the Tools tab. Click **Open Database Actions**.
 
-    ![Click on Tools, then Database Actions](images/launchdbactions.png "Click on Tools, then Database Actions")
+    ![Click on Tools, then Database Actions](images/launchdbactions.png " ")
 
 2. On the login screen, enter the username ADMIN, then click the blue **Next** button.
    
-    ![Type ADMIN then click Next](images/firstloginadbactions.png "Type ADMIN then click Next")
+    ![Type ADMIN then click Next](images/firstloginadbactions.png " ")
 
 3. In the next screen, enter ADMIN and the password for the ADMIN user you set up when you provisioned your Autonomous Database instance. Then click the blue **Sign in** button. 
    
-    ![Type ADMIN plus password and click Next](images/secondloginadbactions.png "Type ADMIN plus password and click Next")
+    ![Type ADMIN plus password and click Next](images/secondloginadbactions.png " ")
 
 4. Open the SQL Worksheet from the Launchpad:
 
-    ![Click on SQL from the Launchpad](images/launchpad.png "Click on SQL from the Launchpad")
+    ![Click on SQL from the Launchpad](images/launchpad.png " ")
 
     You are now ready to enter the SQL code. Proceed to the next task.
 
@@ -82,7 +82,7 @@ Now that you're in the SQL worksheet, you will run the code that will initialize
 
 2. The result of running the SQL steps is displayed in the bottom section of the screen, (the Script Output), as shown below .
 
- ![Running the script](images/run-script.png "Running the script")
+ ![Running the script](images/run-script.png " ")
 
  The code is expected to run in a few seconds, depending on your tenancy. 
  Once completed, users OMLUSER and OMLUSER2 are initialized and you can continue to "Lab 1: Getting Started with OML4Py".

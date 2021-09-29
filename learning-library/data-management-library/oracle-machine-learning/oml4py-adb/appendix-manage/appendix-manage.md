@@ -20,19 +20,19 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 1. On the Autonomous Database Details page, click **Service Console.**
 
-    ![Service Console on the Autonomous Database Details page](images/service_console.png "Service Console")
+    ![Service Console on the Autonomous Database Details page](images/service_console.png " ")
 
 2. On the Service Console, click **Administration.**
-    ![Autonomous Data Warehouse Administration page](images/administration.png "Administration")
+    ![Autonomous Data Warehouse Administration page](images/administration.png " ")
 
 3. Click **Manage Oracle ML Users** to open the Oracle Machine Learning User Administration page.
-    ![Manage OML Users option in Oracle Machine Learning Administration page](images/manage_oml_users.png "Manage OML Users option")
+    ![Manage OML Users option in Oracle Machine Learning Administration page](images/manage_oml_users.png " ")
 
 4. On the Oracle Machine Learning User Administration page, click **Create**.
-    ![Users page in Oracle Machine Learning User Administration](images/create_option.png "Create User")
+    ![Users page in Oracle Machine Learning User Administration](images/create_option.png " ")
 
 5. On the Create User page, enter the following details to create a user called `OMLUSER`:
-    ![Create User page](images/create_user_page.png "Create User page")
+    ![Create User page](images/create_user_page.png " ")
     - **Username:** Enter `omluser` for username. Using this username, the user will log in to an Oracle Machine Learning instance.
     - **First Name:** Enter the first name of the user.
     - **Last Name:**  Enter the first name of the user.
@@ -48,7 +48,7 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 6. You can repeat step 5 and if you need to create additional users.  For example, if you create an additional user named `omluser2`, you will see the result below.
 
-    ![List of users](images/omluser_2.png "List of users")
+    ![List of users](images/omluser_2.png " ")
 
 ## Learn More
 

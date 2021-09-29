@@ -33,24 +33,24 @@ In this lab, you will:
 
 2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
 3. Click the **Import** button.  
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
 
 4. Select the `lab5_embed_python.json` notebook file and click **Open**.
    
- ![Open Lab 5 JSON file](images/open-lab5-file.png "Open Lab 5 JSON file")
+ ![Open Lab 5 JSON file](images/open-lab5-file.png " ")
 
 - After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 5 notebook](images/click-on-lab5.png "Open Lab 5 notebook")
+   ![Open Lab 5 notebook](images/click-on-lab5.png " ")
 
    OML Notebooks will create a session and make the notebook available for editing.
 
    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
-   ![Lab 5 main screen](images/lab5-main.png "Lab 5 main screen")
+   ![Lab 5 main screen](images/lab5-main.png " ")
 
 ## Task 1: Import OML4Py and Supporting Libraries and Create Data Table
 
@@ -58,35 +58,35 @@ Follow the flow of the notebook by scrolling to view and run each paragraph of t
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 5 Task 1 screen](images/lab5-task1.png "Lab 5 Task 1 screen")  
+  ![Lab 5 Task 1 screen](images/lab5-task1.png " ")  
 
 ## Task 2: Build and Score a Linear Model from sklearn in Python
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 5 Task 2 screen](images/lab5-task2.png "Lab 5 Task 2 screen") 
+  ![Lab 5 Task 2 screen](images/lab5-task2.png " ") 
 
 ## Task 3: Build the Model Using Embedded Python Execution
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 5 Task 3 screen](images/lab5-task3.png "Lab 5 Task 3 screen") 
+  ![Lab 5 Task 3 screen](images/lab5-task3.png " ") 
 
 ## Task 4: Build One Model per Species Using Group_Apply Function
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 5 Task 4 screen](images/lab5-task4.png "Lab 5 Task 4 screen") 
+  ![Lab 5 Task 4 screen](images/lab5-task4.png " ") 
 
 ## Task 5: Return Multiple Images from Embedded Python Execution
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 5 Task 5 screen](images/lab5-task5.png "Lab 5 Task 5 screen") 
+  ![Lab 5 Task 5 screen](images/lab5-task5.png " ") 
 
 
 ## Learn More

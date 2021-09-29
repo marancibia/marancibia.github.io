@@ -21,21 +21,21 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
 1. From the tab on your browser with your ADW instance, click **Service Console**, then select **Development** from the left.
 
-    ![Service Console](images/service-console.png "Service Console")
+    ![Service Console](images/service-console.png " ")
 
-    ![Development tab in Service Console](images/service-console-development.png "Development tab in Service Console")
+    ![Development tab in Service Console](images/service-console-development.png " ")
 
 2. Click **Oracle Machine Learning Notebooks**.
 
-    ![Oracle Machine Learning Notebooks option in Development tab in Oracle ADW](images/open-oml-notebooks.png "Oracle Machine Learning Notebooks")
+    ![Oracle Machine Learning Notebooks option in Development tab in Oracle ADW](images/open-oml-notebooks.png " ")
 
 3. <if type="livelabs">Sign in with the ``omluser`` using the password `AAbbcc123456`. </if><if type="freetier">Enter the `omluser` credentials using either the password `AAbbcc123456` that was suggested when creating it, or your own password if you created a different one.  Then click the blue **Sign in** button</if>
 
-    ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png "Sign-in page")
+    ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png " ")
 
 4. Click **Notebooks** on the Quick Actions menu.
 
-    ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png "Oracle Machine Learning home page")
+    ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png " ")
 
 ## Task 2: Get familiar with the OML Notebooks toolbar
 
@@ -44,13 +44,13 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 To view the downloaded notebook file:
 - Go to the Notebooks page, and click **Import**.  
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
 
 - Select the file you have downloaded locally and click on **Open**.
- ![Open Lab 1 JSON file](images/open-lab1-file.png "Open Lab 1 JSON file")
+ ![Open Lab 1 JSON file](images/open-lab1-file.png " ")
 
 - After the notebook is successfully imported, click the notebook to view it.
-   ![Open Lab 1 notebook](images/click-on-lab1.png "Open Lab 1 notebook")
+   ![Open Lab 1 notebook](images/click-on-lab1.png " ")
 
    OML Notebooks will load a session and make the notebook available for editing.
 
@@ -61,14 +61,14 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 The Oracle Machine Learning notebooks toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
 For example, it displays the status and the number of users connected to the notebook. It also contains a menu item for keyboard shortcuts and options to show or hide the markdown editor and paragraph output. Additional settings are shown in the illustration below.
-    ![Notebook toolbar](images/notebook_toolbar.png "Notebook toolbar")
+    ![Notebook toolbar](images/notebook_toolbar.png " ")
 
 ## Task 3: Getting Started with OML notebooks and interpreters
 
 Oracle Machine Learning notebooks contain a default list of interpreter bindings, used to run scripts against the Autonomous Database that it is linked to.  For this lab, we will set the interpreter binding to "xxxx_medium", where xxxx is the database name.
 
 Click the interpreter bindings icon (![](images/interpreter_bindings_icon_small.png "")) in the upper right-corner of the Notebook (the gear) to view the list of available interpreter bindings.
-  ![Oracle Machine Learning Notebooks Interpreter Bindings](images/interpreter_bindings.png "Oracle Machine Learning Notebooks  Interpreter Bindings")
+  ![Oracle Machine Learning Notebooks Interpreter Bindings](images/interpreter_bindings.png " ")
 
 The default service is low. Click to bind or unbind an interpreter. Drag-and-drop individual interpreter binding settings up or down to order which binding will be used by default. The first interpreter on the list becomes the default. Those highlighted in blue are active.
 
@@ -92,11 +92,11 @@ Click on the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) i
 
 Another option is to just scroll down and read the pre-recorded results contained in the notebooks themselves.
 
- ![Click run all Lab1](images/click-run-all-lab1.png "Click run all Lab1")
+ ![Click run all Lab1](images/click-run-all-lab1.png " ")
 
 Scroll down on the "Lab 1" Notebook to follow along the steps below. 
 
-  ![Scroll down notebooks](images/scroll-down-notebook.png "Scroll down notebooks")
+  ![Scroll down notebooks](images/scroll-down-notebook.png " ")
 
 To run Python commands in a notebook, you must make use of the Python interpreter. This occurs as a result of running your first `%python` paragraph. To use OML4Py, you must import the `oml` module, which automatically establishes a connection to your database.
 In an Oracle Machine Learning notebook, you can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL or Python. This example shows you how to:
@@ -109,12 +109,12 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
 1. To use OML4Py module, you must import the oml module. Type the following Python command to import the `oml` module, and click the **run** icon. Alternatively, you can press Shift+Enter keys to run the notebook.   
 
-  ![Python command to import oml module](images/import_oml.png "Python command to import oml module")
+  ![Python command to import oml module](images/import_oml.png " ")
 
 2. Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
   To verify the Python interpreter has established a database connection through the `oml` module, run the command:
    
-  ![Database Connection Verification](images/oml_connected.png "Connection Verification")
+  ![Database Connection Verification](images/oml_connected.png " ")
 
   Once your notebook is connected, the command returns `True`.         
 
@@ -135,27 +135,27 @@ Labs 2 to 6 of this workshop use tables and views that need to be created upfron
 
 2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
 3. Click the **Import** button.  
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
 
 4. Select the `lab1a_run_me_first.json` notebook file and click **Open**.
    
- ![Open Lab 1 JSON file](images/open-lab1a-file.png "Open Lab 1 JSON file")
+ ![Open Lab 1 JSON file](images/open-lab1a-file.png " ")
 
 - After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 1 notebook](images/click-on-lab1a.png "Open Lab 1 notebook")
+   ![Open Lab 1 notebook](images/click-on-lab1a.png " ")
 
    OML Notebooks will load a session and make the notebook available for editing.
 
 5. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm.
-    ![Notebook click on run all](images/click-run-all.png "Notebook click on run all")
+    ![Notebook click on run all](images/click-run-all.png " ")
 
 6. Wait until all the paragraphs have finished running and you see your current time in the last paragraph after the message `"PL/SQL procedure successfully completed"`.
 
-    ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png "Last paragraph in a notebook showing the current timestamp")
+    ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png " ")
 
 The prerequisite scripts have run successfully.
 You can now move tho the next lab.

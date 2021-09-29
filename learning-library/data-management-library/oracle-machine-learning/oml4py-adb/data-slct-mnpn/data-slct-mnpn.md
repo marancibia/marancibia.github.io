@@ -35,24 +35,24 @@ In this lab, you will learn how to:
 
 2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu")
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
 3. Click the **Import** button.  
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png "Oracle Machine Learning Notebooks import")
+ ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
 
 4. Select the `lab2_select_manipulate_data.json` notebook file and click **Open**.
    
- ![Open Lab 2 JSON file](images/open-lab2-file.png "Open Lab 2 JSON file")
+ ![Open Lab 2 JSON file](images/open-lab2-file.png " ")
 
 - After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 2 notebook](images/click-on-lab2.png "Open Lab 2 notebook")
+   ![Open Lab 2 notebook](images/click-on-lab2.png " ")
 
    OML Notebooks will create a session and make the notebook available for editing.
 
    You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
-   ![Lab 2 main screen](images/lab2-main.png "Lab 2 main screen")
+   ![Lab 2 main screen](images/lab2-main.png " ")
 
 
 ## Task 1: Import Libraries and Create Oracle Machine Learning DataFrame Proxy Object
@@ -60,63 +60,63 @@ Follow the flow of the notebook by scrolling to view and run each paragraph of t
 
 Scroll down to the beginning of Task 1.
 
-  ![Lab 2 Task 1 screen](images/lab2-task1.png "Lab 2 Task 1 screen")
+  ![Lab 2 Task 1 screen](images/lab2-task1.png " ")
 
 ## Task 2: Select Table Columns using Proxy Object IRIS_TMP
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
-  ![Lab 2 Task 2 screen](images/lab2-task2.png "Lab 2 Task 2 screen")
+  ![Lab 2 Task 2 screen](images/lab2-task2.png " ")
 
 ## Task 3: Select Table Rows using Proxy Object IRIS_TMP
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
-  ![Lab 2 Task 3 screen](images/lab2-task3.png "Lab 2 Task 3 screen")
+  ![Lab 2 Task 3 screen](images/lab2-task3.png " ")
 
 ## Task 4: Use Pandas DataFrame Objects
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
-  ![Lab 2 Task 4 screen](images/lab2-task4.png "Lab 2 Task 4 screen")
+  ![Lab 2 Task 4 screen](images/lab2-task4.png " ")
 
 ## Task 5: Use the split and KFold Functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
-  ![Lab 2 Task 5 screen](images/lab2-task5.png "Lab 2 Task 5 screen")
+  ![Lab 2 Task 5 screen](images/lab2-task5.png " ")
 
 ## Task 6: Use the crosstab and pivot_table Functions on a DataFrame Proxy Object
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
-  ![Lab 2 Task 6 screen](images/lab2-task6.png "Lab 2 Task 6 screen")
+  ![Lab 2 Task 6 screen](images/lab2-task6.png " ")
 
 ## Task 7: Use the oml.boxplot and oml.hist Functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
-  ![Lab 2 Task 7 screen](images/lab2-task7.png "Lab 2 Task 7 screen")
+  ![Lab 2 Task 7 screen](images/lab2-task7.png " ")
 
 ## Task 8: Manage and Explore Data Using Transparency Layer Functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.
 
-  ![Lab 2 Task 8 screen](images/lab2-task8.png "Lab 2 Task 8 screen")
+  ![Lab 2 Task 8 screen](images/lab2-task8.png " ")
 
 ## Task 9: Use cx_Oracle functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 9.
 
-  ![Lab 2 Task 9 screen](images/lab2-task9.png "Lab 2 Task 9 screen")  
+  ![Lab 2 Task 9 screen](images/lab2-task9.png " ")  
 
 ## Learn More
 
