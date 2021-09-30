@@ -15,7 +15,7 @@ In this lab, you will learn how to:
 <if type="freetier">* Load the datasets necessary to run the workshop</if>
 * View help files
 
-## Task 1: Access Oracle Machine Learning Notebooks
+## Task 1: Access Oracle Machine Learning notebooks
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
@@ -37,7 +37,7 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png " ")
 
-## Task 2: Get familiar with the OML Notebooks toolbar
+## Task 2: Get familiar with the OML notebooks toolbar
 
  1. [**CLICK HERE** to download the "Lab 1: Get Started with OML4Py on Autonomous Database" notebook in JSON format](./../notebooks/lab1_get_started.json?download=1) which contains the notebook version of Lab1 (without screenshots), and save it to your local machine.
 
@@ -56,14 +56,14 @@ To view the downloaded notebook file:
 
 A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. 
 
-### About Oracle Machine Learning Notebooks
+### About Oracle Machine Learning notebooks
 
 The Oracle Machine Learning notebooks toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
 For example, it displays the status and the number of users connected to the notebook. It also contains a menu item for keyboard shortcuts and options to show or hide the markdown editor and paragraph output. Additional settings are shown in the illustration below.
     ![Notebook toolbar](images/notebook_toolbar.png " ")
 
-## Task 3: Getting Started with OML notebooks and interpreters
+## Task 3: Getting started with OML notebooks and interpreters
 
 Oracle Machine Learning notebooks contain a default list of interpreter bindings, used to run scripts against the Autonomous Database that it is linked to.  For this lab, we will set the interpreter binding to "xxxx_medium", where xxxx is the database name.
 
@@ -84,7 +84,7 @@ The available interpreters are:
   - `%script`&mdash;To call and run PL/SQL scripts
   - `%python`&mdash;To call the Python interpreter and run Python scripts
 
-## Task 4: Use the Python Interpreter
+## Task 4: Use the Python interpreter
 
 Let's start by running the entire notebook, so that we can see the result of each paragraph.
 
@@ -161,7 +161,7 @@ The prerequisite scripts have run successfully.
 You can now move tho the next lab.
 </if>
 
-## Learn More
+## Learn more
 
 * [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/get-started-with-oml4py.html#GUID-B45A76E6-CE48-4E49-B803-D25CA44B09ED)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)

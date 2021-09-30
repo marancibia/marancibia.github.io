@@ -6,7 +6,7 @@ This lab shows how to use the transparency layer classes to work with data and t
 
 Estimated Lab Time: 20 minutes
 
-### About , Data Selection and Manipulation
+### About data selection and manipulation
 The transparency layer classes allow you to convert select Python objects to Oracle Autonomous Database objects and also call a range of familiar Python functions that are overloaded to call the corresponding SQL on tables in the
 database.
 The Oracle Machine Learning for Python (OML4Py) transparency layer supports functions that interact with database data and enables you to:
@@ -55,56 +55,56 @@ In this lab, you will learn how to:
    ![Lab 2 main screen](images/lab2-main.png " ")
 
 
-## Task 1: Import Libraries and Create Oracle Machine Learning DataFrame Proxy Object
+## Task 1: Import libraries and create Oracle Machine Learning dataFrame proxy object
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
   ![Lab 2 Task 1 screen](images/lab2-task1.png " ")
 
-## Task 2: Select Table Columns using Proxy Object IRIS_TMP
+## Task 2: Select table columns using proxy object CUST_DF
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
   ![Lab 2 Task 2 screen](images/lab2-task2.png " ")
 
-## Task 3: Select Table Rows using Proxy Object IRIS_TMP
+## Task 3: Select table rows using proxy object CUST_DF
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
   ![Lab 2 Task 3 screen](images/lab2-task3.png " ")
 
-## Task 4: Use Pandas DataFrame Objects
+## Task 4: Use OML DataFrame proxy objects
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
   ![Lab 2 Task 4 screen](images/lab2-task4.png " ")
 
-## Task 5: Use the split and KFold Functions
+## Task 5: Use the split and kfold functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
   ![Lab 2 Task 5 screen](images/lab2-task5.png " ")
 
-## Task 6: Use the crosstab and pivot_table Functions on a DataFrame Proxy Object
+## Task 6: Use the crosstab and pivot_table functions on a dataFrame proxy object
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
   ![Lab 2 Task 6 screen](images/lab2-task6.png " ")
 
-## Task 7: Use the oml.boxplot and oml.hist Functions
+## Task 7: Use the oml.boxplot and oml.hist functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
   ![Lab 2 Task 7 screen](images/lab2-task7.png " ")
 
-## Task 8: Manage and Explore Data Using Transparency Layer Functions
+## Task 8: Manage and explore data using transparency layer functions
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.

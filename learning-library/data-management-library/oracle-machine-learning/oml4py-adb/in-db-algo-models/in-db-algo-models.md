@@ -5,7 +5,7 @@ This lab highlights a few of the machine learning algorithms and features availa
 
 Estimated Lab Time: 15 minutes
 
-### About in-database Algorithms and Models
+### About in-database algorithms and models
 The in-database parallelized machine learning algorithms are exposed through a natural Python interface. A range of machine learning techniques are supported, including classification, regression, clustering, attribute importance, anomaly detection, association rules, and feature extraction. With OML4Py, users can build more models on more data, and score large volume data – faster – taking advantage of Autonomous Database optimizations – including auto-scale. Data Scientists benefit from automatic data preparation, partitioned model ensembles, and integrated text mining. This can result in increased productivity for data scientists, while at the same time, the powerful in-database algorithms are made more accessible to non-expert users.
 
 The in-database, parallelized algorithms keep data under database control – no need to extract data to separate machine learning engines, which can be time-consuming and introduces issues of data security, storage, and currency. In-database algorithms are fast and scalable, enable batch and real-time scoring, and provide explanatory prediction details, so you can understand why an individual prediction is made. This is the core of the "bring the algorithms to the data" tagline.
@@ -45,21 +45,21 @@ In this lab, you will learn how to:
    
    ![Lab 3 main screen](images/lab3-main.png " ")
 
-## Task 1: Import Libraries
+## Task 1: Import libraries
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
   ![Lab 3 Task 1 screen](images/lab3-task1.png " ")  
 
-## Task 2: Work with Regression Using Generalized Liner Model (GLM)
+## Task 2: Work with regression using generalized liner model (GLM)
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
   ![Lab 3 Task 2 screen](images/lab3-task2.png " ") 
 
-## Task 3: Work with Clustering Using K-Means
+## Task 3: Work with clustering using k-Means
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
@@ -73,7 +73,7 @@ Scroll down to the beginning of Task 4.
 
   ![Lab 3 Task 4 screen](images/lab3-task4.png " ") 
 
-## Task 5: Rank Attribute Importance using Model Explainability
+## Task 5: Rank attribute importance using model explainability
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
@@ -81,7 +81,7 @@ Scroll down to the beginning of Task 5.
   ![Lab 3 Task 5 screen](images/lab3-task5.png " ") 
 
 
-## Learn More
+## Learn more
 
 * [About Machine Learning Classes and Algorithms](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/about-machine-learning-algorithms.html#GUID-00F8AF8F-6652-4161-BEEF-E737A68FB53C)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)

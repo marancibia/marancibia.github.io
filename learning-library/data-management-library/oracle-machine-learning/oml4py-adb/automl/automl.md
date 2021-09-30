@@ -46,21 +46,21 @@ In this lab, you will learn how to:
 
 > **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
-## Task 1: Import Libraries Supporting Oracle Machine Learning for Python (OML4Py)
+## Task 1: Import libraries supporting Oracle Machine Learning for Python (OML4Py)
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 1.
 
   ![Lab 6 Task 1 screen](images/lab6-task1.png " ") 
 
-## Task 2: Automated Algorithm Selection
+## Task 2: Automated algorithm selection
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
   ![Lab 6 Task 2 screen](images/lab6-task2.png " ")
 
-## Task 3: Automated Feature Selection
+## Task 3: Automated feature selection
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
@@ -68,7 +68,7 @@ Scroll down to the beginning of Task 3.
   ![Lab 6 Task 3 screen](images/lab6-task3.png " ")
   
 
-## Task 4: Automated Model Tuning
+## Task 4: Automated model tuning
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
@@ -76,14 +76,14 @@ Scroll down to the beginning of Task 4.
   ![Lab 6 Task 4 screen](images/lab6-task4.png " ")
   
 
-## Task 5: Automated Model Selection
+## Task 5: Automated model selection
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
   ![Lab 6 Task 5 screen](images/lab6-task5.png " ")
   
-## Learn More
+## Learn more
 
 * [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/automatic-machine-learning.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)

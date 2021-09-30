@@ -81,7 +81,7 @@ To provision an Oracle Autonomous Database:
 
     ![List of Oracle Autonomous Database instances](images/adb_instance.png " ")
 
-## Learn More
+## Learn more
 
 * [Provision Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-provision.html#GUID-0B230036-0A05-4CA3-AF9D-97A255AE0C08)
 

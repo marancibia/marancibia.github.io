@@ -52,7 +52,7 @@ In this lab, you will:
    
    ![Lab 5 main screen](images/lab5-main.png " ")
 
-## Task 1: Import OML4Py and Supporting Libraries and Create Data Table
+## Task 1: Import OML4Py and supporting libraries and create data table
 
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -60,28 +60,28 @@ Scroll down to the beginning of Task 1.
 
   ![Lab 5 Task 1 screen](images/lab5-task1.png " ")  
 
-## Task 2: Build and Score a Linear Model from sklearn in Python
+## Task 2: Build and score a linear model from sklearn in Python
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 2.
 
   ![Lab 5 Task 2 screen](images/lab5-task2.png " ") 
 
-## Task 3: Build the Model Using Embedded Python Execution
+## Task 3: Build the model using Embedded Python Execution
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
   ![Lab 5 Task 3 screen](images/lab5-task3.png " ") 
 
-## Task 4: Build One Model per Species Using Group_Apply Function
+## Task 4: Build one model per species using group_apply function
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
   ![Lab 5 Task 4 screen](images/lab5-task4.png " ") 
 
-## Task 5: Return Multiple Images from Embedded Python Execution
+## Task 5: Return multiple images from Embedded Python Execution
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
@@ -89,7 +89,7 @@ Scroll down to the beginning of Task 5.
   ![Lab 5 Task 5 screen](images/lab5-task5.png " ") 
 
 
-## Learn More
+## Learn more
 
 * [Embedded Python Execution](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/embedded-python-execution.html#GUID-4FF75B48-6135-4219-A663-AFFBC0F4E9B6)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)

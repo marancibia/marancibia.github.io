@@ -15,7 +15,7 @@ The SQL scripts will drop and recreate the OMLUSER and OMLUSER2 user schemas.  T
 
 Estimated Time: 10 minutes
 
-## Task 1:  Connect to Autonomous Database Actions as the ADMIN User
+## Task 1:  Connect to Autonomous Database Actions as the ADMIN user
 
 Connect to Autonomous Database Actions as the ADMIN user:
 

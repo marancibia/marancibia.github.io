@@ -6,7 +6,7 @@ This lab walks you through the steps to use and work with OML4Py datastores and 
 
 Estimated Lab Time: 20 minutes
 
-### About Datastores
+### About datastores
 Datastores exist in the user’s Oracle database schema. A datastore, and the objects it contains, persist in the database until explicitly deleted. By using a datastore, you can store Python objects in a named datastore entry. This named datastore can then be used in subsequent Python sessions, and even be made available to other users or programs by granting/revoking read permissions.
 
 Python objects, including Oracle Machine Learning for Python (OML4Py) proxy objects, exist for the duration of the current Python session unless you explicitly save them. You can save one or more Python objects, including OML proxy objects, to a named datastore and then load those objects in a later Python session. This is also useful when using embedded Python execution.
@@ -18,7 +18,7 @@ By using a datastore, you can:
 
 * List available datastores and explore datastore contents.
 
-### About the Python Script Repository
+### About the Python script repository
 
 OML4Py stores named user-defined functions called scripts in the script repository. You can make scripts either private or global. A private script is available only to the owner. A global script is available to any user. For private scripts, the owner of the script may grant the read privilege to other users or revoke that privilege.
 
@@ -42,7 +42,7 @@ In this lab, you will learn how to:
   * Manage datastore privileges
   * Delete datastores
 
-**Python Script Repository**
+**Python script repository**
   * Use the Python Script Repository
   * Create Scripts in Repository
   * Store a function as a global function
@@ -74,7 +74,7 @@ In this lab, you will learn how to:
    
    ![Lab 4 main screen](images/lab4-main.png " ")
 
-## Task 1: Import libraries supporting OML4Py and Create Data Table
+## Task 1: Import libraries supporting OML4Py and create data table
 
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -82,7 +82,7 @@ Scroll down to the beginning of Task 1.
 
   ![Lab 4 Task 1 screen](images/lab4-task1.png " ")  
 
-## Task 2: Create Pandas DataFrames and Load them into Oracle Autonomous Database
+## Task 2: Create pandas dataFrames and load them into Oracle Autonomous Database
 
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
@@ -90,49 +90,49 @@ Scroll down to the beginning of Task 2.
 
   ![Lab 4 Task 2 screen](images/lab4-task2.png " ")  
   
-## Task 3: Save Python Objects to Datastore
+## Task 3: Save Python objects to datastore
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 3.
 
   ![Lab 4 Task 3 screen](images/lab4-task3.png " ")  
 
-## Task 4: Save Model Objects in a Datastore
+## Task 4: Save model objects in a datastore
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 4.
 
   ![Lab 4 Task 4 screen](images/lab4-task4.png " ")  
 
-## Task 5:  Load Datastore Objects into Memory
+## Task 5:  Load datastore objects into memory
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 5.
 
   ![Lab 4 Task 5 screen](images/lab4-task5.png " ")  
 
-## Task 6: View Datastores and Other Details
+## Task 6: View datastores and other details
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 6.
 
   ![Lab 4 Task 6 screen](images/lab4-task6.png " ")  
 
-## Task 7: View Contents of a Datastore
+## Task 7: View contents of a datastore
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 7.
 
   ![Lab 4 Task 7 screen](images/lab4-task7.png " ")     
 
-## Task 8: Manage Datastore Privileges
+## Task 8: Manage datastore privileges
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 8.
 
   ![Lab 4 Task 8 screen](images/lab4-task8.png " ")  
 
-## Task 9: Delete Datastore Content
+## Task 9: Delete datastore content
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 9.
@@ -146,7 +146,7 @@ Scroll down to the beginning of Task 10.
 
   ![Lab 4 Task 10 screen](images/lab4-task10.png " ")  
 
-## Task 11: Create Scripts in Repository
+## Task 11: Create scripts in repository
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 11.
@@ -160,7 +160,7 @@ Scroll down to the beginning of Task 12.
 
   ![Lab 4 Task 12 screen](images/lab4-task12.png " ")  
 
-## Task 13: Drop scripts from the Script Repository
+## Task 13: Drop scripts from the script repository
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
 Scroll down to the beginning of Task 13.
