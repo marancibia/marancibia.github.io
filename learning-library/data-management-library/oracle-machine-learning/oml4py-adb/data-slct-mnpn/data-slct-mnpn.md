@@ -4,7 +4,7 @@
 
 This lab shows how to use the transparency layer classes to work with data and to perform exploratory analysis of the data.
 
-Estimated Lab Time: 20 minutes
+Estimated Lab Time: 30 minutes
 
 ### About data selection and manipulation
 The transparency layer classes allow you to convert select Python objects to Oracle Autonomous Database objects and also call a range of familiar Python functions that are overloaded to call the corresponding SQL on tables in the

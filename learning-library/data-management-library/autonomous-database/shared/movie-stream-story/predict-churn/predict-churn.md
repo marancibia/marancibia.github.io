@@ -15,7 +15,7 @@ Quick 10-minute overview of the Lab:
 
 ### About Oracle Machine Learning
 
-In this lab, we will learn more about the Autonomous Database's built-in [Oracle Machine Learning](https://www.oracle.com/goto/machinelearning) components, including:
+In this lab, we will learn more about the Autonomous Database's built-in [Oracle Machine Learning](https://www.oracle.com/goto/machine-learning) components, including:
 - Oracle Machine Learning Notebooks - see [OML Notebooks documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html).
 - Oracle Machine Learning for Python - see [OML4Py documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/index.html).
 - Oracle Machine Learning AutoML UI - see [OML AutoML UI documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml-automl-ui/index.html).
@@ -38,7 +38,7 @@ In this lab, you will:
 
     a. Manually run through the labs.
 
-    b. Provision your Autonomous Database and then go to the **Initializing Labs** section in the contents menu on the left. Initialize Labs will create the MOVIESTREAM user plus the required database objects.
+    b. Provision your Autonomous Database and then go to the **Initializing Labs** section in the contents menu on the left. Initialize Labs will create the MOVIESTREAM user plus the required database objects for this Lab.
 
 > **Note:** If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)**
 
@@ -66,8 +66,8 @@ We will finish up in **Task 3** using **OML AutoML UI** to create a machine lear
 
     The first step is to download the notebook to your machine and then import it into OML Notebooks.
 
-    **Click** <a href="./files/Data_Preparation_for_Predicting_Churn_with_OML.json" download="Data_Preparation_for_Predicting_Churn_with_OML.json" target="\_blank">**here**</a> to download the sample notebook for this lab, Data\_Preparation\_for\_Predicting\_Churn\_with\_OML.json, to a folder on your local computer.
-
+    [**CLICK HERE** to download the Data\_Preparation\_for\_Predicting\_Churn\_with\_OML.json notebook file](./files/Data_Preparation_for_Predicting_Churn_with_OML.json?download=1). This will download the notebook file for this lab to your local machine. 
+    
 2. Access OML Notebook as one of the ADB users.
 
     You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
@@ -134,7 +134,7 @@ We will finish up in **Task 3** using **OML AutoML UI** to create a machine lear
 
     The entire run is expected to take around 5 minutes or less, depending on the resources available, but we can start exploring the contents while it is still running.
 
-## Task 2: Data Preparation for Machine Learning
+## Task 2: Data preparation for Machine Learning
 
 1. Prepare a time difference column to build our monthly aggregations
 
@@ -477,7 +477,7 @@ We have prepared the final table called `MOVIESTREAM_CHURN` in the previous task
 
     Let's download a new **Oracle Machine Learning notebook** that has the code for scoring the table, and then import it into OML Notebooks.
 
-    **Click** <a href="./files/Scoring_customers_with_Churn_Model.json" download="Scoring_customers_with_Churn_Model.json" target="\_blank">**here**</a> to download the sample Scoring notebook for this lab, "Scoring\_customers\_with\_Churn\_Model.json", to a folder on your local computer.
+    [**CLICK HERE** to download the Scoring\_customers\_with\_Churn\_Model.json notebook file](./files/Scoring_customers_with_Churn_Model.json?download=1). This will download the notebook file for this lab to your local machine. 
 
     Navigate back to the OML Notebooks screen, click the **Import** button and navigate to the folder where you just downloaded the notebook **Scoring\_customers\_with\_Churn\_Model.json** file.
 
