@@ -31,7 +31,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
   ![Click Identity & Security then Compartments.](images/click-identity-and-security-then-compartments.png " ")
  
  Click the blue **Create Compartment** button to create a sub-compartment.
- 
+
   ![Click the Create Compartment button.](images/click-create-compartment.png " ")
 
 2. Give the compartment a name and description. Be sure your root compartment appears as the parent compartment. Press the blue **Create Compartment** button.
@@ -231,6 +231,6 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 ## Acknowledgements
 
-- **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
+- **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, September 2021
+- **Last Updated By/Date** - Marcos Arancibia, October 2021
