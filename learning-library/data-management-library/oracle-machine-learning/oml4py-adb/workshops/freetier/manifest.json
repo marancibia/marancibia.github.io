@@ -13,15 +13,9 @@
             "type": "freetier"
         },
 		{
-            "title": "Provision Oracle Autonomous Data Warehouse",
-            "filename": "../../get-started-livelabs/get-started-livelabs.md",
+            "title": "Lab 0: Provision an Autonomous Data Warehouse with OML users",
+            "filename": "../../provision-adw/provision-adw.md",
             "type": "freetier"
-        },
-        {
-            "title": "Run the prerequisites for the labs",
-            "filename": "../../initialize-labs/initialize-labs.md",
-            "type": "freetier"
-
         },
         {
             "title": "Lab 1: Getting Started with OML4Py",
