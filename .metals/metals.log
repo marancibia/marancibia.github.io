@@ -7,3 +7,7 @@
 [0m2021.06.11 12:12:16 INFO  time: initialize in 1.63s[0m
 [0m2021.06.11 12:12:16 WARN  Build server is not auto-connectable.[0m
 [0m2021.06.11 12:12:16 WARN  no build tool detected in workspace '/Users/marancib/Documents/GitHub/marancibia.github.io'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.10.06 10:46:46 INFO  Started: Metals version 0.10.7 in workspace '/Users/marancib/Documents/GitHub/marancibia.github.io' for client Visual Studio Code 1.60.2.[0m
+[0m2021.10.06 10:46:47 INFO  time: initialize in 0.63s[0m
+[0m2021.10.06 10:46:47 WARN  Build server is not auto-connectable.[0m
+[0m2021.10.06 10:46:47 WARN  no build tool detected in workspace '/Users/marancib/Documents/GitHub/marancibia.github.io'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
