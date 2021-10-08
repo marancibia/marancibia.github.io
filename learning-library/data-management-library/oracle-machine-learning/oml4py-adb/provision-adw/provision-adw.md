@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In just a few minutes, Autonomous Database lets you deploy a complete data warehousing platform that can scale to your requirements. And, you can use its Database Tools to easily populate that warehouse from the data lake.
+In just a few minutes, Autonomous Database lets you deploy a complete data warehousing platform that can scale to your requirements. You can also use its Database Actions interfaces to easily populate that warehouse from the data lake.
 
-This lab walks you through the steps to get started using the Oracle Autonomous Database on Oracle Cloud Interface. 
+This lab walks you through the steps to get started using the Oracle Autonomous Database on Oracle Cloud Interface (OCI). 
 
 In this lab, you will provision a new Autonomous Data Warehouse (ADW) instance and prepare a new set of users that have the correct roles for using the Oracle Machine Learning components.
 
@@ -38,7 +38,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
   ![Click the Create Compartment button.](images/click-create-compartment-button.png " ")
 
-  The compartment is created, in which you will create an Autonomous Database instance in the next Task.
+  Now, the compartment is created.  In the next task, you will create an Autonomous Database instance.
 
 ## Task 2: Choose Autonomous Data Warehouse from the Services Menu
 
@@ -69,7 +69,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
   ![Click Create Autonomous Database.](./images/create-adb.png " ")
 
-2.  This brings up the __Create Autonomous Database__ screen where you will specify the configuration of the instance.
+2.  This brings up the __Create Autonomous Database__ screen where you will configure the instance.
 
   ![Create Autonomous Database default screen.](./images/create-adb-screen-freetier-default.png " ")
 
@@ -83,28 +83,27 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 4. Choose a workload type. Select the workload type for your database from the choices:
 
-  - __Data Warehouse__ - For this lab, choose __Data Warehouse__ as the workload type.
-  - __Transaction Processing__ - Or, you could have chosen Transaction Processing as the workload type.
+  - __Data Warehouse__ - For this lab, choose __Data Warehouse__ as the workload type.  This workload is built for decision support and data warehouse workloads. Fast queries over large volumnes of data.
+  - __Transaction Processing__ - Or, you could also choose __Transaction Processing__ as the workload type.  This workload is built for transactional workloads. High concurrency for short-running queries and transactions.
 
   ![Choose a workload type.](./images/create-adb-workload-type.png " ")
 
 5. Choose a deployment type. Select the deployment type for your database from the choices:
 
   - __Shared Infrastructure__ - For this lab, choose __Shared Infrastructure__ as the deployment type.
-  - __Dedicated Infrastructure__ - Or, you could have chosen Dedicated Infrastructure as the deployment type.
-
+ 
   ![Choose a deployment type.](./images/create-adb-deployment-type.png " ")
 
 6. Configure the database:
 
-  - __Always Free__ - If your Cloud Account is an Always Free account, you can select this option to create an always free autonomous database. An always free database comes with 1 CPU and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
+  - __Always Free__ - Oracle Cloud Infrastructure's Always Free Autonomous Database is part of Oracle Cloud Infrastructure's Free Tier of services. You can provision up to two Always Free Autonomous Databases (with 1 OCPU and 20 GB of storage) in the home region of your tenancy.
   - __Choose database version__ - Select 19c as the database version.
   - __OCPU count__ - Number of CPUs for your service. For this lab, specify __1 CPU__. If you choose an Always Free database, it comes with 1 CPU.
   - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
-  - __Auto Scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+  - __Auto Scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand. If Always Free is selected, then auto scaling is disabled.
   - __New Database Preview__ - If a checkbox is available to preview a new database version, do NOT select it.
 
-  > **Note:** You cannot scale up/down an Always Free autonomous database.
+  > **Note:** You cannot scale up/down an Always Free autonomous database, nor change its storage size.
 
   ![Choose the remaining parameters.](./images/create-adb-instance-config.png " ")
 
@@ -122,8 +121,8 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 8. Choose network access:
     - For this lab, accept the default, "Allow secure access from everywhere."
-    - If you want a private endpoint, to allow traffic only from the VCN you specify - where access to the database from all public IPs or VCNs is blocked, then select "Virtual cloud network" in the Choose network access area.
-    - You can control and restrict access to your Autonomous Database by setting network access control lists (ACLs). You can select from 4 IP notation types: IP Address, CIDR Block, Virtual Cloud Network, Virtual Cloud Network OCID).
+    - If you wanted to use a private endpoint, it would allow traffic only from the VCN you specify, where access to the database from all public IPs or VCNs is blocked. You would then have to select "Virtual cloud network" in the __Choose network access__ area.
+    - You can control and restrict access to your Autonomous Database by setting network access control lists (ACLs). You can select from 4 IP notation types: IP Address, CIDR Block, Virtual Cloud Network, Virtual Cloud Network OCID.
 
     ![Choose the network access.](./images/create-adb-network-access.png " ")
 
@@ -141,17 +140,17 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 ## Task 4: Access the Database Actions interface 
 
-The labs on this workshop assume that Oracle Machine Learning users named **`OMLUSER`** and **`OMLUSER2`** have been created and configured for signing into OML Notebooks, so we need to create them. 
+The labs in this workshop assume that Oracle Machine Learning users named **`OMLUSER`** and **`OMLUSER2`** have been created and configured for signing into OML Notebooks, so we need to create them. 
 
 The user named **`OMLUSER2`** is needed for the appropriate demonstration of the permission grants to OML4Py Datastore and Script Repository from one user to another.
 
-**IMPORTANT:** These users <span style="color:red">are not available</span> by default in any Autonomous Database tenancy, and need to be created.  
+**IMPORTANT:** These users <span style="color:red">are not available</span> by default in any Autonomous Database tenancy and need to be created.  
 
-Please follow the steps below to make sure you have these users created in your tenancy prior to running any labs.
+Please follow the steps below to ensure these users are created in your tenancy prior to running the labs.
 
-The SQL scripts will drop and recreate the `OMLUSER` and `OMLUSER2` user schemas.  This means that all of the data for those users will be deleted and recreated.
+The SQL scripts will drop and recreate the `OMLUSER` and `OMLUSER2` user schemas.  This means that any data or objects in those users's schemas will be deleted and the account recreated.
 
->**<span style="color:red">Warning:</span>  Any work and Notebooks that might have been stored previously by OMLUSER or OMLUSER2 users (if you had created them before) will be deleted - so save your work!**
+>**<span style="color:red">Warning:</span>  Any work and notebooks that might have been stored previously by OMLUSER or OMLUSER2 users (if you had created them before) will be deleted - so save your work!**
 
 1. Connect to Autonomous Database Actions as the ADMIN user
 
@@ -216,12 +215,12 @@ Now that you're in the SQL worksheet, you will run the code that will initialize
   </copy>
   ```
 
-2. The result of running the SQL steps is displayed in the bottom section of the screen, (the Script Output), as shown below .
+2. The result of running the SQL steps is displayed in the bottom section of the screen (the Script Output), as shown below.
 
  ![Running the script](images/run-script.png " ")
 
  The code is expected to run in a few seconds, depending on your tenancy. 
- Once completed, users OMLUSER and OMLUSER2 are initialized and you can continue to "Lab 1: Getting Started with OML4Py".    
+ Once completed, users OMLUSER and OMLUSER2 are initialized, and you can continue to "Lab 1: Getting Started with OML4Py".    
 
 Please *proceed to the next lab*.
 
