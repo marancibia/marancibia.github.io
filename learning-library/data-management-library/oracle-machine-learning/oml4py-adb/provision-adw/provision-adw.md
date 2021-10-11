@@ -219,8 +219,7 @@ Now that you're in the SQL worksheet, you will run the code that will initialize
 
  ![Running the script](images/run-script.png " ")
 
- The code is expected to run in a few seconds, depending on your tenancy. 
- Once completed, users OMLUSER and OMLUSER2 are initialized, and you can continue to "Lab 1: Getting Started with OML4Py".    
+ The code is expected to run in a few seconds, depending on your tenancy. Once completed, users OMLUSER and OMLUSER2 are initialized, and you can continue to the next lab.    
 
 Please *proceed to the next lab*.
 

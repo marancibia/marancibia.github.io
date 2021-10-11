@@ -20,30 +20,25 @@ In this lab, you will learn how to:
 * Work with partitioned models
 * Use the Model Explainability feature to rank attributes
 
-## Download the notebook file for this Lab
+## Access the notebook for this Lab
 
-1. [**CLICK HERE** to download the lab3\_in-db\_algo.json notebook file](./../notebooks/lab3_in-db_algo.json?download=1). This will download the notebook file for this lab to your local machine. 
-
-2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
  ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
-3. Click the **Import** button.  
+2. Click the **Lab 3 notebook name** to view it.
+   <if type="freetier">
+   ![Open Lab 3 notebook ft](images/click-on-lab3-ft.png " ") </if>
+   <if type="livelabs">
+   ![Open Lab 3 notebook ll](images/click-on-lab3-ll.png " ") </if>
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
+  OML Notebooks will create a session and make the notebook available for editing.
 
-4. Select the `lab3_in-db_algo.json` notebook file and click **Open**.
+  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
- ![Open Lab 3 JSON file](images/open-lab3-file.png " ")
+  ![Lab 3 main screen](images/lab3-main.png " ")
 
-- After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 3 notebook](images/click-on-lab3.png " ")
-
-   OML Notebooks will create a session and make the notebook available for editing.
-
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
-   
-   ![Lab 3 main screen](images/lab3-main.png " ")
+> **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab3\_in-db\_algo.json notebook file](./../notebooks/lab3_in-db_algo.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 
 ## Task 1: Import libraries
 Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
@@ -80,6 +75,7 @@ Scroll down to the beginning of Task 5.
 
   ![Lab 3 Task 5 screen](images/lab3-task5.png " ") 
 
+After you reach the end of Lab 3, you can *proceed to the next lab*.
 
 ## Learn more
 

@@ -18,21 +18,19 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 > **Note:** You must have the administrator role to access the Oracle Machine Learning User Management interface. To create a user account:
 
-1. On the Autonomous Database Details page, click **Service Console.**
+1. On the Autonomous Database Details page, click **Tools**, and then click on the **Oracle ML User Administration** tile.
 
-    ![Service Console on the Autonomous Database Details page](images/service_console.png " ")
+    ![OML user administration on the Autonomous Database details page](images/oml-user-admin.png " ")
 
-2. On the Service Console, click **Administration.**
-    ![Autonomous Data Warehouse Administration page](images/administration.png " ")
+2. You will be asked for your ADMIN credentials to login.
 
-3. Click **Manage Oracle ML Users** to open the Oracle Machine Learning User Administration page.
-    ![Manage OML Users option in Oracle Machine Learning Administration page](images/manage_oml_users.png " ")
+   ![OML user administration sign in page](images/signin-oml-admin.png " ")
 
-4. On the Oracle Machine Learning User Administration page, click **Create**.
-    ![Users page in Oracle Machine Learning User Administration](images/create_option.png " ")
+3. To create a new user, click **Create** on the Oracle Machine Learning User Administration page.
+    ![Users page in Oracle Machine Learning User Administration](images/create-option.png " ")
 
-5. On the Create User page, enter the following details to create a user called `OMLUSER`:
-    ![Create User page](images/create_user_page.png " ")
+4. On the Create User page, enter the following details to create a user called `OMLUSER`:
+    ![Create User page](images/create-user-page.png " ")
     - **Username:** Enter `omluser` for username. Using this username, the user will log in to an Oracle Machine Learning instance.
     - **First Name:** Enter the first name of the user.
     - **Last Name:**  Enter the first name of the user.
@@ -46,9 +44,9 @@ An administrator creates a new user account and user credentials for Oracle Mach
     
     Click **Create.**
 
-6. You can repeat step 5 and if you need to create additional users.  For example, if you create an additional user named `omluser2`, you will see the result below.
+5. You can repeat step 5 and if you need to create additional users.  For example, if you create an additional user named `omluser2`, you will see the result below.
 
-    ![List of users](images/omluser_2.png " ")
+    ![List of users](images/omluser-2.png " ")
 
 ## Learn More
 

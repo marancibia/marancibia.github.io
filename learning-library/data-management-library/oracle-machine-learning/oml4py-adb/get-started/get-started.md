@@ -19,9 +19,11 @@ In this lab, you will learn how to:
 
 You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-1. From the tab on your browser with your ADW instance, click **Service Console**, then select **Development** from the left.
+1. From the tab on your browser with your ADW instance, click **Service Console**.
 
     ![Service Console](images/service-console.png " ")
+
+  Select **Development** from the menu on the left.    
 
     ![Development tab in Service Console](images/service-console-development.png " ")
 
@@ -29,7 +31,7 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Oracle Machine Learning Notebooks option in Development tab in Oracle ADW](images/open-oml-notebooks.png " ")
 
-3. <if type="livelabs">Sign in with the ``omluser`` using the password `AAbbcc123456`. </if><if type="freetier">Enter the `omluser` credentials using either the password `AAbbcc123456` that was suggested when creating it, or your own password if you created a different one.  Then click the blue **Sign in** button</if>
+3. <if type="livelabs">Sign in with the **`omluser`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`omluser`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code (if you changed the password in the SQL code, use that one here instead).  Then click the blue **Sign in** button</if>
 
     ![Oracle Machine Learning Notebooks Sign-in page](images/signin-to-oml.png " ")
 
@@ -37,26 +39,35 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
     ![Oracle Machine Learning home page](images/oml-notebooks-homepage.png " ")
 
-## Task 2: Get familiar with the OML notebooks toolbar
+## Task 2: Get familiar with the OML notebooks
 
- 1. [**CLICK HERE** to download the "Lab 1: Get Started with OML4Py on Autonomous Database" notebook in JSON format](./../notebooks/lab1_get_started.json?download=1) which contains the notebook version of Lab1 (without screenshots), and save it to your local machine.
+<if type="freetier">
+1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in JSON format)](./../notebooks/oml4py_labs_freetier.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
+  </if>
+<if type="livelabs">
+1. [**CLICK HERE** to download a ZIP file with all the notebooks we will use for these Labs (in JSON format)](./../notebooks/oml4py_labs_livelabs.zip?download=1) which contain the notebooks for the Labs.  Save it to your local machine and __extract them__ to a memorable place.
+  </if>
 
-To view the downloaded notebook file:
-- Go to the Notebooks page, and click **Import**.  
+> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1: Get Started with OML4Py on Autonomous Database" notebook in JSON format](./../notebooks/lab1_get_started.json?download=1) which contains the notebook version of Lab1, save it to your local machine and import it like illustrated below.
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
+  To load the downloaded notebook files:
+  - Go to the Notebooks page, and click **Import**.  
 
-- Select the file you have downloaded locally and click on **Open**.
- ![Open Lab 1 JSON file](images/open-lab1-file.png " ")
+  ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
 
-- After the notebook is successfully imported, click the notebook to view it.
-   ![Open Lab 1 notebook](images/click-on-lab1.png " ")
+ - Select all the extracted notebooks at once and click on **Open**.
+ <if type="freetier">   ![Open Lab 1 JSON file](images/open-lab-files-ft.png " ")</if>
+ <if type="livelabs">   ![Open Lab 1 JSON file](images/open-lab-files-ll.png " ") </if>
 
-   OML Notebooks will load a session and make the notebook available for editing.
+ - After the notebooks are successfully imported, click the Lab 1 notebook to view it.
+ <if type="freetier">   ![Open Lab 1 notebook ft](images/click-on-lab1-ft.png " ") </if>
+ <if type="livelabs">   ![Open Lab 1 notebook ll](images/click-on-lab1-ll.png " ") </if>
 
-A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. 
+ OML Notebooks will load a session and make the notebook available for editing.
 
 ### About Oracle Machine Learning notebooks
+
+A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration. 
 
 The Oracle Machine Learning notebooks toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
@@ -124,41 +135,35 @@ In an Oracle Machine Learning notebook, you can add multiple paragraphs, and eac
 
    Scroll down in the notebook to see examples of the use of the `help` function.
  
-<if type="livelabs">You can now move to the next lab.</if>
+<if type="livelabs">
+You can now *proceed to the next lab*.</if>
 
 <if type="freetier">
 ## Task 5: Load sample data into tables and views, and grant access to all users 
 
-Labs 2 to 6 of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will download a new notebook:
+Labs 2 to 6 of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a: Run Me First - OML4Py table creation and grants".
 
-1. [**CLICK HERE** to download the "Lab 1a: Run Me First - OML4Py table creation and grants" noteook JSON file](./../notebooks/lab1a_run_me_first.json?download=1). This notebook contains the scripts for creating tables and views, and granting the required access.
+> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a: Run Me First - OML4Py table creation and grants" noteook JSON file](./../notebooks/lab1a_run_me_first.json?download=1). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
 
-2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+1. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
  ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
-3. Click the **Import** button.  
+2. Click the **notebook name** to view it.
+   ![Open Lab 1a notebook](images/click-on-lab1a-ft.png " ")
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
+ OML Notebooks will load a session and make the notebook available for editing.
 
-4. Select the `lab1a_run_me_first.json` notebook file and click **Open**.
-   
- ![Open Lab 1 JSON file](images/open-lab1a-file.png " ")
+3. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm.
+  ![Notebook click on run all](images/click-run-all.png " ")
 
-- After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 1 notebook](images/click-on-lab1a.png " ")
+4. Wait until all the paragraphs have finished running and you see your current time in the last paragraph after the message `"PL/SQL procedure successfully completed"`.
 
-   OML Notebooks will load a session and make the notebook available for editing.
-
-5. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm.
-    ![Notebook click on run all](images/click-run-all.png " ")
-
-6. Wait until all the paragraphs have finished running and you see your current time in the last paragraph after the message `"PL/SQL procedure successfully completed"`.
-
-    ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png " ")
+  ![The last paragraph with the current timestamp in a notebook](images/last-paragraph.png " ")
 
 The prerequisite scripts have run successfully.
-You can now move tho the next lab.
+
+You can now *proceed to the next lab*.
 </if>
 
 ## Learn more

@@ -18,31 +18,25 @@ In this lab, you will learn how to:
 * Use `automl.ModelTuning` to tune selected algorithm hyperparameters
 * Use `automl.ModelSelection` to select the top in-database algorithm and return the tuned model in a single function
 
+## Access the notebook for this Lab
 
-## Download the notebook file for this Lab
-
-1. [**CLICK HERE** to download the lab6\_automl.json notebook file](./../notebooks/lab6_automl.json?download=1). This will download the notebook file for this lab to your local machine. 
-
-2. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
  ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
-3. Click the **Import** button.  
+2. Click the **Lab 6 notebook name** to view it.
+   <if type="freetier">
+   ![Open Lab 6 notebook ft](images/click-on-lab6-ft.png " ") </if>
+   <if type="livelabs">
+   ![Open Lab 6 notebook ll](images/click-on-lab6-ll.png " ") </if>
 
- ![Oracle Machine Learning Notebooks import](images/click-on-import-notebook.png " ")
+  OML Notebooks will create a session and make the notebook available for editing.
 
-4. Select the `lab6_automl.json` notebook file and click **Open**.
+  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
    
- ![Open Lab 6 JSON file](images/open-lab6-file.png " ")
+  ![Lab 6 main screen](images/lab6-main.png " ")
 
-- After the notebook is successfully imported, click the **notebook name** to view it.
-   ![Open Lab 6 notebook](images/click-on-lab6.png " ")
-
-   OML Notebooks will create a session and make the notebook available for editing.
-
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
-   
-   ![Lab 6 main screen](images/lab6-main.png " ")
+> **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab6\_automl.json notebook file](./../notebooks/lab6_automl.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 
 > **Note:** Due to the nature of Automated Machine Learning, it is expected that some of the paragraphs will take several minutes to complete.
 
@@ -83,6 +77,14 @@ Scroll down to the beginning of Task 5.
 
   ![Lab 6 Task 5 screen](images/lab6-task5.png " ")
   
+
+## End of the labs  
+
+### Congratulations !!!
+You reached the end of the lab "Python Users: Build intelligent applications faster with Oracle Machine Learning".
+
+You can explore other Live Labs that make use of the Oracle Machine Learning components [by clicking here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_product=70).
+
 ## Learn more
 
 * [Automated Machine Learning](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/automatic-machine-learning.html#GUID-4B240E7A-1A8B-43B6-99A5-7FF86330805A)
