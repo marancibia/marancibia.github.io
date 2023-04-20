@@ -1,0 +1,1 @@
+This screenshot shows an example of concatenation of an object with multiple objects, and automatic name conflict resolution if one or more column names are duplicates in the two data frames.
