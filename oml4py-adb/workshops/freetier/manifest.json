@@ -13,7 +13,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
           },
 		{
-            "title": "Lab 0: Provision an Autonomous Data Warehouse with OML users",
+            "title": "Get Started with OML and Autonomous Data Warehouse",
             "filename": "../../provision-adw/provision-adw.md",
             "type": "freetier"
         },
