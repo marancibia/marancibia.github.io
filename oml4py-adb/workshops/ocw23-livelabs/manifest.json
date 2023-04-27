@@ -33,27 +33,37 @@
             "type": "livelabs"
         },
         {
-            "title": "Lab 5: Run user-defined functions using Embedded Python Execution",
+            "title": "Lab 5: Use AutoML UI",
+            "filename": "../../automl-ui/automl-ui.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Advanced Lab 1: UDF using Embedded Python Execution",
             "filename": "../../embd-python/embd-python.md",
-            "type": "livelabs"
+            "type": "freetier"
         },
         {
-            "title": "Lab 6: Use AutoML",
+            "title": "Advanced Lab 2: UDF using the SQL API for Embedded Python Execution",
+            "filename": "../../embd-python-sql/embd-python-sql.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Advanced Lab 3: UDF using the REST API for Embedded Python Execution",
+            "filename": "../../embd-python-rest/embd-python-rest.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Advanced Lab 4: Use AutoML via Python",
             "filename": "../../automl/automl.md",
-            "type": "livelabs"
-        },
-        {
-            "title": "Lab 7: Clean Up",
-            "description": "Workshop clean up",
-            "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
-        },
+            "type": "freetier"
+        },   
         {
         "title": "Appendix: OML user administration",
         "filename": "../../appendix-manage/appendix-manage.md",
         "type": "freetier"
         },
         {
-            "title": "Oracle CloudWorld 2022 - Get Help",
+            "title": "Oracle CloudWorld 2023 - Get Help",
             "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }
     ]
