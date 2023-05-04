@@ -11,14 +11,9 @@
             "title": "Get Started",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable).",
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
-          },
-		{
-            "title": "Get Started with OML and Autonomous Data Warehouse",
-            "filename": "../../provision-adw/provision-adw.md",
-            "type": "freetier"
         },
         {
-            "title": "B: Get Started with OML and Autonomous Data Warehouse",
+            "title": "Provision an Autonomous Data Warehouse with OML users",
             "filename": "../../get-started-livelabs/get-started-livelabs.md",
             "type": "freetier"
         },
@@ -37,7 +32,7 @@
             "filename": "../../in-db-algo-models/in-db-algo-models.md",
             "type": "freetier"
         },
-		    {
+		{
             "title": "Lab 4: Store and manage Python objects and UDFs",
             "filename": "../../dstore-script-repo/dstore-script-repo.md",
             "type": "freetier"
