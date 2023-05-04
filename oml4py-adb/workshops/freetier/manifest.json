@@ -18,6 +18,11 @@
             "type": "freetier"
         },
         {
+            "title": "B: Get Started with OML and Autonomous Data Warehouse",
+            "filename": "../../get-started-livelabs/get-started-livelabs.md",
+            "type": "freetier"
+        },
+        {
             "title": "Lab 1: Get Started with OML4Py",
             "filename": "../../get-started/get-started.md",
             "type": "freetier"
@@ -33,22 +38,22 @@
             "type": "freetier"
         },
 		    {
-            "title": "Lab 4: Store and manage Python objects and user-defined functions",
+            "title": "Lab 4: Store and manage Python objects and UDFs",
             "filename": "../../dstore-script-repo/dstore-script-repo.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 5: Run user-defined functions using Embedded Python Execution",
+            "title": "Lab 5: UDFs with Python API for EPE",
             "filename": "../../embd-python/embd-python.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 6: Run user-defined functions using the SQL API for Embedded Python Execution",
+            "title": "Lab 6: UDFs with SQL API for EPE",
             "filename": "../../embd-python-sql/embd-python-sql.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 7: Run user-defined functions using the REST API for Embedded Python Execution",
+            "title": "Lab 7: UDFs with REST API for EPE",
             "filename": "../../embd-python-rest/embd-python-rest.md",
             "type": "freetier"
         },

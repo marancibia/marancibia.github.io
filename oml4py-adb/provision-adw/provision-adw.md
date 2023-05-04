@@ -18,46 +18,21 @@ Watch the video below for a quick walk-through of the lab.
 
 In this lab, you will:
 
--   Create an Oracle Cloud Infrastructure compartment
 -   Provision a new Autonomous Database
 -   Use the Database Actions interface to create Oracle Machine Learning users
+-   Prepare data that will be used throughout the workshop
 
 ### Prerequisites
 
 -   This lab requires completion of the **"Get Started with Oracle Cloud"** section in the contents menu on the left.
 
-## Task 1: Create a compartment
-
-A compartment is a collection of cloud assets, like compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (that is, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
-
-1. Click the Cloud menu (the three-lines) on the top left of the OCI console. Scroll down till the bottom of the menu and click **Identity & Security** on the left pane. Then click **Compartments** on the right pane.
-
-  ![Click Identity & Security then Compartments.](images/click-identity-and-security-then-compartments.png "Click Identity & Security then Compartments")
-
-2. Click **Create Compartment** to create a sub-compartment.
-
-  ![Click the Create Compartment button.](images/click-create-compartment.png "Create Compartment button")
-
-2. Provide a name and description for the compartment. Ensure that your root compartment appears as the parent compartment. Click **Create Compartment**.
-
-  ![Fill in the data required like name and description of your new compartment and Click the Create Compartment button.](images/click-create-compartment-button.png "Fill in the data required like name and description of your new compartment and Click the Create Compartment button")
-
-  Now, the compartment is created and is listed on the page. In the next task, you will create an Autonomous Database instance.
-
-## Task 2: Choose Autonomous Database from the Services Menu
+## Task 1: Choose Autonomous Database from the Services Menu
 
 1. Click the Cloud menu (the three lines) on the top left corner of the OCI console. Scroll down and click **Oracle Database** on the left pane. Then click **Autonomous Database** on the right pane.   
 
   ![From the main OCI menu, click the three-lines menu then select Oracle Database and finally Autonomous Database](./images/database-adw.png "From the main OCI menu, click the three-lines menu then select Oracle Database and finally Autonomous Database")
 
-2. Make sure your workload type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select the compartment you just created.
-
-  ![Check the workload type on the left and select the newly created compartment](images/list-scope-freetier.png "Check the workload type on the left and select the newly created compartment")
-
-  > **Note:** Avoid the use of the `ManagedCompartmentforPaaS` compartment as this is an Oracle default used for Oracle Platform Services.
-
-
-3. This console shows that no databases yet exist. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, for example). You can also sort by __Workload Type__. The different options are shown below.
+2. The Autonomous Database console shows that no databases yet exist. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, for example). You can also sort by __Compartment__ or __Workload Type__. The different options are shown below.
 
   ![Autonomous Databases console shows no databases exist yet in that compartment](./images/no-adb-freetier.png "Autonomous Databases console shows no databases exist yet in that compartment")
 
@@ -77,7 +52,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 3. Give basic information for the autonomous database:
 
-    - __Choose a compartment__ - Select the compartment you just created.
+    - __Choose a compartment__ - By default your root compartment is shown.  If you had created a compartment for your Project, you can select it here.
     - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __OML_LABS__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters (no underscores). For this lab, use __OMLLABS__.
 
