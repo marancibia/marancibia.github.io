@@ -52,7 +52,7 @@ To provision an Oracle Autonomous Database:
 
 	 ![Autonomous Database deployment type](images/deployment-type.png)
 
-6. For Database Configuration, select Always Free. For the Always Free option, the database configuration options - OCPU count, Storage, and Auto scaling are not available. You must upgrade to a paid account to avail of it.
+6. For Database Configuration, select Always Free. For the Always Free option, the database configuration options - OCPU count, Storage, and OCPU auto scaling nor Storage auto scaling are available. You must upgrade to a paid account to be able to choose it.
 
 	 > **Note:** You can create Always Free resources both in Free Tier and Paid accounts
 
@@ -60,7 +60,7 @@ To provision an Oracle Autonomous Database:
 
 7. Create your Autonomous Database administrator credentials by providing a password. You will need these credentials to sign into this Autonomous Database instance.   
 
-	> **Note:** The default administrator username is ADMIN.
+	> **Note:** The default administrator username is ADMIN. The ADMIN password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username "admin".
 
 	![Database Administrator credentials](images/db-admin-credentials.png)
 
@@ -117,7 +117,7 @@ To create a user account:
 	![Oracle Machine Learning User Administration Sign in page](images/create-user-dialog.png)
 
 	* **User Name:** Enter the user name OMLUSER.
-	* **Password:** Enter a password for this user.
+	* **Password:** Enter a password for this user. The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username itself.
 	* **Confirm Password:** Re-enter the password that you entered in the Password field.
 	* **Graph:** Select this option to enable graph for this user.
 	* **Web Access:** Select this option to allow Web and DB Actions access to this user.
@@ -163,55 +163,6 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 	![Notebooks option in OML homepage](images/homepage.png)
 
 This completes the task of signing into Oracle Machine Learning user interface.
-
-## Task 4: Create the CUSTOMERS360 table
-
-In this step, you will create the table ``CUSTOMERS60`` by using the Scratchpad. The Scratchpad is available on the Oracle Machine Learning Notebooks home page. The Scratchpad is a one-click access to a notebook for running SQL statements, PL/SQL scripts, and Python scripts. After you run your scripts, the Scratchpad is automatically saved as a notebook by the default name _Scratchpad_ in the Notebooks page. You can access it later in the Notebooks page. You will learn more about notebooks in Lab 1.
-
-> **Note:** You will be using the table CUSTOMERS360 in the _Using Oracle Machine Learning AutoML UI_ lab and _Using Oracle Machine Learning Services_ lab.
-
-To create the table:
-
-1. On the Oracle Machine Learning home page, click **Scratchpad**.
-
-	![Notebooks option in OML homepage](images/homepage-scratchpad.png)
-
-2. By default, the Scratchpad opens with three paragraphs: `%sql` (to run SQL statements), `%script` (to run PL/SQL scripts), and `%python` (to run Python scripts). Here, you will use the SQL paragraph to run a SQL statement to create the CUSTOMER360 table. On the SQL paragraph, click after the `%sql` tag, and press enter.
-
-	![Create Notebook dialog](images/scratchpad.png)
-
-3. In the SQL paragraph, enter the following script and click the Run icon ![run icon](images/run.png):
-
-    ```
-    <copy>
-		CREATE TABLE CUSTOMERS360 AS
-              (SELECT a.CUST_ID, a.CUST_GENDER, a.CUST_MARITAL_STATUS,
-                 a.CUST_YEAR_OF_BIRTH, a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
-                 b.EDUCATION, b.AFFINITY_CARD,
-                 b.HOUSEHOLD_SIZE, b.OCCUPATION, b.YRS_RESIDENCE, b.Y_BOX_GAMES
-           FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
-           WHERE a.CUST_ID = b.CUST_ID);
-		</copy>
-    ```
-
-	![SQL script to create Customers360 table](images/scratchpad-run.png)
-
-	After the script runs successfully, the paragraph status changes to `FINISHED`, as shown in the screenshot:
-
-	![SQL script to create Customers360 table](images/scratchpad-finished.png)
-
-6. In the next paragraph, edit the paragraph tag to change it to `%sql`, and run the following statement to view the data:
-
-	```
-		<copy>
-		select * from CUSTOMERS360
-			where rownum < 10;
-		 </copy>
-	 ```
-
-	![Script to view Customers360 table](images/script-view-customers360.png)
-
-This completes the task of creating the CUSTOMERS360 table.
 
 ## Learn More
 
