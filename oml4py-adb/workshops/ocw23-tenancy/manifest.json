@@ -63,11 +63,6 @@
             "type": "freetier"
         },        
         {
-            "title": "Appendix: OML user administration",
-            "filename": "../../appendix-manage/appendix-manage.md",
-            "type": "freetier"
-        },
-        {
             "title": "Oracle CloudWorld 2023 - Get Help",
             "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }
