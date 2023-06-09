@@ -13,15 +13,12 @@ In this lab, you will learn how to:
 * Provision an Oracle Autonomous Database
 * Create an Oracle Machine Learning user
 * Sign into Oracle Machine Learning user interface
-* Create the CUSTOMERS360 table.
-
-	> **Note:** You will use this table in the _Using Oracle Machine Learning AutoML UI_ lab and _Using Oracle Machine Learning Services_ lab.
 
 ### Prerequisites
 
 * Sign up for a Free Tier Oracle Cloud account.
 
-> **Note:** You may see differences in account details (eg: Compartment Name is different in different places) as you work through the labs. This is because the workshop was developed using different accounts over time.
+> **Note:** You may see differences in account details (eg: Database Name is different than yours) as you work through the labs. This is because of the flexibility of choice you will have when creating your own.
 
 
 ## Task 1: Provision an Oracle Autonomous Database
@@ -37,6 +34,8 @@ To provision an Oracle Autonomous Database:
 	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
 2. From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and select a compartment. Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
+
+> **Note:** You will need to make sure to select your Home Region if you intent on creatng an Always-Free Autonomous Database.
 
    ![Create Autonomous Database option](images/create-autonomous-db.png)
 
