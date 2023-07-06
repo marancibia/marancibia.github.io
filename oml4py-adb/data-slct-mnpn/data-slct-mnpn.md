@@ -1,4 +1,4 @@
-# Select and manipulate data using the transparency layer
+# Select and manipulate data with transparency layer
 
 ## Introduction
 
@@ -39,19 +39,19 @@ We need to access and run the OML notebook for this lab.
 
 1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
+ ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png)
 
 2. Click the **Lab 2 notebook name** to view it.
    <if type="freetier">
-   ![Open Lab 2 notebook ft](images/click-on-lab2-ft.png " ") </if>
+   ![Open Lab 2 notebook ft](images/click-on-lab2-ft.png) </if>
    <if type="livelabs">
-   ![Open Lab 2 notebook ll](images/click-on-lab2-ll.png " ") </if>
+   ![Open Lab 2 notebook ll](images/click-on-lab2-ll.png) </if>
 
   OML Notebooks will create a session and make the notebook available for editing.
 
   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
 
-  ![Lab 2 main screen](images/lab2-main.png " ")
+  ![Lab 2 main screen](images/lab2-main.png)
 
 > **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab2\_select\_manipulate\_data.json notebook file](./../notebooks/lab2_select_manipulate_data.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
 

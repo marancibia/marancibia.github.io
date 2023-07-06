@@ -29,13 +29,13 @@ You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle
 
 2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the provisioned Live Labs instance, and click the Oracle Autonomous Database name.
 
-    ![ Screen capture of the listing of all Oracle Autonomous Database instances already created in the selected compartment](images/provisioned-adb.png " ")
+    ![Screen capture of the listing of all Oracle Autonomous Database instances already created in the selected compartment](images/provisioned-adb.png " ")
 
 3. On the Autonomous Database details page, click **Database Actions**. The Oracle Database Actions Launchpad page opens in a separate tab.
-    ![ Screen capture of the Autonomous Database details page selecting the button for Database Actions](images/launchdbactions.png " ")
+    ![Screen capture of the Autonomous Database details page selecting the button for Database Actions](images/launchdbactions.png " ")
 
 4. On the Database Actions page, go to the **Development** section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning Sign In page.
-    ![ In the Database Actions Launchpad go to the Development section and click on Oracle Machine Learning to access it](images/adb-dev-oml.png " ")
+    ![In the Database Actions Launchpad go to the Development section and click on Oracle Machine Learning to access it](images/adb-dev-oml.png " ")
 
 5. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password **`AAbbcc123456`** that was used when creating it with the SQL code.  If you changed the password in the SQL code, use that one here instead. Then click the blue **Sign in** button.</if>
 

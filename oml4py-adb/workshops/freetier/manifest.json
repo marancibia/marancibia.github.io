@@ -32,7 +32,7 @@
             "filename": "../../in-db-algo-models/in-db-algo-models.md",
             "type": "freetier"
         },
-		{
+        {
             "title": "Lab 4: Store and manage Python objects and UDFs",
             "filename": "../../dstore-script-repo/dstore-script-repo.md",
             "type": "freetier"
@@ -43,22 +43,22 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 6: UDFs with SQL API for EPE",
+            "title": "Lab 6: UDFs with the SQL API for EPE",
             "filename": "../../embd-python-sql/embd-python-sql.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 7: UDFs with REST API for EPE",
+            "title": "Lab 7: UDFs with the REST API for EPE",
             "filename": "../../embd-python-rest/embd-python-rest.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 8: Use AutoML",
+            "title": "Lab 9: Use AutoML via Python API",
             "filename": "../../automl/automl.md",
             "type": "freetier"
-        },
+        }, 
         {
-            "title": "Lab 9: Use AutoML UI",
+            "title": "Lab 8: Use AutoML UI",
             "filename": "../../automl-ui/automl-ui.md",
             "type": "freetier"
         },

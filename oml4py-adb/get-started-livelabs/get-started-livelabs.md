@@ -33,13 +33,15 @@ To provision an Oracle Autonomous Database:
 
 	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
-2. From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and select a compartment. Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
+2. From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and optionally select a compartment (by default it will show the root compartment). Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
 
-> **Note:** You will need to make sure to select your Home Region if you intent on creatng an Always-Free Autonomous Database.
+> **Note:** You will need to make sure to select your OCI Home Region if you intent on creatng an Always-Free Autonomous Database.
 
    ![Create Autonomous Database option](images/create-autonomous-db.png)
 
 3. On the Create Autonomous Database page, provide the basic information about the database. By default, a database name and a display name for the database are provided. You can modify these names to enter a user-friendly display name for the ADB instance to easily identify the resource. The display name does not have to be unique.    
+
+> **Note:** We will choose the Display Name *OML_LABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
 
    ![Autonomous Database information](images/adb-basic-inform.png)
 
@@ -47,7 +49,7 @@ To provision an Oracle Autonomous Database:
 
 	 ![Autonomous Database Workload type](images/workload-type.png)
 
-5. For Deployment, select **Shared Infrastructure**.
+5. For Deployment, select **Serverless Infrastructure**.
 
 	 ![Autonomous Database deployment type](images/deployment-type.png)
 
@@ -75,7 +77,7 @@ To provision an Oracle Autonomous Database:
 
 	 ![Contact details](images/contact-details.png)
 
-	 The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created, the database details are listed with the status Available.
+	 The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created (it should take a few minutes), the database details are listed with the status Available.
 
 	  ![ADB details](images/adw-details.png)
 
@@ -89,11 +91,11 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 To create a user account:
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
+1. If you are not already signed in, Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
 
 	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
 
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned.  
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned for this workshop.  
 
 	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png)
 
@@ -101,10 +103,12 @@ To create a user account:
 
 	![Oracle Autonomous Data Warehouse](images/database-actions.png)
 
-4. The Oracle Database Actions Launchpad page opens in a separate tab. Scroll down to the Administration section and click **DATABASE USERS**.
+4. Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
    
-	> **Note:** You might be asked for a user and password at this point, depending on your browser. If asked, make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
+    ![Oracle Autonomous Data Warehouse login into Database Actions](images/login-to-actions.png)
 
+ 	You should see the Oracle Database Actions Launchpad page. Scroll down to the Administration section and click **DATABASE USERS**.
+   
 	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
 
 5. Click **Create User**. The Create User dialog opens.
@@ -118,12 +122,12 @@ To create a user account:
 	* **User Name:** Enter the user name OMLUSER.
 	* **Password:** Enter a password for this user. The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username itself.
 	* **Confirm Password:** Re-enter the password that you entered in the Password field.
-	* **Graph:** Select this option to enable graph for this user.
-	* **Web Access:** Select this option to allow Web and DB Actions access to this user.
-	* **OML:** Select this option to allow this user to access Oracle Machine Learning.
-	* **Quota of tablespace data:** Click on the drop-down list and select an option. For this lab, 1G is selected.
-	* **Password Expired:** Select this option if you want the user to reset the password.
-	* **Account is locked:** Select this option to lock the account.
+	* **Graph:** Optionally select this option to enable graph for this user.
+	* **Web Access:** Optionally select this option to allow Web and DB Actions access to this user via its own url.
+	* **OML:** Required: Select this option to allow this user to access Oracle Machine Learning.
+	* **Quota of tablespace data:** Click on the drop-down list and select an option. For this lab and a typical Always Free ADB, Unlimited is selected.
+	* **Password Expired:** This option is used if you want the user to reset their own password.
+	* **Account is locked:** This option is used to lock the account.
 
 
 7. After the user is created successfully, the message _User OMLUSER created successfully_ is displayed.
