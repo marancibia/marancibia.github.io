@@ -8,7 +8,7 @@ Python is a major programming language used for data science and machine learnin
 
 Watch this quick video on Oracle Machine Learning for Python (OML4Py).
 
-[] (youtube:wciO-5CyS2M)
+ [Overview of OML4Py](youtube:wciO-5CyS2M)
 
 Estimated Time: 120 minutes
 
@@ -17,19 +17,20 @@ Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous 
 
 Watch the video below for an introduction to Oracle Machine Learning for Python.
 
-[] (youtube:bqxlpdgrMAg)
+ [Introduction to OML4Py](youtube:bqxlpdgrMAg)
 
 ### Objectives
 
  The labs in this workshop focus on the following:
 
  * Oracle Machine Learning Notebooks and connection to an Oracle Autonomous Database from a Python session
- * Data selection and manipulation using the Transparency Layer
+ * Data selection and manipulation with the Transparency Layer
  * In-database algorithms for model building and scoring
  * Datastores to store Python objects
  * Python script repository to store user-defined functions in the database
- * Embedded Python Execution to run user-defined functions in database-spawned and controlled Python engines
+ * Embedded Python Execution to run user-defined functions (UDFs) in database-spawned and controlled Python engines, via Python, SQL and REST 
  * AutoML functionality supporting automated algorithm and feature selection, along with model tuning and selection
+ * AutoML UI no-code interface for running AutoML jobs and auto-generation of the Python code that builds the desired model  
 
 
 ### Prerequisites
@@ -41,7 +42,7 @@ Watch the video below for an introduction to Oracle Machine Learning for Python.
 
 ## Learn More
 
-* [About Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/about-oml4py-overview.html#GUID-D13E274D-653E-4285-B52F-AF38CCFD9A5B)
+* [About OML4Py](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/about-oml4py-overview.html#GUID-D13E274D-653E-4285-B52F-AF38CCFD9A5B)
 * [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
 ## Acknowledgements

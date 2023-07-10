@@ -27,59 +27,59 @@ To provision an Oracle Autonomous Database:
 
 1. Sign into your OCI account, and under the Launch Resources section, click **Create an ADW database**.
 
-	![Create ADW Database](images/adw-database.png)
+	![Create ADW Database](images/adw-database.png " ")
 
 	 Alternatively, you may click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.
 
-	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
+	![Autonomous Database under Oracle Database](images/database-adw.png " ")
 
 2. From the Oracle Cloud Infrastructure console, on the Oracle Autonomous Database page choose your region and optionally select a compartment (by default it will show the root compartment). Click **Create Autonomous Database**. This opens the Create Autonomous Database page.
 
-> **Note:** You will need to make sure to select your OCI Home Region if you intent on creatng an Always-Free Autonomous Database.
+   ![Create Autonomous Database option](images/create-autonomous-db.png " ")
 
-   ![Create Autonomous Database option](images/create-autonomous-db.png)
+  **Note:** You will need to make sure to select your OCI Home Region if you intent on creatng an Always-Free Autonomous Database.
 
 3. On the Create Autonomous Database page, provide the basic information about the database. By default, a database name and a display name for the database are provided. You can modify these names to enter a user-friendly display name for the ADB instance to easily identify the resource. The display name does not have to be unique.    
 
-> **Note:** We will choose the Display Name *OML_LABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
+   **Note:** We will choose the Display Name *OML_LABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
 
-   ![Autonomous Database information](images/adb-basic-inform.png)
+   ![Autonomous Database information](images/adb-basic-inform.png " ")
 
 4. For Workload Type, click **Data Warehouse**.
 
-	 ![Autonomous Database Workload type](images/workload-type.png)
+    ![Autonomous Database Workload type](images/workload-type.png " ")
 
 5. For Deployment, select **Serverless Infrastructure**.
 
-	 ![Autonomous Database deployment type](images/deployment-type.png)
+	![Autonomous Database deployment type](images/deployment-type.png " ")
 
 6. For Database Configuration, select Always Free. For the Always Free option, the database configuration options - OCPU count, Storage, and OCPU auto scaling nor Storage auto scaling are available. You must upgrade to a paid account to be able to choose it.
 
 	 > **Note:** You can create Always Free resources both in Free Tier and Paid accounts
 
-  ![Configure Database](images/db-configuration.png)
+  ![Configure Database](images/db-configuration.png " ")
 
 7. Create your Autonomous Database administrator credentials by providing a password. You will need these credentials to sign into this Autonomous Database instance.   
 
 	> **Note:** The default administrator username is ADMIN. The ADMIN password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username "admin".
 
-	![Database Administrator credentials](images/db-admin-credentials.png)
+	![Database Administrator credentials](images/db-admin-credentials.png " ")
 
 8. For network access, select **Allow secure access from everywhere.**
 
-    ![Network Access settings](images/create-adw-network.png)
+    ![Network Access settings](images/create-adw-network.png " ")
 
 9. For License, select **License Included**.
 
-    ![License settings](images/create-adw-license.png)
+    ![License settings](images/create-adw-license.png " ")
 
 10. Provide your email ID for any notifications and announcements, and click **Add Contact**. Then click **Create Autonomous Database**.
 
-	 ![Contact details](images/contact-details.png)
+	 ![Contact details](images/contact-details.png " ")
 
 	 The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created (it should take a few minutes), the database details are listed with the status Available.
 
-	  ![ADB details](images/adw-details.png)
+	  ![ADB details](images/adw-details.png " ")
 
 This completes the task of provisioning an Oracle Autonomous Database.
 
@@ -93,31 +93,31 @@ To create a user account:
 
 1. If you are not already signed in, Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
 
-	![Autonomous Data Warehouse option under Oracle Database](images/database-adw.png)
+	![Autonomous Database under Oracle Database](images/database-adw.png " ")
 
 2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned for this workshop.  
 
-	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png)
+	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png " ")
 
 3. On the Autonomous Database details page, click **Database Actions**.
 
-	![Oracle Autonomous Data Warehouse](images/database-actions.png)
+	![Database Actions button in ADB Console](images/database-actions.png " ")
 
 4. Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
    
-    ![Oracle Autonomous Data Warehouse login into Database Actions](images/login-to-actions.png)
+    ![ADB login into Database Actions](images/login-to-actions.png " ")
 
  	You should see the Oracle Database Actions Launchpad page. Scroll down to the Administration section and click **DATABASE USERS**.
    
-	![Oracle Autonomous Data Warehouse](images/admin-db-users.png)
+   ![Database Actions Launchpad](images/admin-db-users.png " ")
 
 5. Click **Create User**. The Create User dialog opens.
 
-	![Oracle Autonomous Data Warehouse](images/create-users-db.png)
+	![Create user option](images/create-users-db.png " ")
 
 6. On the Create User dialog, enter the following details and click **Create User**:	  
 
-	![Oracle Machine Learning User Administration Sign in page](images/create-user-dialog.png)
+	![Create user dialog](images/create-user-dialog.png " ")
 
 	* **User Name:** Enter the user name OMLUSER.
 	* **Password:** Enter a password for this user. The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username itself.
@@ -132,10 +132,16 @@ To create a user account:
 
 7. After the user is created successfully, the message _User OMLUSER created successfully_ is displayed.
 
-	![Oracle Autonomous Data Warehouse](images/user-creation-msg.png)
+	![Oracle Autonomous Data Warehouse](images/user-creation-msg.png " ")
 
-	Scroll down the page to view the user. The OMLUSER is listed along with all details. Click ![ellipse icon](images/ellipse.png) to edit, delete, or disable any of the privileges granted to the user.
-	![Oracle Autonomous Data Warehouse](images/view-user.png)
+	Scroll down the page to view the user. The OMLUSER is listed along with all details. Click the three-dots menu ![ellipse icon](images/ellipse.png) to edit, delete, or disable any of the privileges granted to the user.
+	![User created successfully](images/view-user.png " ")
+
+8. Repeat the same process and create a second user named _OMLUSER2_ . You can repeat the same exact steps and password as well, since we will only use this user to demonstrate the privilege grants for acessing Python scripts and objects in the Repository.
+
+	Once this is done, you should have the following users available.
+	![Two users created successfully](images/created-two-oml-users.png " ")
+
 
 	This completes the task of creating a user.
 
@@ -145,25 +151,25 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 1. On your Oracle ADW instance, click **Database Actions**.
 
-	![Database Actions in ADW](images/database-actions.png)
+	![Database Actions in ADW](images/database-actions.png " ")
 
-	 If you had it already open in the Database Users section, you can go to Database Actions home page clicking in the **Database Actions** on the top left corner of the page, as shown in the screenshot below.
+	> **Note:** If you had it already open in the Database Users section, you can go to Database Actions home page clicking in the **Database Actions** on the top left corner of the page, as shown in the screenshot below.
 
-	![Database Actions](images/db-users-db-actions.png)
+	![Database Actions main menu](images/db-users-db-actions.png " ")
 
 2. On the Database Actions page, go to the Development section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
 
-	 ![Oracle Machine Learning Notebooks in ADW](images/adb-dev-oml.png)
+	 ![Oracle Machine Learning tile](images/adb-dev-oml.png " ")
 
 3. Enter your user credentials and click **Sign in**.
 
-	> **Note:** The credential is what you have defined while creating the Oracle Machine Learning user.
+	> **Note:** The credential is what you have defined while creating the Oracle Machine Learning user _OMLUSER_ .
 
-	![Oracle Machine Learning Notebooks Sign in page](images/omluser-signin.png)
+	![Oracle Machine Learning UI Sign in](images/omluser-signin.png " ")
 
   This opens the Oracle Machine Learning user interface home page.
 
-	![Notebooks option in OML homepage](images/homepage.png)
+	![OML homepage](images/homepage.png " ")
 
 This completes the task of signing into Oracle Machine Learning user interface.
 
@@ -174,6 +180,6 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 ## Acknowledgements
 
-* **Author** - Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia Coddou, Product Manager, Oracle Data Science; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, March 2023
+* **Author** - Marcos Arancibia, Product Manager, Oracle Autonomous Database; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
+* **Last Updated By/Date** - Marcos Arancibia, July 2023

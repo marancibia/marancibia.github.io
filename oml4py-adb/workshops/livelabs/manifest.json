@@ -48,12 +48,12 @@
             "type": "livelabs"
         },
         {
-            "title": "Lab 9: Use AutoML via Python API",
+            "title": "Lab 8: Use AutoML via Python API",
             "filename": "../../automl/automl.md",
             "type": "livelabs"
         }, 
         {
-            "title": "Lab 8: Use AutoML UI",
+            "title": "Lab 9: Use AutoML UI",
             "filename": "../../automl-ui/automl-ui.md",
             "type": "livelabs"
         },

@@ -1,31 +1,31 @@
 # Get started with OML4Py on Oracle Autonomous Database
 
 ## Introduction
-This lab walks you through the steps of accessing Oracle Machine Learning Notebooks, loading notebooks and running OML4Py scripts.
+This lab walks you through the steps of accessing Oracle Machine Learning UI, loading notebooks and running OML4Py scripts.
 
 Estimated Time: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
 
-[Get started with OML4Py on Oracle Autonomous Database](videohub:1_sqmz85fz)
+[Get started OML4Py on ADB](videohub:1_sqmz85fz)
 
 ### Objectives
 
 In this lab, you will learn how to:
-* Access Oracle Machine Learning Notebooks
+* Access Notebooks under Oracle Machine Learning UI
 * Get familiar with the Oracle Machine Learning Notebooks toolbar
 * Get familiar with the Oracle Machine Learning Notebooks interpreters
 * Verify the connection to the Oracle Autonomous Database
 <if type="freetier">* Load the datasets necessary to run the workshop</if>
 * View help files
 
-## Task 1: Access Oracle Machine Learning Notebooks
+## Task 1: Access Oracle Machine Learning UI
 
-You create notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
+You create notebooks in Oracle Machine Learning UI. You can access Oracle Machine Learning UI from Autonomous Database.
 
 1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane, click **Autonomous Database**.
 
-    ![Capture of the main OCI screen after clicking in the three-line menu highlighting the Oracle Database, and under the options shown the Autonomous Database](images/database-adw.png " ")
+    ![Autonomous Database under OCI main menu](images/database-adw.png " ")
 
 2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the provisioned Live Labs instance, and click the Oracle Autonomous Database name.
 

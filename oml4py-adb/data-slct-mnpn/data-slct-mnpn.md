@@ -8,7 +8,7 @@ Estimated Time: 30 minutes
 
 Watch the video below for a quick walk-through of the lab.
 
-[Select and manipulate data using the transparency layer](videohub:1_fjmducdb)
+[Select and manipulate data](videohub:1_fjmducdb)
 
 ### About data selection and manipulation
 The transparency layer classes allow you to convert select Python objects to Oracle Autonomous Database objects. It allows users to call a range of familiar Python functions that are overloaded to invoke the corresponding SQL on tables in the
