@@ -23,7 +23,7 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 2: Select and manipulate data using the Transparency Layer",
+            "title": "Lab 2: Select and manipulate data with the Transparency Layer",
             "filename": "../../data-slct-mnpn/data-slct-mnpn.md",
             "type": "freetier"
         },
@@ -53,12 +53,12 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 9: Use AutoML via Python API",
+            "title": "Lab 8: Use AutoML via Python API",
             "filename": "../../automl/automl.md",
             "type": "freetier"
         }, 
         {
-            "title": "Lab 8: Use AutoML UI",
+            "title": "Lab 9: Use AutoML UI",
             "filename": "../../automl-ui/automl-ui.md",
             "type": "freetier"
         },

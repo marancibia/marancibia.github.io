@@ -99,17 +99,13 @@ To create a user account:
 
 	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png " ")
 
-3. On the Autonomous Database details page, click **Database Actions**.
+3. On the Autonomous Database details page, click **Database Actions**, and then select the **Database Users** option.
 
 	![Database Actions button in ADB Console](images/database-actions.png " ")
 
 4. Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
    
     ![ADB login into Database Actions](images/login-to-actions.png " ")
-
- 	You should see the Oracle Database Actions Launchpad page. Scroll down to the Administration section and click **DATABASE USERS**.
-   
-   ![Database Actions Launchpad](images/admin-db-users.png " ")
 
 5. Click **Create User**. The Create User dialog opens.
 
@@ -143,15 +139,15 @@ To create a user account:
 	![Two users created successfully](images/created-two-oml-users.png " ")
 
 
-	This completes the task of creating a user.
+	This completes the task of creating OML-enabled users.
 
 ## Task 3: Sign into Oracle Machine Learning
 
 A notebook is a web-based interface for data analysis, data discovery, data visualization, and collaboration. You create and run notebooks in Oracle Machine Learning user interface. You can access Oracle Machine Learning user interface from Autonomous Database.
 
-1. On your Oracle ADW instance, click **Database Actions**.
+1. On your Oracle ADW instance, click **Database Actions**, and select **View all database actions** from the options that appear.
 
-	![Database Actions in ADW](images/database-actions.png " ")
+	![Database Actions in ADW](images/view-all-database-actions.png " ")
 
 	> **Note:** If you had it already open in the Database Users section, you can go to Database Actions home page clicking in the **Database Actions** on the top left corner of the page, as shown in the screenshot below.
 
@@ -160,6 +156,14 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 2. On the Database Actions page, go to the Development section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning sign in page.
 
 	 ![Oracle Machine Learning tile](images/adb-dev-oml.png " ")
+
+	 > **Note:** There is also a way to access directly the URL for the Oracle Machine Learning login page. It is under the ADB Console **Tool configuration** Tab, as illustrated below.  
+	 
+	 ![ADB Console tool configuration tab](images/adb-console-tool.png " ")
+	 
+	 In there you can scroll down to find and copy the direct URL to login into the OML UI.
+
+	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
 
 3. Enter your user credentials and click **Sign in**.
 
@@ -175,8 +179,8 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 ## Learn More
 
-* [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/1/mlpug/get-started-with-oml4py.html#GUID-B45A76E6-CE48-4E49-B803-D25CA44B09ED)
-* [Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
+* [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/)
+* [Get Started with Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
 
 ## Acknowledgements
 
