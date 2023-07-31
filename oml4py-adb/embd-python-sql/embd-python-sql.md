@@ -55,14 +55,14 @@ As the OML user:
    ![Open Lab 5 notebook ll](images/click-on-lab6-ll.png " ") </if>
    
    <if type="freetier-ocw23">
-   Click the **Lab Bonus 1** notebook to view it.
+   Click the **Lab Bonus 2** notebook to view it.
 
-   ![Open Lab 5 notebook ft](images/click-on-labbo2-ft-ocw23.png " ") </if>
+   ![Open Lab Bonus 2 notebook ft](images/click-on-labbo2-ft-ocw23.png " ") </if>
    
    <if type="livelabs-ocw23">
-   Click the **Lab Bonus 1** notebook to view it.
+   Click the **Lab Bonus 2** notebook to view it.
    
-   ![Open Lab 5 notebook ll](images/click-on-labbo2-ll-ocw23.png " ") </if>
+   ![Open Lab Bonus 2 notebook ll](images/click-on-labbo2-ll-ocw23.png " ") </if>
 
    OML Notebooks will create a session and make the notebook available for editing.
 

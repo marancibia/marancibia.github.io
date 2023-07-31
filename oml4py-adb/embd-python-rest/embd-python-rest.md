@@ -34,37 +34,65 @@ In this lab, we provide a workflow for using the OML4Py REST API for embedded Py
 
 We need to view the markdown in the OML notebook for this lab, and access the OCI Cloud Shell to run the associated cURL commands.
 
-**Access the Lab Notebooks**
+**Access and run the OML notebook for this lab.**
 
-1. Go back to the main notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks**.
+ > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please 
+ <if type="freetier">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" noteook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="livelabs">[**CLICK HERE** to download the "Lab 7 - Run UDFs with REST API for EPE" noteook DSNB file](<./../notebooks/Lab 7 - Run UDFs with REST API for EPE.dsnb?download=1>)</if><if type="freetier-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" noteook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if>
+   <if type="livelabs-ocw23">[**CLICK HERE** to download the "Lab Bonus 3 - Run UDFs with REST API for EPE" noteook DSNB file](<./../notebooks/Lab Bonus 3 - Run UDFs with REST API for EPE.dsnb?download=1>)</if>. This notebook contains the scripts for this Lab. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
- ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png "Oracle Machine Learning Notebooks menu ")
-
-2. Click the **Lab 7 notebook name** to view it.
+   Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
+   
+   ![Go to main Notebooks EA](images/go-back-to-notebooks.png " ")
+   
    <if type="freetier">
-   ![Open Lab 7 notebook ft](images/click-on-lab5-ft.png "Lab 6 notebook") </if>
+   Click the **Lab 7** notebook to view it.
+
+   ![Open Lab 7 notebook ft](images/click-on-la7-ft.png " ") </if>
+   
    <if type="livelabs">
-   ![Open Lab 7 notebook ll](images/click-on-lab5-ll.png "Lab 6 notebook") </if>
+   Click the **Lab 7** notebook to view it.
 
-  OML Notebooks will create a session and make the notebook available for editing.
+   ![Open Lab 7 notebook ll](images/click-on-lab7-ll.png " ") </if>
+   
+   <if type="freetier-ocw23">
+   Click the **Lab Bonus 3** notebook to view it.
 
-  You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+   ![Open Lab Bonus 3 notebook ft](images/click-on-labbo3-ft-ocw23.png " ") </if>
+   
+   <if type="livelabs-ocw23">
+   Click the **Lab Bonus 3** notebook to view it.
+   
+   ![Open Lab Bonus 3 notebook ll](images/click-on-labbo3-ll-ocw23.png " ") </if>
 
-  ![Lab 7 Introduction notebook screen capture](images/lab5-main.png " Introduction notebook")
+   OML Notebooks will create a session and make the notebook available for editing.
 
-> **NOTE:** If you had problems downloading and extracting the ZIP file for the labs, please [**CLICK HERE** to download the lab7\_embed\_python\_rest.json notebook file](./../notebooks/lab7_embed_python_rest.json?download=1). Download the notebook file for this lab to your local machine and then import it like illustrated in **Lab 1, Task 2**.
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
 
-**Access the OCI Cloud Shell to run cURL commands:**
+   <if type="freetier">
+   ![Lab 7 main screen](images/lab7-main.png " ")
+   </if>
+   <if type="livelabs">
+   ![Lab 7 main screen](images/lab7-main.png " ")
+   </if>
+   <if type="freetier-ocw23">
+   ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
+   </if>
+   <if type="livelabs-ocw23">
+   ![Lab Bonus 3 main screen](images/labbo3-main.png " ")
+   </if>
+
+
+**Access the OCI Cloud Shell to run cURL commands**
 
 To access the OCI Cloud Shell to run the associated cURL commands:
 
-1. To run cURL commands, click the Developer Tools icon on your OCI console and then click Cloud Shell.  
+1. Click the Developer Tools icon on your OCI console and then click Cloud Shell.  
 
-  ![Lab 7 Task 5 cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
+  ![Cloud shell icon under Developer tools](images/devtools-cloud-shell.png " ")
 
-2. The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your cURL commands.
+2. The Oracle Cloud Shell interface opens at the bottom of your OCI console page. Here, you can run your cURL commands.  At the right in the green bar that opens up you also have options to maximize, minimize or close the Cloud Shell window.
 
-  ![Lab 7 Task 5 Cloud shell pane](images/cloud-shell-pane.png " ")
+  ![Cloud shell pane](images/cloud-shell-pane.png " ")
 
 ## Task 1: Obtain an Access Token
 
@@ -74,7 +102,20 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
   ![Obtain the access token](images/1-obtain-access-token.png " ")
 
-2. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+  ![Obtain the access token 2](images/1-obtain-access-token-2.png " ")
+
+  Use the following code in OCI Cloud Shell, replacing `yourusername`, `yourpassword` and `OML Service URL` with the ones for your service.
+
+  ``` 
+  <copy>
+
+    curl -X POST --header 'Content-Type:application/json' \
+    --header 'Accept:application/json' \
+    -d '{"grant_type":"password", "username":"'yourusername'","password":"'yourpassword'"}' 
+    "OML service URL/omlusers/api/oauth2/v1/token"
+  ```
+
+1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 1.1.
   ![Export OML Cloud Service URL](images/1-1-export-oml-url-env-variable.png " ")
