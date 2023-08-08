@@ -58,11 +58,6 @@
             "type": "livelabs"
         },
         {
-        "title": "Appendix: OML user administration",
-        "filename": "../../appendix-manage/appendix-manage.md",
-        "type": "livelabs"
-        },
-        {
             "title": "Need Help?",
             "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
         }

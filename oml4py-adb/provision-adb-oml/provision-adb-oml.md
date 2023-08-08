@@ -1,8 +1,8 @@
-# Get started with Oracle Cloud Free Tier Setup
+# Provision an Autonomous Database in Oracle Cloud
 
 ## Introduction
 
-This lab walks you through the steps to set up your Oracle Cloud Free Tier environment that includes provisioning an Oracle Autonomous Database, and signing into Oracle Machine Learning user interface.
+This lab walks you through the steps to provision an Autonomous Database in your Oracle Cloud account, whether it is a Free Tier one or a Paid one.  You will also create an OML-enabled user and sign into Oracle Machine Learning user interface.
 
 Estimated Time: 15 minutes
 
@@ -16,10 +16,9 @@ In this lab, you will learn how to:
 
 ### Prerequisites
 
-* Sign up for a Free Tier Oracle Cloud account.
+* Sign up for a Free Tier Oracle Cloud account (check the **Get Started** Lab in this workshop for instructions) or use your own paid Oracle Cloud account.
 
-> **Note:** You may see differences in account details (eg: Database Name is different than yours) as you work through the labs. This is because of the flexibility of choice you will have when creating your own.
-
+> **Note:** You may see differences in account details in the screenshots (eg: Database Name is different than yours) as you work through the labs. This is because of the flexibility of choice you will have when creating your own.
 
 ## Task 1: Provision an Oracle Autonomous Database
 
@@ -37,27 +36,30 @@ To provision an Oracle Autonomous Database:
 
    ![Create Autonomous Database option](images/create-autonomous-db.png " ")
 
-  **Note:** You will need to make sure to select your OCI Home Region if you intent on creatng an Always-Free Autonomous Database.
+   > **Note:** You will need to make sure to select your OCI Home Region if you intent on creatng an Always-Free Autonomous Database.
 
 3. On the Create Autonomous Database page, provide the basic information about the database. By default, a database name and a display name for the database are provided. You can modify these names to enter a user-friendly display name for the ADB instance to easily identify the resource. The display name does not have to be unique.    
 
-   **Note:** We will choose the Display Name *OML_LABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
+   > **Note:** We will choose the Display Name *OML_LABS* and the Database Name *OMLLABS* for our example.  You can use the same or create your own, but neither supports blank spaces in the name
 
    ![Autonomous Database information](images/adb-basic-inform.png " ")
 
-4. For Workload Type, click **Data Warehouse**.
+4. For Workload Type, select **Data Warehouse**.
 
-    ![Autonomous Database Workload type](images/workload-type.png " ")
+   ![Autonomous Database Workload type](images/workload-type.png " ")
 
 5. For Deployment, select **Serverless Infrastructure**.
 
-	![Autonomous Database deployment type](images/deployment-type.png " ")
+   ![Autonomous Database deployment type](images/deployment-type.png " ")
 
-6. For Database Configuration, select Always Free. For the Always Free option, the database configuration options - OCPU count, Storage, and OCPU auto scaling nor Storage auto scaling are available. You must upgrade to a paid account to be able to choose it.
+6. For Database Configuration, select Always Free. For the Always Free option, the only database configuration option available is the release.  Please **select 19c**.  You can create `Always Free` resources both in Free Tier and Paid accounts
 
-	 > **Note:** You can create Always Free resources both in Free Tier and Paid accounts
+   ![Autonomous Database always free](images/db-config-always-free.png " ")
+   
+    > **Note:** If you are using a **paid account**, you will see more options available that include compute and storage sizing and auto scaling.  For this workshop a single compute unit with auto scaling is sufficient.
 
-  ![Configure Database](images/db-configuration.png " ")
+
+    ![Configure Database](images/db-configuration.png " ")
 
 7. Create your Autonomous Database administrator credentials by providing a password. You will need these credentials to sign into this Autonomous Database instance.   
 
@@ -69,7 +71,7 @@ To provision an Oracle Autonomous Database:
 
     ![Network Access settings](images/create-adw-network.png " ")
 
-9. For License, select **License Included**.
+9. For License type, the **Always Free** databases are provisioned with **License Included**.
 
     ![License settings](images/create-adw-license.png " ")
 
@@ -181,9 +183,10 @@ This completes the task of signing into Oracle Machine Learning user interface.
 
 * [Get Started with Oracle Machine Learning for Python](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/)
 * [Get Started with Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
+* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
 
 ## Acknowledgements
 
 * **Author** - Marcos Arancibia, Product Manager, Oracle Autonomous Database; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Advanced Analytics, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, July 2023
+* **Last Updated By/Date** - Marcos Arancibia, August 2023

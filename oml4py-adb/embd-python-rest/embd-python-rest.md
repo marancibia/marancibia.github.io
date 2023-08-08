@@ -104,7 +104,7 @@ To access the OCI Cloud Shell to run the associated cURL commands:
 
   ![Obtain the access token 2](images/1-obtain-access-token-2.png " ")
 
-  Use the following code in OCI Cloud Shell, replacing `yourusername`, `yourpassword` and `OML Service URL` with the ones for your service.
+  You will use the following code in OCI Cloud Shell, replacing `yourusername`, `yourpassword` and `OML Service URL` with the ones for your service.
 
   ``` 
   <copy>
@@ -115,7 +115,7 @@ To access the OCI Cloud Shell to run the associated cURL commands:
     "OML service URL/omlusers/api/oauth2/v1/token"
   ```
 
-1. Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
+1. First, let's export the appropriate environmental variables.  Follow the flow of the notebook by scrolling to view and run each paragraph of this lab.
 
   Scroll down to the beginning of Task 1.1.
   ![Export OML Cloud Service URL](images/1-1-export-oml-url-env-variable.png " ")
@@ -244,4 +244,4 @@ You can explore additional workshops related to Oracle Machine Learning from the
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Jie Liu, Data Scientist; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika July 2023
+* **Last Updated By/Date** - Marcos Arancibia, Sherry LaMonica, Moitreyee Hazarika, August 2023

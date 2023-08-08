@@ -4,13 +4,17 @@
 
 This lab walks you through the steps to create an AutoML experiment, edit and adjust experiment settings, view and deploy OML models.
 
-Estimated Time: 15 minutes
+Estimated Time: 20 minutes
 
 ### About Oracle Machine Learning AutoML UI
 
-Oracle Machine Learning AutoML UI (OML AutoML UI) is a no-code user interface supporting automated machine learning for both data scientist productivity and non-expert user access to powerful in-database algorithms. Like the OML4Py AutoML API, it accelerates machine learning projects by giving quick feedback on data set suitability for producing useful models – alleviating much of the drudgery of the machine learning process.
-Oracle Machine Learning AutoML UI automates model building with minimal user input – you just have to specify the data and the target in what’s called an experiment and the tool does the rest. However, you can adjust some settings, such as the number of top models to select, the model selection metric, and even specific algorithms.
-With a few clicks, you can generate editable _starter_ notebooks. These notebooks contain data selection, building the selected model – including the settings used to produce that model – and scoring and evaluation code – all in Python using OML4Py. You can build on this _generated notebook_ to apply your own domain expertise to augment the solution. Similarly, you can deploy models from OML AutoML UI as REST endpoints to Oracle Machine Learning (OML) Services in just a few clicks.
+**Oracle Machine Learning AutoML UI (OML AutoML UI)** is a no-code user interface supporting automated machine learning for both data scientist productivity and non-expert user access to powerful in-database algorithms. Like the OML4Py AutoML API, it accelerates machine learning projects by giving quick feedback on data set suitability for producing useful models – alleviating much of the drudgery of the machine learning process.
+
+**OML AutoML UI** automates model building with minimal user input – you just have to specify the data and the target in what’s called an experiment and the tool does the rest. However, you can adjust some settings, such as the number of top models to select, the model selection metric, and even specific algorithms.
+
+With a few clicks, you can generate editable _starter_ notebooks. These notebooks contain data selection, building the selected model – including the settings used to produce that model – and scoring and evaluation code – all in Python using OML4Py.  You can build on this _generated notebook_ to apply your own domain expertise to augment the solution. 
+
+Similarly, you can deploy models from OML AutoML UI as REST endpoints to Oracle Machine Learning (OML) Services in just a few clicks.
 
 ### Objectives
 
@@ -30,8 +34,6 @@ This lab assumes you have:
 * An Oracle Machine Learning account
 * Access to the OML UI
 <if type="freetier">
-* Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab</if>
-<if type="freetier-ocw23">
 * Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab</if>
 
 ## Task 1: Access Oracle Machine Learning AutoML UI
@@ -280,7 +282,7 @@ You can create notebooks based on the top models produced in the experiment. Thi
 
 This completes the task of creating the notebook **Customer 360 RF (1)** based on the Random Forest model that is created by the AutoML UI experiment **Customers 360**.
 
-## Task 6: View Generated Notebook and Individual Paragraphs
+## Task 7: View Generated Notebook and Individual Paragraphs
 
 To view the generated notebook Customer 360:
 
@@ -329,9 +331,11 @@ This completes the task of creating a notebook based on a model and viewing the 
 
 * [About Oracle Machine Learning AutoML UI](https://docs.oracle.com/en/database/oracle/machine-learning/oml-automl-ui/index.html)
 * [Blog: Oracle Machine Learning AutoML UI](https://blogs.oracle.com/machinelearning/post/introducing-oml-automl-user-interface)
+* [Get Started with Oracle Machine Learning Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/)
+* [Oracle Machine Learning Notebooks - Early Adopter](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/get-started-notebooks-ea-data-analysis-and-data-visualization.html#GUID-B309C607-2232-43E2-B4A1-655DB295B90B)
 
 ## Acknowledgements
 
 * **Author** - Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer, Database User Assistance Development
-* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Marcos Arancibia, Senior Principal Product Manager, Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
-* **Last Updated By/Date** - Marcos Arancibia, July 2023
+* **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Consulting Member of Tech Staff, Machine Learning
+* **Last Updated By/Date** - Marcos Arancibia, August 2023

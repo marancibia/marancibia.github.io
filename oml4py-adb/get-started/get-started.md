@@ -31,22 +31,22 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
 3. On the Autonomous Database details page, click **Database Actions** and then select **View all Database Actions**.
 
-	![Database Actions button in ADB Console](images/view-all-database-actions.png " ")
+	  ![Database Actions button in ADB Console](images/view-all-database-actions.png " ")
 
-   Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the proper password.
+     Before you get to the Oracle Database Actions Launchpad page, you might be asked to login, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the proper password.
    
     ![ADB login into Database Actions](images/login-to-actions.png " ")
 
 4. On the Database Actions page, go to the **Development** section and click **Oracle Machine Learning**. This opens the Oracle Machine Learning Sign In page.
     ![OML in Database Actions Launchpad](images/adb-dev-oml.png " ")
 
-    > **Note:** There is also a way to access directly the URL for the Oracle Machine Learning login page. It is under the ADB Console **Tool configuration** Tab, as illustrated below.  
+     > **Note:** There is also a way to access directly the URL for the Oracle Machine Learning login page. It is under the ADB Console **Tool configuration** Tab, as illustrated below.  
 	 
-	 ![ADB Console tool configuration tab](images/adb-console-tool.png " ")
+	  ![ADB Console tool configuration tab](images/adb-console-tool.png " ")
 	 
-	 In there you can scroll down to find and copy the direct URL to login into the OML UI.
+	  In there you can scroll down to find and copy the direct URL to login into the OML UI.
 
-	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
+	  ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
 
 5. You should be in the Sign In page for OML. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="livelabs-ocw23">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if><if type="freetier-ocw23">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if>
 
@@ -93,13 +93,14 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
  OML will start a session and make the notebook available for visualization and editing.
 
-### About Oracle Machine Learning Notebooks
+  ### About Oracle Machine Learning Notebooks
 
-A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration.
+    A notebook is a web-based interface for data analysis, data discovery, data visualization and collaboration.
 
-The Oracle Machine Learning Notebooks EA toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
+    The Oracle Machine Learning Notebooks EA toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
-For example, it displays the type of Database that the notebook is currently ready to use (low/medium/high), and also the current style of notebook layout (Jupyter vs Zeppelin). It also contains menu items to show or hide the paragraph code, result, titles and settings. Additional settings are shown in the illustration below.
+    For example, it displays the type of Database that the notebook is currently ready to use (low/medium/high), and also the current style of notebook layout (Jupyter vs Zeppelin). It also contains menu items to show or hide the paragraph code, result, titles and settings. Additional settings are shown in the illustration below.
+
     ![Explanation of the Notebook toolbar](images/notebook_toolbar.png " ")
 
 
@@ -110,7 +111,7 @@ For example, it displays the type of Database that the notebook is currently rea
   For this lab, we will set the processing group type to "low", by making sure it is the selected option in the top right of the Notebook when it's open.
 
   Click the processing group type button in the upper right-corner of the notebook to view the list of available processing group types.
-  ![Oracle Machine Learning Notebooks DB Level](images/interpreter_level.png " ")
+    ![Oracle Machine Learning Notebooks DB Level](images/interpreter_level.png " ")
 
   The default type is `low`, and you can select among the ones available to your Autonomous Database depending on type of service (Autonomous Datawarehouse or Autonomous Transaction Processing).
 
@@ -131,36 +132,36 @@ For example, it displays the type of Database that the notebook is currently rea
 
 1. Let's start by running the entire notebook, so that we can see the result of each paragraph.
 
-  Click on the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon in front of the name of the notebook, and then click **Confirm** to run the notebook and refresh the content with your data, as indicated below.
+   Click on the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon in front of the name of the notebook, and then click **Confirm** to run the notebook and refresh the content with your data, as indicated below.
 
-  Another option is to just scroll down and read the pre-recorded results contained in the notebooks themselves.
+   Another option is to just scroll down and read the pre-recorded results contained in the notebooks themselves.
 
- ![Run all paragraphs](images/click-run-all-lab1.png " ")
+   ![Run all paragraphs](images/click-run-all-lab1.png " ")
 
-  Scroll down on the "Lab 1" Notebook to follow along the steps below.
+   Scroll down on the "Lab 1" Notebook to follow along the steps below.
 
-  ![Scroll down notebooks to follow along notebook screen capture](images/scroll-down-notebook.png " ")
+   ![Scroll down notebooks to follow along notebook screen capture](images/scroll-down-notebook.png " ")
 
 2. To run Python commands in a notebook, you must make use of the Python interpreter. This occurs as a result of running your first  `%python`  paragraph.  To use OML4Py, you must import the `oml` module, which automatically establishes a connection to your database.
 
-  In an Oracle Machine Learning notebook, you can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL, Python or R. This lab shows you how to:
+   In an Oracle Machine Learning notebook, you can add multiple paragraphs, and each paragraph can be connected to different interpreters such as SQL, Python or R. This lab shows you how to:
 
-  * Connect to a Python interpreter to run Python commands in a notebook
-  * Import the Python modules&mdash;oml, pandas, numpy, and matplotlib
-  * Check if the `oml` module is connected to the database
+   * Connect to a Python interpreter to run Python commands in a notebook
+   * Import the Python modules&mdash;oml, pandas, numpy, and matplotlib
+   * Check if the `oml` module is connected to the database
 
-  **Note:** `"z"` is a reserved keyword and must not be used as a variable in `%python` paragraphs in Oracle Machine Learning Notebooks. You will see `z.show()` used in the examples to display Python object and proxy object content.
+   > **Note:** **`"z"`** is a reserved keyword and must not be used as a variable in `%python` paragraphs in Oracle Machine Learning Notebooks. You will see `z.show()` used in the examples to display Python object and proxy object content.
 
 3. To use OML4Py, you must import the oml module. Type the following Python command to import the `oml` module, and click the **run** icon. Alternatively, you can press Shift+Enter keys to run the current paragraph where the cursor is.   
 
-  ![Python command to import oml module notebook screen capture](images/import_oml.png " ")
+   ![Python command to import oml module notebook screen capture](images/import_oml.png " ")
 
 4. Using the default interpreter bindings, OML Notebooks automatically establishes a database connection for the notebook.  
-  To verify the Python interpreter has established a database connection through the `oml` module, run the command:
+   To verify the Python interpreter has established a database connection through the `oml` module, run the command:
 
-  ![Database Connection Verification notebook screen capture](images/oml_connected.png " ")
+   ![Database Connection Verification notebook screen capture](images/oml_connected.png " ")
 
-  Once your notebook is connected, the command returns `True`.         
+   Once your notebook is connected, the command returns `True`.         
 
 5. The Python `help` function
 
@@ -233,4 +234,4 @@ You can now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Marcos Arancibia, Product Manager, Machine Learning; Moitreyee Hazarika, Principal User Assistance Developer
 * **Contributors** -  Mark Hornick, Senior Director, Data Science and Machine Learning; Sherry LaMonica, Principal Member of Tech Staff, Machine Learning; Jie Liu, Data Scientist
-* **Last Updated By/Date** - Marcos Arancibia, July 2023
+* **Last Updated By/Date** - Marcos Arancibia, August 2023
