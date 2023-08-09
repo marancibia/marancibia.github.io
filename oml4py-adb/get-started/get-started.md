@@ -42,11 +42,15 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
      > **Note:** There is also a way to access directly the URL for the Oracle Machine Learning login page. It is under the ADB Console **Tool configuration** Tab, as illustrated below.  
 	 
-	  ![ADB Console tool configuration tab](images/adb-console-tool.png " ")
+	 ![ADB Console tool configuration tab](images/adb-console-tool.png " ")
 	 
-	  In there you can scroll down to find and copy the direct URL to login into the OML UI.
+	 In there you can scroll down to find and copy the direct URL to login into the OML UI.
 
-	  ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
+	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
+
+	 If you are are using a **Paid Account** you would also see additional options to customize the compute power available specifically to OML jobs, including the timeout defined.
+
+	 ![OML option in ADB Console tool Paid Account](images/oml-ui-tool-adb-console-paid.png " ")
 
 5. You should be in the Sign In page for OML. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="livelabs-ocw23">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if><if type="freetier-ocw23">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if>
 
@@ -108,7 +112,7 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
 1. OML Notebooks contain a default list of interpreter bindings that operate under the different Autonomous Database processing groups.  These interpreter bindings are used to run scripts in the different languages, and it will be processed by the Autonomous Database that it is linked to.  
    
-  For this lab, we will set the processing group type to "low", by making sure it is the selected option in the top right of the Notebook when it's open.
+  For this lab, we will **set the processing group type to `low`**, by making sure it is the selected option in the top right of the Notebook when it's open.
 
   Click the processing group type button in the upper right-corner of the notebook to view the list of available processing group types.
     ![Oracle Machine Learning Notebooks DB Level](images/interpreter_level.png " ")

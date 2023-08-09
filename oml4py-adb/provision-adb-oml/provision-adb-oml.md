@@ -167,6 +167,10 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
 
+	 If you are are using a **Paid Account** you would also see additional options to customize the compute power available specifically to OML jobs, including the timeout defined.
+
+	 ![OML option in ADB Console tool Paid Account](images/oml-ui-tool-adb-console-paid.png " ")
+
 3. Enter your user credentials and click **Sign in**.
 
 	> **Note:** The credential is what you have defined while creating the Oracle Machine Learning user _OMLUSER_ .
