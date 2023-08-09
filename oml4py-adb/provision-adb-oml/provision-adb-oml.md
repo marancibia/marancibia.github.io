@@ -56,10 +56,14 @@ To provision an Oracle Autonomous Database:
 
    ![Autonomous Database always free](images/db-config-always-free.png " ")
    
-    > **Note:** If you are using a **paid account**, you will see more options available that include compute and storage sizing and auto scaling.  For this workshop a single compute unit with auto scaling is sufficient.
+    > **Note:** If you are using a **Paid Account**, you will see more options available that include compute and storage sizing and auto scaling.  For this workshop the **minimum compute unit of 2 ECPUs with auto scaling** is sufficient.
 
+    ![Configure Database](images/db-configuration-ecpu.png " ")
 
-    ![Configure Database](images/db-configuration.png " ")
+	You will also be offered a **customizable Backup Plan** billed separately, not available in the Always-Free Autonomous Database, that you can adjust as ou see necessary.  We will not be using backups in this workshop, so you can easily put it to a minimum of 1.
+
+    ![Configure Database](images/db-configuration-backup.png " ")
+
 
 7. Create your Autonomous Database administrator credentials by providing a password. You will need these credentials to sign into this Autonomous Database instance.   
 
