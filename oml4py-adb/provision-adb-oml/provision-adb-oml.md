@@ -75,7 +75,7 @@ To provision an Oracle Autonomous Database:
 
     ![Network Access settings](images/create-adw-network.png " ")
 
-9. For License type, the **Always Free** databases are provisioned with **License Included**.
+9. For License type, by default the **Always Free** databases are provisioned with **License Included**.  You can switch it to BYOL if this is your case.
 
     ![License settings](images/create-adw-license.png " ")
 
