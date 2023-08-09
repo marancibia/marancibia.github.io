@@ -177,13 +177,13 @@ A notebook is a web-based interface for data analysis, data discovery, data visu
 
 3. Enter your user credentials and click **Sign in**.
 
-	> **Note:** The credential is what you have defined while creating the Oracle Machine Learning user _OMLUSER_ .
+	 > **Note:** The credential is what you have defined while creating the Oracle Machine Learning user _OMLUSER_ .
 
-	![Oracle Machine Learning UI Sign in](images/omluser-signin.png " ")
+	 ![Oracle Machine Learning UI Sign in](images/omluser-signin.png " ")
 
-  This opens the Oracle Machine Learning user interface home page.
+     This opens the Oracle Machine Learning user interface home page.
 
-	![OML homepage](images/homepage.png " ")
+     ![OML homepage](images/homepage.png " ")
 
 This completes the task of signing into Oracle Machine Learning user interface.
 
