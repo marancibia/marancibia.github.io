@@ -35,6 +35,61 @@ This lab assumes you have:
 * Access to the OML UI
 <if type="freetier">
 * Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab</if>
+<if type="freetier-ocw23">
+* Successfully run the **Lab 1, Task 5 "Load sample data..."** for loading the necessary data for this Lab</if>
+<if type="livelabs-ocw23">
+* A new Table that is required to run the experiment.  We will use the **ScrathPad** feature of OML UI to run a simple script to create a table.
+     - Login to OML UI.  Go to the **Home Menu** of OML UI, and then click on the **ScratchPad** icon.
+
+	 ![home page ScratchPad](images/home-scratchpad.png " ")
+
+     - Copy the code below and paste it into the second paragraph, indicated with the **`%script`**.
+      
+	  ```
+	  <copy>
+	  CREATE TABLE CUSTOMERS360 AS
+          (SELECT a.CUST_ID, a.CUST_GENDER, a.CUST_MARITAL_STATUS,
+             a.CUST_YEAR_OF_BIRTH, a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
+             b.EDUCATION, b.AFFINITY_CARD,
+             b.HOUSEHOLD_SIZE, b.OCCUPATION, b.YRS_RESIDENCE, b.Y_BOX_GAMES
+       FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
+       WHERE a.CUST_ID = b.CUST_ID);
+	  ```
+  
+     - Your **Scratchpad** should look like the below. Click the **Run play button** as indicated below on the script paragraph to run the code and create the table.  
+
+	 ![paragraph ScratchPad](images/script-scratchpad.png " ")
+
+     - You should see a message **Table CUSTOMERS360 created**, indicating that the code was run successfully.  You are now ready to proceed with the Lab.
+   
+ </if>
+<if type="livelabs">
+* A new Table that is required to run the experiment.  We will use the **ScrathPad** feature of OML UI to run a simple script to create a table.
+     - Login to OML UI.  Go to the **Home Menu** of OML UI, and then click on the **ScratchPad** icon.
+
+	 ![home page ScratchPad](images/home-scratchpad.png " ")
+
+     - Copy the code below and paste it into the second paragraph, indicated with the **`%script`**.
+      
+	  ```
+	  <copy>
+	  CREATE TABLE CUSTOMERS360 AS
+          (SELECT a.CUST_ID, a.CUST_GENDER, a.CUST_MARITAL_STATUS,
+             a.CUST_YEAR_OF_BIRTH, a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
+             b.EDUCATION, b.AFFINITY_CARD,
+             b.HOUSEHOLD_SIZE, b.OCCUPATION, b.YRS_RESIDENCE, b.Y_BOX_GAMES
+       FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
+       WHERE a.CUST_ID = b.CUST_ID);
+	  ```
+  
+     - Your **Scratchpad** should look like the below. Click the **Run play button** as indicated below on the script paragraph to run the code and create the table.  
+
+	 ![paragraph ScratchPad](images/script-scratchpad.png " ")
+
+     - You should see a message **Table CUSTOMERS360 created**, indicating that the code was run successfully.  You are now ready to proceed with the Lab.
+   
+ </if>
+
 
 ## Task 1: Access Oracle Machine Learning AutoML UI
 
@@ -42,13 +97,9 @@ To access AutoML UI, you must sign into the Oracle Machine Learning User Interfa
 
 1. Sign into Oracle Machine Learning user interface (following Lab1, Task 1 instructions).
 
-2. On your Oracle Machine Learning home page, click **AutoML** in the Quick Actions section.
+2. On the Oracle Machine Learning home page, either click on the **AutoML** icon in the Quick Actions section or click the "hamburger" menu (the three lines) on the upper left of the screen, and then select **AutoML Experiments**.
 
 	![home page](images/homepage-automl.png " ")
-
-	Alternatively, you can click the hamburger icon ![hamburger icon](images/hamburger.png) on the top left corner of the home page to open the left navigation menu. Click **AutoML Experiments**. This opens the AutoML Experiments page.
-
-	![home page](images/hamburger-automl.png " ")
 
 ## Task 2: Create an Experiment
 
@@ -59,37 +110,33 @@ When creating an experiment, you must specify the data source and the target of 
 
 To create an Experiment:
 
-1. Click **AutoML** on your Oracle Machine Learning home page. Alternatively, you can go to the left navigation menu at the upper left corner of the page and click AutoML. The AutoML Experiments page opens.
-
-	![home page](images/homepage-automl.png " ")
-
-2. In the AutoML Experiments page that opens, click **Create**. 
+1. In the AutoML Experiments page, click **Create**. 
 
     ![AutoML Experiment page](images/create-automl-exp.png " ")
    
-3. The Create Experiments page opens.
+2. The Create Experiments page opens.
 
     ![AutoML New Experiment page](images/new-automl-exp.png " ")
 
-4. In the **Name** field, enter **Customers 360**.
+3. In the **Name** field, enter **Customers 360**.
 
-5. Optionally enter something in the **Comments** field, like **Predicting Affinity Card upgrades**.
+4. Optionally enter something in the **Comments** field, like **Predicting Affinity Card upgrades**.
 
-6. In the **Data Source** field, click the search icon to open the Select Table dialog. 
+5. In the **Data Source** field, click the search icon to open the Select Table dialog. 
    
     ![AutoML New Experiment page](images/search-data-source.png " ")
 
-7. On the Select Table dialog, the OMLUSER schema is selected by default. On the right pane, start typing **CUST** in the top Search field, and select the table (you might have to scroll down) named **CUSTOMERS360** from the list of tables, as indicated below. Then click **OK** to confirm the selection.
+6. On the Select Table dialog, the OMLUSER schema is selected by default. On the right pane, start typing **CUST** in the top Search field, and select the table (you might have to scroll down) named **CUSTOMERS360** from the list of tables, as indicated below. Then click **OK** to confirm the selection.
 
 	![Create Experiment dialog](images/select-customer360-omluser.png " ")
 
-8. In the **Predict** drop-down list, select the column **AFFINITY_CARD** from the ``CUSTOMERS360`` table. You can also start typing the column name and the column names are filtered for easier selection. 
+7. In the **Predict** drop-down list, select the column **AFFINITY_CARD** from the ``CUSTOMERS360`` table. You can also start typing the column name and the column names are filtered for easier selection. 
    
    The target for our prediction is a binary target (0 or 1) that indicates whether a customer has accepted an offer to upgrade to our **Affinity Card** subscription.  We want to build a model so that we can predict the likelihood of non-Afinity Card members to upgrade, so that we can create targeted campaigns.
 
 	![Select Prediction column](images/select-prediction-column.png " ")
 
-9.  In the **Prediction Type** field, the prediction type is automatically selected based on target field data type and cardinality. In this lab, **Classification** is automatically selected.	
+8.  In the **Prediction Type** field, the prediction type is automatically selected based on target field data type and cardinality. In this lab, **Classification** is automatically selected.	
     
    ![Prediction type](images/prediction-type.png " ")
 
@@ -99,13 +146,13 @@ To create an Experiment:
 
 	**Regression:** For numeric data type, Regression is selected by default.
 
-10. In the **Case ID** field, select **CUST_ID**. For easier selection, you can also type the column name and the column names are filtered. The Case ID helps in data sampling and dataset split to make the results reproducible between experiments. It also aids in reducing randomness in the results. This is an optional field.
+9.  In the **Case ID** field, select **CUST_ID**. For easier selection, you can also type the column name and the column names are filtered. The Case ID helps in data sampling and dataset split to make the results reproducible between experiments. It also aids in reducing randomness in the results. This is an optional field.
 
     The top section of your current Experiment layout should look like this:
 
 	![Create Experiment dialog](images/create-experiment.png " ")
 
-11. To adjust additional settings of this experiment, expand the **Additional Settings** section on the Experiments page, and change the **Maximum Top Models** to 3:
+10. To adjust additional settings of this experiment, expand the **Additional Settings** section on the Experiments page, and change the **Maximum Top Models** to 3:
 
 	![Additional Settings](images/additional-settings-bal-accr.png " ")
 
@@ -122,7 +169,7 @@ To create an Experiment:
 
    ![Additional Settings](images/additional-settings-algo.png " ")
 
- > **Note:** Changing the database service level setting on the Always Free Tier will have no effect since there is a 1 OCPU limit. However, in a paid Autonomous Database tenancy, if you increase the OCPUs allocated to your autonomous database, then you can increase the Database Service Level to Medium or High here.
+ > **Note:** Changing the database service level setting on the Always Free Tier will have no effect since there is no parallelism on the compute.  However, in a **Paid Autonomous Database**, if you increase the compute allocated for OML, you can increase the Database Service Level to Medium or High to get parallelism.
 
 This completes the task of creating an experiment.
 

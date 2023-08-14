@@ -21,11 +21,13 @@ In this lab, you will learn how to:
 
 You create notebooks in Oracle Machine Learning UI. You can access Oracle Machine Learning UI from Autonomous Database.
 
-1. Sign into your OCI account, click the hamburger on the left to open the left navigation pane, and click **Oracle Database**. On the right pane, click **Autonomous Database**.
+1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
 
-    ![Autonomous Database under OCI main menu](images/database-adw.png " ")
+     > **Note:** It is possible to select a different type of Autonomous Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
 
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the provisioned Live Labs instance, and click the Oracle Autonomous Database name.
+    ![Autonomous Database under Oracle Database](images/database-adw.png " ")
+
+2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Select the compartment corresponding to the <if type="livelabs">provisioned Live Labs instance (per instructions on the Lab **Get Started with Live Labs**, Task 1, Step 3)</if><if type="livelabs-ocw23">provisioned Live Labs instance (per instructions on the Lab **Get Started with Live Labs**, Task 1, Step 3)</if><if type="freetier">previously provisioned instance</if><if type="freetier-ocw23">previously provisioned instance</if>, and click the Oracle Autonomous Database name (in the example below, **OML_LABS**).
 
     ![Oracle Autonomous Database instances](images/provisioned-adb.png " ")
 
@@ -48,9 +50,8 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
 	 ![OML option in ADB Console tool](images/oml-ui-tool-adb-console.png " ")
 
-	 If you are are using a **Paid Account** you would also see additional options to customize the compute power available specifically to OML jobs, including the timeout defined.
-
-	 ![OML option in ADB Console tool Paid Account](images/oml-ui-tool-adb-console-paid.png " ")
+	  > **Note:** If you are are using a **Paid Account** and depoyed a **Paid Autonomous Database** you would also see an additional column that show any customizations made to the compute power available specifically to OML jobs, along with the  `Max idle time` defined to release those resources.
+	   ![OML option in ADB Console tool Paid Account](images/oml-ui-tool-adb-console-paid.png " ")
 
 5. You should be in the Sign In page for OML. <if type="livelabs">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="livelabs-ocw23">Sign in with the **`OMLUSER`** using the password **`AAbbcc123456`**. </if><if type="freetier">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if><if type="freetier-ocw23">Enter the **`OMLUSER`** credentials using the password that you used earlier when creating the users. Then click the blue **Sign in** button.</if>
 
@@ -78,7 +79,7 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 > **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1 - Get Started with OML4Py on Autonomous Database" notebook in DSNB format](<./../notebooks/Lab 1 - Get Started with OML4Py on Autonomous Database.dsnb?download=1>) which contains the notebook version of Lab1, save it to your local machine and import it as illustrated below.
 
   To import the downloaded notebook files into **OML Notebooks EA**:
-  - Go to the Notebooks page, and click **Import**.  
+  - Go to the **Notebooks EA** page, and click **Import**.  
 
   ![OML Notebooks import](images/click-on-import-notebook.png " ")
 
@@ -103,7 +104,7 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 
     The Oracle Machine Learning Notebooks EA toolbar contains buttons to run code in paragraphs, for configuration settings, and display options.
 
-    For example, it displays the type of Database that the notebook is currently ready to use (low/medium/high), and also the current style of notebook layout (Jupyter vs Zeppelin). It also contains menu items to show or hide the paragraph code, result, titles and settings. Additional settings are shown in the illustration below.
+    For example, it displays the type of Database connection group that the notebook is currently ready to use (low/medium/high), and also the current style of notebook layout (Jupyter vs Zeppelin). It also contains menu items to show or hide the paragraph code, result, titles and settings. Additional settings are shown in the illustration below.
 
     ![Explanation of the Notebook toolbar](images/notebook_toolbar.png " ")
 
@@ -191,12 +192,12 @@ You can now *proceed to the next lab*.</if>
 
  OML Notebooks will load a session and make the notebook available for editing.
 
-4. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to run the notebook.
+3. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to run the notebook.
   ![Run the Lab 1a](images/click-run-all.png " ")
 
-5. Scroll down, and wait until all the paragraphs have finished running.  You should see a message at the bottom of the last paragraph that contains SQL code (the `%script` one) that reads `"PL/SQL procedure successfully completed"`.
+   Scroll down, and wait until all the paragraphs have finished running.  You should see a message at the bottom of the last paragraph that contains SQL code (the `%script` one) that reads `"PL/SQL procedure successfully completed"`.
 
-  And at the bottom right, you will see the time it took to run and how long ago it was done.  In the example below it mentions `243ms @ a few seconds ago`, indicating the recent run.
+   And at the bottom right, you will see the time it took to run and how long ago it was done.  In the example below it mentions `243ms @ a few seconds ago`, indicating the recent run.
 
   ![The last paragraph](images/last-paragraph.png " ")
 
@@ -218,9 +219,12 @@ You can now *proceed to the next lab*.
  
  OML Notebooks will load a session and make the notebook available for editing.
 
-4. If you ran the entire Notebook at step 1, you can scroll down and see a message at the bottom of the last paragraph that contains SQL code (the `%script` one) that reads `"PL/SQL procedure successfully completed"`.  
-   
-  And at the bottom right, you will see the time it took to run and how long ago it was done.  In the example below it mentions `"243ms @ a few seconds ago"`, indicating the recent run.  If you have not run it yourself, it will show the date it was last run.
+3. Click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to run the notebook.
+  ![Run the Lab 1a](images/click-run-all.png " ")
+
+   Scroll down, and wait until all the paragraphs have finished running.  You should see a message at the bottom of the last paragraph that contains SQL code (the `%script` one) that reads `"PL/SQL procedure successfully completed"`.
+
+   And at the bottom right, you will see the time it took to run and how long ago it was done.  In the example below it mentions `243ms @ a few seconds ago`, indicating the recent run.
 
   ![The last paragraph](images/last-paragraph.png " ")
 

@@ -17,8 +17,11 @@ In this lab, you will learn how to:
 ### Prerequisites
 
 * Sign up for a Free Tier Oracle Cloud account (check the **Get Started** Lab in this workshop for instructions) or use your own paid Oracle Cloud account.
+  
+* If you are using your own **Paid OCI Tenancy**, make sure you have the appropriate Quotas available to provision **Autonomous Data Warehouse** services.  You can read more about "Quotas and Limits" in the [OCI Documentation for Service Limits](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm " "). 
 
-> **Note:** You may see differences in account details in the screenshots (eg: Database Name is different than yours) as you work through the labs. This is because of the flexibility of choice you will have when creating your own.
+
+ > **Note:** You may see differences in account details in the screenshots (eg: Database Name is different than yours) as you work through the labs. This is because of the flexibility of choice you will have when creating your own.
 
 ## Task 1: Provision an Oracle Autonomous Database
 
@@ -36,7 +39,10 @@ To provision an Oracle Autonomous Database:
 
    ![Create Autonomous Database option](images/create-autonomous-db.png " ")
 
-   > **Note:** You will need to make sure to select your OCI Home Region if you intent on creatng an Always-Free Autonomous Database.
+    > **Note:** You will need to make sure to select your **OCI Home Region** if you intent on creating an Always-Free Autonomous Database.
+
+     ![Create Autonomous Database option](images/create-autonomous-db-your-region.png " ")
+
 
 3. On the Create Autonomous Database page, provide the basic information about the database. By default, a database name and a display name for the database are provided. You can modify these names to enter a user-friendly display name for the ADB instance to easily identify the resource. The display name does not have to be unique.    
 
@@ -52,17 +58,17 @@ To provision an Oracle Autonomous Database:
 
    ![Autonomous Database deployment type](images/deployment-type.png " ")
 
-6. For Database Configuration, select Always Free. For the Always Free option, the only database configuration option available is the release.  Please **select 19c**.  You can create `Always Free` resources both in Free Tier and Paid accounts
+6. For Database Configuration, select Always Free. For the Always Free option, the only database configuration option available is the release.  Please **select 19c**.  You can create `Always Free` resources both in Free Tier and Paid accounts, with the requirement of it being created in your **OCI Home Region** as mentioned above on Task 2.
 
    ![Autonomous Database always free](images/db-config-always-free.png " ")
    
-    > **Note:** If you are using a **Paid Account**, you will see more options available that include compute and storage sizing and auto scaling.  For this workshop the **minimum compute unit of 2 ECPUs with auto scaling** is sufficient.
+    > **Note:** If you are using a **Paid Account** and decide to provision a **paid database** instead of an `Always-Free`, you will see more options available that include compute and storage sizing and auto scaling.  For this workshop the **minimum compute unit of 2 ECPUs with auto scaling** is sufficient.
 
-    ![Configure Database](images/db-configuration-ecpu.png " ")
+    > ![Configure Database](images/db-configuration-ecpu.png " ")
 
-	You will also be offered a **customizable Backup Plan** billed separately, not available in the Always-Free Autonomous Database, that you can adjust as ou see necessary.  We will not be using backups in this workshop, so you can easily put it to a minimum of 1.
+	> You will also be offered a **customizable Backup Plan** billed separately, not available in the Always-Free Autonomous Database, that you can adjust as ou see necessary.  We will not be using backups in this workshop, so you can easily put it to a minimum of 1 day without issues.
 
-    ![Configure Database](images/db-configuration-backup.png " ")
+    > ![Configure Database](images/db-configuration-backup.png " ")
 
 
 7. Create your Autonomous Database administrator credentials by providing a password. You will need these credentials to sign into this Autonomous Database instance.   
@@ -75,7 +81,7 @@ To provision an Oracle Autonomous Database:
 
     ![Network Access settings](images/create-adw-network.png " ")
 
-9. For License type, by default the **Always Free** databases are provisioned with **License Included**.  You can switch it to BYOL if this is your case.
+9. For License type, by default the **Always Free** databases are provisioned with **License Included** and you cannot change this option.  If you provision a **Paid Account** you can switch it to BYOL if this is your case.
 
     ![License settings](images/create-adw-license.png " ")
 
@@ -83,7 +89,12 @@ To provision an Oracle Autonomous Database:
 
 	 ![Contact details](images/contact-details.png " ")
 
-	 The Oracle Autonomous Data Warehouse instance starts provisioning. Once your Autonomous Database is created (it should take a few minutes), the database details are listed with the status Available.
+	 The Oracle Autonomous Data Warehouse instance starts provisioning. It will show the status **Provisioning** and will start a **Guided Tour** that you can skip for now.
+	 
+	 ![Contact details](images/adw-starts-provisioning.png " ")
+
+	 
+	 Once your Autonomous Database is created (it should take a few minutes), the database details are listed with the status Available.
 
 	  ![ADB details](images/adw-details.png " ")
 
