@@ -10,7 +10,7 @@ Watch this quick video on Oracle Machine Learning for Python (OML4Py).
 
  [Overview of OML4Py](youtube:wciO-5CyS2M)
 
-Estimated Time: 120 minutes
+Estimated Time:  <if type="freetier">230 minutes</if><if type="freetier-ocw23">150 minutes (plus 80 minutes of Bonus Labs)</if><if type="livelabs">215 minutes</if><if type="livelabs-ocw23">135 minutes (plus 80 minutes of Bonus Labs)</if>
 
 ### About Oracle Machine Learning for Python (OML4Py)
 Oracle Machine Learning for Python (OML4Py) is a component of Oracle Autonomous Database, which includes Oracle Autonomous Data Warehouse (ADW), Oracle Autonomous Transaction Processing (ATP), and Oracle Autonomous JSON Database (AJD). By using Oracle Machine Learning Notebooks on Oracle Autonomous Database, you can run Python functions on database data for exploration, preparation, and modeling while leveraging Oracle Database as a high-performance computing environment.
@@ -24,26 +24,38 @@ Watch the video below for an introduction to Oracle Machine Learning for Python.
  The labs in this workshop focus on the following:
 
 <if type="freetier">* Provision an Autonomous Database with OML-ready users</if>
+<if type="freetier-ocw23">* Provision an Autonomous Database with OML-ready users</if>
  * Oracle Machine Learning UI and OML Notebooks with a connection to an Oracle Autonomous Database from a Python session
 <if type="freetier">* Load external and internal datasets that will be used by all the Labs</if>
+<if type="freetier-ocw23">* Load external and internal datasets that will be used by all the Labs</if>
  * Data selection and manipulation with the Transparency Layer
  * In-database algorithms for model building and scoring
  * Datastores to store Python objects
  * Python script repository to store user-defined functions (UDFs) in the database
-<if type="ocw23">
+<if type="freetier-ocw23">
  * AutoML UI no-code interface for running AutoML jobs and auto-generation of the Python code that builds the desired model 
   
 As additional **Bonus Labs**
  * Embedded Python Execution to run UDFs in database-spawned and controlled Python engines, via Python, SQL and REST 
  * AutoML functionality supporting automated algorithm and feature selection, along with model tuning and selection via Python API
 </if>
-<if type="main">
+<if type="livelabs-ocw23">
+ * AutoML UI no-code interface for running AutoML jobs and auto-generation of the Python code that builds the desired model 
+  
+As additional **Bonus Labs**
+ * Embedded Python Execution to run UDFs in database-spawned and controlled Python engines, via Python, SQL and REST 
+ * AutoML functionality supporting automated algorithm and feature selection, along with model tuning and selection via Python API
+</if>
+<if type="livelabs">
  * Embedded Python Execution to run UDFs in database-spawned and controlled Python engines, via Python, SQL and REST 
  * AutoML functionality supporting automated algorithm and feature selection, along with model tuning and selection via Python API
  * AutoML UI no-code interface for running AutoML jobs and auto-generation of the Python code that builds the desired model
 </if>
-
-
+<if type="freetier">
+ * Embedded Python Execution to run UDFs in database-spawned and controlled Python engines, via Python, SQL and REST 
+ * AutoML functionality supporting automated algorithm and feature selection, along with model tuning and selection via Python API
+ * AutoML UI no-code interface for running AutoML jobs and auto-generation of the Python code that builds the desired model
+</if>
 
 ### Prerequisites
 

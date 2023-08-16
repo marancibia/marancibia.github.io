@@ -184,7 +184,7 @@ You can now *proceed to the next lab*.</if>
 
 1. Labs 2 and above of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a - Run Me First - OML4Py table creation and grants".
 
-> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" noteook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
+> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" notebook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
 
 2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. Click the **Lab 1a** notebook to view it.
 
@@ -211,7 +211,7 @@ You can now *proceed to the next lab*.
 
 1. Labs 2 and above of this workshop use tables and views that need to be created upfront.  To create these tables and views, we will open the Notebook "Lab 1a - Run Me First - OML4Py table creation and grants".
 
-> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" noteook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
+> **NOTE:** If you have problems with downloading and extracting the ZIP file, please [**CLICK HERE** to download the "Lab 1a - Run Me First - OML4Py table creation and grants" notebook DSNB file](<./../notebooks/Lab 1a - Run Me First - OML4Py table creation and grants.dsnb?download=1>). This notebook contains the scripts for creating tables and views, and granting the required access. Save it to your local machine and import it like illustrated in **Task 2, Step 1**.
 
 2. Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. Click the **Lab 1a** notebook to view it.
 

@@ -24,7 +24,7 @@ In this lab, you will learn how to:
 
 1. We need to access and run the OML notebook for this lab.
 
- > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 3 - Use in-database algorithms and models" noteook DSNB file](<./../notebooks/Lab 3 - Use in-database algorithms and models.dsnb?download=1>). This notebook contains the scripts for **Lab 3**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
+ > **NOTE:** If you have problems with downloading and extracting the ZIP file in Lab 1 Task 2, please [**CLICK HERE** to download the "Lab 3 - Use in-database algorithms and models" notebook DSNB file](<./../notebooks/Lab 3 - Use in-database algorithms and models.dsnb?download=1>). This notebook contains the scripts for **Lab 3**. Save it to your local machine and import it like illustrated in **Lab 1, Task 2, Step 1**.
 
    Go back to the main Notebooks listing by clicking on the "hamburger" menu (the three lines) on the upper left of the screen, and then select **Notebooks EA**. 
    
@@ -43,7 +43,7 @@ In this lab, you will learn how to:
 
    OML Notebooks will create a session and make the notebook available for editing.
 
-   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **OK** to confirm to refresh the content with your data, or just scroll down and read the pre-recorded results.  
+   You can optionally click the **Run all paragraphs** (![](images/run-all-paragraphs.png =20x*)) icon, and then click **Confirm** to refresh the content with your data, or just scroll down and read the pre-recorded results.  
 
    ![Lab 3 main screen](images/lab3-main.png " ")
 

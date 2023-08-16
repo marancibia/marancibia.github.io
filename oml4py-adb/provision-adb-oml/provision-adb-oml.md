@@ -4,7 +4,7 @@
 
 This lab walks you through the steps to provision an Autonomous Database in your Oracle Cloud account, whether it is a Free Tier one or a Paid one.  You will also create an OML-enabled user and sign into Oracle Machine Learning user interface.
 
-Estimated Time: 15 minutes
+Estimated Time: 20 minutes
 
 ### Objectives
 
