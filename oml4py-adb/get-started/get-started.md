@@ -21,7 +21,24 @@ In this lab, you will learn how to:
 You create notebooks in Oracle Machine Learning UI. You can access Oracle Machine Learning UI from Autonomous Database.
 
 <if type="livelabs">
-1. Go to the site [**My Reservations**](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/my-reservations?session=16332553284249) and make sure you can see that your reservation is ready.  When it is, it will show you a button called **`Launch Workshop`**.  Click on it.
+1. Go to the site [**My Reservations**](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/my-reservations) and make sure you can see that your reservation is ready.  When it is, it will show you a button called **`Launch Workshop`**.  Click on it.
+    ![Live Labs My Reservations](images/ll-launch-workshop.png " ")
+
+2. In the window with instructions that opens, click on the **View Login Info** at the **top left** of the page, and then click on the **Launch OCI** button.  Make sure to click on the **Copy Password** button since you will need it to login.
+    ![Live Labs Launch OCI](images/ll-view-login-info.png " ")
+
+3. Login into OCI with the user provided (it should be filled automatically) and the password you copied.  
+    ![Live Labs Login into OCI](images/ll-login-oci.png " ")
+
+    > **Note:** The first time you login to OCI, you will be asked to reset your password.
+
+4. When you are in OCI, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
+    ![Autonomous Database under Oracle Database](images/database-adw.png " ")
+
+</if>
+
+<if type="livelabs-ocw23">
+1. Go to the site [**My Reservations**](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/my-reservations) and make sure you can see that your reservation is ready.  When it is, it will show you a button called **`Launch Workshop`**.  Click on it.
     ![Live Labs My Reservations](images/ll-launch-workshop.png " ")
 
 2. In the window with instructions that opens, click on the **View Login Info** at the **top left** of the page, and then click on the **Launch OCI** button.  Make sure to click on the **Copy Password** button since you will need it to login.
@@ -38,6 +55,17 @@ You create notebooks in Oracle Machine Learning UI. You can access Oracle Machin
 </if>
 
 <if type="freetier">
+
+1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
+
+     > **Note:** It is possible to select a different type of Autonomous Database if you previously provisioned a different one and have created OML Users for it, since OML is available in AJD and ATP as well.
+
+    ![Autonomous Database under Oracle Database](images/database-adw.png " ")
+
+</if>
+
+
+<if type="freetier-ocw23">
 
 1. Sign into your OCI account, click the left navigation pane on the upper left corner, and click **Autonomous Data Warehouse** under **Oracle Database**.  
 
