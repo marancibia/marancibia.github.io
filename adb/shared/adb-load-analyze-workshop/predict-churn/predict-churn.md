@@ -36,11 +36,11 @@ In this lab, you will:
 
 ## Task 1: Create a new Database user and access its DB Actions
 
-1. If you have the Database Actions for the **ADMIN** user still open, you scroll down until you find the _Database Users tile_ under the **Administration** section to open the user management interface.
+1. If you have the Database Actions for the **ADMIN** user still open, look for the **Administration** section, and you will find _Database Users_. Click to open the interface for managing users.
     ![Go to Database Users from Database Actions](images/dbactions-database-users-tile.png "")
 
 
->  Alternatively, you can navigate to the the Autonomous Database console, and select the option **Database Users** from the _Database Actions_ pull-down menu.
+>  Alternatively, you can navigate from the Autonomous Database console, by selecting the option **Database Users** from the _Database Actions_ pull-down menu.
     ![Go to Database Users from ADB Console](images/adb-console-database-users-menu.png "")
 
 2. In the Database Users interface that opens, click on **Create User**
@@ -60,15 +60,15 @@ Click _Create User_ to create the user.
 
 5. You will be asked for the user and password for the OMLUSER.  Note that in the URL itself in the browser you can see that this is the specific DB Actions link for that user.  
 
-Enter the **OMLUSER** and the password you just created to sign in.
+Enter **OMLUSER** and the password you just created to sign in.
     ![Sing into OMLUSER DB Actions](images/dbactions-omluser-login.png "")
 
 ## Task 2: Load the data we will use to work with Oracle Machine Learning
 
-1. Inside the DB Actions of the OMLUSER, under the Data Studio Section, select _Data Load_.
+1. Inside the DB Actions of the OMLUSER, under the **Data Studio** section, select _Data Load_ and click to open the interface.
     ![Enter Data Load](images/dbactions-omluser-data-load-tile.png "")
 
-2. Inside the Data Load section, select _Load Data_.
+2. Inside the **Data Load** section, select _Load Data_.
     ![Enter Load Data](images/datastudio-data-load.png "")
 
 3. Select the _Cloud Store_ button and the following Public Object Storage bucket address in the field indicated:
@@ -107,16 +107,15 @@ Enter the **OMLUSER** and the password you just created to sign in.
     In addition, *a customer churning today probably made that decision a while ago*. This means that our machine learning model needs to be able to detect any change in behavior from at least a month ago. This is the reason for the buffer of 1 month in the process.
 
 
-2. We will access Oracle Machine Learning UI from the Database Actions menu, by clicking on the Oracle Machine Learning tile.
+1. We will access Oracle Machine Learning UI from the Database Actions menu, by going to the **Development** section, and clicking on Oracle Machine Learning.
 
     ![Go to OML UI](images/click-oml-ui-tile-on-dbactions.png "")
 
-
-3. Log in in as OMLUSER.
+2. Log in in as **OMLUSER** with the password you created.
 
     ![Oracle Machine Learning Notebooks sign-in page](images/oml-login-page.png " ")
 
-4. You are now in the OML landing page. This page takes you to tutorials, model creation, notebooks and more. We'll now create a new machine learning model using **AutoML UI**:  
+3. You are now in the OML landing page. This page takes you to tutorials, model creation, notebooks and more. We'll now create a new machine learning model using **AutoML UI**:  
 
     Click **AutoML** on the Quick Actions menu:
 
@@ -410,6 +409,7 @@ Now other professionals can take advantage of both the deployment you have just 
    ![Churn AutoML Task 10 Step 2 select experiment](images/oml-churn-automl-select-experiment.png " ")
 
 3. Go to the leaderboard section, and click on the row of the **CHURN_PRED** model to highlight it in light blue.  Then click on the _Deploy_ button to open a menu with the details of the deployment.  Fill the information like indicated below:
+    - **(optional) Comment:** RF model to detect customer Churn
     - **URI:**  churn_pred
     - **Version:**  1.0
     - **Namespace:**  OML_MODELS
@@ -435,6 +435,8 @@ Now other professionals can take advantage of both the deployment you have just 
 9. We are ready to deploy the Churn Model to an Application via REST. Back in the Database Actions menu, scroll down to find the Related Services section to find the specific address for your own model, since these are unique to each Autonomous Database instance.
    When developing Applications that can pass the information needed to get a score of the models, the OML Services REST API can return a sub-second score for a mini-batch of records, or you can request an asynchronous call for batch scoring as well.  
    ![Churn AutoML Task 10 Step 9 DB Actions Related Services](images/oml-churn-dbactions-related.png " ")
+
+   For more details on how to use the deployed model and Oracle Machine Learning Services capabilities, make sure to look at that Lab in the [Oracle Machine Learning Fundamentals on Oracle Autonomous Database](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=922) workshop, which shows you how to use REST clients to access the model and more.
 
 ## Learn more
 
