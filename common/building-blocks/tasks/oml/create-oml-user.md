@@ -11,17 +11,17 @@ An administrator creates a new user account and user credentials for Oracle Mach
 
 To create a user account:
 
-1. If you are not already signed in, Sign into your OCI account, click the cloud menu on the left to open the left navigation pane, and click **Oracle Database**. On the right, click **Autonomous Data Warehouse**.
+1. If you are not already signed in, sign into your OCI account, click the cloud menu on the left to open the left navigation pane, and click **Oracle AI Database**. On the right, click **Autonomous AI Database**.
 
-	![Autonomous Database under Oracle Database](images/database-adw.png " ")
+	![Autonomous AI Database under Oracle Database](images/database-adw-rw.png " ")
 
-2. The Autonomous Database dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous Database that you have provisioned for this workshop.  
+2. The Autonomous AI Databases dashboard lists all the databases that are provisioned in the tenancy. Click the Oracle Autonomous AI Database that you have provisioned for this workshop. Here, click the instance **OMLLABS**.
 
-	![Oracle Autonomous Data Warehouse](images/provisioned-adb.png " ")
+	![Oracle Autonomous Data Warehouse](images/adw-omllabs-listed-rw.png " ")
 
-3. On the Autonomous Database details page, click **Database Actions**, and then select the **Database Users** option.
+3. On the Autonomous AI Database details page, click **Database actions**, and then select the **Database Users** option.
 
-	![Database Actions button in ADB Console](images/database-actions-dbusers.png " ")
+	![Database Actions button in ADB Console](images/database-actions-dbusers-rw.png " ")
 
 4. Before you get to the Oracle Database Actions Launchpad page, you might be asked to log in, depending on the browser you are using.  If this is the case make sure to enter **ADMIN** and the password you gave the administrator user in Task 1, Step 7.
    
@@ -38,13 +38,13 @@ To create a user account:
 	* **User Name:** Enter the user name `OMLUSER`.
 	* **Password:** Enter a password for this user. The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character or the username itself.
 	* **Confirm Password:** Re-enter the password that you entered in the **Password** field.
-	* **Graph:** Optionally, select this option to enable graph for this user.
-	* **Web Access:** Select this option to allow Web and DB Actions access to this user via its own url. This is an optional field.
-	* **OML:** Select this option to allow this user to access Oracle Machine Learning. This is a required field.
 	* **Quota of tablespace data:** Click on the drop-down list and select an option. For this lab and a typical Always Free ADB, `UNLIMITED` is selected.
 	* **Password Expired:** Select this option if you want the user to reset their own password.
 	* **Account is locked:** Use this option to lock the account.
-
+	* **OML:** Select this option to allow this user to access Oracle Machine Learning. This is a required field.
+	* **Graph:** Optionally, select this option to enable graph for this user.
+	* **Web Access:** Select this option to allow Web and DB Actions access to this user via its own url. This is an optional field.
+	* **Show Code:** Click this option to view the code to create the user and grant roles to the user. You also have the option to copy the code.
 
 7. After the user is created successfully, the message _User OMLUSER created successfully_ is displayed.
 

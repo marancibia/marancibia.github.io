@@ -4,6 +4,8 @@
      "adb-cleanup.md":"/common/building-blocks/tasks/adb/cleanup.md",
      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
      "adb-connect-with-sql-worksheet-non-admin.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-non-admin.md",
+     "adb-create-genai-policy.md":"/common/building-blocks/tasks/adb/create-genai-policy.md",
+     "adb-create-graph-pgql.md":"/common/building-blocks/tasks/adb/create-graph-pgql.md",
      "adb-create-graph.md":"/common/building-blocks/tasks/adb/create-graph.md",
      "adb-create-load-json-collection.md":"/common/building-blocks/tasks/adb/create-load-json-collection.md",
      "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md",
@@ -15,7 +17,9 @@
      "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
      "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
      "adb-load-public-db-actions.md":"/common/building-blocks/tasks/adb/load-public-db-actions.md",
+     "adb-provision-body-developer.md":"/common/building-blocks/tasks/adb/provision-body-developer.md",
      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+     "adb-provision-data-sharing-lake-task.md":"/common/building-blocks/tasks/adb/provision-data-sharing-lake-task.md",
      "adb-query-json-arrays.md":"/common/building-blocks/tasks/adb/query-json-arrays.md",
      "adb-query-json-simple.md":"/common/building-blocks/tasks/adb/query-json-simple.md",
      "adb-query-object-store-contents-with-sql.md":"/common/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
@@ -25,14 +29,17 @@
      "oml-access-notebook-ea.md":"/common/building-blocks/tasks/oml/access-notebook-ea.md",
      "oml-create-cust360-table.md":"/common/building-blocks/tasks/oml/create-cust360-table.md",
      "oml-create-oml-user.md":"/common/building-blocks/tasks/oml/create-oml-user.md",
+     "oml-nb-visualizations.md":"/common/building-blocks/tasks/oml/nb-visualizations.md",
      "oml-notebook-features.md":"/common/building-blocks/tasks/oml/notebook-features.md",
      "oml-prov-an-adb.md":"/common/building-blocks/tasks/oml/prov-an-adb.md",
+     "oml-sign-into-oml-livelabs.md":"/common/building-blocks/tasks/oml/sign-into-oml-livelabs.md",
      "oml-sign-into-oml.md":"/common/building-blocks/tasks/oml/sign-into-oml.md",
      "oml-use-md-interpreter.md":"/common/building-blocks/tasks/oml/use-md-interpreter.md",
      "oml-use-plsql-interpreter.md":"/common/building-blocks/tasks/oml/use-plsql-interpreter.md",
      "oml-use-py-interpreter.md":"/common/building-blocks/tasks/oml/use-py-interpreter.md",
      "oml-use-r-interpreter.md":"/common/building-blocks/tasks/oml/use-r-interpreter.md",
-     "oml-use-sql-interpreter.md":"/common/building-blocks/tasks/oml/use-sql-interpreter.md"
+     "oml-use-sql-interpreter.md":"/common/building-blocks/tasks/oml/use-sql-interpreter.md",
+     "stacks-provision-adb-select-ai.md":"/common/building-blocks/tasks/stacks/provision-adb-select-ai.md"
   },
  "help": "livelabs-help-db_us@oracle.com",
  "variables": ["/common/building-blocks/variables/variables.json"],
@@ -41,11 +48,11 @@
      {
          "title": "Get Started",
          "description": "Get a Free Trial",
-         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+         "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/cloud-login.md"
      },
      {
          "title": "Add Workshop Utilities",
-         "filename": "/common/building-blocks/setup/add-workshop-utilities.md"
+         "filename": "/common/building-blocks/setup/setup.md"
      },
      {
          "title": "[adb] Delete your workshop resources",
@@ -56,6 +63,11 @@
          "title": "[adb] Connect with SQL Worksheet",
          "type": "freetier",
          "filename": "/common/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
+     },
+     {
+         "title": "[adb] Integrate GenAI models with Autonomous Database",
+         "type": "freetier",
+         "filename": "/common/building-blocks/blocks/adb/integrate-genai/integrate-genai.md"
      },
      {
          "title": "[adb] Load and Analyze Data from REST Services",
@@ -73,9 +85,14 @@
          "filename": "/common/building-blocks/blocks/adb/provision-python-api/provision-python-api.md"
      },
      {
-         "title": "[adb] Create an Oracle Autonomous Database",
+         "title": "[adb] Create an Oracle Autonomous AI Database",
          "type": "freetier",
          "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
+     },
+     {
+         "title": "[adb] Provision an ADB instance for the Data Sharing and Data Lake workshops",
+         "type": "freetier",
+         "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
      },
      {
          "title": "[adb] Access and Load Partitioned Object Storage Data",
@@ -83,9 +100,19 @@
          "filename": "/common/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
      },
      {
+         "title": "[adb] Use Select AI Sample Chat App",
+         "type": "freetier",
+         "filename": "/common/building-blocks/blocks/adb/use-select-ai-sample/use-select-ai-sample.md"
+     },
+     {
          "title": "[oac] Provision Your Oracle Analytics Cloud (OAC) Instance",
          "type": "freetier",
          "filename": "/common/building-blocks/blocks/oac/provision/oac-provision.md"
+     },
+     {
+         "title": "[oml] Introduction to Oracle Machine Learning AutoML UI",
+         "type": "freetier",
+         "filename": "/common/building-blocks/blocks/oml/oml-automl/oml-automl.md"
      },
      {
          "title": "[oml] Introduction to the Conda Environments in Oracle Machine Learning Notebooks",
@@ -98,7 +125,12 @@
          "filename": "/common/building-blocks/blocks/oml/oml-monitoring/oml-monitoring.md"
      },
      {
-         "title": "[oml] Introduction to Oracle Machine Learning Notebooks",
+         "title": "[oml] Visualize Data in Oracle Machine Learning Notebooks",
+         "type": "freetier",
+         "filename": "/common/building-blocks/blocks/oml/oml-nb-visualizations/oml-nb-visualizations.md"
+     },
+     {
+         "title": "[oml] Create and Run Notebooks in Oracle Machine Learning User Interface",
          "type": "freetier",
          "filename": "/common/building-blocks/blocks/oml/oml-notebooks-ea/oml-notebooks-ea.md"
      }

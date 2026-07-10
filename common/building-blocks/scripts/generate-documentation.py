@@ -15,9 +15,7 @@ path_current = os.path.dirname(os.path.realpath(__file__))
 path_root = path_current[: path_current.rfind("building-blocks")] + "building-blocks"
 path_howto = path_root + "/how-to-author-with-blocks"
 path_tasks = path_root + "/tasks"
-path_tasks = os.path.normpath(path_tasks)
 path_blocks = path_root + "/blocks"
-path_blocks = os.path.normpath(path_blocks)
 
 # relative path used for forming URLs
 relpath_blocks = os.path.normpath("/common/building-blocks")
@@ -33,6 +31,8 @@ class Lab:
     include_name = None
     name = None
     description = None
+    author = None
+    lastUpdated = None
     path = None
     physical_path = None
     cloud_service = None
@@ -68,8 +68,8 @@ def load_labs(type):
 
         t = Lab()
         t.physical_path = f
-        t.md_name = f[f.rfind(os.path.normpath("/")) + 1 :]
-        t.path = Path(f[f.rfind(relpath_blocks) :]).as_posix()
+        t.md_name = f[Path(f).as_posix().rfind("/") + 1 :]
+        t.path = f[f.rfind(relpath_blocks) :]
 
         # get the service name from the path.
         s = t.physical_path[len(this_path) + 1 :]
@@ -90,7 +90,7 @@ def add_task_details(this_task):
     c = None  # file contents
 
     # read the file
-    with open(this_task.physical_path) as f:
+    with open(this_task.physical_path, encoding="utf-8") as f:
         c = f.read()
 
     c_begin = c.find("<!--")
@@ -113,9 +113,11 @@ def add_task_details(this_task):
     # parse the json
     j = None
     try:
-        j = json.loads(comment, strict=False)
-        this_task.name = j["name"]
-        this_task.description = j["description"]
+        j = json.loads(comment)
+        this_task.name = j.get("name", "")
+        this_task.description = j.get("description", "")
+        this_task.author = j.get("author", "")
+        this_task.lastUpdated = j.get("lastUpdated", "")
     except Exception as e:
         print(
             "WARNING! "
@@ -153,7 +155,7 @@ def add_block_details(this_block):
     c = None  # file contents
 
     # read the file
-    with open(this_block.physical_path) as f:
+    with open(this_block.physical_path, encoding="utf-8") as f:
         c = f.read()
 
     c_begin = c.find("<!--")
@@ -165,6 +167,8 @@ def add_block_details(this_block):
         if not h1:
             this_block.name = "Not Found. Fix markdown file " + this_block.path
             this_block.description = "No description found."
+            this_block.author = "No author found."
+            this_block.lastUpdated = "No last updated found."
             return False
         print(
             "WARNING! "
@@ -173,7 +177,8 @@ def add_block_details(this_block):
         )
         this_block.name = h1
         this_block.description = "No description found."
-
+        this_block.author = "No author found."
+        this_block.lastUpdated = "No last updated found."
     else:
         # extract json from the first html comment found
         comment = c[c_begin + 5 : c_end - 1].strip()
@@ -183,9 +188,11 @@ def add_block_details(this_block):
         # parse the json
         j = None
         try:
-            j = json.loads(comment, strict=False)
-            this_block.name = j["name"]
-            this_block.description = j["description"]
+            j = json.loads(comment)
+            this_block.name = j.get("name", "")
+            this_block.description = j.get("description", "")
+            this_block.author = j.get("author", "")
+            this_block.lastUpdated = j.get("lastUpdated", "")
         except Exception as e:
             print(
                 "WARNING! "
@@ -213,13 +220,20 @@ def get_manifest_include():
 
     include = ' "include": {' + "\n"
     for t in tasks:
-        include = include + '     "' + t.include_name + '":"' + t.path + '",\n'
+        include = (
+            include
+            + '     "'
+            + t.include_name
+            + '":"'
+            + Path(t.path).as_posix()
+            + '",\n'
+        )
 
     include = include[: len(include) - 2]
 
     include = include + ("\n  },")  # include
 
-    return Path(include).as_posix()
+    return include
 
 
 # Return a manifest template that can be copied and pasted
@@ -241,7 +255,7 @@ def get_manifest_template():
     {
         "title": "Provision Autonomous Database",
         "type": "freetier",
-        "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
+        "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
     },
     {
         "title": "Your lab goes here",
@@ -260,6 +274,7 @@ def get_manifest_template():
 #######
 def write_task_manifest():
     output = None
+
     output = add_line(output, "{")
     output = add_line(output, ' "workshoptitle":"LiveLabs Building Blocks",')
     output = add_line(output, get_manifest_include())
@@ -330,7 +345,9 @@ def write_task_manifest():
                 output, '         "title": "' + t.cloud_service.upper() + ' Tasks",'
             )
             output = add_line(output, '         "type": "freetier",')
-            output = add_line(output, '         "filename": "' + filename + '"')
+            output = add_line(
+                output, '         "filename": "' + Path(filename).as_posix() + '"'
+            )
             output = add_line(output, "     },")
 
     output = output[: len(output) - 1]
@@ -376,9 +393,7 @@ def write_blocks_manifest():
     output = add_line(output, '         "title": "Add Workshop Utilities",')
     output = add_line(
         output,
-        '         "filename": "'
-        + Path(relpath_blocks).as_posix()
-        + '/setup/add-workshop-utilities.md"',
+        '         "filename": "' + Path(relpath_blocks).as_posix() + '/setup/setup.md"',
     )
     output = add_line(output, "     },")
 
@@ -390,7 +405,9 @@ def write_blocks_manifest():
             output, '         "title": "[' + t.cloud_service + "] " + t.name + '",'
         )
         output = add_line(output, '         "type": "freetier",')
-        output = add_line(output, '         "filename": "' + t.path + '"')
+        output = add_line(
+            output, '         "filename": "' + Path(t.path).as_posix() + '"'
+        )
         output = add_line(output, "     },")
 
     output = output[: len(output) - 1]
@@ -398,7 +415,7 @@ def write_blocks_manifest():
     output = add_line(output, "}")
     print(output)
     try:
-        filename = path_root + "/workshop/freetier/manifest.json"
+        filename = Path(path_root).as_posix() + "/workshop/freetier/manifest.json"
         h_manifest = open(filename, "w")
         h_manifest.write(output)
         h_manifest.close
@@ -426,8 +443,12 @@ def write_toc():
         output,
         "Building Blocks are exposed to customers. You can use these same blocks in your own workshop by adding the block to your manifest.json file.",
     )
-    output = add_line(output, "| Cloud Service | Block |  File | Description |")
-    output = add_line(output, "|---------------| ---- |  ---- |------------ |")
+    output = add_line(
+        output, "| Cloud Service | Block |  File | Description | Author | Last Updated"
+    )
+    output = add_line(
+        output, "|---------------| ---- |  ---- |------------ | ------- | ------------"
+    )
 
     # Add the workshop utilities (hard code)
     output = add_line(
@@ -436,7 +457,7 @@ def write_toc():
         + Path(relpath_blocks).as_posix()
         + "/workshop/freetier/index.html?lab=add-workshop-utilities) |  "
         + Path(relpath_blocks).as_posix()
-        + " /setup/add-workshop-utilities.md| Utilities for adding data sets and users |",
+        + " /setup/add-workshop-utilities.md| Utilities for adding data sets and users | First Name, Last Name | First Name, Last Name, Org, Year",
     )
 
     for t in blocks:
@@ -446,9 +467,11 @@ def write_toc():
             Path(relpath_blocks).as_posix()
             + "/workshop/freetier/index.html?lab="
             + t.md_name
-        )
+        ).replace(".md", "")
         this_anchor = "[" + this_name + "](" + this_anchor + ")"
         this_description = t.description if t.description else " "
+        this_author = t.author if t.author else " "
+        this_last_updated = t.lastUpdated if t.lastUpdated else " "
         output = add_line(
             output,
             "| "
@@ -459,6 +482,10 @@ def write_toc():
             + Path(t.path).as_posix()
             + " | "
             + this_description
+            + " |"
+            + this_author
+            + " |"
+            + this_last_updated
             + " |",
         )
 
@@ -473,8 +500,12 @@ def write_toc():
         output,
         "Listed below are the tasks that you can incorporate into your markdown. You can also use the navigation tree on the left to view the tasks. Again, contribute to the list of tasks!",
     )
-    output = add_line(output, "| Cloud Service | Task |  File | Description |")
-    output = add_line(output, "|---------------| ---- |  ---- |------------ |")
+    output = add_line(
+        output, "| Cloud Service | Task |  File | Description | Author | Last Updated"
+    )
+    output = add_line(
+        output, "|---------------| ---- |  ---- |------------ | ------ | ------------"
+    )
 
     for t in tasks:
         this_name = t.md_name if not t.name else t.name
@@ -487,6 +518,8 @@ def write_toc():
         )
         this_anchor = "[" + this_name + "](" + this_anchor + ")"
         this_description = t.description if t.description else " "
+        this_author = t.author if t.author else " "
+        this_last_updated = t.lastUpdated if t.lastUpdated else " "
         output = add_line(
             output,
             "| "
@@ -497,6 +530,10 @@ def write_toc():
             + Path(t.path).as_posix()
             + " | "
             + this_description
+            + " |"
+            + this_author
+            + " |"
+            + this_last_updated
             + " |",
         )
 

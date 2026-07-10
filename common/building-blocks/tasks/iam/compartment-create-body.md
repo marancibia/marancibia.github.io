@@ -1,7 +1,9 @@
 <!--
     {
         "name":"Create an OCI Compartment",
-        "description":"Create a new compartment using the OCI service console"
+        "description":"Create a new compartment using the OCI service console",
+        "author":"Lauran K. Serhal, Consulting User Assistance Developer",
+        "last_updated":"Lauran K. Serhal, October 2025"
     }
 -->
 
@@ -29,7 +31,7 @@ _If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges
 
     The **Recently visited** section of the **Home** tab shows recently used navigation items.
 
-    To quickly find navigation menu items, use the **Search** box.
+    To quickly find navigation menu items, use the **Search** text box.
 
 3. On the **Compartments** page, click **Create Compartment**.
 
@@ -44,3 +46,5 @@ _If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges
    The **Compartments** page is re-displayed and the newly created compartment is displayed in the list of available compartments.
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =60%x*)
+
+   > **Note:** Wait a couple of minutes, then refresh the page to start using the new compartment.
