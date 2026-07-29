@@ -1,0 +1,33 @@
+-- **Copyright © 2026, Oracle and/or its affiliates.
+-- **All rights reserved. Licensed under the Universal Permissive License (UPL), Version 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+
+-- **To install the database objects required for the demo. Connect to ADB as ADMIN:**
+
+declare 
+    l_uri varchar2(500) := 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/setup/workshop-setup.sql';
+begin
+    dbms_cloud_repo.install_sql(
+        content => to_clob(dbms_cloud.get_object(object_uri => l_uri))
+    );
+end;
+/
+
+-- Add the ${schema_name} user
+begin
+    workshop.write('Begin demo install');
+    workshop.write('add user ${schema_name}', 1);
+    workshop.add_adb_user('${schema_name}','watchS0meMovies#');
+    
+    ords_admin.enable_schema (
+        p_enabled               => TRUE,
+        p_schema                => '${schema_name}',
+        p_url_mapping_type      => 'BASE_PATH',
+        p_auto_rest_auth        => TRUE   
+    ); 
+    
+    -- Allow ${schema_name} to use the resource principal
+    dbms_cloud_admin.enable_resource_principal(username  => '${schema_name}');
+
+end;
+/
