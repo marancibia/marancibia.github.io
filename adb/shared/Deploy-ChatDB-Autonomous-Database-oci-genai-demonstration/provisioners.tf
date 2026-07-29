@@ -19,10 +19,10 @@ resource "null_resource" "sqlcl-create-usr" {
                 sql -cloudconfig wallet_${var.db_name}.zip admin/${var.db_password}@'${local.conn_db}' @./scripts/install-apex-workspace.sql
 
                 echo 'Start running tables.sql script to install data sets'
-                sql -cloudconfig wallet_${var.db_name}.zip ${local.effective_schema_name}/watchS0meMovies#@'${local.conn_db}' @./tables.sql
+                sql -cloudconfig wallet_${var.db_name}.zip ${local.effective_schema_name}/${local.effective_user_password}@'${local.conn_db}' @./tables.sql
 
                 echo 'Start running install-apex-app.sql script to install the apex app'
-                sql -cloudconfig wallet_${var.db_name}.zip ${local.effective_schema_name}/watchS0meMovies#@'${local.conn_db}' @./scripts/install-apex-app.sql
+                sql -cloudconfig wallet_${var.db_name}.zip ${local.effective_schema_name}/${local.effective_user_password}@'${local.conn_db}' @./scripts/install-apex-app.sql
 
                 rm -rf tables.sql
                 rm -rf ./scripts/f100-genai-project.sql
@@ -44,11 +44,11 @@ resource "local_file" "this2" {
 }
 
 resource "local_file" "this3" {
-  content  = templatefile("./scripts/init.sql.tmpl", { schema_name = local.effective_schema_name })
+  content  = templatefile("./scripts/init.sql.tmpl", { schema_name = local.effective_schema_name, user_password = local.effective_user_password })
   filename = "./scripts/init.sql"
 }
 
 resource "local_file" "this4" {
-  content  = templatefile("./scripts/install-apex-workspace.sql.tmpl", { schema_name = local.effective_schema_name })
+  content  = templatefile("./scripts/install-apex-workspace.sql.tmpl", { schema_name = local.effective_schema_name, user_password = local.effective_user_password })
   filename = "./scripts/install-apex-workspace.sql"
 }

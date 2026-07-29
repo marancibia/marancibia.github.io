@@ -16,7 +16,8 @@ output "adb_user_name" {
 
 output "adb_user_password" {
   description = "Workshop user initial password"
-  value = "watchS0meMovies#"
+  value = local.effective_user_password
+  sensitive = false
 }
 
 output "adb_database_db_connection" {

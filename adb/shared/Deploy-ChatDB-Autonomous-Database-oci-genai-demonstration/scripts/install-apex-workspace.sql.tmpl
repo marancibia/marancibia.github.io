@@ -5,7 +5,7 @@
 DECLARE
     l_workspace_name VARCHAR2(100) := '${schema_name}';
     l_schema_name VARCHAR2(100) := '${schema_name}';
-    l_workspace_usr_pwd VARCHAR2(100) := 'watchS0meMovies#';
+    l_workspace_usr_pwd VARCHAR2(100) := '${user_password}';
 begin
     admin.workshop.write('install APEX workspace', 1);
     admin.workshop.write('add workspace as admin', 2);

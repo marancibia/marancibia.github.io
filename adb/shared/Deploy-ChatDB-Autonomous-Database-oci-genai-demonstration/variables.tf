@@ -130,6 +130,11 @@ variable "schema_name" {
   default = "MOVIESTREAM"
 }
 
+variable "user_password" {
+  type    = string
+  default = "watchS0meMovies#"
+}
+
 variable "run_post_load_procedures" {
   type    = bool
   default = true

@@ -17,7 +17,7 @@ end;
 begin
     workshop.write('Begin demo install');
     workshop.write('add user ${schema_name}', 1);
-    workshop.add_adb_user('${schema_name}','watchS0meMovies#');
+    workshop.add_adb_user('${schema_name}','${user_password}');
     
     ords_admin.enable_schema (
         p_enabled               => TRUE,

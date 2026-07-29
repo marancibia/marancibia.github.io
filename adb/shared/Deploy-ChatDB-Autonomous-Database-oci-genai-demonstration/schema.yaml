@@ -225,6 +225,13 @@ variables:
     default: "MOVIESTREAM"
     required: true
     visible: true
+  user_password:
+    title: Workshop user password
+    description: "Password for the workshop schema user"
+    type: password
+    default: "watchS0meMovies#"
+    required: true
+    visible: true
   run_post_load_procedures:
     title: Run procedures after loading data
     description: "Pick one from below"
