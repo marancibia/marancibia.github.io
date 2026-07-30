@@ -12,7 +12,6 @@ groupings:
     variables:
       - adb_operation_mode
       - tenancy_ocid
-      - region
       - compartment_id
       - existing_autonomous_database_id
       - existing_db_admin_password
@@ -48,6 +47,7 @@ groupings:
       - user_ocid
       - fingerprint
       - private_key_path
+      - region
       - db_compute_model
       - run_post_load_procedures
 # General Configuration Variables
@@ -69,11 +69,11 @@ variables:
     required: true
     visible: false
   region:
-    title: Region
-    description: Select Region where all resources will be created.
+    title: Stack Region
+    description: Resource Manager automatically sets this value from the stack region selected before the variable form is displayed.
     type: oci:identity:region:name
     required: true
-    visible: true
+    visible: false
   compartment_id:
     title: Compartment
     description: Choose the compartment where resources will be provisioned, or where the existing Autonomous AI Database is located.
@@ -82,7 +82,7 @@ variables:
     visible: true
   existing_autonomous_database_id:
     title: Existing Autonomous AI Database
-    description: Select the existing Autonomous AI Database where the demo data and APEX applications will be installed.
+    description: Select the existing Autonomous AI Database where the demo data and APEX applications will be installed. This list is populated from the Resource Manager stack region selected before this form, not from a separate form field.
     type: oci:database:autonomousdatabase:id
     required: true
     dependsOn:

@@ -101,13 +101,13 @@ If you don't have the required permissions and quota, contact your tenancy admin
 
 # <a name="Deploy-Using-Oracle-Resource-Manager"></a>Deploy Using Oracle Resource Manager
 
-1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip&zipUrlVariables={%22tag%22:%22moviestream-analytics%22,%22db_compute_count%22:4,%22db_name%22:%22MovieStreamWorkshop%22})
+1. Click [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip&zipUrlVariables={%22tag%22:%22moviestream-analytics%22,%22db_ecpus%22:4,%22db_name%22:%22MovieStreamWorkshop%22})
 
 
     If you aren't already signed in, when prompted, enter the tenancy and user credentials.
 
 2. Review and accept the terms and conditions.
-3. Select the region where you want to deploy the stack.
+3. Select the region where you want to deploy the stack. For update mode, select the region where the existing Autonomous AI Database already exists; Resource Manager dynamic database pickers list resources from the stack region.
 4. Follow the on-screen prompts and instructions to create the stack.
 5. After creating the stack, click **Terraform Actions**, and select **Plan**.
 6. Wait for the job to be completed, and review the plan.
@@ -402,7 +402,7 @@ The Autonomous AI Lakehouse subsystem / module is able to create Autonomous AI L
     * __db_name__ - The database name. The name must begin with an alphabetic character and can contain a maximum of 14 alphanumeric characters. Special characters are not permitted. The database name must be unique in the tenancy.
     * __db_password__ - The password must be between 12 and 30 characters long, and must contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (") or the username "admin", regardless of casing. The password is mandatory if source value is "BACKUP_FROM_ID", "BACKUP_FROM_TIMESTAMP", "DATABASE" or "NONE".
     * __db_compute_model__ - The compute model of the Autonomous Database. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value.
-    * __db_compute_count__ - The compute amount available to the database. Minimum and maximum values depend on the compute model and whether the database is on Shared or Dedicated infrastructure. For an Autonomous Database on Shared infrastructure, the 'ECPU' compute model requires values in multiples of two. Required when using the computeModel parameter. When using cpuCoreCount parameter, it is an error to specify computeCount to a non-null value.
+    * __db_ecpus__ - The number of ECPUs available to the database. Minimum and maximum values depend on the compute model and whether the database is on Shared or Dedicated infrastructure. For an Autonomous Database on Shared infrastructure, the 'ECPU' compute model requires values in multiples of two.
     * __db_size_in_tbs__ - The size, in gigabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. The maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
     * __db_workload__ - The Autonomous Database workload type. The following values are valid:
         - OLTP - indicates an Autonomous Transaction Processing database
@@ -444,7 +444,7 @@ variable "db_compute_model" {
   default = "ECPU"
 }
 
-variable "db_compute_count" {
+variable "db_ecpus" {
   type = number
   default = 4
 }
@@ -664,4 +664,3 @@ We welcome your feedback. To post feedback, submit feature ideas or report bugs,
 
 ## <a name="known-issues"></a>Known Issues
 **At the moment, there are no known issues for this solution**
-
