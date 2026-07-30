@@ -86,8 +86,8 @@ variables:
     type: oci:database:autonomousdatabase:id
     required: true
     dependsOn:
-      compartmentId: compartment_id
-      dbWorkload: db_workload
+      compartmentId: ${compartment_id}
+      dbWorkload: "DW"
     visible:
       eq:
         - adb_operation_mode
