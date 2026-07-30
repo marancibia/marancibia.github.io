@@ -32,8 +32,8 @@ data "oci_identity_region_subscriptions" "home_region_subscriptions" {
 }
 
 locals{
-  effective_schema_name = trimspace(var.schema_name) != "" ? trimspace(var.schema_name) : "MOVIESTREAM"
-  effective_user_password = trimspace(var.user_password) != "" ? trimspace(var.user_password) : "watchS0meMovies#"
+  effective_schema_name = trimspace(var.u_name) != "" ? trimspace(var.u_name) : "MOVIESTREAM"
+  effective_user_password = trimspace(var.u_pwd) != "" ? trimspace(var.u_pwd) : "watchS0meMovies#"
   ad_names = compact(data.template_file.ad_names.*.rendered)
   conn_db  = module.adb.db_connection[0].profiles[1].value
 
@@ -46,7 +46,7 @@ locals{
       effective_compute_count               = local.effective_compute_count
       size_in_tbs                 = var.db_size_in_tbs
       db_name                     = var.db_name
-      schema_name                 = local.effective_schema_name
+      u_name                      = local.effective_schema_name
       db_workload                 = var.db_workload
       db_version                  = var.db_version
       enable_auto_scaling         = var.db_enable_auto_scaling

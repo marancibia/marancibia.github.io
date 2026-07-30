@@ -8,7 +8,7 @@ variable "adw_params" {
     effective_compute_count     = number
     size_in_tbs                 = number
     db_name                     = string
-    schema_name                 = string
+    u_name                      = string
     db_workload                 = string
     db_version                  = string
     effective_license_model     = string

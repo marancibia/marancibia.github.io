@@ -59,5 +59,5 @@ output "apex_url" {
 }
 
 output "askoracle_select_ai_app_url" {
-  value = join("", [split("/graphstudio", lower(join("\n", [for b in oci_database_autonomous_database.adw : b.connection_urls.0.graph_studio_url])))[0], "/ords/r/${one([for _, cfg in var.adw_params : cfg.schema_name])}/chatdb"])
+  value = join("", [split("/graphstudio", lower(join("\n", [for b in oci_database_autonomous_database.adw : b.connection_urls.0.graph_studio_url])))[0], "/ords/r/${one([for _, cfg in var.adw_params : cfg.u_name])}/chatdb"])
 }

@@ -38,7 +38,7 @@ variable "private_key_path" {
 
 locals {
   effective_license_model = var.db_is_free_tier ? "LICENSE_INCLUDED" : var.db_license_model
-  effective_compute_count = var.db_is_free_tier ? 2 : var.db_compute_count
+  effective_compute_count = var.db_is_free_tier ? 2 : var.db_ecpus
 }
 
 # ADW Database Variables:
@@ -58,7 +58,7 @@ variable "db_compute_model" {
   default = "ECPU"
 }
 
-variable "db_compute_count" {
+variable "db_ecpus" {
   type = number
   default = 4
   # default = 2
@@ -125,12 +125,12 @@ variable "tag" {
   default = "moviestream-analytics"
 }
 
-variable "schema_name" {
+variable "u_name" {
   type    = string
   default = "MOVIESTREAM"
 }
 
-variable "user_password" {
+variable "u_pwd" {
   type    = string
   default = "watchS0meMovies#"
 }

@@ -22,7 +22,7 @@ groupings:
       - db_version
       - db_size_in_tbs
       - db_enable_auto_scaling
-      - db_compute_count
+      - db_ecpus
       - db_workload
       - db_data_safe_status
       - db_operations_insights_status
@@ -31,7 +31,7 @@ groupings:
     variables:
       - llm_region
       - tag
-      - schema_name
+      - u_name
       - run_post_load_procedures
   - title: "Hidden Variables"
     visible: false
@@ -144,7 +144,7 @@ variables:
       eq:
         - db_is_free_tier
         - false
-  db_compute_count:
+  db_ecpus:
     title: The number of ECPUs cores to be made available to the database 
     description: "The number of ECPU cores to enable. For ECPUs count needs to be minimum 2 and maximum 512 ECPUs"
     type: string
@@ -218,14 +218,14 @@ variables:
       - "moviestream-analytics"
     required: true
     visible: true
-  schema_name:
+  u_name:
     title: Database schema/user name
     description: "Schema and workshop user name to create for the demo"
     type: string
     default: "MOVIESTREAM"
     required: true
     visible: true
-  user_password:
+  u_pwd:
     title: Workshop user password
     description: "Password for the workshop schema user"
     type: password
