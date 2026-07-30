@@ -4,7 +4,7 @@
 variable "adw_params" {
   type = map(object({
     compartment_id              = string
-	  compute_model               = string
+    compute_model               = string
     effective_compute_count     = number
     size_in_tbs                 = number
     db_name                     = string

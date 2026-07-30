@@ -13,21 +13,34 @@ begin
 end;
 /
 
--- Add the ${schema_name} user
+-- Add the ${schema_name} user when provisioning. In update mode, use the
+-- existing schema if it exists, or create it when the supplied schema is new.
+declare
+    l_schema_name varchar2(128) := upper('${schema_name}');
+    l_user_count number;
 begin
     workshop.write('Begin demo install');
-    workshop.write('add user ${schema_name}', 1);
-    workshop.add_adb_user('${schema_name}','${user_password}');
+    select count(*)
+    into l_user_count
+    from dba_users
+    where username = l_schema_name;
+
+    if '${adb_operation_mode}' = 'Provision a new Autonomous AI Database with the demo Schema and Applications' or l_user_count = 0 then
+        workshop.write('add user ${schema_name}', 1);
+        workshop.add_adb_user(l_schema_name,'${user_password}');
+    else
+        workshop.write('use existing user ${schema_name}', 1);
+    end if;
     
     ords_admin.enable_schema (
         p_enabled               => TRUE,
-        p_schema                => '${schema_name}',
+        p_schema                => l_schema_name,
         p_url_mapping_type      => 'BASE_PATH',
         p_auto_rest_auth        => TRUE   
     ); 
     
     -- Allow ${schema_name} to use the resource principal
-    dbms_cloud_admin.enable_resource_principal(username  => '${schema_name}');
+    dbms_cloud_admin.enable_resource_principal(username  => l_schema_name);
 
 end;
 /

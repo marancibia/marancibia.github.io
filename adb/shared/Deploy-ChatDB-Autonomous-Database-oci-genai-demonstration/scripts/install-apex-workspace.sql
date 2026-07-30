@@ -1,29 +1,41 @@
 -- Copyright © 2026, Oracle and/or its affiliates.
 -- All rights reserved. Licensed under the Universal Permissive License (UPL), Version 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
--- as ADMIN, run this script to create the APEX workspace and user for the schema. The schema must already exist in the database.
+-- as ADMIN, run this script to create the APEX workspace and user for the ${schema_name} schema. The ${schema_name} schema must already exist in the database.
 DECLARE
-    l_workspace_name VARCHAR2(100) := 'MOVIESTREAM';
-    l_schema_name VARCHAR2(100) := 'MOVIESTREAM';
-    l_workspace_usr_pwd VARCHAR2(100) := 'watchS0meMovies#';
+    l_workspace_name VARCHAR2(100) := '${schema_name}';
+    l_schema_name VARCHAR2(100) := '${schema_name}';
+    l_workspace_usr_pwd VARCHAR2(100) := '${user_password}';
 begin
     admin.workshop.write('install APEX workspace', 1);
-    admin.workshop.write('add workspace as admin', 2);
-    apex_instance_admin.add_workspace(
-     p_workspace_id   => null,
-     p_workspace      => l_workspace_name,
-     p_primary_schema => l_schema_name);
+    if apex_util.find_security_group_id(p_workspace => l_workspace_name) is null then
+        admin.workshop.write('add workspace as admin', 2);
+        apex_instance_admin.add_workspace(
+         p_workspace_id   => null,
+         p_workspace      => l_workspace_name,
+         p_primary_schema => l_schema_name);
+    else
+        admin.workshop.write('use existing APEX workspace', 2);
+    end if;
 
       -- We must set the APEX workspace security group ID in our session before we can call create_user
     apex_util.set_security_group_id( apex_util.find_security_group_id( p_workspace => l_workspace_name));
-  apex_util.create_user( 
-        p_user_name               => 'MOVIESTREAM',
-        p_email_address           => 'admin@o.com',
-        p_default_schema          => l_schema_name,
-        p_allow_access_to_schemas => l_schema_name,
-        p_web_password            => l_workspace_usr_pwd,
-        p_change_password_on_first_use => 'N',
-        p_developer_privs         => 'ADMIN:CREATE:DATA_LOADER:EDIT:HELP:MONITOR:SQL' );  -- workspace administrator
+    begin
+        apex_util.create_user(
+            p_user_name               => '${schema_name}',
+            p_email_address           => 'admin@o.com',
+            p_default_schema          => l_schema_name,
+            p_allow_access_to_schemas => l_schema_name,
+            p_web_password            => l_workspace_usr_pwd,
+            p_change_password_on_first_use => 'N',
+            p_developer_privs         => 'ADMIN:CREATE:DATA_LOADER:EDIT:HELP:MONITOR:SQL' );  -- workspace administrator
+    exception
+        when others then
+            if sqlcode != -20001 then
+                raise;
+            end if;
+            admin.workshop.write('use existing APEX workspace user', 2);
+    end;
  
        
     commit;

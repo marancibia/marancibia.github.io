@@ -7,33 +7,63 @@ terraform {
 }
 
 variable "tenancy_ocid" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "region" {
-    type = string
-    default = ""
-}
-
-variable "compartment_id" {
-  type = string
+  type    = string
   default = ""
 }
 
+variable "compartment_id" {
+  type    = string
+  default = ""
+}
+
+variable "adb_operation_mode" {
+  type    = string
+  default = "Provision a new Autonomous AI Database with the demo Schema and Applications"
+
+  validation {
+    condition = contains([
+      "Provision a new Autonomous AI Database with the demo Schema and Applications",
+      "Update an existing Autonomous AI Database by adding the demo Data and AI Application"
+    ], var.adb_operation_mode)
+    error_message = "Select either provisioning a new Autonomous AI Database or updating an existing Autonomous AI Database."
+  }
+}
+
+variable "existing_autonomous_database_id" {
+  type    = string
+  default = ""
+}
+
+variable "existing_db_admin_password" {
+  type      = string
+  default   = ""
+  sensitive = true
+}
+
+variable "existing_db_wallet_password" {
+  type      = string
+  default   = ""
+  sensitive = true
+}
+
 variable "user_ocid" {
-    type = string
-    default = ""
+  type    = string
+  default = ""
 }
 
 variable "fingerprint" {
-    type = string
-    default = ""
+  type    = string
+  default = ""
 }
 
 variable "private_key_path" {
-    type = string
-    default = ""
+  type    = string
+  default = ""
 }
 
 locals {
@@ -49,7 +79,7 @@ variable "db_name" {
 }
 
 variable "db_password" {
-  type = string
+  type    = string
   default = "WlsAtpDb1234#"
 }
 
@@ -59,55 +89,55 @@ variable "db_compute_model" {
 }
 
 variable "db_ecpus" {
-  type = number
+  type    = number
   default = 4
   # default = 2
 }
 
 variable "db_size_in_tbs" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "db_workload" {
-  type = string
+  type    = string
   default = "DW"
 }
 
 variable "db_version" {
-  type = string
+  type    = string
   default = "26ai"
 }
 
 variable "db_enable_auto_scaling" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "db_is_free_tier" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "db_license_model" {
-  type = string
+  type    = string
   default = "BRING_YOUR_OWN_LICENSE"
 }
 
 variable "db_data_safe_status" {
-  type = string
+  type    = string
   default = "NOT_REGISTERED"
   # default = "REGISTERED"
 }
 
 variable "db_operations_insights_status" {
-  type = string
+  type    = string
   default = "NOT_ENABLED"
   # default = "ENABLED"
 }
 
 variable "db_database_management_status" {
-  type = string
+  type    = string
   default = "NOT_ENABLED"
   # default = "ENABLED"
 }
@@ -120,7 +150,7 @@ variable "llm_region" {
 }
 
 variable "tag" {
-  type    = string
+  type = string
   # default = "gen-ai"
   default = "moviestream-analytics"
 }

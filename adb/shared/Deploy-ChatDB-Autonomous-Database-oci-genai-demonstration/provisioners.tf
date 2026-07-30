@@ -3,8 +3,16 @@
 
 resource "null_resource" "sqlcl-create-usr" {
 
-        provisioner "local-exec" {
-             command = <<-EOT
+  triggers = {
+    adb_operation_mode     = var.adb_operation_mode
+    autonomous_database_id = local.is_update_existing ? var.existing_autonomous_database_id : module.adb.adw[var.db_name]
+    schema_name            = local.effective_schema_name
+    tag                    = var.tag
+    llm_region             = var.llm_region
+  }
+
+  provisioner "local-exec" {
+    command = <<-EOT
 
                 echo 'Download the apex applications'
                 chmod 777 ./scripts/
@@ -13,28 +21,41 @@ resource "null_resource" "sqlcl-create-usr" {
 
                 # install the data
       
-                sql -cloudconfig wallet_${var.db_name}.zip admin/${var.db_password}@'${local.conn_db}' @./scripts/init.sql
+                sql -cloudconfig wallet_${local.effective_db_name}.zip admin/${local.effective_admin_password}@'${local.conn_db}' @./scripts/init.sql
                 
                 echo 'Start running install-apex-workspace.sql script'
-                sql -cloudconfig wallet_${var.db_name}.zip admin/${var.db_password}@'${local.conn_db}' @./scripts/install-apex-workspace.sql
+                sql -cloudconfig wallet_${local.effective_db_name}.zip admin/${local.effective_admin_password}@'${local.conn_db}' @./scripts/install-apex-workspace.sql
 
                 echo 'Start running tables.sql script to install data sets'
-                sql -cloudconfig wallet_${var.db_name}.zip ${local.effective_schema_name}/${local.effective_user_password}@'${local.conn_db}' @./tables.sql
+                sql -cloudconfig wallet_${local.effective_db_name}.zip ${local.effective_schema_name}/${local.effective_user_password}@'${local.conn_db}' @./tables.sql
 
                 echo 'Start running install-apex-app.sql script to install the apex app'
-                sql -cloudconfig wallet_${var.db_name}.zip ${local.effective_schema_name}/${local.effective_user_password}@'${local.conn_db}' @./scripts/install-apex-app.sql
+                sql -cloudconfig wallet_${local.effective_db_name}.zip ${local.effective_schema_name}/${local.effective_user_password}@'${local.conn_db}' @./scripts/install-apex-app.sql
 
                 rm -rf tables.sql
                 rm -rf ./scripts/f100-genai-project.sql
                 rm -rf ./scripts/f101.sql
                 rm -rf ./scripts/install-apex-app.sql
             EOT
-        }
-depends_on = [module.adb]
+  }
+  depends_on = [module.adb, local_file.existing_adb_wallet_file, local_file.this, local_file.this2, local_file.this3, local_file.this4]
+}
+
+resource "oci_database_autonomous_database_wallet" "existing_adb_wallet" {
+  count                  = local.is_update_existing ? 1 : 0
+  autonomous_database_id = var.existing_autonomous_database_id
+  password               = local.effective_wallet_password
+  base64_encode_content  = "true"
+}
+
+resource "local_file" "existing_adb_wallet_file" {
+  count          = local.is_update_existing ? 1 : 0
+  content_base64 = oci_database_autonomous_database_wallet.existing_adb_wallet[0].content
+  filename       = "${path.cwd}/wallet_${local.effective_db_name}.zip"
 }
 
 resource "local_file" "this" {
-  content  = templatefile("./scripts/tables.sql.tmpl", { tag = var.tag, run_post_load_procedures = var.run_post_load_procedures })
+  content  = templatefile("./scripts/tables.sql.tmpl", { tag = var.tag, run_post_load_procedures = var.run_post_load_procedures, schema_name = local.effective_schema_name })
   filename = "./tables.sql"
 }
 
@@ -44,7 +65,7 @@ resource "local_file" "this2" {
 }
 
 resource "local_file" "this3" {
-  content  = templatefile("./scripts/init.sql.tmpl", { schema_name = local.effective_schema_name, user_password = local.effective_user_password })
+  content  = templatefile("./scripts/init.sql.tmpl", { schema_name = local.effective_schema_name, user_password = local.effective_user_password, adb_operation_mode = var.adb_operation_mode })
   filename = "./scripts/init.sql"
 }
 

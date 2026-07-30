@@ -10,10 +10,18 @@ groupings:
   - title: "General Settings"
     visible: true
     variables:
+      - adb_operation_mode
       - tenancy_ocid
       - region
       - compartment_id
+      - existing_autonomous_database_id
+      - existing_db_admin_password
+      - existing_db_wallet_password
   - title: "Autonomous Database Configuration"
+    visible:
+      eq:
+        - adb_operation_mode
+        - Provision a new Autonomous AI Database with the demo Schema and Applications
     variables:
       - db_name
       - db_is_free_tier
@@ -32,6 +40,7 @@ groupings:
       - llm_region
       - tag
       - u_name
+      - u_pwd
       - run_post_load_procedures
   - title: "Hidden Variables"
     visible: false
@@ -43,6 +52,16 @@ groupings:
       - run_post_load_procedures
 # General Configuration Variables
 variables:
+  adb_operation_mode:
+    title: Provision a new ADB or Update an existing one?
+    description: Select whether this stack should provision a new Autonomous AI Database or install the demo into an existing one.
+    type: enum
+    enum:
+      - "Provision a new Autonomous AI Database with the demo Schema and Applications"
+      - "Update an existing Autonomous AI Database by adding the demo Data and AI Application"
+    default: "Provision a new Autonomous AI Database with the demo Schema and Applications"
+    required: true
+    visible: true
   tenancy_ocid:
     title: Tenancy ID
     description: The Oracle Cloud Identifier (OCID) for your tenancy.
@@ -57,10 +76,42 @@ variables:
     visible: true
   compartment_id:
     title: Compartment
-    description: Choose the compartment where all resources will be provisioned.
+    description: Choose the compartment where resources will be provisioned, or where the existing Autonomous AI Database is located.
     type: oci:identity:compartment:id
     required: true
     visible: true
+  existing_autonomous_database_id:
+    title: Existing Autonomous AI Database
+    description: Select the existing Autonomous AI Database where the demo data and APEX applications will be installed.
+    type: oci:database:autonomousdatabase:id
+    required: true
+    dependsOn:
+      compartmentId: compartment_id
+      dbWorkload: db_workload
+    visible:
+      eq:
+        - adb_operation_mode
+        - Update an existing Autonomous AI Database by adding the demo Data and AI Application
+  existing_db_admin_password:
+    title: Existing database ADMIN password
+    description: Enter the ADMIN password for the selected existing Autonomous AI Database. Terraform uses this to install the setup package, enable APEX, and install the applications.
+    type: password
+    required: true
+    confirmation: true
+    visible:
+      eq:
+        - adb_operation_mode
+        - Update an existing Autonomous AI Database by adding the demo Data and AI Application
+  existing_db_wallet_password:
+    title: Existing database wallet password
+    description: Password used to generate the local wallet for the selected existing Autonomous AI Database. Leave blank to use the ADMIN password.
+    type: password
+    required: false
+    confirmation: true
+    visible:
+      eq:
+        - adb_operation_mode
+        - Update an existing Autonomous AI Database by adding the demo Data and AI Application
 # Autonomous Database Configuration Variables
   db_name:
     title: Database Name
@@ -205,10 +256,7 @@ variables:
       - "uk-london-1"
     default: "us-chicago-1"
     required: true
-    visible:
-      eq:
-        - db_is_free_tier
-        - false 
+    visible: true
   tag:
     title: Pick the datasets to load. 
     description: "Pick one from below"
@@ -220,7 +268,7 @@ variables:
     visible: true
   u_name:
     title: Database schema/user name
-    description: "Schema and workshop user name to create for the demo"
+    description: "Schema and workshop user name to use for the demo. In update mode, enter the existing schema name; if it does not exist, the install script attempts to create it."
     type: string
     default: "MOVIESTREAM"
     required: true
