@@ -50,13 +50,13 @@ locals {
     trimprefix(split("/graphstudio", lower(local.selected_connection_urls[0].graph_studio_url))[0], "https://"),
     ""
   ) : module.adb.database_fully_qualified_name
-  selected_database_actions_url    = local.is_update_existing ? try([local.selected_connection_urls[0].sql_dev_web_url], []) : module.adb.url
-  selected_graph_studio_url        = local.is_update_existing ? try([local.selected_connection_urls[0].graph_studio_url], []) : module.adb.graph_studio_url
-  selected_machine_learning_ui_url = local.is_update_existing ? try([local.selected_connection_urls[0].machine_learning_notebook_url], []) : module.adb.machine_learning_ui_url
-  selected_apex_url                = local.is_update_existing ? try([local.selected_connection_urls[0].apex_url], []) : module.adb.apex_url
+  selected_database_actions_url    = local.is_update_existing ? try(lower(local.selected_connection_urls[0].sql_dev_web_url), "") : lower(module.adb.url)
+  selected_graph_studio_url        = local.is_update_existing ? try(lower(local.selected_connection_urls[0].graph_studio_url), "") : lower(module.adb.graph_studio_url)
+  selected_machine_learning_ui_url = local.is_update_existing ? try(lower(local.selected_connection_urls[0].machine_learning_notebook_url), "") : lower(module.adb.machine_learning_ui_url)
+  selected_apex_url                = local.is_update_existing ? try(lower(local.selected_connection_urls[0].apex_url), "") : lower(module.adb.apex_url)
   selected_private_endpoint_ip     = local.is_update_existing ? try(data.oci_database_autonomous_database.existing_adb[0].private_endpoint_ip, null) : module.adb.private_endpoint_ip
   selected_askoracle_select_ai_app_url = local.selected_database_fully_qualified_name != "" ? (
-    "https://${local.selected_database_fully_qualified_name}/ords/r/${lower(local.effective_schema_name)}/chatdb"
+    lower("https://${local.selected_database_fully_qualified_name}/ords/r/${lower(local.effective_schema_name)}/chatdb")
   ) : ""
   conn_db = local.selected_db_connection[0].profiles[1].value
 

@@ -28,15 +28,15 @@ output "private_endpoint" {
 }
 
 output "url" {
-  value = try([for b in oci_database_autonomous_database.adw : b.connection_urls.0.sql_dev_web_url], [])
+  value = try(lower(one([for b in oci_database_autonomous_database.adw : b.connection_urls.0.sql_dev_web_url])), "")
 }
 
 output "graph_studio_url" {
-  value = try([for b in oci_database_autonomous_database.adw : b.connection_urls.0.graph_studio_url], [])
+  value = try(lower(one([for b in oci_database_autonomous_database.adw : b.connection_urls.0.graph_studio_url])), "")
 }
 
 output "machine_learning_ui_url" {
-  value = try([for b in oci_database_autonomous_database.adw : b.connection_urls.0.machine_learning_notebook_url], [])
+  value = try(lower(one([for b in oci_database_autonomous_database.adw : b.connection_urls.0.machine_learning_notebook_url])), "")
 }
 
 output "adb_wallet_content" {
@@ -55,9 +55,9 @@ output "adw" {
 }
 
 output "apex_url" {
-  value = try([for b in oci_database_autonomous_database.adw : b.connection_urls.0.apex_url], [])
+  value = try(lower(one([for b in oci_database_autonomous_database.adw : b.connection_urls.0.apex_url])), "")
 }
 
 output "askoracle_select_ai_app_url" {
-  value = try(join("", [split("/graphstudio", lower(join("\n", [for b in oci_database_autonomous_database.adw : b.connection_urls.0.graph_studio_url])))[0], "/ords/r/${one([for _, cfg in var.adw_params : cfg.u_name])}/chatdb"]), "")
+  value = try(lower(join("", [split("/graphstudio", lower(join("\n", [for b in oci_database_autonomous_database.adw : b.connection_urls.0.graph_studio_url])))[0], "/ords/r/${one([for _, cfg in var.adw_params : cfg.u_name])}/chatdb"])), "")
 }
