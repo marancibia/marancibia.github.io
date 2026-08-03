@@ -13,6 +13,7 @@ groupings:
       - adb_operation_mode
       - tenancy_ocid
       - compartment_id
+      - region
       - existing_autonomous_database_id
       - existing_db_admin_password
       - existing_db_wallet_password
@@ -47,7 +48,6 @@ groupings:
       - user_ocid
       - fingerprint
       - private_key_path
-      - region
       - db_compute_model
       - run_post_load_procedures
 # General Configuration Variables
@@ -69,11 +69,11 @@ variables:
     required: true
     visible: false
   region:
-    title: Stack Region
-    description: Resource Manager automatically sets this value from the stack region selected before the variable form is displayed.
+    title: Region
+    description: Select the OCI region where the new database will be provisioned or where the existing database is located.
     type: oci:identity:region:name
     required: true
-    visible: false
+    visible: true
   compartment_id:
     title: Compartment
     description: Choose the compartment where resources will be provisioned, or where the existing Autonomous AI Database is located.
@@ -82,7 +82,7 @@ variables:
     visible: true
   existing_autonomous_database_id:
     title: Existing Autonomous AI Database
-    description: Select the existing Autonomous AI Database where the demo data and APEX applications will be installed. This list is populated from the Resource Manager stack region selected before this form, not from a separate form field.
+    description: Select the existing Autonomous AI Database where the demo data and APEX applications will be installed.
     type: oci:database:autonomousdatabase:id
     required: true
     dependsOn:
@@ -118,6 +118,7 @@ variables:
     description: "Provide Database name. Constraints: 12 alphanumeric characters only. No Spaces."
     required: true
     type: string
+    default: "MovieStreamWorkshop"
     maxLength: 30
   db_is_free_tier:
     title: Do you want a always Free Oracle Autonomous Database instance?
@@ -141,7 +142,7 @@ variables:
     visible:
       eq:
         - db_is_free_tier
-        - false
+        - "false"
   db_password:
     title: Database Admin Password
     description: "Provide admin password. Constraints: 12 - 30 characters. At least one uppercase letter, one lowercase letter, and one number. No special characters."
@@ -181,7 +182,7 @@ variables:
     visible:
       eq:
         - db_is_free_tier
-        - false
+        - "false"
   db_enable_auto_scaling:
     title: Indicates if auto scaling is enabled for the Autonomous Database CPU core count. 
     description: "Indicates if auto scaling is enabled for the Autonomous Database CPU core count. "
@@ -194,16 +195,17 @@ variables:
     visible:
       eq:
         - db_is_free_tier
-        - false
+        - "false"
   db_ecpus:
     title: The number of ECPUs cores to be made available to the database 
     description: "The number of ECPU cores to enable. For ECPUs count needs to be minimum 2 and maximum 512 ECPUs"
-    type: string
+    type: integer
+    default: 4
     required: true
     visible:
       eq:
         - db_is_free_tier
-        - false
+        - "false"
   db_workload:
     title: Autonomous Database Type of workload. 
     description: "Autonomous Database Type of workload."
