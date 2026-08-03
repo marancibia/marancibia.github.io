@@ -4,7 +4,7 @@
 title: "Deploy ChatDB - Autonomous Database OCI GenAI demonstration"
 stackDescription: "Creates an ADB with MovieStream data plus the ChatDB APEX demo app"
 schemaVersion: 1.1.0
-version: "20260713"
+version: "20260803"
 locale: "en"
 groupings:
   - title: "General Settings"
