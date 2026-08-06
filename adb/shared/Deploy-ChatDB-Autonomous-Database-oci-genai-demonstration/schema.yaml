@@ -139,10 +139,7 @@ variables:
       - BRING_YOUR_OWN_LICENSE
     default: BRING_YOUR_OWN_LICENSE
     required: true
-    visible:
-      eq:
-        - db_is_free_tier
-        - "false"
+    visible: true
   db_password:
     title: Database Admin Password
     description: "Provide admin password. Constraints: 12 - 30 characters. At least one uppercase letter, one lowercase letter, and one number. No special characters."
@@ -179,10 +176,7 @@ variables:
       - 128
     default: 1
     required: true
-    visible:
-      eq:
-        - db_is_free_tier
-        - "false"
+    visible: true
   db_enable_auto_scaling:
     title: Indicates if auto scaling is enabled for the Autonomous Database CPU core count. 
     description: "Indicates if auto scaling is enabled for the Autonomous Database CPU core count. "
@@ -192,20 +186,14 @@ variables:
       - false
     default: false
     required: true
-    visible:
-      eq:
-        - db_is_free_tier
-        - "false"
+    visible: true
   db_ecpus:
     title: The number of ECPUs cores to be made available to the database 
     description: "The number of ECPU cores to enable. For ECPUs count needs to be minimum 2 and maximum 512 ECPUs"
     type: integer
     default: 4
     required: true
-    visible:
-      eq:
-        - db_is_free_tier
-        - "false"
+    visible: true
   db_workload:
     title: Autonomous Database Type of workload. 
     description: "Autonomous Database Type of workload."
