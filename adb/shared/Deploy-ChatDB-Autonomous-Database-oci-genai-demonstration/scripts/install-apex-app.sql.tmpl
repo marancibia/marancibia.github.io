@@ -19,6 +19,10 @@ BEGIN
     -- Set Auto Install Supporting Objects
     apex_application_install.set_auto_install_sup_obj( p_auto_install_sup_obj => true );
 
+    -- APEX 26.1: retain subscriptions but ignore unresolved master components.
+    apex_application_install.set_subscription_mode(
+        p_mode => apex_application_install.c_subscription_ignore_errors );
+
 END;
 /
 @./scripts/f101.sql
@@ -34,6 +38,10 @@ BEGIN
 
     -- Set Auto Install Supporting Objects
     apex_application_install.set_auto_install_sup_obj( p_auto_install_sup_obj => true );
+
+    -- APEX 26.1: retain subscriptions but ignore unresolved master components.
+    apex_application_install.set_subscription_mode(
+        p_mode => apex_application_install.c_subscription_ignore_errors );
 END;
 /
 @./scripts/f100-genai-project.sql
