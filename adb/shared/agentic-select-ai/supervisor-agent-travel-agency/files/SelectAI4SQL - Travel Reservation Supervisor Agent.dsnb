@@ -1,0 +1,2245 @@
+[
+  {
+    "name" : "SelectAI4SQL - Travel Reservation Supervisor Agent",
+    "description" : "A Select AI Supervisor Agent demonstration for travel reservation service.",
+    "tags" : [
+      "Travel",
+      "Select AI",
+      "Supervisor Agent"
+    ],
+    "version" : "7",
+    "layout" : "zeppelin",
+    "type" : "medium",
+    "snapshot" : false,
+    "isEditable" : true,
+    "isRunnable" : true,
+    "template" : "dsrgmn3y",
+    "templateConfig" : "{\"visualization\":{\"filters\":[{\"_id\":1583324064459,\"type\":\"styling\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[{\"property\":\"hiddenConnection\",\"operator\":\"*\",\"value\":\"\"}]},\"component\":\"edge\",\"target\":\"edge\",\"properties\":{\"colors\":[\"rgba(0, 0, 0, 0.1)\"],\"style\":[\"dashed\"],\"legendTitle\":[\"Hidden Connection\"]}},{\"_id\":1590499315755,\"type\":\"aggregation\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[]},\"component\":\"vertex\",\"target\":\"vertex\",\"properties\":{},\"aggregation\":[{\"source\":\"\",\"type\":\"average\"}]}],\"version\":4}}",
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Build a travel reservation service with a Select AI Supervisor Agent",
+          "",
+          "This notebook creates a small travel-agency data set and a **Supervisor Agent** team. A traveler can identify a reservation with their name and reservation code, request a hotel or rental-car alternative, and confirm a change.",
+          "",
+          "The team contains focused worker agents for reservation verification, hotel alternatives, car alternatives, and confirmed reservation changes. The supervisor receives every customer request and dynamically delegates only the relevant worker tasks."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : true,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856953369,
+          "endTime" : 1787856953452,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"build-a-travel-reservation-service-with-a-select-ai-supervisor-agent\">Build a travel reservation service with a Select AI Supervisor Agent</h1>\n<p>This notebook creates a small travel-agency data set and a <strong>Supervisor Agent</strong> team. A traveler can identify a reservation with their name and reservation code, request a hotel or rental-car alternative, and confirm a change.</p>\n<p>The team contains focused worker agents for reservation verification, hotel alternatives, car alternatives, and confirmed reservation changes. The supervisor receives every customer request and dynamically delegates only the relevant worker tasks.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          " # Build agentic solutions using Select AI:",
+          " # \uD83C\uDFDD️ Travel Agency Supervisor Agent  \uD83C\uDFE8 \uD83D\uDE97",
+          "",
+          "Select AI Agent is Oracle Database\\’s framework for creating, deploying, and managing interactive AI agents. It is accessed through the `DBMS_CLOUD_AI_AGENT` package and combines an AI profile, ",
+          "focused instructions, tools, conversational context, and database logic to complete business tasks.",
+          "",
+          "In this notebook, you will build a travel-reservation service. A traveler can identify their reservation by providing their name and reservation code, ",
+          "ask for hotel or rental-car alternatives, and confirm a reservation update. The demonstration uses a **Select AI Supervisor Agent** to coordinate those interactions.",
+          "",
+          "#### What is an AI agent?",
+          "",
+          "An AI agent is a software system that receives a goal or request, reasons about the next appropriate action, uses available tools or data, and returns a response or completes an approved action.",
+          "",
+          "Generative AI is primarily used to create or summarize content. Agentic AI extends this capability by allowing an LLM to plan work, invoke tools, use returned results, ",
+          "request clarification when needed, and complete multi-step tasks with appropriate human involvement.",
+          "",
+          "#### Select AI Agent concepts",
+          "",
+          "- **Agent team** — the set of agent-task pairs that together implement a business workflow.",
+          "- **Agent** — an actor with a defined role and AI profile. An agent can perform one or more assigned tasks.",
+          "- **Task** — a bounded activity with instructions, available tools, and optional human-input support.",
+          "- **Tool** — a capability used by a task to access information or perform an action. Tools can call PL/SQL functions or use supported built-in capabilities.",
+          "- **Conversation** — the context used to preserve a multi-turn interaction between the customer and the agent team.",
+          "- **AI profile** — defines the AI provider, credential, model, and generation settings used by an agent.",
+          "",
+          "#### ReAct agentic pattern",
+          "",
+          "Select AI Agent uses the ReAct pattern: **Reasoning + Acting**. The agent evaluates the request, decides whether it needs more information or a tool, invokes the appropriate tool, interprets the result, and continues until it can provide a useful outcome.",
+          "",
+          "This pattern supports:",
+          "",
+          "- Planning the next action based on the customer request and prior results.",
+          "- Selecting and invoking the appropriate tool.",
+          "- Asking the customer for missing information or confirmation.",
+          "- Evaluating tool results and deciding whether another action is required.",
+          "- Returning a clear final response.",
+          "",
+          "#### Select AI Supervisor Agent",
+          "",
+          "A Select AI Supervisor Agent coordinates a team of specialized worker agents. Rather than following one fixed business flow, ",
+          "the supervisor receives the customer request and dynamically chooses the worker agent-task pair that should handle the next subtask.",
+          "",
+          "In this travel demonstration, the supervisor can delegate to specialists that:",
+          "",
+          "- Verify a reservation using the traveler name and reservation code.",
+          "- Find hotel alternatives for the reservation city.",
+          "- Find rental-car alternatives for the reservation city.",
+          "- Apply a selected hotel or car change only after explicit customer confirmation.",
+          "",
+          "Each worker handles a focused responsibility and has its own conversation thread. The supervisor therefore passes a self-contained request to each worker, ",
+          "including the relevant reservation details, city, selected option, or customer confirmation. ",
+          "The supervisor collects worker results, decides whether another specialist is needed, and returns one coordinated response to the traveler.",
+          "",
+          "A Supervisor Agent team uses `process: \"sequential\"` because one delegated subtask completes before the next begins. ",
+          "However, the workflow is not fixed: the supervisor dynamically selects the appropriate worker and order at runtime. ",
+          "For example, a traveler may ask directly for car alternatives, while a hotel-change request may require verification, hotel search, and a confirmed update.",
+          "",
+          "###### Pre-requisites",
+          "",
+          "For this notebook, the database administrator needs to grant the user the following:",
+          "",
+          "```sql",
+          "GRANT EXECUTE ON DBMS_CLOUD_AI TO <username>;",
+          "GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <username>;",
+          "```",
+          "Also required in case the user will create their own Credentials:",
+          "```",
+          "GRANT EXECUTE ON DBMS_CLOUD TO <username>;",
+          "```",
+          "---",
+          "Copyright (c) 2026 Oracle Corporation  ",
+          "###### [The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856953639,
+          "endTime" : 1787856953733,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"build-agentic-solutions-using-select-ai\">Build agentic solutions using Select AI:</h1>\n<h1 id=\"️-travel-agency-supervisor-agent---\">\uD83C\uDFDD️ Travel Agency Supervisor Agent  \uD83C\uDFE8 \uD83D\uDE97</h1>\n<p>Select AI Agent is Oracle Database\\’s framework for creating, deploying, and managing interactive AI agents. It is accessed through the <code>DBMS_CLOUD_AI_AGENT</code> package and combines an AI profile,\nfocused instructions, tools, conversational context, and database logic to complete business tasks.</p>\n<p>In this notebook, you will build a travel-reservation service. A traveler can identify their reservation by providing their name and reservation code,\nask for hotel or rental-car alternatives, and confirm a reservation update. The demonstration uses a <strong>Select AI Supervisor Agent</strong> to coordinate those interactions.</p>\n<h4 id=\"what-is-an-ai-agent\">What is an AI agent?</h4>\n<p>An AI agent is a software system that receives a goal or request, reasons about the next appropriate action, uses available tools or data, and returns a response or completes an approved action.</p>\n<p>Generative AI is primarily used to create or summarize content. Agentic AI extends this capability by allowing an LLM to plan work, invoke tools, use returned results,\nrequest clarification when needed, and complete multi-step tasks with appropriate human involvement.</p>\n<h4 id=\"select-ai-agent-concepts\">Select AI Agent concepts</h4>\n<ul>\n<li><strong>Agent team</strong> — the set of agent-task pairs that together implement a business workflow.</li>\n<li><strong>Agent</strong> — an actor with a defined role and AI profile. An agent can perform one or more assigned tasks.</li>\n<li><strong>Task</strong> — a bounded activity with instructions, available tools, and optional human-input support.</li>\n<li><strong>Tool</strong> — a capability used by a task to access information or perform an action. Tools can call PL/SQL functions or use supported built-in capabilities.</li>\n<li><strong>Conversation</strong> — the context used to preserve a multi-turn interaction between the customer and the agent team.</li>\n<li><strong>AI profile</strong> — defines the AI provider, credential, model, and generation settings used by an agent.</li>\n</ul>\n<h4 id=\"react-agentic-pattern\">ReAct agentic pattern</h4>\n<p>Select AI Agent uses the ReAct pattern: <strong>Reasoning + Acting</strong>. The agent evaluates the request, decides whether it needs more information or a tool, invokes the appropriate tool, interprets the result, and continues until it can provide a useful outcome.</p>\n<p>This pattern supports:</p>\n<ul>\n<li>Planning the next action based on the customer request and prior results.</li>\n<li>Selecting and invoking the appropriate tool.</li>\n<li>Asking the customer for missing information or confirmation.</li>\n<li>Evaluating tool results and deciding whether another action is required.</li>\n<li>Returning a clear final response.</li>\n</ul>\n<h4 id=\"select-ai-supervisor-agent\">Select AI Supervisor Agent</h4>\n<p>A Select AI Supervisor Agent coordinates a team of specialized worker agents. Rather than following one fixed business flow,\nthe supervisor receives the customer request and dynamically chooses the worker agent-task pair that should handle the next subtask.</p>\n<p>In this travel demonstration, the supervisor can delegate to specialists that:</p>\n<ul>\n<li>Verify a reservation using the traveler name and reservation code.</li>\n<li>Find hotel alternatives for the reservation city.</li>\n<li>Find rental-car alternatives for the reservation city.</li>\n<li>Apply a selected hotel or car change only after explicit customer confirmation.</li>\n</ul>\n<p>Each worker handles a focused responsibility and has its own conversation thread. The supervisor therefore passes a self-contained request to each worker,\nincluding the relevant reservation details, city, selected option, or customer confirmation.\nThe supervisor collects worker results, decides whether another specialist is needed, and returns one coordinated response to the traveler.</p>\n<p>A Supervisor Agent team uses <code>process: &quot;sequential&quot;</code> because one delegated subtask completes before the next begins.\nHowever, the workflow is not fixed: the supervisor dynamically selects the appropriate worker and order at runtime.\nFor example, a traveler may ask directly for car alternatives, while a hotel-change request may require verification, hotel search, and a confirmed update.</p>\n<h6 id=\"pre-requisites\">Pre-requisites</h6>\n<p>For this notebook, the database administrator needs to grant the user the following:</p>\n<pre><code class=\"language-sql\">GRANT EXECUTE ON DBMS_CLOUD_AI TO &lt;username&gt;;\nGRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO &lt;username&gt;;\n</code></pre>\n<p>Also required in case the user will create their own Credentials:</p>\n<pre><code>GRANT EXECUTE ON DBMS_CLOUD TO &lt;username&gt;;\n</code></pre>\n<hr />\n<p>Copyright (c) 2026 Oracle Corporation</p>\n<h6 id=\"the-universal-permissive-license-upl-version-10\"><a rel=\"nofollow\" href=\"https://oss.oracle.com/licenses/upl/\">The Universal Permissive License (UPL), Version 1.0</a></h6>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "For more information...",
+        "hasTitle" : true,
+        "message" : [
+          "%md",
+          "To open the documentation on a different browser Tab or Window, right-click on either link below",
+          "* Oracle Select AI documentation: https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html",
+          "* DBMS_CLOUD_AI Package documentation: https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856953883,
+          "endTime" : 1787856953962,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<p>To open the documentation on a different browser Tab or Window, right-click on either link below</p>\n<ul>\n<li>Oracle Select AI documentation: <a rel=\"nofollow\" href=\"https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html\">https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html</a></li>\n<li>DBMS_CLOUD_AI Package documentation: <a rel=\"nofollow\" href=\"https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html\">https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html</a></li>\n</ul>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 5,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "## Travel reservation Supervisor Agent",
+          "When travelers need to change plans, they may need help locating a reservation, finding a different hotel, comparing rental-car options, or confirming an update. ",
+          "This travel-reservation scenario uses your database and LLM to interact with the traveler. ",
+          "",
+          "The customer provides their name and reservation code, and the agent can retrieve the current reservation, recommend available hotel or car alternatives, and update the reservation after the traveler explicitly confirms the selected option.",
+          "",
+          "You will construct a Supervisor Agent solution starting with travel data, PL/SQL functions, and tools, followed by worker tasks, specialized agents, and a supervisor-led agent team. ",
+          "The AI profile identifies the LLM used by the supervisor and its worker agents.",
+          "",
+          "The Supervisor Agent receives each traveler request and dynamically selects the appropriate specialist. F",
+          "or example, it can first verify a reservation, then request hotel alternatives, then route a confirmed choice to the reservation-change specialist. ",
+          "",
+          "This demonstrates a flexible workflow: worker tasks run one at a time, but the supervisor determines which worker to use and in what order based on the customer’s intent and the results returned by earlier workers."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856954109,
+          "endTime" : 1787856954207,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2 id=\"travel-reservation-supervisor-agent\">Travel reservation Supervisor Agent</h2>\n<p>When travelers need to change plans, they may need help locating a reservation, finding a different hotel, comparing rental-car options, or confirming an update.\nThis travel-reservation scenario uses your database and LLM to interact with the traveler.</p>\n<p>The customer provides their name and reservation code, and the agent can retrieve the current reservation, recommend available hotel or car alternatives, and update the reservation after the traveler explicitly confirms the selected option.</p>\n<p>You will construct a Supervisor Agent solution starting with travel data, PL/SQL functions, and tools, followed by worker tasks, specialized agents, and a supervisor-led agent team.\nThe AI profile identifies the LLM used by the supervisor and its worker agents.</p>\n<p>The Supervisor Agent receives each traveler request and dynamically selects the appropriate specialist. F\nor example, it can first verify a reservation, then request hotel alternatives, then route a confirmed choice to the reservation-change specialist.</p>\n<p>This demonstrates a flexible workflow: worker tasks run one at a time, but the supervisor determines which worker to use and in what order based on the customer’s intent and the results returned by earlier workers.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 7,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "![tiny arrow](https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/qMpaRQNDLWPgs5mx95hMnR27gI0BkzbdTnC40_bejmIKui1eHFpxSdhRV4OhwQM8/n/adwc4pm/b/select-ai-notebook-content/o/Travel-agent-Select-AI-Supervisor-Agent.png \"tiny arrow\")"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856954367,
+          "endTime" : 1787856954462,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<p><img src=\"https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/qMpaRQNDLWPgs5mx95hMnR27gI0BkzbdTnC40_bejmIKui1eHFpxSdhRV4OhwQM8/n/adwc4pm/b/select-ai-notebook-content/o/Travel-agent-Select-AI-Supervisor-Agent.png\" alt=\"tiny arrow\" title=\"tiny arrow\" /></p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Phase 1: Create travel-agency scenario data",
+          "",
+          "The data below is intentionally small and self-contained. It includes hotel choices, car-rental choices, and current customer reservations."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856954625,
+          "endTime" : 1787856954720,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"phase-1-create-travel-agency-scenario-data\">Phase 1: Create travel-agency scenario data</h1>\n<p>The data below is intentionally small and self-contained. It includes hotel choices, car-rental choices, and current customer reservations.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          "### Create scenario data tables",
+          "",
+          "First, for our scenario, we'll create minimal `customers` and `customer_order_status` tables. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856954866,
+          "endTime" : 1787856954958,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h3 id=\"create-scenario-data-tables\">Create scenario data tables</h3>\n<p>First, for our scenario, we'll create minimal <code>customers</code> and <code>customer_order_status</code> tables.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create hotel options",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN",
+          "  EXECUTE IMMEDIATE 'DROP TABLE travel_reservations PURGE';",
+          "EXCEPTION WHEN OTHERS THEN IF SQLCODE != -942 THEN RAISE; END IF;",
+          "END;",
+          "/",
+          "BEGIN",
+          "  EXECUTE IMMEDIATE 'DROP TABLE car_rental_options PURGE';",
+          "EXCEPTION WHEN OTHERS THEN IF SQLCODE != -942 THEN RAISE; END IF;",
+          "END;",
+          "/",
+          "BEGIN",
+          "  EXECUTE IMMEDIATE 'DROP TABLE hotel_options PURGE';",
+          "EXCEPTION WHEN OTHERS THEN IF SQLCODE != -942 THEN RAISE; END IF;",
+          "END;",
+          "/",
+          "CREATE TABLE hotel_options (",
+          "  hotel_id NUMBER PRIMARY KEY,",
+          "  hotel_name VARCHAR2(100) NOT NULL,",
+          "  city VARCHAR2(60) NOT NULL,",
+          "  star_rating NUMBER(2,1),",
+          "  nightly_rate NUMBER(10,2),",
+          "  room_type VARCHAR2(40),",
+          "  available_rooms NUMBER,",
+          "  amenities VARCHAR2(300)",
+          ");",
+          "INSERT INTO hotel_options VALUES (101, 'Harbor View Hotel', 'Miami', 4.5, 245, 'Ocean King', 6, 'Pool, beach access, breakfast');",
+          "INSERT INTO hotel_options VALUES (102, 'Brickell City Suites', 'Miami', 4.0, 189, 'Executive Queen', 12, 'Gym, breakfast, business center');",
+          "INSERT INTO hotel_options VALUES (103, 'Central Park Lodge', 'New York', 4.5, 310, 'Deluxe King', 4, 'Park views, fitness center');",
+          "INSERT INTO hotel_options VALUES (104, 'Hudson Boutique Hotel', 'New York', 4.0, 265, 'Classic Queen', 9, 'Restaurant, concierge');",
+          "INSERT INTO hotel_options VALUES (105, 'Golden Gate Inn', 'San Francisco', 4.0, 275, 'Bay View King', 7, 'Breakfast, parking');",
+          "COMMIT;",
+          "",
+          "COMMENT ON TABLE hotel_options IS 'Travel agency hotel inventory. available_rooms indicates current sample availability.';",
+          "COMMENT ON COLUMN hotel_options.amenities IS 'Hotel amenities that can be used to recommend an alternative.';"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856955116,
+          "endTime" : 1787856956147,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nTable HOTEL_OPTIONS created.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\nCommit complete.\n\n\n---------------------------\n\nComment created.\n\n\n---------------------------\n\nComment created.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create car rental options",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "CREATE TABLE car_rental_options (",
+          "  car_option_id NUMBER PRIMARY KEY,",
+          "  provider_name VARCHAR2(100) NOT NULL,",
+          "  city VARCHAR2(60) NOT NULL,",
+          "  vehicle_class VARCHAR2(40) NOT NULL,",
+          "  daily_rate NUMBER(10,2),",
+          "  available_vehicles NUMBER,",
+          "  features VARCHAR2(300)",
+          ");",
+          "INSERT INTO car_rental_options VALUES (201, 'SunDrive Rentals', 'Miami', 'Midsize SUV', 82, 5, 'Automatic, unlimited mileage, child seat available');",
+          "INSERT INTO car_rental_options VALUES (202, 'Coastal Car Hire', 'Miami', 'Convertible', 115, 3, 'Automatic, unlimited mileage');",
+          "INSERT INTO car_rental_options VALUES (203, 'Metro Mobility', 'New York', 'Compact', 69, 11, 'Automatic, airport pickup');",
+          "INSERT INTO car_rental_options VALUES (204, 'Liberty Auto', 'New York', 'Luxury Sedan', 138, 2, 'Automatic, GPS, airport pickup');",
+          "INSERT INTO car_rental_options VALUES (205, 'Bay Wheels', 'San Francisco', 'Electric SUV', 105, 4, 'Automatic, charging included');",
+          "COMMIT;",
+          "",
+          "COMMENT ON TABLE car_rental_options IS 'Travel agency car rental inventory. available_vehicles indicates current sample availability.';"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856956297,
+          "endTime" : 1787856956521,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nTable CAR_RENTAL_OPTIONS created.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\nCommit complete.\n\n\n---------------------------\n\nComment created.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create current reservations",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "CREATE TABLE travel_reservations (",
+          "  reservation_code VARCHAR2(12) PRIMARY KEY,",
+          "  customer_name VARCHAR2(100) NOT NULL,",
+          "  customer_email VARCHAR2(120),",
+          "  city VARCHAR2(60) NOT NULL,",
+          "  check_in_date DATE NOT NULL,",
+          "  check_out_date DATE NOT NULL,",
+          "  hotel_id NUMBER REFERENCES hotel_options(hotel_id),",
+          "  car_option_id NUMBER REFERENCES car_rental_options(car_option_id),",
+          "  traveler_count NUMBER DEFAULT 1,",
+          "  reservation_status VARCHAR2(30) NOT NULL,",
+          "  last_updated TIMESTAMP DEFAULT SYSTIMESTAMP",
+          ");",
+          "INSERT INTO travel_reservations VALUES ('TRV-48291', 'Alex Morgan', 'alex.morgan@example.com', 'Miami', DATE '2026-09-12', DATE '2026-09-16', 101, 201, 2, 'CONFIRMED', SYSTIMESTAMP);",
+          "INSERT INTO travel_reservations VALUES ('TRV-59302', 'Priya Shah', 'priya.shah@example.com', 'New York', DATE '2026-10-04', DATE '2026-10-08', 103, 203, 1, 'CONFIRMED', SYSTIMESTAMP);",
+          "INSERT INTO travel_reservations VALUES ('TRV-67184', 'Diego Ramos', 'diego.ramos@example.com', 'San Francisco', DATE '2026-11-18', DATE '2026-11-22', 105, 205, 3, 'CONFIRMED', SYSTIMESTAMP);",
+          "INSERT INTO travel_reservations VALUES ('TRV-78415', 'Mei Lin', 'mei.lin@example.com', 'Miami', DATE '2026-09-20', DATE '2026-09-24', 102, NULL, 2, 'CONFIRMED', SYSTIMESTAMP);",
+          "COMMIT;",
+          "",
+          "COMMENT ON TABLE travel_reservations IS 'Current travel-agency customer reservations. Use customer name and reservation code to identify a reservation.';",
+          "COMMENT ON COLUMN travel_reservations.reservation_status IS 'CONFIRMED or CANCELLED in this demonstration.';"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856956668,
+          "endTime" : 1787856956856,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nTable TRAVEL_RESERVATIONS created.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\n1 row inserted.\n\n\n---------------------------\n\nCommit complete.\n\n\n---------------------------\n\nComment created.\n\n\n---------------------------\n\nComment created.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Review current reservations",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "SELECT r.reservation_code, r.customer_name, r.city, r.check_in_date, r.check_out_date,",
+          "       h.hotel_name, c.provider_name || ' - ' || c.vehicle_class AS car_rental,",
+          "       r.reservation_status",
+          "FROM travel_reservations r",
+          "LEFT JOIN hotel_options h ON h.hotel_id = r.hotel_id",
+          "LEFT JOIN car_rental_options c ON c.car_option_id = r.car_option_id",
+          "ORDER BY r.reservation_code;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856956990,
+          "endTime" : 1787856957208,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "RESERVATION_CODE\tCUSTOMER_NAME\tCITY\tCHECK_IN_DATE\tCHECK_OUT_DATE\tHOTEL_NAME\tCAR_RENTAL\tRESERVATION_STATUS\nTRV-48291\tAlex Morgan\tMiami\t2026-09-12 00:00:00\t2026-09-16 00:00:00\tHarbor View Hotel\tSunDrive Rentals - Midsize SUV\tCONFIRMED\nTRV-59302\tPriya Shah\tNew York\t2026-10-04 00:00:00\t2026-10-08 00:00:00\tCentral Park Lodge\tMetro Mobility - Compact\tCONFIRMED\nTRV-67184\tDiego Ramos\tSan Francisco\t2026-11-18 00:00:00\t2026-11-22 00:00:00\tGolden Gate Inn\tBay Wheels - Electric SUV\tCONFIRMED\nTRV-78415\tMei Lin\tMiami\t2026-09-20 00:00:00\t2026-09-24 00:00:00\tBrickell City Suites\t - \tCONFIRMED\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Phase 2: Create safe, focused travel tools",
+          "",
+          "The workers call small PL/SQL functions instead of receiving direct broad database access. The update function validates the traveler identity, reservation status, and selected inventory before changing a reservation. The change worker must request explicit customer confirmation before it calls that tool."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856957341,
+          "endTime" : 1787856957433,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"phase-2-create-safe-focused-travel-tools\">Phase 2: Create safe, focused travel tools</h1>\n<p>The workers call small PL/SQL functions instead of receiving direct broad database access. The update function validates the traveler identity, reservation status, and selected inventory before changing a reservation. The change worker must request explicit customer confirmation before it calls that tool.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create reservation lookup function",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "CREATE OR REPLACE FUNCTION get_travel_reservation (",
+          "  p_customer_name IN VARCHAR2,",
+          "  p_reservation_code IN VARCHAR2",
+          ") RETURN CLOB IS",
+          "  l_result CLOB;",
+          "BEGIN",
+          "  SELECT 'Reservation ' || r.reservation_code || ': traveler=' || r.customer_name ||",
+          "         ', city=' || r.city || ', stay=' || TO_CHAR(r.check_in_date, 'YYYY-MM-DD') ||",
+          "         ' to ' || TO_CHAR(r.check_out_date, 'YYYY-MM-DD') ||",
+          "         ', hotel=' || NVL(h.hotel_name, 'none') ||",
+          "         ', car=' || NVL(c.provider_name || ' ' || c.vehicle_class, 'none') ||",
+          "         ', status=' || r.reservation_status",
+          "    INTO l_result",
+          "    FROM travel_reservations r",
+          "    LEFT JOIN hotel_options h ON h.hotel_id = r.hotel_id",
+          "    LEFT JOIN car_rental_options c ON c.car_option_id = r.car_option_id",
+          "   WHERE UPPER(r.customer_name) = UPPER(TRIM(p_customer_name))",
+          "     AND UPPER(r.reservation_code) = UPPER(TRIM(p_reservation_code));",
+          "  RETURN l_result;",
+          "EXCEPTION",
+          "  WHEN NO_DATA_FOUND THEN",
+          "    RETURN 'No reservation matched that customer name and reservation code.';",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856957579,
+          "endTime" : 1787856957797,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nFunction GET_TRAVEL_RESERVATION compiled\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create hotel and car search functions",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "CREATE OR REPLACE FUNCTION find_hotel_alternatives (",
+          "  p_city IN VARCHAR2,",
+          "  p_max_nightly_rate IN NUMBER DEFAULT NULL",
+          ") RETURN CLOB IS",
+          "  l_result CLOB := EMPTY_CLOB();",
+          "BEGIN",
+          "  DBMS_LOB.CREATETEMPORARY(l_result, TRUE);",
+          "  FOR rec IN (SELECT hotel_id, hotel_name, star_rating, nightly_rate, room_type, amenities",
+          "                FROM hotel_options",
+          "               WHERE UPPER(city) = UPPER(TRIM(p_city))",
+          "                 AND available_rooms > 0",
+          "                 AND (p_max_nightly_rate IS NULL OR nightly_rate <= p_max_nightly_rate)",
+          "               ORDER BY nightly_rate, star_rating DESC) LOOP",
+          "    DBMS_LOB.APPEND(l_result, 'Hotel ID ' || rec.hotel_id || ': ' || rec.hotel_name ||",
+          "      ' (' || rec.star_rating || ' stars), ' || rec.room_type || ', $' || rec.nightly_rate ||",
+          "      ' per night. Amenities: ' || rec.amenities || CHR(10));",
+          "  END LOOP;",
+          "  IF DBMS_LOB.GETLENGTH(l_result) = 0 THEN RETURN 'No available hotel alternatives matched the request.'; END IF;",
+          "  RETURN l_result;",
+          "END;",
+          "/",
+          "CREATE OR REPLACE FUNCTION find_car_alternatives (",
+          "  p_city IN VARCHAR2,",
+          "  p_vehicle_class IN VARCHAR2 DEFAULT NULL",
+          ") RETURN CLOB IS",
+          "  l_result CLOB := EMPTY_CLOB();",
+          "BEGIN",
+          "  DBMS_LOB.CREATETEMPORARY(l_result, TRUE);",
+          "  FOR rec IN (SELECT car_option_id, provider_name, vehicle_class, daily_rate, features",
+          "                FROM car_rental_options",
+          "               WHERE UPPER(city) = UPPER(TRIM(p_city))",
+          "                 AND available_vehicles > 0",
+          "                 AND (p_vehicle_class IS NULL OR UPPER(vehicle_class) LIKE '%' || UPPER(p_vehicle_class) || '%')",
+          "               ORDER BY daily_rate) LOOP",
+          "    DBMS_LOB.APPEND(l_result, 'Car ID ' || rec.car_option_id || ': ' || rec.provider_name ||",
+          "      ' ' || rec.vehicle_class || ', $' || rec.daily_rate || ' per day. Features: ' || rec.features || CHR(10));",
+          "  END LOOP;",
+          "  IF DBMS_LOB.GETLENGTH(l_result) = 0 THEN RETURN 'No available car alternatives matched the request.'; END IF;",
+          "  RETURN l_result;",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856957946,
+          "endTime" : 1787856958101,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nFunction FIND_HOTEL_ALTERNATIVES compiled\n\n\n---------------------------\n\nFunction FIND_CAR_ALTERNATIVES compiled\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create confirmed-change function",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "CREATE OR REPLACE FUNCTION change_travel_reservation (",
+          "  p_customer_name IN VARCHAR2,",
+          "  p_reservation_code IN VARCHAR2,",
+          "  p_new_hotel_id IN NUMBER DEFAULT NULL,",
+          "  p_new_car_option_id IN NUMBER DEFAULT NULL",
+          ") RETURN CLOB IS",
+          "  l_count NUMBER;",
+          "  l_city travel_reservations.city%TYPE;",
+          "BEGIN",
+          "  SELECT city INTO l_city",
+          "    FROM travel_reservations",
+          "   WHERE UPPER(customer_name) = UPPER(TRIM(p_customer_name))",
+          "     AND UPPER(reservation_code) = UPPER(TRIM(p_reservation_code))",
+          "     AND reservation_status = 'CONFIRMED';",
+          "  IF p_new_hotel_id IS NULL AND p_new_car_option_id IS NULL THEN",
+          "    RETURN 'No change was requested.';",
+          "  END IF;",
+          "  IF p_new_hotel_id IS NOT NULL THEN",
+          "    SELECT COUNT(*) INTO l_count FROM hotel_options",
+          "     WHERE hotel_id = p_new_hotel_id AND UPPER(city) = UPPER(l_city) AND available_rooms > 0;",
+          "    IF l_count = 0 THEN RETURN 'The requested hotel option is not available for this reservation city.'; END IF;",
+          "  END IF;",
+          "  IF p_new_car_option_id IS NOT NULL THEN",
+          "    SELECT COUNT(*) INTO l_count FROM car_rental_options",
+          "     WHERE car_option_id = p_new_car_option_id AND UPPER(city) = UPPER(l_city) AND available_vehicles > 0;",
+          "    IF l_count = 0 THEN RETURN 'The requested car option is not available for this reservation city.'; END IF;",
+          "  END IF;",
+          "  UPDATE travel_reservations",
+          "     SET hotel_id = NVL(p_new_hotel_id, hotel_id),",
+          "         car_option_id = NVL(p_new_car_option_id, car_option_id),",
+          "         last_updated = SYSTIMESTAMP",
+          "   WHERE UPPER(customer_name) = UPPER(TRIM(p_customer_name))",
+          "     AND UPPER(reservation_code) = UPPER(TRIM(p_reservation_code));",
+          "  COMMIT;",
+          "  RETURN 'Reservation ' || UPPER(TRIM(p_reservation_code)) || ' was updated successfully.';",
+          "EXCEPTION",
+          "  WHEN NO_DATA_FOUND THEN",
+          "    RETURN 'No confirmed reservation matched that customer name and reservation code.';",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856958252,
+          "endTime" : 1787856958408,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nFunction CHANGE_TRAVEL_RESERVATION compiled\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Phase 3: Configure OCI credential and AI profile",
+          "",
+          "The credential cell is disabled so that no secret is stored in the notebook. In a LiveLabs-provided environment, use the provided credential. In your own OCI tenancy, enable the next cell and replace the placeholder OCIDs. The profile is shared by the supervisor and workers; substitute a model available in your region if needed."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856958559,
+          "endTime" : 1787856958641,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"phase-3-configure-oci-credential-and-ai-profile\">Phase 3: Configure OCI credential and AI profile</h1>\n<p>The credential cell is disabled so that no secret is stored in the notebook. In a LiveLabs-provided environment, use the provided credential. In your own OCI tenancy, enable the next cell and replace the placeholder OCIDs. The profile is shared by the supervisor and workers; substitute a model available in your region if needed.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Optional: create your OCI credential",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "-- DISABLED BY DEFAULT. Enable only when you need to create an OCI credential.",
+          "BEGIN",
+          "  DBMS_CLOUD.DROP_CREDENTIAL(credential_name => 'AI_CREDENTIAL');",
+          "EXCEPTION WHEN OTHERS THEN IF SQLCODE != -20004 THEN RAISE; END IF;",
+          "END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD.CREATE_CREDENTIAL(",
+          "    credential_name => 'AI_CREDENTIAL',",
+          "    user_ocid       => '<YOUR_USER_OCID>',",
+          "    tenancy_ocid    => '<YOUR_TENANCY_OCID>',",
+          "    private_key     => '<YOUR_PRIVATE_KEY_PEM>',",
+          "    fingerprint     => '<YOUR_API_KEY_FINGERPRINT>'",
+          "  );",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : false,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 0,
+          "endTime" : 0,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [ ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Verify that the cloud credential is defined",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT OWNER, CREDENTIAL_NAME, ENABLED FROM ALL_CREDENTIALS;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856958773,
+          "endTime" : 1787856958925,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "OWNER\tCREDENTIAL_NAME\tENABLED\nADMIN\tOCI$RESOURCE_PRINCIPAL\tTRUE\nSELECT_AI_USER\tMY_OCIAI_CRED\tTRUE\nSELECT_AI_USER\tOCI_CRED\tTRUE\nSELECT_AI_USER\tAI_CREDENTIAL\tTRUE\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create travel agent AI profile",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN",
+          "  DBMS_CLOUD_AI.DROP_PROFILE(profile_name => 'TRAVEL_SUPERVISOR_PROFILE');",
+          "EXCEPTION WHEN OTHERS THEN NULL;",
+          "END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI.CREATE_PROFILE(",
+          "    profile_name => 'TRAVEL_SUPERVISOR_PROFILE',",
+          "    attributes => '{\"provider\":\"oci\",",
+          "                    \"credential_name\":\"AI_CREDENTIAL\",",
+          "                    \"model\":\"xai.grok-4.20-reasoning\",",
+          "                    \"temperature\":0,",
+          "                    \"comments\":true}',",
+          "    description => 'LLM profile for the travel reservation supervisor demonstration'",
+          "  );",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856959073,
+          "endTime" : 1787856960008,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Phase 4: Create the Supervisor Agent team",
+          "",
+          "Worker tasks use only the tool they need. The supervisor itself has no direct database tool: it decides which worker agent-task pair to delegate to and merges results into the customer-facing response."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856960149,
+          "endTime" : 1787856960241,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"phase-4-create-the-supervisor-agent-team\">Phase 4: Create the Supervisor Agent team</h1>\n<p>Worker tasks use only the tool they need. The supervisor itself has no direct database tool: it decides which worker agent-task pair to delegate to and merges results into the customer-facing response.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Register travel tools",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('GET_TRAVEL_RESERVATION_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('FIND_HOTEL_ALTERNATIVES_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('FIND_CAR_ALTERNATIVES_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('CHANGE_TRAVEL_RESERVATION_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TOOL(tool_name  => 'GET_TRAVEL_RESERVATION_TOOL',",
+          "    attributes => '{\"instruction\":\"Retrieve one reservation only after customer name and reservation code are provided.\",\"function\":\"GET_TRAVEL_RESERVATION\"}',",
+          "    description => 'Looks up a current travel reservation.');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TOOL(tool_name  => 'FIND_HOTEL_ALTERNATIVES_TOOL',",
+          "    attributes =>'{\"instruction\":\"Find currently available hotels in the requested reservation city.\",\"function\":\"FIND_HOTEL_ALTERNATIVES\"}',",
+          "    description => 'Finds available hotel alternatives.');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TOOL(tool_name  => 'FIND_CAR_ALTERNATIVES_TOOL',",
+          "    attributes =>'{\"instruction\":\"Find currently available rental cars in the requested reservation city.\",\"function\":\"FIND_CAR_ALTERNATIVES\"}',",
+          "    description => 'Finds available rental-car alternatives.');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TOOL(tool_name  => 'CHANGE_TRAVEL_RESERVATION_TOOL',",
+          "    attributes =>'{\"instruction\":\"Changes hotel and/or car selections only after explicit customer confirmation.\",\"function\":\"CHANGE_TRAVEL_RESERVATION\"}',",
+          "    description => 'Updates an identified confirmed travel reservation.');",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856960390,
+          "endTime" : 1787856960926,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "List the Tools",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT * FROM user_ai_agent_tools ORDER BY tool_name;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856961059,
+          "endTime" : 1787856961172,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "TOOL_ID\tTOOL_NAME\tSTATUS\tDESCRIPTION\tCREATED\tLAST_MODIFIED\tORACLE_MAINTAINED\n212\tADBS_PROVISIONING_TOOL\tENABLED\tTool for provisioning Oracle Autonomous Databases\t2026-03-05 20:08:49.503957 UTC\t2026-03-05 20:08:49.503957 UTC\tN\n214\tADBS_UNPROVISION_TOOL\tENABLED\tTool for dropping Oracle Autonomous Databases\t2026-03-05 20:08:49.853844 UTC\t2026-03-05 20:08:49.853844 UTC\tN\n316\tBUILD_EMAIL_TOOL\tENABLED\tTool for updating customer order status in database table.\t2026-08-19 16:54:54.857232 UTC\t2026-08-19 16:54:54.857232 UTC\tN\n366\tCHANGE_TRAVEL_RESERVATION_TOOL\tENABLED\tUpdates an identified confirmed travel reservation.\t2026-08-27 18:56:00.839814 UTC\t2026-08-27 18:56:00.839814 UTC\tN\n220\tDATABASE_RESTART_TOOL\tENABLED\tTool for restarting an Autonomous Database\t2026-03-05 20:08:50.985566 UTC\t2026-03-05 20:08:50.985566 UTC\tN\n226\tDELETE_KEY_STORE_TOOL\tENABLED\tTool for deleting a key store\t2026-03-05 20:08:52.04328 UTC\t2026-03-05 20:08:52.04328 UTC\tN\n365\tFIND_CAR_ALTERNATIVES_TOOL\tENABLED\tFinds available rental-car alternatives.\t2026-08-27 18:56:00.790377 UTC\t2026-08-27 18:56:00.790377 UTC\tN\n364\tFIND_HOTEL_ALTERNATIVES_TOOL\tENABLED\tFinds available hotel alternatives.\t2026-08-27 18:56:00.739969 UTC\t2026-08-27 18:56:00.739969 UTC\tN\n217\tGET_AUTONOMOUS_DATABASE_DETAILS_TOOL\tENABLED\tTool for getting Autonomous Database details\t2026-03-05 20:08:50.443077 UTC\t2026-03-05 20:08:50.443077 UTC\tN\n211\tGET_COMPARTMENT_OCID_BY_NAME_TOOL\tENABLED\tTool to get compartment OCID by name\t2026-03-05 20:08:49.333041 UTC\t2026-03-05 20:08:49.333041 UTC\tN\n221\tGET_MAINTENANCE_RUN_HISTORY_TOOL\tENABLED\tTool to fetch Autonomous Database maintenance run history\t2026-03-05 20:08:51.163746 UTC\t2026-03-05 20:08:51.163746 UTC\tN\n363\tGET_TRAVEL_RESERVATION_TOOL\tENABLED\tLooks up a current travel reservation.\t2026-08-27 18:56:00.674869 UTC\t2026-08-27 18:56:00.674869 UTC\tN\n227\tLIST_ACDS_TOOL\tENABLED\tTool to list Autonomous Container Databases\t2026-03-05 20:08:52.216746 UTC\t2026-03-05 20:08:52.216746 UTC\tN\n228\tLIST_ADB_BACKUPS_TOOL\tENABLED\tTool to list Autonomous Database backups\t2026-03-05 20:08:52.386687 UTC\t2026-03-05 20:08:52.386687 UTC\tN\n213\tLIST_AUTONOMOUS_DATABASES_TOOL\tENABLED\tTool for listing Oracle Autonomous Databases\t2026-03-05 20:08:49.674129 UTC\t2026-03-05 20:08:49.674129 UTC\tN\n210\tLIST_COMPARTMENTS_TOOL\tENABLED\tTool for listing compartments\t2026-03-05 20:08:49.161358 UTC\t2026-03-05 20:08:49.161358 UTC\tN\n224\tLIST_DB_HOMES_TOOL\tENABLED\tTool for listing DB homes\t2026-03-05 20:08:51.692732 UTC\t2026-03-05 20:08:51.692732 UTC\tN\n223\tLIST_KEY_STORES_TOOL\tENABLED\tTool for listing Autonomous Database key stores\t2026-03-05 20:08:51.51572 UTC\t2026-03-05 20:08:51.51572 UTC\tN\n209\tLIST_SUBSCRIBED_REGIONS_TOOL\tENABLED\tTool for listing subscribed OCI regions\t2026-03-05 20:08:48.982861 UTC\t2026-03-05 20:08:48.982861 UTC\tN\n215\tMANAGE_AUTONOMOUS_DB_POWER_TOOL\tENABLED\tTool for starting or stopping an Autonomous Database\t2026-03-05 20:08:50.028436 UTC\t2026-03-05 20:08:50.028436 UTC\tN\n317\tSALES_RAG_TOOL\tENABLED\tTool for doing RAG for product recommendations using supplier documents.\t2026-08-19 16:56:12.833492 UTC\t2026-08-19 16:56:12.833492 UTC\tN\n225\tSHRINK_AUTONOMOUS_DATABASE_TOOL\tENABLED\tTool for shrinking an Autonomous Database storage\t2026-03-05 20:08:51.867248 UTC\t2026-03-05 20:08:51.867248 UTC\tN\n219\tSTART_AUTONOMOUS_DATABASE_TOOL\tENABLED\tTool for starting an Autonomous Database\t2026-03-05 20:08:50.812551 UTC\t2026-03-05 20:08:50.812551 UTC\tN\n218\tSTOP_AUTONOMOUS_DATABASE_TOOL\tENABLED\tTool for stopping an Autonomous Database\t2026-03-05 20:08:50.639627 UTC\t2026-03-05 20:08:50.639627 UTC\tN\n222\tUPDATE_AUTONOMOUS_DATABASE_TOOL\tENABLED\tTool for updating Autonomous Database attributes\t2026-03-05 20:08:51.341033 UTC\t2026-03-05 20:08:51.341033 UTC\tN\n216\tUPDATE_AUTONOMOUS_DB_RESOURCES_TOOL\tENABLED\tTool for updating CPU and storage for an Autonomous Database\t2026-03-05 20:08:50.238939 UTC\t2026-03-05 20:08:50.238939 UTC\tN\n315\tUPDATE_ORDER_STATUS_TOOL\tENABLED\tTool for updating customer order status in database table.\t2026-08-19 16:50:48.209729 UTC\t2026-08-19 16:50:48.209729 UTC\tN\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create worker tasks",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('VERIFY_RESERVATION_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('HOTEL_ALTERNATIVES_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('CAR_ALTERNATIVES_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('CHANGE_RESERVATION_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TASK('VERIFY_RESERVATION_TASK',",
+          "    '{\"instruction\":\"Verify a travel reservation. Ask for both the customer name and reservation code if either is missing. When both are supplied, call GET_TRAVEL_RESERVATION_TOOL and clearly report the result.\",\"tools\":[\"GET_TRAVEL_RESERVATION_TOOL\"],\"enable_human_tool\":true}');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TASK('HOTEL_ALTERNATIVES_TASK',",
+          "    '{\"instruction\":\"Recommend available hotel alternatives. Use the reservation city supplied in the delegated request. If city is absent, ask the customer for it. Call FIND_HOTEL_ALTERNATIVES_TOOL and return options with their hotel IDs. Do not change a reservation.\",\"tools\":[\"FIND_HOTEL_ALTERNATIVES_TOOL\"],\"enable_human_tool\":true}');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TASK('CAR_ALTERNATIVES_TASK',",
+          "    '{\"instruction\":\"Recommend available rental-car alternatives. Use the reservation city supplied in the delegated request. If city is absent, ask the customer for it. Call FIND_CAR_ALTERNATIVES_TOOL and return options with their car IDs. Do not change a reservation.\",\"tools\":[\"FIND_CAR_ALTERNATIVES_TOOL\"],\"enable_human_tool\":true}');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TASK('CHANGE_RESERVATION_TASK',",
+          "    '{\"instruction\":\"Change a confirmed reservation only when customer name, reservation code, selected hotel ID and/or car ID, and explicit confirmation are present. If confirmation is missing, summarize the proposed change and ask for confirmation. On confirmation call CHANGE_TRAVEL_RESERVATION_TOOL.\",\"tools\":[\"CHANGE_TRAVEL_RESERVATION_TOOL\"],\"enable_human_tool\":true}');",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856961321,
+          "endTime" : 1787856961915,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create specialized worker agents",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('RESERVATION_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('HOTEL_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('CAR_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('CHANGE_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_AGENT('RESERVATION_SPECIALIST', '{\"profile_name\":\"TRAVEL_SUPERVISOR_PROFILE\",\"role\":\"You are a precise travel reservation verification specialist.\"}');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_AGENT('HOTEL_SPECIALIST', '{\"profile_name\":\"TRAVEL_SUPERVISOR_PROFILE\",\"role\":\"You are a helpful hotel alternatives specialist.\"}');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_AGENT('CAR_SPECIALIST', '{\"profile_name\":\"TRAVEL_SUPERVISOR_PROFILE\",\"role\":\"You are a rental-car alternatives specialist.\"}');",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_AGENT('CHANGE_SPECIALIST', '{\"profile_name\":\"TRAVEL_SUPERVISOR_PROFILE\",\"role\":\"You are a careful reservation change specialist who never updates without confirmation.\"}');",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856962086,
+          "endTime" : 1787856962622,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Create the supervisor and its dynamic team",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN DBMS_CLOUD_AI_AGENT.CLEAR_TEAM; EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_TEAM('TRAVEL_RESERVATION_SUPERVISOR_TEAM'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('TRAVEL_SUPERVISOR'); EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_AGENT(",
+          "    agent_name => 'TRAVEL_SUPERVISOR',",
+          "    attributes => '{\"profile_name\":\"TRAVEL_SUPERVISOR_PROFILE\",",
+          "                    \"supervisor\":true,",
+          "                    \"role\":\"You coordinate a travel reservation service. Interpret the customer intent, delegate self-contained requests to only the needed specialist, preserve customer name and reservation code across handoffs, request missing information, and return one clear final response. For an update, ensure a specialist has verified the reservation and the customer has explicitly confirmed the selected option.\"}'",
+          "  );",
+          "END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI_AGENT.CREATE_TEAM(",
+          "    team_name => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',",
+          "    attributes => '{\"process\":\"sequential\",",
+          "                    \"supervisor_agent\":\"TRAVEL_SUPERVISOR\",",
+          "                    \"agents\":[{\"name\":\"RESERVATION_SPECIALIST\",\"task\":\"VERIFY_RESERVATION_TASK\"},",
+          "                              {\"name\":\"HOTEL_SPECIALIST\",\"task\":\"HOTEL_ALTERNATIVES_TASK\"},",
+          "                              {\"name\":\"CAR_SPECIALIST\",\"task\":\"CAR_ALTERNATIVES_TASK\"},",
+          "                              {\"name\":\"CHANGE_SPECIALIST\",\"task\":\"CHANGE_RESERVATION_TASK\"}] }',",
+          "    description => 'Supervisor-led travel support team with dynamic specialist delegation'",
+          "  );",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : "[{\"raw\":{\"height\":150,\"lastColumns\":[],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856962770,
+          "endTime" : 1787856964832,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Check the Tool Attributes",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          " select * from USER_AI_AGENT_TOOL_ATTRIBUTES ORDER BY TRUNC(last_modified) DESC, tool_name;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"table\":{\"numberOfItems\":8,\"lastColumns\":[\"TOOL_ID\",\"TOOL_NAME\",\"ATTRIBUTE_NAME\",\"ATTRIBUTE_VALUE\",\"LAST_MODIFIED\"],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856964980,
+          "endTime" : 1787856965089,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "TOOL_ID\tTOOL_NAME\tATTRIBUTE_NAME\tATTRIBUTE_VALUE\tLAST_MODIFIED\n366\tCHANGE_TRAVEL_RESERVATION_TOOL\tinstruction\tChanges hotel and/or car selections only after explicit customer confirmation.\t2026-08-27 18:56:00.864235 UTC\n366\tCHANGE_TRAVEL_RESERVATION_TOOL\tfunction\tCHANGE_TRAVEL_RESERVATION\t2026-08-27 18:56:00.864235 UTC\n365\tFIND_CAR_ALTERNATIVES_TOOL\tinstruction\tFind currently available rental cars in the requested reservation city.\t2026-08-27 18:56:00.81463 UTC\n365\tFIND_CAR_ALTERNATIVES_TOOL\tfunction\tFIND_CAR_ALTERNATIVES\t2026-08-27 18:56:00.81463 UTC\n364\tFIND_HOTEL_ALTERNATIVES_TOOL\tinstruction\tFind currently available hotels in the requested reservation city.\t2026-08-27 18:56:00.765333 UTC\n364\tFIND_HOTEL_ALTERNATIVES_TOOL\tfunction\tFIND_HOTEL_ALTERNATIVES\t2026-08-27 18:56:00.765333 UTC\n363\tGET_TRAVEL_RESERVATION_TOOL\tinstruction\tRetrieve one reservation only after customer name and reservation code are provided.\t2026-08-27 18:56:00.704382 UTC\n363\tGET_TRAVEL_RESERVATION_TOOL\tfunction\tGET_TRAVEL_RESERVATION\t2026-08-27 18:56:00.704382 UTC\n316\tBUILD_EMAIL_TOOL\tinstruction\tThis tool constructs an email string using as input details from the customer interaction as to the product they want to return or get a refund.\t2026-08-19 16:54:54.882502 UTC\n316\tBUILD_EMAIL_TOOL\ttool_inputs\t[{\"name\":\"p_email_type\",\"description\":\"Only supported value is 'refund' and 'replacement' \"}]\t2026-08-19 16:54:54.882502 UTC\n316\tBUILD_EMAIL_TOOL\tfunction\tbuild_return_email\t2026-08-19 16:54:54.882502 UTC\n317\tSALES_RAG_TOOL\ttool_type\tRAG\t2026-08-19 16:56:12.860541 UTC\n317\tSALES_RAG_TOOL\tinstruction\tThis tool is used to search the knowledgebase using Retrieval Augmented Generation search. Input should be a search query. This tool will return search results.\t2026-08-19 16:56:12.860541 UTC\n317\tSALES_RAG_TOOL\ttool_params\t{\"profile_name\":\"SALES_AGENT_RAG_PROFILE\"}\t2026-08-19 16:56:12.860541 UTC\n315\tUPDATE_ORDER_STATUS_TOOL\tinstruction\tThis tool updates the database to reflect return status change. Always confirm user name and order number with user before update status\t2026-08-19 16:50:48.237621 UTC\n315\tUPDATE_ORDER_STATUS_TOOL\tfunction\tupdate_customer_order_status\t2026-08-19 16:50:48.237621 UTC\n212\tADBS_PROVISIONING_TOOL\tinstruction\tProvisions an Oracle Autonomous Database. Use LIST_SUBSCRIBED_REGIONS_TOOL and LIST_COMPARTMENTS_TOOL to gather prerequisites, then confirm all choices before provisioning.\t2026-03-05 20:08:49.558724 UTC\n212\tADBS_PROVISIONING_TOOL\tfunction\toci_autonomous_database_agents.provision_adbs_tool\t2026-03-05 20:08:49.558724 UTC\n214\tADBS_UNPROVISION_TOOL\tinstruction\tDrops an Oracle Autonomous Database (confirm before calling).\t2026-03-05 20:08:49.909124 UTC\n214\tADBS_UNPROVISION_TOOL\tfunction\toci_autonomous_database_agents.drop_autonomous_database\t2026-03-05 20:08:49.909124 UTC\n220\tDATABASE_RESTART_TOOL\tinstruction\tRestarts the specified Autonomous Database (confirm before calling).\t2026-03-05 20:08:51.042951 UTC\n220\tDATABASE_RESTART_TOOL\tfunction\toci_autonomous_database_agents.restart_autonomous_database\t2026-03-05 20:08:51.042951 UTC\n226\tDELETE_KEY_STORE_TOOL\tinstruction\tDelete a key store by key_store_id (confirm before calling).\t2026-03-05 20:08:52.098221 UTC\n226\tDELETE_KEY_STORE_TOOL\tfunction\toci_autonomous_database_agents.delete_key_store\t2026-03-05 20:08:52.098221 UTC\n217\tGET_AUTONOMOUS_DATABASE_DETAILS_TOOL\tinstruction\tFetches metadata for a specific Autonomous Database by OCID.\t2026-03-05 20:08:50.502021 UTC\n217\tGET_AUTONOMOUS_DATABASE_DETAILS_TOOL\tfunction\toci_autonomous_database_agents.get_autonomous_database_details\t2026-03-05 20:08:50.502021 UTC\n211\tGET_COMPARTMENT_OCID_BY_NAME_TOOL\tinstruction\tGiven a compartment name, return its OCID (uses LIST_COMPARTMENTS_TOOL internally).\t2026-03-05 20:08:49.38813 UTC\n211\tGET_COMPARTMENT_OCID_BY_NAME_TOOL\tfunction\toci_autonomous_database_agents.get_compartment_ocid_by_name\t2026-03-05 20:08:49.38813 UTC\n221\tGET_MAINTENANCE_RUN_HISTORY_TOOL\tinstruction\tRetrieve details for a specific maintenance run history by maintenance_run_history_id.\t2026-03-05 20:08:51.220312 UTC\n221\tGET_MAINTENANCE_RUN_HISTORY_TOOL\tfunction\toci_autonomous_database_agents.get_maintenance_run_history_json\t2026-03-05 20:08:51.220312 UTC\n227\tLIST_ACDS_TOOL\tinstruction\tList Autonomous Container Databases in a compartment.\t2026-03-05 20:08:52.271009 UTC\n227\tLIST_ACDS_TOOL\tfunction\toci_autonomous_database_agents.list_autonomous_container_database\t2026-03-05 20:08:52.271009 UTC\n228\tLIST_ADB_BACKUPS_TOOL\tinstruction\tList Autonomous Database backups for a given compartment and autonomous_database_id.\t2026-03-05 20:08:52.441403 UTC\n228\tLIST_ADB_BACKUPS_TOOL\tfunction\toci_autonomous_database_agents.list_autonomous_database_backups\t2026-03-05 20:08:52.441403 UTC\n213\tLIST_AUTONOMOUS_DATABASES_TOOL\tinstruction\tLists Oracle Autonomous Databases in a given compartment and region.\t2026-03-05 20:08:49.731477 UTC\n213\tLIST_AUTONOMOUS_DATABASES_TOOL\tfunction\toci_autonomous_database_agents.list_autonomous_databases\t2026-03-05 20:08:49.731477 UTC\n210\tLIST_COMPARTMENTS_TOOL\tinstruction\tLists compartments in the tenancy. Use to help the user pick a compartment for Autonomous Database operations.\t2026-03-05 20:08:49.216905 UTC\n210\tLIST_COMPARTMENTS_TOOL\tfunction\toci_autonomous_database_agents.list_compartments\t2026-03-05 20:08:49.216905 UTC\n224\tLIST_DB_HOMES_TOOL\tinstruction\tList DB homes in a given compartment.\t2026-03-05 20:08:51.750041 UTC\n224\tLIST_DB_HOMES_TOOL\tfunction\toci_autonomous_database_agents.list_db_homes\t2026-03-05 20:08:51.750041 UTC\n223\tLIST_KEY_STORES_TOOL\tinstruction\tList key stores in a given compartment.\t2026-03-05 20:08:51.57166 UTC\n223\tLIST_KEY_STORES_TOOL\tfunction\toci_autonomous_database_agents.list_key_stores\t2026-03-05 20:08:51.57166 UTC\n209\tLIST_SUBSCRIBED_REGIONS_TOOL\tinstruction\tLists all Oracle Cloud regions subscribed by the current tenancy. Use to help the user pick a region.\t2026-03-05 20:08:49.04179 UTC\n209\tLIST_SUBSCRIBED_REGIONS_TOOL\tfunction\toci_autonomous_database_agents.list_subscribed_regions\t2026-03-05 20:08:49.04179 UTC\n215\tMANAGE_AUTONOMOUS_DB_POWER_TOOL\tinstruction\tStarts or stops an Autonomous Database based on action START or STOP (confirm before calling).\t2026-03-05 20:08:50.086002 UTC\n215\tMANAGE_AUTONOMOUS_DB_POWER_TOOL\tfunction\toci_autonomous_database_agents.manage_autonomous_db_power\t2026-03-05 20:08:50.086002 UTC\n225\tSHRINK_AUTONOMOUS_DATABASE_TOOL\tinstruction\tShrink an Autonomous Database's storage (confirm before calling).\t2026-03-05 20:08:51.923547 UTC\n225\tSHRINK_AUTONOMOUS_DATABASE_TOOL\tfunction\toci_autonomous_database_agents.shrink_autonomous_database\t2026-03-05 20:08:51.923547 UTC\n219\tSTART_AUTONOMOUS_DATABASE_TOOL\tinstruction\tStarts the specified Autonomous Database.\t2026-03-05 20:08:50.867504 UTC\n219\tSTART_AUTONOMOUS_DATABASE_TOOL\tfunction\toci_autonomous_database_agents.start_autonomous_database\t2026-03-05 20:08:50.867504 UTC\n218\tSTOP_AUTONOMOUS_DATABASE_TOOL\tfunction\toci_autonomous_database_agents.stop_autonomous_database\t2026-03-05 20:08:50.693904 UTC\n218\tSTOP_AUTONOMOUS_DATABASE_TOOL\tinstruction\tStops the specified Autonomous Database (confirm before calling).\t2026-03-05 20:08:50.693904 UTC\n222\tUPDATE_AUTONOMOUS_DATABASE_TOOL\tinstruction\tUpdate one or more attributes of an Autonomous Database. Only include parameters explicitly provided by the user; omit any omitted values.\t2026-03-05 20:08:51.39867 UTC\n222\tUPDATE_AUTONOMOUS_DATABASE_TOOL\tfunction\toci_autonomous_database_agents.update_autonomous_database\t2026-03-05 20:08:51.39867 UTC\n216\tUPDATE_AUTONOMOUS_DB_RESOURCES_TOOL\tinstruction\tUpdates the CPU core count and/or storage size (TB) for an Autonomous Database (confirm before calling).\t2026-03-05 20:08:50.310155 UTC\n216\tUPDATE_AUTONOMOUS_DB_RESOURCES_TOOL\tfunction\toci_autonomous_database_agents.update_autonomous_db_resources\t2026-03-05 20:08:50.310155 UTC\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Check the Task Attributes",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "select * from USER_AI_AGENT_TASK_ATTRIBUTES ORDER BY TRUNC(last_modified) DESC, task_name;",
+          " "
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"table\":{\"numberOfItems\":13,\"lastColumns\":[\"TASK_ID\",\"TASK_NAME\",\"ATTRIBUTE_NAME\",\"ATTRIBUTE_VALUE\",\"LAST_MODIFIED\"],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856965224,
+          "endTime" : 1787856965331,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "TASK_ID\tTASK_NAME\tATTRIBUTE_NAME\tATTRIBUTE_VALUE\tLAST_MODIFIED\n129\tCAR_ALTERNATIVES_TASK\tinstruction\tRecommend available rental-car alternatives. Use the reservation city supplied in the delegated request. If city is absent, ask the customer for it. Call FIND_CAR_ALTERNATIVES_TOOL and return options with their car IDs. Do not change a reservation.\t2026-08-27 18:56:01.793976 UTC\n129\tCAR_ALTERNATIVES_TASK\tenable_human_tool\ttrue\t2026-08-27 18:56:01.793976 UTC\n129\tCAR_ALTERNATIVES_TASK\ttools\t[\"FIND_CAR_ALTERNATIVES_TOOL\"]\t2026-08-27 18:56:01.793976 UTC\n130\tCHANGE_RESERVATION_TASK\tinstruction\tChange a confirmed reservation only when customer name, reservation code, selected hotel ID and/or car ID, and explicit confirmation are present. If confirmation is missing, summarize the proposed change and ask for confirmation. On confirmation call CHANGE_TRAVEL_RESERVATION_TOOL.\t2026-08-27 18:56:01.85513 UTC\n130\tCHANGE_RESERVATION_TASK\tenable_human_tool\ttrue\t2026-08-27 18:56:01.85513 UTC\n130\tCHANGE_RESERVATION_TASK\ttools\t[\"CHANGE_TRAVEL_RESERVATION_TOOL\"]\t2026-08-27 18:56:01.85513 UTC\n128\tHOTEL_ALTERNATIVES_TASK\tinstruction\tRecommend available hotel alternatives. Use the reservation city supplied in the delegated request. If city is absent, ask the customer for it. Call FIND_HOTEL_ALTERNATIVES_TOOL and return options with their hotel IDs. Do not change a reservation.\t2026-08-27 18:56:01.73246 UTC\n128\tHOTEL_ALTERNATIVES_TASK\tenable_human_tool\ttrue\t2026-08-27 18:56:01.73246 UTC\n128\tHOTEL_ALTERNATIVES_TASK\ttools\t[\"FIND_HOTEL_ALTERNATIVES_TOOL\"]\t2026-08-27 18:56:01.73246 UTC\n131\tTRAVEL_SUPERVISOR$TASK\tinstruction\tRespond to user requests.\t2026-08-27 18:56:04.059926 UTC\n127\tVERIFY_RESERVATION_TASK\ttools\t[\"GET_TRAVEL_RESERVATION_TOOL\"]\t2026-08-27 18:56:01.659923 UTC\n127\tVERIFY_RESERVATION_TASK\tenable_human_tool\ttrue\t2026-08-27 18:56:01.659923 UTC\n127\tVERIFY_RESERVATION_TASK\tinstruction\tVerify a travel reservation. Ask for both the customer name and reservation code if either is missing. When both are supplied, call GET_TRAVEL_RESERVATION_TOOL and clearly report the result.\t2026-08-27 18:56:01.659923 UTC\n80\tGENERATE_EMAIL_TASK\tinstruction\tUse the customer information and product details to generate an email in a professional format. The email should:1. Include a greeting to the customer by name2. Specify the item being returned, the order number, and the reason for the return3. If it is a refund, state the refund will be issued to the credit card on record.4. If it is a replacement, state that the replacement will be shipped in 3-5 business days.\t2026-08-19 16:53:35.662027 UTC\n82\tHANDLE_PRODUCT_RETURN_TASK\tinstruction\tProcess a product return request from a customer: {query} Steps to be followed: 1. Ask customer the reason for return (no longer needed, arrived too late, box broken, or defective)2. If no longer needed:   a. Inform customer to ship the product at their expense back to us.   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.3. If it arrived too late:   a. Ask customer if they want a refund.   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed4. If the product was defective or the box broken:   a. Ask customer if they want a replacement or a refund or if they would like to consider alternative recommendations   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund   d. If consider alternative recommendations, use the RAG tool to present 2 alternatives to the customer and let them decide if they want this product or the original one5. After the completion of a return or refund, ask if you can help with anything else.   End the task and generatea a final answer only if user does not need help on anything else\t2026-08-19 16:56:13.249446 UTC\n82\tHANDLE_PRODUCT_RETURN_TASK\ttools\t[\"Update_Order_Status_Tool\",\"sales_rag_tool\"]\t2026-08-19 16:56:13.249446 UTC\n13\tOCI_AUTONOMOUS_DATABASE_TASKS\tinstruction\tIdentify the intent of the user request and determine the correct Autonomous Database operation. Prompt the user only for necessary missing details. Ask clarifying questions if intent is ambiguous. When presenting any list, object, or JSON structure to the user, format it in a human-readable way. Confirm destructive actions before execution. User request: {query}\t2026-03-04 16:56:20.773323 America/New_York\n13\tOCI_AUTONOMOUS_DATABASE_TASKS\ttools\t[\"LIST_SUBSCRIBED_REGIONS_TOOL\",\"LIST_COMPARTMENTS_TOOL\",\"GET_COMPARTMENT_OCID_BY_NAME_TOOL\",\"LIST_AUTONOMOUS_DATABASES_TOOL\",\"GET_AUTONOMOUS_DATABASE_DETAILS_TOOL\",\"ADBS_PROVISIONING_TOOL\",\"ADBS_UNPROVISION_TOOL\",\"START_AUTONOMOUS_DATABASE_TOOL\",\"STOP_AUTONOMOUS_DATABASE_TOOL\",\"DATABASE_RESTART_TOOL\",\"MANAGE_AUTONOMOUS_DB_POWER_TOOL\",\"UPDATE_AUTONOMOUS_DB_RESOURCES_TOOL\",\"GET_MAINTENANCE_RUN_HISTORY_TOOL\",\"UPDATE_AUTONOMOUS_DATABASE_TOOL\",\"LIST_KEY_STORES_TOOL\",\"LIST_DB_HOMES_TOOL\",\"SHRINK_AUTONOMOUS_DATABASE_TOOL\",\"DELETE_KEY_STORE_TOOL\",\"LIST_ACDS_TOOL\",\"LIST_ADB_BACKUPS_TOOL\"]\t2026-03-04 16:56:20.773323 America/New_York\n13\tOCI_AUTONOMOUS_DATABASE_TASKS\tenable_human_tool\ttrue\t2026-03-04 16:56:20.773323 America/New_York\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Check the Agents",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT * FROM user_ai_agents ORDER BY TRUNC(last_modified) DESC, agent_name;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856965468,
+          "endTime" : 1787856965578,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "AGENT_ID\tAGENT_NAME\tSTATUS\tDESCRIPTION\tCREATED\tLAST_MODIFIED\tORACLE_MAINTAINED\n113\tCAR_SPECIALIST\tENABLED\tCLOB\t2026-08-27 18:56:02.504396 UTC\t2026-08-27 18:56:02.504396 UTC\tN\n114\tCHANGE_SPECIALIST\tENABLED\tCLOB\t2026-08-27 18:56:02.553103 UTC\t2026-08-27 18:56:02.553103 UTC\tN\n112\tHOTEL_SPECIALIST\tENABLED\tCLOB\t2026-08-27 18:56:02.454672 UTC\t2026-08-27 18:56:02.454672 UTC\tN\n111\tRESERVATION_SPECIALIST\tENABLED\tCLOB\t2026-08-27 18:56:02.392714 UTC\t2026-08-27 18:56:02.392714 UTC\tN\n115\tTRAVEL_SUPERVISOR\tENABLED\tCLOB\t2026-08-27 18:56:03.489799 UTC\t2026-08-27 18:56:03.489799 UTC\tN\n88\tCUSTOMER_RETURN_AGENT\tENABLED\tCLOB\t2026-08-19 16:53:34.993789 UTC\t2026-08-19 16:53:34.993789 UTC\tN\n9\tOCI_AUTONOMOUS_DATABASE_ADVISOR\tENABLED\tAI agent for advising and automating OCI Autonomous Database operations\t2026-03-04 16:56:20.926018 America/New_York\t2026-03-04 16:56:20.926018 America/New_York\tN\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Check each Agent Attributes",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          " select * from USER_AI_AGENT_ATTRIBUTES ORDER BY TRUNC(last_modified) DESC, agent_name;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"table\":{\"numberOfItems\":10,\"lastColumns\":[\"AGENT_ID\",\"AGENT_NAME\",\"ATTRIBUTE_NAME\",\"ATTRIBUTE_VALUE\",\"LAST_MODIFIED\"],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856965725,
+          "endTime" : 1787856965837,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "AGENT_ID\tAGENT_NAME\tATTRIBUTE_NAME\tATTRIBUTE_VALUE\tLAST_MODIFIED\n113\tCAR_SPECIALIST\tprofile_name\tTRAVEL_SUPERVISOR_PROFILE\t2026-08-27 18:56:02.528806 UTC\n113\tCAR_SPECIALIST\trole\tYou are a rental-car alternatives specialist.\t2026-08-27 18:56:02.528806 UTC\n114\tCHANGE_SPECIALIST\tprofile_name\tTRAVEL_SUPERVISOR_PROFILE\t2026-08-27 18:56:02.577516 UTC\n114\tCHANGE_SPECIALIST\trole\tYou are a careful reservation change specialist who never updates without confirmation.\t2026-08-27 18:56:02.577516 UTC\n112\tHOTEL_SPECIALIST\tprofile_name\tTRAVEL_SUPERVISOR_PROFILE\t2026-08-27 18:56:02.479871 UTC\n112\tHOTEL_SPECIALIST\trole\tYou are a helpful hotel alternatives specialist.\t2026-08-27 18:56:02.479871 UTC\n111\tRESERVATION_SPECIALIST\tprofile_name\tTRAVEL_SUPERVISOR_PROFILE\t2026-08-27 18:56:02.420159 UTC\n111\tRESERVATION_SPECIALIST\trole\tYou are a precise travel reservation verification specialist.\t2026-08-27 18:56:02.420159 UTC\n115\tTRAVEL_SUPERVISOR\tprofile_name\tTRAVEL_SUPERVISOR_PROFILE\t2026-08-27 18:56:03.514371 UTC\n115\tTRAVEL_SUPERVISOR\trole\tYou coordinate a travel reservation service. Interpret the customer intent, delegate self-contained requests to only the needed specialist, preserve customer name and reservation code across handoffs, request missing information, and return one clear final response. For an update, ensure a specialist has verified the reservation and the customer has explicitly confirmed the selected option.\t2026-08-27 18:56:03.514371 UTC\n115\tTRAVEL_SUPERVISOR\tsupervisor\ttrue\t2026-08-27 18:56:03.514371 UTC\n88\tCUSTOMER_RETURN_AGENT\tprofile_name\tOCI_GENAI_GROK\t2026-08-19 16:53:35.018971 UTC\n88\tCUSTOMER_RETURN_AGENT\trole\tYou are a convivial and chatty experienced customer return agent who deals with customers return requests.\t2026-08-19 16:53:35.018971 UTC\n9\tOCI_AUTONOMOUS_DATABASE_ADVISOR\tprofile_name\tOCI_GENAI_GROK\t2026-03-04 16:56:20.982441 America/New_York\n9\tOCI_AUTONOMOUS_DATABASE_ADVISOR\trole\tYou are an OCI Autonomous Database Advisor. You help users provision, list, start/stop/restart, resize, update configuration, and inspect ADB-related resources safely. You confirm destructive actions and present results clearly.\t2026-03-04 16:56:20.982441 America/New_York\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Check the Agent Team Attributes",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          " select * from USER_AI_AGENT_TEAM_ATTRIBUTES ORDER BY TRUNC(last_modified) DESC, agent_team_name;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856965986,
+          "endTime" : 1787856966101,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "AGENT_TEAM_ID\tAGENT_TEAM_NAME\tATTRIBUTE_NAME\tATTRIBUTE_VALUE\tLAST_MODIFIED\n92\tTRAVEL_RESERVATION_SUPERVISOR_TEAM\tprocess\tsequential\t2026-08-27 18:56:04.707873 UTC\n92\tTRAVEL_RESERVATION_SUPERVISOR_TEAM\tsupervisor_task\tCLOB\t2026-08-27 18:56:04.707873 UTC\n92\tTRAVEL_RESERVATION_SUPERVISOR_TEAM\tagents\t[{\"name\":\"RESERVATION_SPECIALIST\",\"task\":\"VERIFY_RESERVATION_TASK\"},{\"name\":\"HOTEL_SPECIALIST\",\"task\":\"HOTEL_ALTERNATIVES_TASK\"},{\"name\":\"CAR_SPECIALIST\",\"task\":\"CAR_ALTERNATIVES_TASK\"},{\"name\":\"CHANGE_SPECIALIST\",\"task\":\"CHANGE_RESERVATION_TASK\"}]\t2026-08-27 18:56:04.707873 UTC\n92\tTRAVEL_RESERVATION_SUPERVISOR_TEAM\tsupervisor_agent\tTRAVEL_SUPERVISOR\t2026-08-27 18:56:04.707873 UTC\n85\tRETURN_AGENCY_TEAM\tagents\t[{\"name\":\"Customer_Return_Agent\",\"task\":\"Handle_Product_Return_Task\"}]\t2026-08-19 16:56:14.38691 UTC\n85\tRETURN_AGENCY_TEAM\tprocess\tsequential\t2026-08-19 16:56:14.38691 UTC\n13\tOCI_AUTONOMOUS_DATABASE_TEAM\tagents\t[{\"name\":\"OCI_AUTONOMOUS_DATABASE_ADVISOR\",\"task\":\"OCI_AUTONOMOUS_DATABASE_TASKS\"}]\t2026-03-04 16:56:24.135668 America/New_York\n13\tOCI_AUTONOMOUS_DATABASE_TEAM\tprocess\tsequential\t2026-03-04 16:56:24.135668 America/New_York\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "# Phase 5: Test dynamic routing",
+          "",
+          "Run the following cells in order. The first request should be routed to reservation verification. Once the identity is available, the supervisor can route to hotel or car alternatives. The final request asks the change specialist to update only after confirmation."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856966252,
+          "endTime" : 1787856966344,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h1 id=\"phase-5-test-dynamic-routing\">Phase 5: Test dynamic routing</h1>\n<p>Run the following cells in order. The first request should be routed to reservation verification. Once the identity is available, the supervisor can route to hotel or car alternatives. The final request asks the change specialist to update only after confirmation.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Set the supervisor team",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "BEGIN DBMS_CLOUD_AI_AGENT.CLEAR_TEAM; EXCEPTION WHEN OTHERS THEN NULL; END;",
+          "/",
+          "BEGIN",
+          "  DBMS_CLOUD_AI_AGENT.SET_TEAM('TRAVEL_RESERVATION_SUPERVISOR_TEAM');",
+          "END;",
+          "/"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856966492,
+          "endTime" : 1787856966710,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n\nPL/SQL procedure successfully completed.\n\n\n---------------------------\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 1: identity collection and verification",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "SELECT AI AGENT I need help with my Miami reservation. I am Alex Morgan and my reservation code is TRV-48291"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856966860,
+          "endTime" : 1787856994123,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nRESPONSE                                                                                                                                                                                                                 \nYour reservation TRV-48291 is confirmed for Alex Morgan in Miami (2026-09-12 to 2026-09-16) with Harbor View Hotel and SunDrive Rentals Midsize SUV. What help do you need (e.g. hotel/car alternatives or a change)?    \n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 2: hotel alternatives",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT AI AGENT My hotel is no longer suitable. What hotel alternatives do I have in Miami"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787856994276,
+          "endTime" : 1787857132084,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "RESPONSE\nHere are currently available hotel alternatives in Miami (based on your reservation TRV-48291 for Alex Morgan). These are recommendations only and do not change or cancel your existing reservation in any way:  - Hotel ID 102: Brickell City Suites (4 stars), Executive Queen room type, $189 per night. Amenities: Gym, breakfast, business center. - Hotel ID 101: Harbor View Hotel (4.5 stars), Ocean King room type, $245 per night. Amenities: Pool, beach access, breakfast.  If you'd like to change your reservation to one of these (provide the hotel ID), please confirm explicitly.\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 3: non-sequential car alternatives",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT AI AGENT Before changing anything, can you also show rental-car choices for this Miami trip"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857132233,
+          "endTime" : 1787857170507,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "RESPONSE\nHello Alex Morgan (reservation TRV-48291 for Miami, 2026-09-12 to 2026-09-16). Here are currently available rental-car alternatives in Miami (I have not changed your reservation in any way):  - Car ID 201: SunDrive Rentals Midsize SUV at $82 per day. Features: Automatic transmission, unlimited mileage, child seat available. - Car ID 202: Coastal Car Hire Convertible at $115 per day. Features: Automatic transmission, unlimited mileage.  Let me know if you'd like more details on any of these or if you have a preferred vehicle class for additional options.\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 4: confirmed reservation update",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "SELECT AI AGENT Please change my hotel to Brickell City Suites in Miami. Yes, I confirm that change"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857170659,
+          "endTime" : 1787857258205,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "RESPONSE\nYour reservation TRV-48291 has been successfully updated to Brickell City Suites (hotel ID 102) in Miami. All other details (including the car rental) remain the same.\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Verify the result",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT r.reservation_code, r.customer_name, h.hotel_name, c.provider_name || ' - ' || c.vehicle_class AS car_rental, r.last_updated",
+          "FROM travel_reservations r",
+          "LEFT JOIN hotel_options h ON h.hotel_id = r.hotel_id",
+          "LEFT JOIN car_rental_options c ON c.car_option_id = r.car_option_id",
+          "WHERE r.reservation_code = 'TRV-48291';"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857258360,
+          "endTime" : 1787857258515,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "RESERVATION_CODE\tCUSTOMER_NAME\tHOTEL_NAME\tCAR_RENTAL\tLAST_UPDATED\nTRV-48291\tAlex Morgan\tBrickell City Suites\tSunDrive Rentals - Midsize SUV\t2026-08-27 19:00:47.929077\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Inspect supervisor delegation history",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "SELECT team_exec_id, task_name, agent_name, state, start_date, end_date",
+          "FROM user_ai_agent_task_history",
+          "WHERE team_exec_id IN (SELECT team_exec_id FROM user_ai_agent_team_history WHERE team_name = 'TRAVEL_RESERVATION_SUPERVISOR_TEAM')",
+          "ORDER BY start_date DESC;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857258643,
+          "endTime" : 1787857258757,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "TEAM_EXEC_ID\tTASK_NAME\tAGENT_NAME\tSTATE\tSTART_DATE\tEND_DATE\n5A0BE0A8-DFB1-433F-E063-5912000A2D4E\tCHANGE_RESERVATION_TASK\tCHANGE_SPECIALIST\tSUCCEEDED\t2026-08-27 19:00:19.815994 +0:00\t2026-08-27 19:00:50.731474 +0:00\n5A0BE0A8-DFB1-433F-E063-5912000A2D4E\tVERIFY_RESERVATION_TASK\tRESERVATION_SPECIALIST\tSUCCEEDED\t2026-08-27 18:59:56.145096 +0:00\t2026-08-27 19:00:12.717829 +0:00\n5A0BE0A8-DFB1-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:59:30.78886 +0:00\t2026-08-27 19:00:58.089537 +0:00\n5A0BE0A8-DFA1-433F-E063-5912000A2D4E\tCAR_ALTERNATIVES_TASK\tCAR_SPECIALIST\tSUCCEEDED\t2026-08-27 18:59:08.698667 +0:00\t2026-08-27 18:59:18.579241 +0:00\n5A0BE0A8-DFA1-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:58:52.350645 +0:00\t2026-08-27 18:59:30.396486 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:58:25.684806 +0:00\t2026-08-27 18:58:39.59696 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:57:59.176312 +0:00\t2026-08-27 18:58:12.103828 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:57:38.071412 +0:00\t2026-08-27 18:57:49.586955 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:57:02.319468 +0:00\t2026-08-27 18:57:23.725163 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:56:45.688837 +0:00\t2026-08-27 18:56:55.525363 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:56:34.393742 +0:00\t2026-08-27 18:58:52.023386 +0:00\n5A0BE0A8-DF5D-433F-E063-5912000A2D4E\tVERIFY_RESERVATION_TASK\tRESERVATION_SPECIALIST\tSUCCEEDED\t2026-08-27 18:56:13.776237 +0:00\t2026-08-27 18:56:20.511695 +0:00\n5A0BE0A8-DF5D-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:56:06.99298 +0:00\t2026-08-27 18:56:33.950285 +0:00\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "",
+          " #### Use DBMS_CLOUD_AI_AGENT.RUN_TEAM",
+          "",
+          "The `RUN_TEAM` procedure enables you to use your agent team from PL/SQL - as opposed to the SQL command line. This procedure is mainly to enable you to build",
+          "your own agentic applications where you may need greater control over individual conversations. ",
+          "",
+          "In the example, we're showing how to explicitly create a conversation id and provide it as input to `RUN_TEAM`. ",
+          "Note that if you run `SET_TEAM` first, you don't need to pass conversation_id to run_team. ",
+          "",
+          "Select AI Agent has a `team_conversation_id` concept. Every interaction with a given agent is preserved and used as context for subsequent questions to the LLM. ",
+          "When you pass a conversation_id to `RUN_TEAM`, it is set as the `team_conversation_id`.",
+          "",
+          "When `SET_TEAM` is used, a `team_conversation_id` is created internally and set for the session. "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857258902,
+          "endTime" : 1787857258983,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4 id=\"use-dbms_cloud_ai_agentrun_team\">Use DBMS_CLOUD_AI_AGENT.RUN_TEAM</h4>\n<p>The <code>RUN_TEAM</code> procedure enables you to use your agent team from PL/SQL - as opposed to the SQL command line. This procedure is mainly to enable you to build\nyour own agentic applications where you may need greater control over individual conversations.</p>\n<p>In the example, we're showing how to explicitly create a conversation id and provide it as input to <code>RUN_TEAM</code>.\nNote that if you run <code>SET_TEAM</code> first, you don't need to pass conversation_id to run_team.</p>\n<p>Select AI Agent has a <code>team_conversation_id</code> concept. Every interaction with a given agent is preserved and used as context for subsequent questions to the LLM.\nWhen you pass a conversation_id to <code>RUN_TEAM</code>, it is set as the <code>team_conversation_id</code>.</p>\n<p>When <code>SET_TEAM</code> is used, a <code>team_conversation_id</code> is created internally and set for the session.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Explicitly create a conversation id for use this RUN_TEAM",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "",
+          "CREATE OR REPLACE PACKAGE my_globals IS",
+          "  l_team_conv_id varchar2(4000);",
+          "END my_globals;",
+          "/",
+          "-- Create conversation",
+          "DECLARE",
+          "  l_team_conv_id varchar2(4000);",
+          "BEGIN",
+          "  l_team_conv_id := DBMS_CLOUD_AI.create_conversation();",
+          "  my_globals.l_team_conv_id := l_team_conv_id;",
+          "  DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_conv_id);",
+          "END;"
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857259124,
+          "endTime" : 1787857259274,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "\nPackage MY_GLOBALS compiled\n\n\n---------------------------\nCreated conversation with ID: 5A0BE0A8-DFCA-433F-E063-5912000A2D4E\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 1: identity collection and verification",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "  v_response VARCHAR2(4000);",
+          "BEGIN",
+          "  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(",
+          "    team_name   => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',",
+          "    user_prompt => 'I need help with my Miami reservation. I am Alex Morgan and my reservation code is TRV-48291',",
+          "    params      => '{\"conversation_id\": \"' || my_globals.l_team_conv_id || '\"}'",
+          "  );",
+          "  DBMS_OUTPUT.PUT_LINE(v_response);",
+          "END; "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857259404,
+          "endTime" : 1787857284947,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Thank you, Alex Morgan. I've verified your reservation TRV-48291 (CONFIRMED):\n- Miami hotel stay: 2026-09-12 to 2026-09-16 at Brickell City Suites\n- Rental car: Midsize SUV from SunDrive Rentals\n\nWhat specific help do you need? For example, would you like hotel or car alternatives, a change to the reservation, or something else? Please provide details (and confirm any changes before we proceed).\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 2: hotel alternatives",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "  v_response VARCHAR2(4000);",
+          "BEGIN",
+          "  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(",
+          "    team_name   => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',",
+          "    user_prompt => 'My hotel is no longer suitable. What hotel alternatives do I have in Miami',",
+          "    params      => '{\"conversation_id\": \"' || my_globals.l_team_conv_id || '\"}'",
+          "  );",
+          "  DBMS_OUTPUT.PUT_LINE(v_response);",
+          "END; "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857285085,
+          "endTime" : 1787857328368,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Here are the currently available hotel alternatives in Miami for your reservation (TRV-48291, customer Alex Morgan). These are recommendations only and the existing reservation will not be changed.\n\n- Hotel ID 102: Brickell City Suites (4 stars), Executive Queen room, $189 per night. Amenities: Gym, breakfast, business center.\n- Hotel ID 101: Harbor View Hotel (4.5 stars), Ocean King room, $245 per night. Amenities: Pool, beach access, breakfast.\n\nIf you'd like to change to one of these (provide the hotel ID), please confirm explicitly so I can proceed with the update.\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 3: non-sequential car alternatives",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "  v_response VARCHAR2(4000);",
+          "BEGIN",
+          "  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(",
+          "    team_name   => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',",
+          "    user_prompt => 'Before changing anything, can you also show rental-car choices for this Miami trip',",
+          "    params      => '{\"conversation_id\": \"' || my_globals.l_team_conv_id || '\"}'",
+          "  );",
+          "  DBMS_OUTPUT.PUT_LINE(v_response);",
+          "END; "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857328516,
+          "endTime" : 1787857361786,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Here are the available rental-car alternatives in Miami for your reservation TRV-48291 (Alex Morgan). These do not change your current booking:\n\n- Car ID 201: SunDrive Rentals Midsize SUV at $82/day (automatic, unlimited mileage, child seat available)\n- Car ID 202: Coastal Car Hire Convertible at $115/day (automatic, unlimited mileage)\n\nLet me know if you'd like to proceed with a change (to hotel, car, or both) and confirm the specific IDs.\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Test 4: confirmed reservation update",
+        "hasTitle" : true,
+        "message" : [
+          "%script",
+          "",
+          "DECLARE",
+          "  v_response VARCHAR2(4000);",
+          "BEGIN",
+          "  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(",
+          "    team_name   => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',",
+          "    user_prompt => 'Please change my hotel to Brickell City Suites in Miami. Yes, I confirm that change',",
+          "    params      => '{\"conversation_id\": \"' || my_globals.l_team_conv_id || '\"}'",
+          "  );",
+          "  DBMS_OUTPUT.PUT_LINE(v_response);",
+          "END; "
+        ],
+        "selectedVisualization" : "raw",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857361931,
+          "endTime" : 1787857796676,
+          "interpreter" : "script.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "Your reservation TRV-48291 for Alex Morgan has been successfully updated to Brickell City Suites (Hotel ID 102) in Miami. No changes were made to any car option. If you need anything else, let me know.\n\n\nPL/SQL procedure successfully completed.\n\n",
+              "type" : "TEXT"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Verify the result",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "",
+          "SELECT r.reservation_code, r.customer_name, h.hotel_name, c.provider_name || ' - ' || c.vehicle_class AS car_rental, r.last_updated",
+          "FROM travel_reservations r",
+          "LEFT JOIN hotel_options h ON h.hotel_id = r.hotel_id",
+          "LEFT JOIN car_rental_options c ON c.car_option_id = r.car_option_id",
+          "WHERE r.reservation_code = 'TRV-48291';"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857796855,
+          "endTime" : 1787857797261,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "RESERVATION_CODE\tCUSTOMER_NAME\tHOTEL_NAME\tCAR_RENTAL\tLAST_UPDATED\nTRV-48291\tAlex Morgan\tBrickell City Suites\tSunDrive Rentals - Midsize SUV\t2026-08-27 19:09:43.907859\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : "Inspect supervisor delegation history",
+        "hasTitle" : true,
+        "message" : [
+          "%sql",
+          "SELECT team_exec_id, task_name, agent_name, state, start_date, end_date",
+          "FROM user_ai_agent_task_history",
+          "WHERE team_exec_id IN (SELECT team_exec_id FROM user_ai_agent_team_history WHERE team_name = 'TRAVEL_RESERVATION_SUPERVISOR_TEAM')",
+          "ORDER BY start_date DESC;"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : "[{\"table\":{\"numberOfItems\":10,\"lastColumns\":[\"TEAM_EXEC_ID\",\"TASK_NAME\",\"AGENT_NAME\",\"STATE\",\"START_DATE\",\"END_DATE\"],\"version\":1}}]",
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857797406,
+          "endTime" : 1787857797512,
+          "interpreter" : "sql.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "TEAM_EXEC_ID\tTASK_NAME\tAGENT_NAME\tSTATE\tSTART_DATE\tEND_DATE\n5A0BE0A8-DFF8-433F-E063-5912000A2D4E\tCHANGE_RESERVATION_TASK\tCHANGE_SPECIALIST\tSUCCEEDED\t2026-08-27 19:03:46.830428 +0:00\t2026-08-27 19:09:49.710068 +0:00\n5A0BE0A8-DFF8-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 19:03:22.739282 +0:00\t2026-08-27 19:03:40.263432 +0:00\n5A0BE0A8-DFF8-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 19:02:42.274233 +0:00\t2026-08-27 19:09:56.504721 +0:00\n5A0BE0A8-DFE9-433F-E063-5912000A2D4E\tCAR_ALTERNATIVES_TASK\tCAR_SPECIALIST\tSUCCEEDED\t2026-08-27 19:02:20.485465 +0:00\t2026-08-27 19:02:35.375731 +0:00\n5A0BE0A8-DFE9-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 19:02:08.859352 +0:00\t2026-08-27 19:02:41.680038 +0:00\n5A0BE0A8-DFDA-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 19:01:43.763827 +0:00\t2026-08-27 19:02:03.199379 +0:00\n5A0BE0A8-DFDA-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 19:01:25.426337 +0:00\t2026-08-27 19:02:08.209094 +0:00\n5A0BE0A8-DFCB-433F-E063-5912000A2D4E\tVERIFY_RESERVATION_TASK\tRESERVATION_SPECIALIST\tSUCCEEDED\t2026-08-27 19:01:05.850643 +0:00\t2026-08-27 19:01:18.300669 +0:00\n5A0BE0A8-DFCB-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 19:00:59.728776 +0:00\t2026-08-27 19:01:24.843429 +0:00\n5A0BE0A8-DFB1-433F-E063-5912000A2D4E\tCHANGE_RESERVATION_TASK\tCHANGE_SPECIALIST\tSUCCEEDED\t2026-08-27 19:00:19.815994 +0:00\t2026-08-27 19:00:50.731474 +0:00\n5A0BE0A8-DFB1-433F-E063-5912000A2D4E\tVERIFY_RESERVATION_TASK\tRESERVATION_SPECIALIST\tSUCCEEDED\t2026-08-27 18:59:56.145096 +0:00\t2026-08-27 19:00:12.717829 +0:00\n5A0BE0A8-DFB1-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:59:30.78886 +0:00\t2026-08-27 19:00:58.089537 +0:00\n5A0BE0A8-DFA1-433F-E063-5912000A2D4E\tCAR_ALTERNATIVES_TASK\tCAR_SPECIALIST\tSUCCEEDED\t2026-08-27 18:59:08.698667 +0:00\t2026-08-27 18:59:18.579241 +0:00\n5A0BE0A8-DFA1-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:58:52.350645 +0:00\t2026-08-27 18:59:30.396486 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:58:25.684806 +0:00\t2026-08-27 18:58:39.59696 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:57:59.176312 +0:00\t2026-08-27 18:58:12.103828 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:57:38.071412 +0:00\t2026-08-27 18:57:49.586955 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:57:02.319468 +0:00\t2026-08-27 18:57:23.725163 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tHOTEL_ALTERNATIVES_TASK\tHOTEL_SPECIALIST\tSUCCEEDED\t2026-08-27 18:56:45.688837 +0:00\t2026-08-27 18:56:55.525363 +0:00\n5A0BE0A8-DF6D-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:56:34.393742 +0:00\t2026-08-27 18:58:52.023386 +0:00\n5A0BE0A8-DF5D-433F-E063-5912000A2D4E\tVERIFY_RESERVATION_TASK\tRESERVATION_SPECIALIST\tSUCCEEDED\t2026-08-27 18:56:13.776237 +0:00\t2026-08-27 18:56:20.511695 +0:00\n5A0BE0A8-DF5D-433F-E063-5912000A2D4E\tTRAVEL_SUPERVISOR$TASK\tTRAVEL_SUPERVISOR\tSUCCEEDED\t2026-08-27 18:56:06.99298 +0:00\t2026-08-27 18:56:33.950285 +0:00\n",
+              "type" : "TABLE"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 12,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%md",
+          "## End of Script",
+          "",
+          "This is a self-contained travel-agency demonstration in which a Select AI Supervisor Agent dynamically routes travel requests to dedicated workers. You can inspect the task history after each test to show the actual delegation path."
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : true,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : true,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : {
+          "startTime" : 1787857797663,
+          "endTime" : 1787857797754,
+          "interpreter" : "md.medium",
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h2 id=\"end-of-script\">End of Script</h2>\n<p>This is a self-contained travel-agency demonstration in which a Select AI Supervisor Agent dynamically routes travel requests to dedicated workers. You can inspect the task history after each test to show the actual delegation path.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
+        },
+        "relations" : [ ],
+        "dynamicFormParams" : "{}"
+      }
+    ]
+  }
+]
