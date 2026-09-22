@@ -1,1 +1,0 @@
-https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip&zipUrlVariables={%22tag%22:%22gen-ai%22,%22db_ecpus%22:6,%22db_name%22:%22ailakehouse%22,%22u_name%22:%22select_ai_user%22,%22u_pwd%22:%22Welcometo2026%22}
