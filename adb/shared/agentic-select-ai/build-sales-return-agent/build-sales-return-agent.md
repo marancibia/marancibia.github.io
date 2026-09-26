@@ -4,7 +4,7 @@
 
 In this lab, you’ll turn a common customer service workflow - returning a purchased item - into an agentic workflow using Oracle Autonomous AI Database Select AI. The agent will converse with you the customer, collect the reason for return, and run an update to the order record.
 
-Estimated Time: X
+Estimated Time: 60 minutes
 
 ### Objectives
 
@@ -50,8 +50,6 @@ Replace _`ADB_USER`_ with your user name.
 <!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
 
 </if>
-
-
 
 ## Task 1: Download and Import the Provided Notebook into OML
 
@@ -124,7 +122,7 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
-## Task 2: Review the Customer Table
+## Task 2: Create and Review Customer and Order Status Tables
 
 You'll view the sample table for the scenario.
 
@@ -455,7 +453,7 @@ BEGIN
       attributes   => '{
           "provider": "oci",
           "credential_name": "AI_CREDENTIAL",
-          "model": "xai.grok-4.20-reasoning",
+          "model": "xai.grok-4.3",
           "embedding_model": "cohere.embed-v4.0"
       }',
       description  => 'Supports the Select AI Sales Return Agent scenario.'
@@ -508,9 +506,9 @@ END;
 </copy>
 ```
 
-## Task 10: Interact with the Return Agency Agent
+## Task 10: Interact with the Return Agency Agent Team
 
-You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current stateful session. Then, prefix your prompt with `select ai agent`. You'll interact with the agent team using natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
+You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current stateful session. Then, prefix your prompt with `select ai agent`. You'll interact with the agent team using natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent Framework to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
 Let's test it:
 
 1. Set the agent team in the current session.
@@ -720,9 +718,7 @@ You may now proceed to the next lab.
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
 * **Contributor:** Mark Hornick, Senior Dir of ML and AI Product Management; Laura Zhao, Member of Technical Staff
-<!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
--->
-
+* **Last Updated By/Date:** Marcos Arancibia, September 2026
 
 Copyright (c) 2026 Oracle Corporation.
 

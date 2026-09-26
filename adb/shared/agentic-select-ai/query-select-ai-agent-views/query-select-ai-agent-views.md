@@ -1,8 +1,8 @@
-# Query Select AI Agent Views
+# Query Select AI Agent Framework Views
 
 ## Introduction
 
-In this lab, you’ll inspect what happened during an agent run. You will read Select AI Agent history views to see team, task, and tool. You’ll also add a small helper procedure that prints the task, agent, prompt and prompt response for any conversation.
+In this lab, you’ll inspect what happened during an agent run. You will read Select AI Agent Framework history views to see team, task, and tool. You’ll also add a small helper procedure that prints the task, agent, prompt and prompt response for any conversation.
 
 Estimated Time: x
 
@@ -11,7 +11,7 @@ Estimated Time: x
 In this lab, you will:
 
 * Create a helper procedure that prints team processing (task → agent → prompt → response).
-* Explore the schemas of the Select AI Agent history views.
+* Explore the schemas of the Select AI Agent Framework history views.
 * Run focused queries on:
     * `USER_AI_AGENT_TOOL_HISTORY`
     * `USER_AI_AGENT_TASK_HISTORY`
@@ -68,7 +68,7 @@ ORDER BY task.start_date DESC NULLS LAST,
 </copy>
 ```
 
-## Task 2: View the Schema of Select AI Agent Views
+## Task 2: View the Schema of Select AI Agent Framework Views
 
 You'll inspect columns and data types so you know what you can filter and display.
 
@@ -119,8 +119,8 @@ You may now proceed to the next lab.
 
 ## Learn More
 
-* [Select AI Agent](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html)
-* [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
+* [Select AI Agent Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html)
+* [Select AI Agent Framework Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 

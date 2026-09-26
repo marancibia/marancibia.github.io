@@ -51,17 +51,17 @@ To create NL2SQL profile:
 
 ## Task 2: Access the Application
 
-1. Launch the demo app. Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. Refer to **Lab 1** -> **Task 4**.
+1. The App and the URL needed for this task are the ones defined by the installation of the AskOracle Select AI App in **Lab 1, Task 4**.  Launch the demo app by clicking on the _Ask Oracle Chatbot URL_. In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. Again, refer to **Lab 1** -> **Task 4**.
 
   ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
 
-2. The **Ask Oracle Chatbot using Select AI** chatbot application is displayed. On the top right-hand corner, click the user icon. 
+1. The **Ask Oracle Select AI Chatbot** chatbot application is displayed. On the top right-hand corner, click the user icon. 
     ![Enter Ask Oracle user icon](./images/ask-oracle-user-icon.png =70%x*)
 
-3. Click **Settings** from the menu. 
+2. Click **Settings** from the menu. 
     ![Select Settings](./images/settings.png =70%x*)
 
-4. The **Settings** screen pops up with different tabs: **NL2SQL Profile**, **RAG Profile**, **AI Agents Teams**, **Account**, and **About**. Choose the following by clicking each tab and selecting the corresponding object:
+3. The **Settings** screen pops up with different tabs: **NL2SQL Profile**, **RAG Profile**, **AI Agents Teams**, **Account**, and **About**. Choose the following by clicking each tab and selecting the corresponding object:
 
   a. NL2SQL Profile – `OCI_GENAI[NL2SQL]`
 
@@ -186,8 +186,8 @@ Click **+** and select **RAG** to ask questions using retrieval augmented genera
 
 ## Want to Learn More?
 
-* [Select AI Agent](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html) 
-* [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
+* [Select AI Agent Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html) 
+* [Select AI Agent Framework Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 

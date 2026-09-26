@@ -29,16 +29,15 @@
             "filename": "../../refine-your-agent/refine-your-agent.md"
         },
         {
-            "title": "Lab 3: Create a Function and Agent Tool to Generate an Email Response",
-            "type": "sandbox",
-            "filename": "../../refine-your-agent/refine-your-agent.md"
-        },
-        {
-            "title": "Lab 4: Adding Spatial tools to your Return Agent",
+            "title": "Lab 3: Adding Spatial tools to your Return Agent",
             "type": "sandbox",
             "filename": "../../add-spatial-tools/add-spatial-tools.md"
         },
         {
+            "title": "Lab 4: Use the Ask Oracle Select AI Chatbot app",
+            "type": "sandbox",
+            "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
+        },        {
             "title": "Lab 5: Interactive Travel Agency with a Supervisor Agent",
             "type": "sandbox",
             "filename": "../../supervisor-agent-travel-agency/supervisor-agent-travel-agency.md"
@@ -48,11 +47,7 @@
             "type": "sandbox",
             "filename": "../../query-select-ai-agent-views/query-select-ai-agent-views.md"
         },
-        {
-            "title": "Lab 7: Use the Ask Oracle Chatbot Demo Application",
-            "type": "sandbox",
-            "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
-        },
+
         {
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",

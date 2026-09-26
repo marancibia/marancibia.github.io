@@ -113,7 +113,7 @@ Oracle provides a ready-to-use OML notebook that walks through the complete setu
 
     An **agent** defines a role and AI profile. A **task** supplies instructions and tools. A **tool** calls a function to retrieve data or perform an action. An **agent team** brings the agent-task pairs together, and a **conversation** preserves the context of an interaction.
 
-    Select AI Agent uses the **ReAct** pattern (Reasoning + Acting): it evaluates a request, chooses a tool or asks for more information, interprets the result, and continues until it can respond. In this scenario, the supervisor selects the specialist needed for each part of the traveler's request.
+    Select AI Agent Framework uses the **ReAct** pattern (Reasoning + Acting): it evaluates a request, chooses a tool or asks for more information, interprets the result, and continues until it can respond. In this scenario, the supervisor selects the specialist needed for each part of the traveler's request.
 
     > **Note:** If a **User Action Required** message appears when you open the notebook, click **Allow Run**. Run paragraphs individually so you can review the setup and respond to the team during the conversation.
 
