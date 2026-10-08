@@ -4,7 +4,7 @@
 
 In this lab, you’ll turn a common customer service workflow - returning a purchased item - into an agentic workflow using Oracle Autonomous AI Database Select AI. The agent will converse with you the customer, collect the reason for return, and run an update to the order record.
 
-Estimated Time: 60 minutes
+Estimated Time: 30 minutes
 
 ### Objectives
 
@@ -38,16 +38,15 @@ Replace _`ADB_USER`_ with your user name.
 
 - You will need to download an OML notebook to a local folder.  Click the button below, and follow the instructions in the Task 1 below to import it:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/759l8cblf4RYc5WIbhuq_7oyIr-FoZSwWkn7dx1HrNFAzwiX2sn4Z1wJdCUPb1PV/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
-<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
+
 
 </if>
 <if type="sandbox">
 - Access to the LiveLabs reservation login information for this Workshop.
 - You will need to download an OML notebook to a local folder.  Click the button below, and follow the instructions in the Task 1 below to import it:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/759l8cblf4RYc5WIbhuq_7oyIr-FoZSwWkn7dx1HrNFAzwiX2sn4Z1wJdCUPb1PV/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
-<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 </if>
 
@@ -60,8 +59,7 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 
 1. Click the button below to download the notebook to a local folder:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/759l8cblf4RYc5WIbhuq_7oyIr-FoZSwWkn7dx1HrNFAzwiX2sn4Z1wJdCUPb1PV/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
-<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 <if type="tenancy">
 2. To access the URL for the Oracle Machine Learning sign in page, go to your Autonomous AI Database details page and click **Tool configuration**.
@@ -122,7 +120,7 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
-## Task 2: Create and Review Customer and Order Status Tables
+## Task 2: Create and Review Customer, Order and Store Tables
 
 You'll view the sample table for the scenario.
 

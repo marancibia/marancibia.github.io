@@ -4,7 +4,7 @@
 
 This lab focuses on refining the solution of the previous lab to achieve a better customer experience. In this lab, you’ll make the return flow feel more personalized. After updating the order, the agent will compose a clear, polite confirmation email. But this has a problem, which we’ll address in the next lab.
 
-Estimated Time: X
+Estimated Time: 20 minutes
 
 ### Objectives
 

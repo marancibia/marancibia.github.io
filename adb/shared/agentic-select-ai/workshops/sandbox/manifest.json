@@ -29,23 +29,34 @@
             "filename": "../../refine-your-agent/refine-your-agent.md"
         },
         {
-            "title": "Lab 3: Adding Spatial tools to your Return Agent",
+            "title": "Lab 3: Improve your Agent with store location",
             "type": "sandbox",
             "filename": "../../add-spatial-tools/add-spatial-tools.md"
         },
         {
-            "title": "Lab 4: Use the Ask Oracle Select AI Chatbot app",
+            "title": "Lab 4 (Optional): Define a function to populate a standard form email",
             "type": "sandbox",
-            "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
-        },        {
-            "title": "Lab 5: Interactive Travel Agency with a Supervisor Agent",
-            "type": "sandbox",
-            "filename": "../../supervisor-agent-travel-agency/supervisor-agent-travel-agency.md"
+            "filename": "../../create-function-tool-for-email/create-function-and-tool-for-email.md"
         },
         {
-            "title": "Lab 6: Query Select AI Agent Views",
+            "title": "Lab 5 (Optional): Introduce a RAG tool to enable recommending alternative products",
+            "type": "sandbox",
+            "filename": "../../rag-tool-for-alternatives/introduce-rag-tool-for-product-recommendation.md"
+        },
+        {
+            "title": "Lab 6 (Optional): Query Select AI Agent Views",
             "type": "sandbox",
             "filename": "../../query-select-ai-agent-views/query-select-ai-agent-views.md"
+        },
+        {
+            "title": "Lab 7: Use the AskOracle Select AI Chatbot app",
+            "type": "sandbox",
+            "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
+        },        
+        {
+            "title": "Lab 8: Interactive Travel Agency with a Supervisor Agent",
+            "type": "sandbox",
+            "filename": "../../supervisor-agent-travel-agency/supervisor-agent-travel-agency.md"
         },
 
         {

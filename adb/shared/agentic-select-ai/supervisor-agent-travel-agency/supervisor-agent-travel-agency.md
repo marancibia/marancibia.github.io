@@ -6,7 +6,7 @@ In this lab, you'll turn a common travel agency workflow - changing a customer's
 
 A Select AI Supervisor Agent receives each request and delegates work to specialists for reservation verification, hotel alternatives, car alternatives, and confirmed changes. Each worker handles a focused responsibility. The supervisor gathers the results and returns one coordinated response to the traveler.
 
-Estimated Time: 60 minutes
+Estimated Time: 20 minutes
 
 ### Objectives
 
@@ -39,7 +39,7 @@ GRANT EXECUTE ON DBMS_CLOUD TO ADB_USER;
 * Access to OCI Generative AI, including the required IAM policies and database network access for the model used in the AI profile.
 * Download the OML notebook to a local folder and follow Task 1 to import it:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/RKeIvXEZQZZI9-pBlrh8xLr6S-Y5i3jrww3afpGhWpZU2v-64CdcVp8KM0cznCs8/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20Travel%20Reservation%20Supervisor%20Agent.dsnb" class="tryit-button">Download Notebook</a>
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20Travel%20Reservation%20Supervisor%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 </if>
 
@@ -49,7 +49,7 @@ GRANT EXECUTE ON DBMS_CLOUD TO ADB_USER;
 * Use the supplied database user and the preconfigured **AI_CREDENTIAL** credential.
 * Download the OML notebook to a local folder and follow Task 1 to import it.
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/RKeIvXEZQZZI9-pBlrh8xLr6S-Y5i3jrww3afpGhWpZU2v-64CdcVp8KM0cznCs8/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20Travel%20Reservation%20Supervisor%20Agent.dsnb" class="tryit-button">Download Notebook</a>
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20Travel%20Reservation%20Supervisor%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 </if>
 
@@ -61,7 +61,7 @@ Oracle provides a ready-to-use OML notebook that walks through the complete setu
 
 1. Download the notebook to a local folder:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/RKeIvXEZQZZI9-pBlrh8xLr6S-Y5i3jrww3afpGhWpZU2v-64CdcVp8KM0cznCs8/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20Travel%20Reservation%20Supervisor%20Agent.dsnb" class="tryit-button">Download Notebook</a>
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20Travel%20Reservation%20Supervisor%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 <if type="tenancy">
 
