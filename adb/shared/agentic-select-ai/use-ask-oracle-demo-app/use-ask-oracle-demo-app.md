@@ -2,15 +2,15 @@
 
 ## Introduction
 
-This lab provides a hands-on tour of the “Ask Oracle” demo chatbot app. Here, you’ll use the chatbot to run the agent team created and enhanced in the previous labs. While we’ll focus on interacting with an agent team, this APEX-based app allows you to interact with your data using natural language prompts for RAG and NL2SQL with AI profiles already defined. You’ll open the app, review at the settings, specify NL2SQL   and RAG AI profiles, and pick an AI Agent. Then, try a few prompts - just click and chat.
+This lab provides a hands-on tour of the “AskOracle Select AI” demo chatbot app. Here, you’ll use the chatbot to run the agent team created and enhanced in the previous labs. While we’ll focus on interacting with an agent team, this APEX-based app allows you to interact with your data using natural language prompts for RAG and NL2SQL with AI profiles already defined. You’ll open the app, review the settings, specify NL2SQL   and RAG AI profiles, and pick an AI Agent. Then, try a few prompts - just click and chat.
 
 
-Estimated Time: x
+Estimated Time: 20 minutes
 
 ### Objectives
 
 In this lab, you will:
-* Access the Ask Oracle chatbot app.
+* Access the AskOracle Select AI chatbot app.
 * Review the **Settings**.
 * Choose an AI Agent to chat with.
 * Run some sample prompts.
@@ -21,7 +21,53 @@ In this lab, you will:
 
 > Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
 
-## Task 1: Create NL2SQL Profile
+## Task 1: Access the Application
+
+1. We will launch the **AskOracle Select AI Application**. 
+<if type="tenancy">
+   The application and its URL were created during the installation of the AskOracle Select AI Chatbot Application in **Lab 1** -> **Task 4**.
+   Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. 
+</if>
+<if type="sandbox">
+   The URL for the AskOracle Sekect AI Chatbot is available in your LiveLabs reservation information.  
+   You can check the section Get Started with LiveLabs as a reminder on how to find your reservation information.
+
+   ![Open AskOracle Select AI Chatbot link](./images/sandbox-open-ask-oracle.png =70%x*)
+</if>
+
+In the **AskOracle** page, enter the username and password, and then click **Sign In**. 
+
+  ![Enter AskOracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
+
+2. Since it's the first time you sign in, the **Set Admin Users** window in the **AskOracle Select AI** application is displayed. You can click __SKIP__ and the current signed-in username will be stored as an **Admin Users**. Otherwise you can enter the desired username as ADMIN and click **Save Admin Users**.
+
+<if type="sandbox">
+   ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users.png =70%x*)
+</if>
+<if type="tenancy">
+   ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users-adbuser.png =70%x*)
+</if>
+
+3. The **AskOracle Select AI Chatbot** application is displayed.
+    
+4. In the **Ask Question** prompt field, click the **+** menu and select **Agent Team**.  Notice that the bottom right indicates that agent team is `RETURN_AGENCY_TEAM`. You will see a section on the right of the conversation prompt that allows you to switch the Agent Team Profile. If you have configured other agent profiles using Select AI Agent framework, click the pull-down menu and select `RETURN_AGENCY_TEAM` profile. <if type="tenancy">  This profile was created in **Task 9 of Lab 2**. </if><if type="sandbox"> This profile was created in **Task 9 of Lab 1**. </if>
+
+   ![Select OCI_GENAI profile](./images/ask-oracle-enter-prompt-agents.png =70%x*)
+
+You are now ready to ask questions at the prompt area!
+
+
+## Task 2: Interact with the Sales Return Agent
+
+For example, follow this script:
+- “I want to return a smartphone case”
+- “The item is defective”
+- “I will need a replacement”
+- “I'm Bob Martinez and my order number is 7820”
+- “No thank you”
+
+
+## Task 3 (optional): Create NL2SQL Profile
 To create NL2SQL profile:
 1. Add a paragraph in your OML Notebook by clicking the **+** symbol.
 ![Add a paragraph](./images/add-paragraph.png)
@@ -49,41 +95,10 @@ To create NL2SQL profile:
   </copy>
   ```
 
-## Task 2: Access the Application
-
-1. Launch the demo app. Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. The application and its URL were created during the installation of the Ask Oracle Select AI Chatbot Application in **Lab 1** -> **Task 4**.
-
-  ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
-
-2. Since it's the first time you sign in, the **Set Admin Users** window in the **AskOracle Select AI** application is displayed. You can click __SKIP__ and the current signed-in username will be stored as an **Admin Users**. Otherwise you can enter the desired username as ADMIN and click *8Save Admin Users**.
-
-<if type="sandbox">
-   ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users.png =70%x*)
-</if>
-<if type="tenancy">
-   ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users-adbuser.png =70%x*)
-</if>
-
-3. The **Ask Oracle Select AI Chatbot** application is displayed.
-    
-4. In the **Ask Question** prompt field, click the **+** menu and select **Agent Team**.  Notice that the bottom right indicates that agent team is `RETURN_AGENCY_TEAM`. You will see a section on the right of the conversation prompt that allows you to switch the Agent Team Profile. If you have configured other agent profiles using Select AI Agent framework, click the pull-down menu and select `RETURN_AGENCY_TEAM` profile. This profile was created in **Task 9 of Lab 2**.
-   ![Select OCI_GENAI profile](./images/ask-oracle-enter-prompt-agents.png =70%x*)
-
-You are now ready to ask questions at the prompt area!
-
-
-## Task 3: Interact with the Sales Return Agent
-
-For example, follow this script:
-- “I want to return a smartphone case”
-- “The item is defective”
-- “I will need a replacement”
-- “I'm Bob Martinez and my order number is 7820”
-- “No thank you”
 
 ## Task 4: (Optional) Ask Natural Language and Database Questions Using the Application
 
-You use the Ask Oracle Select AI chatbot application to interact with both a large language model (LLM) and your Autonomous AI Database through a single conversational interface.
+You use the AskOracle Select AI chatbot application to interact with both a large language model (LLM) and your Autonomous AI Database through a single conversational interface.
 The application supports two modes of interaction:
 
 - **Ask the LLM Directly:**
@@ -130,7 +145,7 @@ Let's experiment a bit with both general data from the _internet_ and also from 
    ![Select Explore](./images/ask-oracle-explore.png =80%x*)
    The **Explore** page is displayed.
    ![Select Explore](./images/ask-oracle-explore-display.png =80%x*)
-6. Click the **Actions** drop-down list to perform several tasks on the generated data such as sorting, downloading, formatting, charting and much more. For details on using the actions tasks, see the embedded video in the **Introduction** section of this lab. 
+6. Click the **Actions** drop-down list to perform several tasks on the generated data such as sorting, downloading, formatting, charting and much more. 
   ![Select Actions and explore various options](./images/ask-oracle-explore-actions.png =80%x*)
 7. When you finish exploring, click the **Back** icon (left arrow) to return to the conversation on Home page. Now, click **Show SQL**.
   ![Select Show SQL](./images/ask-oracle-showsql.png =80%x*)
@@ -199,12 +214,13 @@ Let's experiment a bit with both general data from the _internet_ and also from 
     Select AI splits source documents into smaller units called chunks and stores them in the vector index. During a RAG query, Select AI retrieves the most relevant chunks using semantic search and adds them to the prompt sent to the LLM. This process gives the model focused context from your documents and helps reduce hallucinations.
    -->
 
-  **This concludes the workshop.**
+You may now proceed to the next lab.
 
 
 ## Want to Learn More?
 
-* [Select AI Agent](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html) 
+* [AskOracle Select AI Application available in Github](https://github.com/oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle-Select-AI-Chatbot)
+* [Select AI Agent Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html) 
 * [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
@@ -212,9 +228,9 @@ Let's experiment a bit with both general data from the _internet_ and also from 
 
 ## Acknowledgements
 
-* **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** Marcos Arancibia, Lead Princiopal Product Mgr; Mark Hornick, Senior Dir. of AI and ML Product Mgt.; Laura Zhao, Member of Technical Staff
-* **Last Updated By/Date:** Sarika Surampudi, August 2026
+* **Author:** Sarika Surampudi, Principal User Assistance Developer; Marcos Arancibia, Lead Princiopal Product Mgr
+* **Contributors:** Marcos Arancibia, Lead Princiopal Product Mgr; Mark Hornick, Senior Dir. of AI and ML Product Mgt.; Laura Zhao, Member of Technical Staff; Sherry LaMonica, Lead Principal Product Manager
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 Copyright (c) 2026 Oracle Corporation.
 

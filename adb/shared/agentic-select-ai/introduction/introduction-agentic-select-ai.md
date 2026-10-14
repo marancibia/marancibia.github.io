@@ -2,8 +2,7 @@
 
 ## About this Workshop
 
-In this workshop, you will learn how to use **Oracle Autonomous AI Database Select AI** to build Agentic AI solutions. Agentic AI refers to autonomous or semi-autonomous software programs designed to interact with their environment, collect and use data, formulate next actions, and perform tasks to achieve specific goals. They are capable of _perceiving_ their environment, _reasoning_ and _planning_ next steps, and _taking action_. You’ll begin by interacting with an agent using the Ask Oracle Chatbot to get a feel for how a user might engage with an application. You will then dive into building the agentic solution from scratch using Select AI Agent Framework.
-
+In this workshop, you will learn how to use **Oracle Autonomous AI Database Select AI** to build Agentic AI solutions. Agentic AI refers to autonomous or semi-autonomous software programs designed to interact with their environment, collect and use data, formulate next actions, and perform tasks to achieve specific goals. They are capable of _perceiving_ their environment, _reasoning_ and _planning_ next steps, and _taking action_. You’ll begin by building the agentic solution from scratch using Select AI Agent Framework.  You will then interact with an agent using the AskOracle Select AI Chatbot to get a feel for how a user might engage with an application.
 
 ### Agentic AI Use Case with Select AI
 
@@ -51,18 +50,20 @@ Before we begin, let's review some important terms:
 >**NOTE:** This workshop requires access to a Large Language Model (LLM). You can use LLMs from a wide range of AI providers, including OCI GenAI, OpenAI, Azure, and Google Gemini, among others. See the [Select AI Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-about.html#GUID-7574F1D1-CE6F-41BC-AE95-6281EB23C7BE) for more details.
 If you want to use OCI GenAI, ensure that your tenancy is subscribed to one of the following regions (at the time the workshop was last updated):**US Midwest (Chicago)** (default), **US East (Ashburn)**, **US West (Phoenix)**, **Germany Central (Frankfurt)**, **UK South (London)**, **Brazil East (Sao Paulo)**, **Saudi Arabia Central (Riyadh)**, **UAE Central (Abu Dhabi)**, **UAE East (Dubai)**, **India South (Hyderabad)** or **Japan Central (Osaka)** regions in order to run this workshop.  For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm).
 
-Estimated Time : 1 hour 35 minutes.
+Estimated Time including optional sections: 3 hours 55 minutes.
 
 ### Objectives
 
 In this workshop, you will:
 
-* Configure your Autonomous AI Database to use AI models for querying data using natural language.
+* Configure your Autonomous AI Database to use LLMs for querying data using natural language.
 * Build a Sales Return Agent that interacts with customers, gathers information, and updates database tables with return status.
+* Enhance your agent to be able to provide local pickup options to customer using the Oracle Database Geocoding capabilities.
 * Refine your agent to provide more personable customer interactions and generate email confirmations.
+* Improve the agent by adding the ability to show replacement options using RAG capabilities by indexing PDF files.
+* Inspect what happened during an agent run by reading Select AI Agent Framework history views to see team, task, and tool operations.
+* Get familiar with **AskOracle Select AI** chatbot and interact with a Sales Return Agent using natural language.
 * Build a Travel Agency AI Agent that makes use of the Select AI Supervisor Agent capabilities for out-of-order executions.
-* Get familiar with **Ask Oracle Select AI** chatbot and interact with a Sales Return Agent using natural language.
-
 
 You may now proceed to the next lab.
 
@@ -75,10 +76,9 @@ You may now proceed to the next lab.
 * [Additional Autonomous AI Database Workshops](https://livelabs.oracle.com/adb)
 
 ## Acknowledgements
-* **Authors:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributor:** Mark Hornick, Senior Dir of ML and AI Product Management ; Sherry LaMonica, Lead Principal Product Manager
-* **Last Updated By/Date:** Marcos Arancibia, September 2026
-
+* **Authors:** Marcos Arancibia, Lead Principal Product Manager; Sarika Surampudi, Principal User Assistance Developer
+* **Contributor:** Mark Hornick, Senior Dir. of ML and AI Product Management ; Sherry LaMonica, Lead Principal Product Manager
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 Copyright (c) 2026 Oracle Corporation.
 

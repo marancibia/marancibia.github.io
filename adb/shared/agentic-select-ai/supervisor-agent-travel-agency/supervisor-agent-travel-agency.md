@@ -6,7 +6,7 @@ In this lab, you'll turn a common travel agency workflow - changing a customer's
 
 A Select AI Supervisor Agent receives each request and delegates work to specialists for reservation verification, hotel alternatives, car alternatives, and confirmed changes. Each worker handles a focused responsibility. The supervisor gathers the results and returns one coordinated response to the traveler.
 
-Estimated Time: 20 minutes
+Estimated Time: 45 minutes
 
 ### Objectives
 
@@ -28,13 +28,13 @@ In this lab, you will:
 * A database user with permission to create tables, PL/SQL functions, and packages, and sufficient tablespace quota for the sample data.
 * The following package grants, run as ADMIN once. Replace `ADB_USER` with your database user name:
 
-```sql
-<copy>
-GRANT EXECUTE ON DBMS_CLOUD_AI TO ADB_USER;
-GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO ADB_USER;
-GRANT EXECUTE ON DBMS_CLOUD TO ADB_USER;
-</copy>
-```
+    ```sql
+    <copy>
+    GRANT EXECUTE ON DBMS_CLOUD_AI TO ADB_USER;
+    GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO ADB_USER;
+    GRANT EXECUTE ON DBMS_CLOUD TO ADB_USER;
+    </copy>
+    ```
 
 * Access to OCI Generative AI, including the required IAM policies and database network access for the model used in the AI profile.
 * Download the OML notebook to a local folder and follow Task 1 to import it:
@@ -119,7 +119,7 @@ Oracle provides a ready-to-use OML notebook that walks through the complete setu
 
 ## Task 2: Create and Review the Travel Data
 
-The sample data is small and self-contained. It includes hotel choices, rental-car choices, and current customer reservations. You will use Alex Morgan's Miami reservation, **TRV-48291**, for the customer interactions.
+The sample data is small and self-contained. It includes hotel choices, rental-car choices, and customer reservations. You will use Alex Morgan's Miami reservation, **TRV-48291**, for the customer interactions.
 
 1. Run the paragraph that creates and populates `hotel_options`. Its opening blocks remove the three scenario tables if they already exist, so rerunning it resets the demonstration data.
 
@@ -206,10 +206,10 @@ The sample data is small and self-contained. It includes hotel choices, rental-c
       reservation_status VARCHAR2(30) NOT NULL,
       last_updated TIMESTAMP DEFAULT SYSTIMESTAMP
     );
-    INSERT INTO travel_reservations VALUES ('TRV-48291', 'Alex Morgan', 'alex.morgan@example.com', 'Miami', DATE '2026-09-12', DATE '2026-09-16', 101, 201, 2, 'CONFIRMED', SYSTIMESTAMP);
-    INSERT INTO travel_reservations VALUES ('TRV-59302', 'Priya Shah', 'priya.shah@example.com', 'New York', DATE '2026-10-04', DATE '2026-10-08', 103, 203, 1, 'CONFIRMED', SYSTIMESTAMP);
-    INSERT INTO travel_reservations VALUES ('TRV-67184', 'Diego Ramos', 'diego.ramos@example.com', 'San Francisco', DATE '2026-11-18', DATE '2026-11-22', 105, 205, 3, 'CONFIRMED', SYSTIMESTAMP);
-    INSERT INTO travel_reservations VALUES ('TRV-78415', 'Mei Lin', 'mei.lin@example.com', 'Miami', DATE '2026-09-20', DATE '2026-09-24', 102, NULL, 2, 'CONFIRMED', SYSTIMESTAMP);
+    INSERT INTO travel_reservations VALUES ('TRV-48291', 'Alex Morgan', 'alex.morgan@example.com', 'Miami', DATE '2026-11-12', DATE '2026-11-16', 101, 201, 2, 'CONFIRMED', SYSTIMESTAMP);
+    INSERT INTO travel_reservations VALUES ('TRV-59302', 'Priya Shah', 'priya.shah@example.com', 'New York', DATE '2026-12-04', DATE '2026-12-08', 103, 203, 1, 'CONFIRMED', SYSTIMESTAMP);
+    INSERT INTO travel_reservations VALUES ('TRV-67184', 'Diego Ramos', 'diego.ramos@example.com', 'San Francisco', DATE '2026-12-18', DATE '2026-12-22', 105, 205, 3, 'CONFIRMED', SYSTIMESTAMP);
+    INSERT INTO travel_reservations VALUES ('TRV-78415', 'Mei Lin', 'mei.lin@example.com', 'Miami', DATE '2026-11-20', DATE '2026-11-24', 102, NULL, 2, 'CONFIRMED', SYSTIMESTAMP);
     COMMIT;
     
     COMMENT ON TABLE travel_reservations IS 'Current travel-agency customer reservations. Use customer name and reservation code to identify a reservation.';
@@ -431,7 +431,8 @@ Before you create the AI profile, configure the OCI credential it will use. The 
     <copy>
     %sql
     
-    SELECT OWNER, CREDENTIAL_NAME, ENABLED FROM ALL_CREDENTIALS;
+    SELECT OWNER, CREDENTIAL_NAME, ENABLED FROM ALL_CREDENTIALS
+    WHERE CREDENTIAL_NAME='AI_CREDENTIAL';
     </copy>
     ```
 
@@ -445,17 +446,14 @@ The AI profile identifies the provider, credential, model, and generation settin
     <copy>
     %script
     BEGIN
-      DBMS_CLOUD_AI.DROP_PROFILE(profile_name => 'TRAVEL_SUPERVISOR_PROFILE');
-    EXCEPTION WHEN OTHERS THEN NULL;
-    END;
+       DBMS_CLOUD_AI.DROP_PROFILE(profile_name => 'TRAVEL_SUPERVISOR_PROFILE', force => TRUE);  END;
     /
     BEGIN
       DBMS_CLOUD_AI.CREATE_PROFILE(
         profile_name => 'TRAVEL_SUPERVISOR_PROFILE',
         attributes => '{"provider":"oci",
                         "credential_name":"AI_CREDENTIAL",
-                        "model":"xai.grok-4.20-reasoning",
-                        "temperature":0,
+                        "model":"xai.grok-4.3",
                         "comments":true}',
         description => 'LLM profile for the travel reservation supervisor demonstration'
       );
@@ -473,13 +471,13 @@ Tools allow agents to perform actions against the database. Each tool names a PL
     ```sql
     <copy>
     %script
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('GET_TRAVEL_RESERVATION_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL(tool_name => 'GET_TRAVEL_RESERVATION_TOOL', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('FIND_HOTEL_ALTERNATIVES_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL(tool_name => 'FIND_HOTEL_ALTERNATIVES_TOOL', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('FIND_CAR_ALTERNATIVES_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL(tool_name => 'FIND_CAR_ALTERNATIVES_TOOL', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL('CHANGE_TRAVEL_RESERVATION_TOOL'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TOOL(tool_name => 'CHANGE_TRAVEL_RESERVATION_TOOL', force => TRUE); END;
     /
     BEGIN
       DBMS_CLOUD_AI_AGENT.CREATE_TOOL(tool_name  => 'GET_TRAVEL_RESERVATION_TOOL',
@@ -518,13 +516,13 @@ A task supplies the instructions and tools an agent uses to perform an activity.
     ```sql
     <copy>
     %script
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('VERIFY_RESERVATION_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK(task_name => 'VERIFY_RESERVATION_TASK', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('HOTEL_ALTERNATIVES_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK(task_name => 'HOTEL_ALTERNATIVES_TASK', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('CAR_ALTERNATIVES_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK(task_name => 'CAR_ALTERNATIVES_TASK', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK('CHANGE_RESERVATION_TASK'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TASK(task_name => 'CHANGE_RESERVATION_TASK', force => TRUE); END;
     /
     BEGIN
       DBMS_CLOUD_AI_AGENT.CREATE_TASK('VERIFY_RESERVATION_TASK',
@@ -549,13 +547,13 @@ An agent specifies its role and the AI profile it uses. You will create one spec
     ```sql
     <copy>
     %script
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('RESERVATION_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT(agent_name => 'RESERVATION_SPECIALIST', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('HOTEL_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT(agent_name => 'HOTEL_SPECIALIST', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('CAR_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT(agent_name => 'CAR_SPECIALIST', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('CHANGE_SPECIALIST'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT(agent_name => 'CHANGE_SPECIALIST', force => TRUE); END;
     /
     BEGIN
       DBMS_CLOUD_AI_AGENT.CREATE_AGENT('RESERVATION_SPECIALIST', '{"profile_name":"TRAVEL_SUPERVISOR_PROFILE","role":"You are a precise travel reservation verification specialist."}');
@@ -571,7 +569,7 @@ An agent specifies its role and the AI profile it uses. You will create one spec
 
 The supervisor receives each traveler request and decides which specialist should handle the next subtask. Each worker has a separate conversation thread, so the supervisor must pass a self-contained request with the relevant name, reservation code, city, selected option, and confirmation.
 
-The team uses `"process":"sequential"` , so one delegated subtask completes before the next begins. The supervisor chooses the workers and their order at runtime based on the traveler's request and earlier results. See [Select AI Supervisor Agent documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/supervisor-agent.html) for the orchestration details.
+The team uses `"process":"sequential"`, so one delegated subtask completes before the next begins. The supervisor chooses the workers and their order at runtime based on the traveler's request and earlier results. See [Select AI Supervisor Agent documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/supervisor-agent.html) for the orchestration details.
 
 1. Create **TRAVEL\_SUPERVISOR** with `"supervisor":true`, then create **TRAVEL\_RESERVATION\_SUPERVISOR\_TEAM**. The team names the supervisor in `supervisor_agent` and lists the four worker agent-task pairs in `agents`.
 
@@ -580,16 +578,16 @@ The team uses `"process":"sequential"` , so one delegated subtask completes befo
     %script
     BEGIN DBMS_CLOUD_AI_AGENT.CLEAR_TEAM; EXCEPTION WHEN OTHERS THEN NULL; END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TEAM('TRAVEL_RESERVATION_SUPERVISOR_TEAM'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_TEAM(team_name => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM', force => TRUE); END;
     /
-    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT('TRAVEL_SUPERVISOR'); EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.DROP_AGENT(agent_name => 'TRAVEL_SUPERVISOR', force => TRUE); END;
     /
     BEGIN
       DBMS_CLOUD_AI_AGENT.CREATE_AGENT(
         agent_name => 'TRAVEL_SUPERVISOR',
         attributes => '{"profile_name":"TRAVEL_SUPERVISOR_PROFILE",
                         "supervisor":true,
-                        "role":"You coordinate a travel reservation service. Interpret the customer intent, delegate self-contained requests to only the needed specialist, preserve customer name and reservation code across handoffs, request missing information, and return one clear final response. For an update, ensure a specialist has verified the reservation and the customer has explicitly confirmed the selected option."}'
+                        "role":"You coordinate a travel reservation service. Interpret the customer intent, delegate self-contained requests to only the needed specialist, preserve customer name and reservation code across handoffs, request missing information, and return one clear final response. Make sure not to offer as alternatives the same Hotel or Car that the customer already has in their reservation.  For an update, ensure a specialist has verified the reservation and the customer has explicitly confirmed the selected option."}'
       );
     END;
     /
@@ -685,12 +683,12 @@ Set the team for the current stateful session, then prefix each natural language
 
     ```sql
     <copy>
-    %script
+    %sql
     SELECT AI AGENT I need help with my Miami reservation. I am Alex Morgan and my reservation code is TRV-48291
     </copy>
     ```
 
-3. Ask for hotel alternatives. The hotel specialist should return available Miami hotels and their IDs, including **Brickell City Suites (102)** at **$189 per night**.
+3. Ask for hotel alternatives. The hotel specialist should return available Miami hotels and their IDs.
 
     ```sql
     <copy>
@@ -825,7 +823,7 @@ This repeats the notebook's travel conversation using PL/SQL. If you completed T
     %script
     
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name   => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',
@@ -844,11 +842,11 @@ This repeats the notebook's travel conversation using PL/SQL. If you completed T
     %script
     
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name   => 'TRAVEL_RESERVATION_SUPERVISOR_TEAM',
-        user_prompt => 'Please change my hotel to Brickell City Suites in Miami. Yes, I confirm that change',
+        user_prompt => 'Please change my hotel to Harbor View in Miami. Yes, I confirm that change',
         params      => '{"conversation_id": "' || my_globals.l_team_conv_id || '"}'
       );
       DBMS_OUTPUT.PUT_LINE(v_response);
@@ -882,14 +880,15 @@ This repeats the notebook's travel conversation using PL/SQL. If you completed T
     </copy>
     ```
 
-You may now proceed to the next lab.
+**Congratulations! You have completed this Workshop**
 
 ## Learn More
 
+* [Additional Workshops on Autonomous AI Database](https://livelabs.oracle.com/adb)
 * [Select AI Supervisor Agent documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/supervisor-agent.html)
 * [How to Use Select AI Supervisor Agent Teams](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/how-to-use-select-ai-supervisor-agent-teams.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
-* [Select AI](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html)
+* [Select AI Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html)
 * [`DBMS_CLOUD_AI_AGENT` Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [`DBMS_CLOUD_AI` Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html)
 

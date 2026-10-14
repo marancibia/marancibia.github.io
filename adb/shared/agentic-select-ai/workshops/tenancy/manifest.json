@@ -28,19 +28,19 @@
             "filename": "../../build-sales-return-agent/build-sales-return-agent.md"
         },
         {
-            "title": "Lab 3: Refine your Agent with E-mail Tools",
+            "title": "Lab 3: Refine your Agent",
             "type": "tenancy",
             "filename": "../../refine-your-agent/refine-your-agent.md"
         },
         {
-            "title": "Lab 4: Adding Spatial tools to your Return Agent",
+            "title": "Lab 4: Create a Function and an AI Agent Tool to Generate an Email Response",
             "type": "tenancy",
-            "filename": "../../add-spatial-tools/add-spatial-tools.md"
+            "filename": "../../create-function-tool-for-email/create-function-and-tool-for-email.md"
         },
         {
-            "title": "Lab 5: Interactive Travel Agency with a Supervisor Agent",
+            "title": "Lab 5: Introduce a RAG Tool for Alternate Product Recommendation",
             "type": "tenancy",
-            "filename": "../../supervisor-agent-travel-agency/supervisor-agent-travel-agency.md"
+            "filename": "../../rag-tool-for-alternatives/introduce-rag-tool-for-product-recommendation.md"
         },
         {
             "title": "Lab 6: Query Select AI Agent Views",
@@ -51,6 +51,11 @@
             "title": "Lab 7: Use the Ask Oracle Chatbot Demo Application",
             "type": "tenancy",
             "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
+        },
+        {
+            "title": "Lab 8: Interactive Travel Agency with a Supervisor Agent",
+            "type": "tenancy",
+            "filename": "../../supervisor-agent-travel-agency/supervisor-agent-travel-agency.md"
         },
         {
             "title": "Need Help?",

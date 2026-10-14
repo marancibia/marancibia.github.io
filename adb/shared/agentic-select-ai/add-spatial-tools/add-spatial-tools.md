@@ -6,7 +6,7 @@ This lab focuses on refining the solution of the previous labs to achieve a bett
 
 In this lab, you’ll enhance the table `customers` with a complete address, add a new `stores` table containing the addresses of a few stores, and experience the more complete answers from the Agent.
 
-Estimated Time: 20 minutes
+Estimated Time: 35 minutes
 
 ### Objectives
 
@@ -14,8 +14,8 @@ In this lab, you will:
 
 * Replace the `customers` table with a more complete address
 * Create a new `stores` table with the store addresses
-* Create new `find_local_pickup` procedure to identify the closest stores to a customer
-* Add the new task to the Return Agency Team.
+* Create new `find_local_pickup` function to identify the closest stores to a customer
+* Create a new tools and add it to the Task.
 * Run an end-to-end test and review the generated answers.
 
 ### Prerequisites
@@ -29,6 +29,7 @@ In this lab, you will:
 We'll enhance the `customers` table with additional details on each customer's street address. The address is then geocoded into a spatial geometry, so the agent can later calculate drive times to nearby stores.
 
 1. Run the paragraph that creates `customers` table. The `UPDATE` statement at the end geocodes each address with `SDO_GCDR.ELOC_GEOCODE_AS_GEOM` and stores the result in the `geometry` column.
+
     ```
     <copy>
   
@@ -36,19 +37,21 @@ We'll enhance the `customers` table with additional details on each customer's s
     EXCEPTION WHEN OTHERS THEN NULL; END;
     /
     CREATE TABLE customers (
-        customer_id  NUMBER(10) PRIMARY KEY,
-        name         VARCHAR2(100),
-        email        VARCHAR2(100),
-        phone        VARCHAR2(20),
-        address      VARCHAR2(100)
+       customer_id  NUMBER(10) PRIMARY KEY,
+       name         VARCHAR2(100),
+       email        VARCHAR2(100),
+       phone        VARCHAR2(20),
+       state        VARCHAR2(2),
+       zip          VARCHAR2(10),
+       address      VARCHAR2(100)
     );
 
-    INSERT INTO customers (customer_id, name, email, phone, address) VALUES
-    (1, 'Alice Thompson', 'alice.thompson@example.com','555-1234', '104 Chestnut St, Albany NY, 12210'),
-    (2, 'Bob Martinez',   'bob.martinez@example.com',  '555-2345', '4825 Willowbrook Dr, Sacramento CA 95842'),
-    (3, 'Carol Chen',     'carol.chen@example.com',    '555-3456', '1623 Alston Ave, Fort Worth TX, 73301'),
-    (4, 'David Johnson',  'david.johnson@example.com', '555-4567', '807 S Warren St, Peoria IL, 61605'),
-    (5, 'Eva Green',      'eva.green@example.com',     '555-5678', '10 Pittwick Ln, Palm Coast FL, 32164');
+    INSERT INTO customers (customer_id, name, email, phone, state, zip, address) VALUES
+    (1, 'Alice Thompson', 'alice.thompson@example.com','555-1234', 'NY', '12210', '104 Chestnut St, Albany NY, 12210'),
+    (2, 'Bob Martinez',   'bob.martinez@example.com',  '555-2345', 'CA', '95842', '4825 Willowbrook Dr, Sacramento CA 95842'),
+    (3, 'Carol Chen',     'carol.chen@example.com',    '555-3456', 'TX', '73301', '1623 Alston Ave, Fort Worth TX, 73301'),
+    (4, 'David Johnson',  'david.johnson@example.com', '555-4567', 'IL', '61605', '807 S Warren St, Peoria IL, 61605'),
+    (5, 'Eva Green',      'eva.green@example.com',     '555-5678', 'FL', '32164', '10 Pittwick Ln, Palm Coast FL, 32164'); 
 
     alter table customers add (geometry sdo_geometry);
 
@@ -57,7 +60,7 @@ We'll enhance the `customers` table with additional details on each customer's s
     </copy>
     ```
 
-2. View the contents of the `customers` table. 
+2. View the contents of the `customers` table with full address. 
 
     ```
     <copy>
@@ -99,7 +102,7 @@ We'll enhance the `customers` table with additional details on each customer's s
     </copy>
     ```
 
-6. View the stores table.
+4. View the stores table content.
 
     ```
     <copy>
@@ -107,82 +110,22 @@ We'll enhance the `customers` table with additional details on each customer's s
     </copy>
     ```
 
-## Task 3: Create the Order Status and Local Pickup Functions
+## Task 2: Create the Local Pickup Function
 
-You will create a SQL function to update a customer’s order status and return a message, run an PL/SQL block to set a customers order to _pending\_return_ and print the result, then verify the table. Then, you will create a second function that finds the closest store for local pickup and test it.
+You will create a SQL function a function that finds the closest store for local pickup and test it.
 
-1. Create a customer order update status function.
+1. Create a function that finds the closest store for local pickup. The function works in three steps:
 
-    ```
-    <copy>
-    
-    CREATE OR REPLACE FUNCTION update_customer_order_status (
-    p_customer_name IN VARCHAR2,
-    p_order_number  IN VARCHAR2,
-    p_status        IN VARCHAR2
-    ) RETURN CLOB IS
-    v_customer_id  customers.customer_id%TYPE;
-    v_row_count    NUMBER;
-    BEGIN
-    -- Find customer_id from customer_name
-    SELECT customer_id
-    INTO v_customer_id
-    FROM customers
-    WHERE name = p_customer_name;
-    
-    UPDATE customer_order_status
-    SET status = p_status
-    WHERE customer_id = v_customer_id
-      AND order_number = p_order_number;
-
-    v_row_count := SQL%ROWCOUNT;
-
-    IF v_row_count = 0 THEN
-        RETURN 'No matching record found to update.';
-    ELSE
-        RETURN 'Update successful.';
-    END IF;
-    EXCEPTION
-    WHEN OTHERS THEN
-        RETURN 'Error: ' || SQLERRM;
-    END;
-    </copy>
-    ```
-2. Test this function by updating an order for a specific customer and return a message on completion.
-
-    ```
-    <copy>
-    
-    DECLARE
-      v_result CLOB;
-    BEGIN
-      v_result := update_customer_order_status('David Johnson', '3928', 'pending_return');
-
-      DBMS_OUTPUT.PUT_LINE(v_result);
-    END;
-    </copy>
-    ```
-3. Verify the change by viewing the customer order update status table for that customer. 
-
-    ```
-    <copy>
-    select * from customer_order_status
-    where ORDER_NUMBER = 3928
-    </copy>
-    ```
-
-4. Create a function that finds the closest store for local pickup. The function works in three steps:
-
-    * It builds a drive-time polygon around the customer's address with `SDO_GCDR.ELOC_DRIVE_TIME_POLYGON`. The polygon covers the area reachable within 45 minutes by car.
-    * It counts the stores that fall inside that polygon.
-    * It ranks those stores by route drive time with `SDO_GCDR.ELOC_ROUTE_TIME`, and returns the closest store and its drive time.
+   * It builds a drive-time polygon around the customer's address with `SDO_GCDR.ELOC_DRIVE_TIME_POLYGON`. The polygon covers the area reachable within 45 minutes by car.
+   * It counts the stores that fall inside that polygon.
+   * It ranks those stores by route drive time with `SDO_GCDR.ELOC_ROUTE_TIME`, and returns the closest store and its drive time.
 
     ```
     <copy>
     
     CREATE OR REPLACE FUNCTION find_local_pickup (
       p_customer_name IN VARCHAR2,
-      p_order_number  IN NUMBER
+      p_order_number  IN VARCHAR2
     ) RETURN CLOB IS
       isochrone       SDO_GEOMETRY;
       out_store_name  stores.store_name%TYPE;
@@ -248,58 +191,38 @@ You will create a SQL function to update a customer’s order status and return 
     </copy>
     ```
 
-5. Test the function for a specific customer and order.
+2. Test the function for a specific customer and order.
 
     ```
     <copy>
     SELECT find_local_pickup('David Johnson', 3928);
     </copy>
     ```
-**Result:**
+
+   **Typical Result expected:**
+
     ```
     There are 2 stores nearby. The closest is Peoria Riverfront Center with a drive time of 6 minutes
     ```
 
-## Task 4: Create Tools to Update the Database and Find a Local Pickup
+## Task 3: Create Tools to Find a Local Pickup
 
-Tools are what allow agents to perform tasks in the "real" world. You'll create two tools that a task will use: one updates the order status, and one finds a local pickup option. Each tool is identified by a unique name and includes attributes that define its purpose, instruction logic, and metadata. You'll verify the tools by querying a corresponding view.
+You'll create a tool that a task will use, which finds a local pickup option. Each tool is identified by a unique name and includes attributes that define its purpose, instruction logic, and metadata. You'll verify the existing tools by querying a corresponding view.
 
-1. Create Update\_Order\_Status\_Tool.
-
-    ```
-    <copy>
-    
-    BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('Update_Order_Status_Tool');
-    EXCEPTION WHEN OTHERS THEN NULL; END;
-    /
-    BEGIN
-        DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
-            tool_name => 'Update_Order_Status_Tool',
-            attributes => '{"instruction": "This tool updates the database to reflect return status change. Use the customer name and order number the customer already stated in this conversation. Only ask the customer if either one is missing or ambiguous. Never use a name or order number the customer did not provide.",
-                            "function" : "update_customer_order_status"}',
-            description => 'Tool for updating customer order status in database table.'
-        );
-    END;
-    </copy>
-    ```
-
-2. Create Find\_Local\_Pickup\_Tool. This tool uses the `find_local_pickup` function. The `tool_inputs` attribute describes each function parameter, so the agent knows which values to pass.
+1. Create Find\_Local\_Pickup\_Tool. This tool uses the `find_local_pickup` function. The `tool_inputs` attribute describes each function parameter, so the agent knows which values to pass.
 
     ```
     <copy>
     
     BEGIN
-      DBMS_CLOUD_AI_AGENT.drop_tool('Find_Local_Pickup_Tool');
-    EXCEPTION
-      WHEN OTHERS THEN NULL;
-    END;
+      DBMS_CLOUD_AI_AGENT.drop_tool(tool_name => 'Find_Local_Pickup_Tool', force => TRUE); END;
     /
 
     BEGIN
       DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
         tool_name => 'Find_Local_Pickup_Tool',
         description => 'Tool for finding the best local pickup option for a customer based on shortest drive time.',
-        attributes => '{"instruction": "Never ask for customer number. This tool looks for local pickup options for a customer order. ' ||
+        attributes => '{"instruction": "Never ask for customer number. This tool looks for local pickup options for a customers order. ' ||
                                       'Always ask for customer name and order number before using this tool. ' ||
                                       'The tool returns the number of nearby locations, the store with the shortest drive time, and the drive time to that store.",
                         "function" : "find_local_pickup",
@@ -315,7 +238,7 @@ Tools are what allow agents to perform tasks in the "real" world. You'll create 
     </copy>
     ```
 
-3. Verify the Update\_Order\_Status\_Tool and Find\_Local\_Pickup\_Tool by querying `USER_AI_AGENT_TOOLS` view.
+2. Verify the Find\_Local\_Pickup\_Tool by querying `USER_AI_AGENT_TOOLS` view.
 
     ```
     <copy>
@@ -324,202 +247,67 @@ Tools are what allow agents to perform tasks in the "real" world. You'll create 
     </copy>
     ```
 
-## Task 5: Create a Task to Handle the Product Return
+## Task 4: Change the task to handle the product return with local pickup options
 
-We use a task to specify the instructions for performing actions using tools. You'll define a task that your Select AI agent will perform. Each task has a unique name and a set of attributes that specify  its behavior when planning and performing the task. In this scenario, you'll describe the interaction with the customer and how to respond in various cases.
+We use a task to specify the instructions for performing actions using tools. Here, we update the Handle\_Product\_Return\_Task and describe the interaction with the customer and how to respond in various cases.
+
+This update will use the Update\_Order\_Status\_Tool, Find\_Local\_Pickup\_Tool, and the implicit HUMAN\_TOOL.
 
 Customers rarely give information in a fixed order. The instruction tells the agent to collect the customer name, order number, and return reason in any order, and to never ask for something the customer already provided. For any replacement, the agent calls Find\_Local\_Pickup\_Tool and reports only the store and drive time that the tool returns.
 
-Create Handle\_Product\_Return\_Task.
+Update Handle\_Product\_Return\_Task.
 
   ```
   <copy>
   
-  BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
-  EXCEPTION WHEN OTHERS THEN NULL; END;
+  BEGIN DBMS_CLOUD_AI_AGENT.drop_task(task_name => 'Handle_Product_Return_Task', force => TRUE); END;
   /
-  BEGIN
-    DBMS_CLOUD_AI_AGENT.create_task(
-      task_name  => 'Handle_Product_Return_Task',
-      attributes => '{"instruction": "Process a product return request from a customer: {query}. ' ||
-        'Before every reply, review the ENTIRE conversation history and extract: customer name, order number, return reason ' ||
-        '(no longer needed, arrived too late, box broken, defective) and, only when the reason is arrived too late, box broken or defective, refund-or-replacement preference. Never ask about refund or replacement when the reason is no longer needed. ' ||
-        'Information may arrive in any order. Never ask for something the customer already provided. Only use a customer name or order number that the customer explicitly typed in this conversation. Never guess, infer, or take a name or order number from tool results, the database, or earlier unrelated conversations. If the customer has not stated their name, ask for it. ' ||
-        'If several items are missing, ask for all of them in ONE question. ' ||
-        'Always use the human tool to ask the customer questions; do not give a final answer while information is still missing. ' ||
-        'Once name, order number and reason are known, act: ' ||
-        '1. No longer needed: tell the customer to ship it back at their expense and set status return_shipment_pending with Update_Order_Status_Tool. ' ||
-        '2. Arrived too late: if refund, set refund_completed and confirm; if replacement, set replacement_initiated. ' ||
-        '3. Defective or box broken: if refund, set refund_completed; if replacement, set replacement_initiated. ' ||
-        '4. For any replacement, call Find_Local_Pickup_Tool with the same name and order number and report only the store and drive time it returns. ' ||
-        '5. After the action is completed, ask if you can help with anything else. If the customer starts another return, treat it as a brand-new return: ask for the name, order number and reason for that item in one question, even if they were mentioned before, and never reuse details from a previous return. ' ||
-        'Only give a final answer when the customer says they need nothing else.",
-        "tools": ["Update_Order_Status_Tool", "Find_Local_Pickup_Tool"]}'
-    );
-  END;
-  /
+
+BEGIN
+  DBMS_CLOUD_AI_AGENT.create_task(
+    task_name => 'Handle_Product_Return_Task',
+    attributes => '{"instruction": "Process a product return request from a customer: {query}. ' ||
+                  '1. Ask customer the reason for return: no longer needed, arrived too late, box broken, or defective. Then ask for the customer name and order number if they are not already provided.' ||
+                  '2. If no longer needed: ' ||
+                  '2.1 Inform customer to ship the product at their expense back to us. ' ||
+                  '2.2 if you have the customer name and order number, update the order status to return_shipment_pending using Update_Order_Status_Tool, otherwise ask for the customer name and order number. ' ||
+                  '3. If it arrived too late: ' ||
+                  '3.1 Ask customer if they want a refund or replacement. ' ||
+                  '3.2 If the customer wants a refund, confirm the customer name and order number, then mention the refund is being processed and update the order status to refund_completed using Update_Order_Status_Tool. ' ||
+                  '3.3 If the customer wants a replacement, confirm the customer name and order number, then update the order status to replaced using Update_Order_Status_Tool. ' ||
+                  '3.4 Always check for local pickup options using Find_Local_Pickup_Tool with the same customer name and order number. ' ||
+                  '3.5 Tell the customer their local pickup option. ' ||
+                  '4. If the product was defective or the box was broken: ' ||
+                  '4.1 Ask customer if they want a replacement or a refund. ' ||
+                  '4.2 If the customer wants a replacement, confirm the customer name and order number, then update the order status to replaced using Update_Order_Status_Tool. ' ||
+                  '4.3 Always check for local pickup options using Find_Local_Pickup_Tool with the same customer name and order number. ' ||
+                  '4.4 Do not use any store name or drive time that was not returned by Find_Local_Pickup_Tool. ' ||
+                  '4.5 When a replacement is requested, you must call Find_Local_Pickup_Tool with the customer name and order number from the conversation, and never invent store and drive time not listed in the tool. ' ||
+                  '4.6 Use the exact pickup result returned by Find_Local_Pickup_Tool. ' ||
+                  '4.7 Do not invent or substitute store names, brands, addresses, counts, or drive times. ' ||
+                  '4.5 Tell the customer their local pickup option and inform them they will receive a return shipping label for the defective or damaged product. ' ||
+                  '4.6 If the customer wants a refund, inform customer to print out the return shipping label, return the product, and update the order status to refund using Update_Order_Status_Tool. ' ||
+                  '5. After the completion of a return, replacement, or refund, ask if you can help with anything else. ' ||
+                  'Use human tool when you need confirmation from user. And only give a final answer and end the task if the user does not need help with anything else.",
+                   "tools": ["Update_Order_Status_Tool", "Find_Local_Pickup_Tool"]}'
+  );
+END;
+/
   </copy>
   ```
 
-
-<if type="sandbox">
-## Task 6: Check OCI Credentials
-Because you are using an Oracle LiveLabs-provided sandbox environment, a credential named **AI_CREDENTIAL** is already defined for you.
-</if>
-
-
-<if type="tenancy">
-## Task 6: Create OCI Credentials
-Before you create and use an AI profile, you must create your OCI credential. In this task you will gather the required parameters for OCI Gen AI credential and create a credential that will be used in the next task to create an AI profile.
-
-Follow these steps to create your OCI credentials:
-1. User OCID
-
-   a. Go to the OCI Console.
-
-   b. Open the profile menu (top right, click your profile icon) -> **User Settings**.
-
-   c. Copy the OCID shown there.
-   ![Copy your user OCID](./images/copy-your-ocid.png =70%x*)
-
-2. Tenancy OCID
-
-   a. From the same user menu -> go to **Tenancy**.
-   ![Click Tenancy from profile menu](./images/click-tenancy.png =70%x*)
-
-   b. Copy the **OCID** shown there.
-   ![Copy the tenancy OCID](./images/copy-tenancy-ocid.png =70%x*)
-
-3. Fingerprint
-
-   This comes from the public key you upload when you create an API key.
-
-   a. Navigate to **User Settings** -> **Tokens and Keys** -> click **Add API key**.
-
-   ![Click User settings in your profile](./images/profile-user-settings.png =70%x*)
-   ![Navigate to Tokens and Keys tab](./images/tokens-and-keys-tab.png)
-   
-   b. After creating and uploading a public key, OCI generates a fingerprint for it. Copy that value. 
-   If you already have a public key on your system, skip the first step below:
-
-   b1. If you are creating a new API key, select **Generate API key pair** and click **Download public key** and **Download private key** to download both public and private keys to your local system.
-   ![Create your API key pair](./images/gen-api-key-pair.png)
-  
-   b2. Come back to the Add API key screen and select **Choose public key file** and upload the file from your system or drag and drop the file. Once your file is uploaded, the **Add** button is enabled. Click **Add**.
-   ![Choose public key file](./images/upload-public-key.png)
-
-   b3. OCI generates a fingerprint and a Configuration file preview is displayed. Copy the fingerprint value and click **Close**.
-
-   You can also copy the fingerprint value after closing the Configuration file preview screen under the API Keys section in the console.
-
-
-4. Private Key
-
-   This is the private key file you generated locally (when you created the API key pair).
-
-   Usually named `oci_api_key.pem`.
-
-   Open it in a text editor and copy the entire contents, including:
-     ```
-     -----BEGIN PRIVATE KEY-----
-     ...key content...
-     -----END PRIVATE KEY-----
-     ```
-5. Create an OCI Gen AI credential.
-
-    ```
-    <copy>
-    
-    begin
-      DBMS_CLOUD.drop_credential(credential_name => 'AI_CREDENTIAL');
-      EXCEPTION WHEN OTHERS THEN NULL; END;
-    end;
-    /
-    BEGIN
-      DBMS_CLOUD.create_credential(
-        credential_name => 'AI_CREDENTIAL',
-        user_ocid       => '<ocid>',
-        tenancy_ocid    => '<tenancy ocid>',
-        private_key     => '<private key>',
-        fingerprint     => '<fingerprint>'
-      );
-    END;
-    </copy>
-    ```
-
-6. Let's confirm that the OCI Credential named **AI_CREDENTIAL** is available for the user.  You should see it listed when you run the following query.
-</if>
-
-<if type="sandbox">
-1. Let's confirm that the OCI Credential named **AI_CREDENTIAL** is available for the user.  You should see it listed when you run the following query.
-</if>
-
-    ```
-    <copy>
-    SELECT OWNER, CREDENTIAL_NAME, ENABLED FROM ALL_CREDENTIALS WHERE CREDENTIAL_NAME='AI_CREDENTIAL';
-    </copy>
-    ```
-
-
-
-## Task 7: Create an AI Profile
-You'll create an AI profile with LLM of your choice, to use in the next step to create an agent. In this task, you are using xAi's GROK Reasoning model with the OCI Gen AI credential.
-
-```
-<copy>
-
-BEGIN
-  BEGIN DBMS_CLOUD_AI.drop_profile(profile_name => 'OCI_GENAI_GROK'); 
-  EXCEPTION WHEN OTHERS THEN NULL; END;
-
-  DBMS_CLOUD_AI.create_profile(
-      profile_name => 'OCI_GENAI_GROK',
-      attributes   => '{
-          "provider": "oci",
-          "credential_name": "AI_CREDENTIAL",
-          "model": "xai.grok-4.20-reasoning",
-          "embedding_model": "cohere.embed-v4.0"
-      }',
-      description  => 'Supports the Select AI Sales Return Agent scenario.'
-  ); 
-END;
-</copy>
-```
-
-## Task 8: Define Customer Agent
-
-You'll create an agent, which specifies the LLM to use through an AI profile and the role the agent plays.
-
-Create the Customer\_Return\_Agent.
-
-```
-<copy>
-
-BEGIN DBMS_CLOUD_AI_AGENT.drop_agent('Customer_Return_Agent');
-EXCEPTION WHEN OTHERS THEN NULL; END;
-/
-BEGIN
-  DBMS_CLOUD_AI_AGENT.create_agent(
-    agent_name => 'Customer_Return_Agent',
-    attributes => '{"profile_name": "OCI_GENAI_GROK",
-                    "role": "You are an experienced customer return agent who deals with customers return requests."}');
-END;
-</copy>
-```
-
-## Task 9: Create the Agent Team
+## Task 5: Update the Agent Team
 
 You'll define an agent team that uses the agent and tasks specified above. You specify agent-task pairs for defining a sequential workflow. If you have multiple agents or multiple tasks, these are specified within the JSON list. The same Agent can be specified multiple times with their associated tasks. In this scenario it is a single agent and task pair.
 
-The `long_term_memory_length` attribute sets how many summaries of earlier task runs the team includes as context when a new run starts. The default is 30. Here, you set it to 1, the lowest accepted value. This keeps details from earlier, unrelated returns, such as another customer's name, out of a new conversation.
+The `long_term_memory_length` attribute sets how many summaries of earlier task runs the team includes as context when a new run starts. The default is 30. Here, you set it to 3. This keeps details from earlier, unrelated returns, such as another customer's name, out of a new conversation.
 
 Create the Return\_Agency\_Team.
 
 ```
 <copy>
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_team('Return_Agency_Team');
-EXCEPTION WHEN OTHERS THEN NULL; END;
+BEGIN DBMS_CLOUD_AI_AGENT.drop_team(team_name => 'Return_Agency_Team', force => TRUE); END;
 /
 BEGIN                                                                 
   DBMS_CLOUD_AI_AGENT.create_team(  
@@ -527,13 +315,13 @@ BEGIN
     attributes => '{"agents": [{"name" : "Customer_Return_Agent", 
                                 "task" : "Handle_Product_Return_Task"}],
                     "process": "sequential",
-                    "long_term_memory_length": 1}');                                                                 
+                    "long_term_memory_length": 3}');                                                                 
 END;
 
 </copy>
 ```
 
-## Task 10: Interact with the Return Agency Agent
+## Task 6: Interact with the Return Agency Agent
 
 You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current stateful session. Then, prefix your prompt with `select ai agent`. You'll interact with the agent team using natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
 Let's test it:
@@ -557,10 +345,13 @@ Let's test it:
     select ai agent I want to return a smartphone case;
     </copy>
     ```
-**Result:**
+
+    **Typical Result expected:**
+
     ```
     RESPONSE
-    To process your return request for the smartphone case, please provide your name, order number, and reason for the return (no longer needed, arrived too late, box broken, or defective) in one response.
+    Thank you for your return request. Could you please tell me the reason: no longer needed, arrived too late, box broken, or defective? Also, what's your full name and order number?
+
     ```
 
     ```
@@ -568,10 +359,12 @@ Let's test it:
     select ai agent the item is defective
     </copy>
     ```
-**Result:**
+
+    **Typical Result expected:**
+
     ```
     RESPONSE
-    To process your defective smartphone case return, please provide your name and order number.
+    Thank you for letting me know the smartphone case is defective. Would you like a replacement or a refund? Also, please provide your name and order number so I can assist further.
     ```
 
     ```
@@ -579,10 +372,12 @@ Let's test it:
     select ai agent I will need a replacement
     </copy>
     ```
-**Result:**
+
+    **Typical Result expected:**
+
     ```
     RESPONSE
-    To process your defective smartphone case return with replacement, please provide your name and order number.
+    Thank you for confirming you'd like a replacement for the defective smartphone case. To proceed, could you please provide your name and order number? Once I have those, I can update the status and check local pickup options for you.
     ```
 
     ```
@@ -590,7 +385,9 @@ Let's test it:
     select ai agent I''m Bob Martinez and my order number is 7820
     </copy>
     ```
-**Result:**
+
+    **Typical Result expected:**
+
     ```
     RESPONSE
     Thank you, Bob Martinez. Your order 7820 has been updated for a replacement due to the defective item. The closest store for pickup is Folsom Mall, a 9-minute drive. Can I help with anything else?
@@ -598,142 +395,17 @@ Let's test it:
 
     Because the customer asked for a replacement, the agent called Find\_Local\_Pickup\_Tool and reported the closest store and its drive time.
 
-    >**Note:** LLM responses vary from run to run. Your wording may differ from the results shown here.
+    >**Note:** LLM responses vary from run to run, and model to model. Your wording may differ from the results shown here.
 
 To continue, you may try these prompts in the given sequence. The agent treats the smartphone stand as a new return, so it asks for the name, order number, and reason again. Because the reason is _no longer needed_, the agent does not offer a refund or replacement:
 
-a. _select ai agent Yes, I''d like to return a smartphone stand;_
+  a. _select ai agent Yes, I''d like to return a smartphone stand;_
 
-b. _select ai agent I no longer need it_
+  b. _select ai agent I no longer need it_
 
-c. _select ai agent I''m Bob Martinez with order number is 7820_
+  c. _select ai agent I''m Bob Martinez with order number is 7820_
 
-d. _select ai agent No, I''m all set. Thanks_
-
-
-## Task 11: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
-
-The RUN_TEAM procedure enables you to use your agent team from PL/SQL - as opposed to the SQL command line. This procedure is mainly to enable you to build your own agentic applications where you may need greater control over individual conversations. First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. Creating a conversation helps the agent team to keep track of the customer conversation context and history.
-
-1. Create Select AI conversation.
-
-    ```
-    <copy>
-    
-    CREATE OR REPLACE PACKAGE my_globals IS
-      l_team_cov_id varchar2(4000);
-    END my_globals;
-    /
-    -- Create conversation
-    DECLARE
-      l_team_cov_id varchar2(4000);
-    BEGIN
-      l_team_cov_id := DBMS_CLOUD_AI.create_conversation();
-      my_globals.l_team_cov_id := l_team_cov_id;
-      DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
-    END;
-    </copy>
-    ```
-2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not lose the context and prompt history.
-    ```
-    <copy>
-    
-    DECLARE
-      v_response VARCHAR2(4000);
-    BEGIN
-      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-        team_name   => 'Return_Agency_Team',
-        user_prompt => 'I want to return a smartphone case',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-      );
-      DBMS_OUTPUT.PUT_LINE(v_response);
-    END;
-    </copy>
-    ```
-**Result:**
-    ```
-    To process your return for the smartphone case, please provide your name, order number, and reason for return (no longer needed, arrived too late, box broken, or defective) in one response.
-    ```
-
-    ```
-    <copy>
-    
-    DECLARE
-      v_response VARCHAR2(4000);
-    BEGIN
-      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-        team_name   => 'Return_Agency_Team',
-        user_prompt => 'the item is defective',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-      );
-      DBMS_OUTPUT.PUT_LINE(v_response);
-    END;
-    </copy>
-    ```
-**Result:**
-    ```
-    Please provide your name and order number to proceed with the defective smartphone case return.
-    ```
-
-    ```
-    <copy>
-    
-    DECLARE
-      v_response VARCHAR2(4000);
-    BEGIN
-      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-        team_name   => 'Return_Agency_Team',
-        user_prompt => 'I''d like a replacement',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-      );
-      DBMS_OUTPUT.PUT_LINE(v_response);
-    END;
-    </copy>
-    ```
-**Result:**
-    ```
-    Please provide your name and order number to proceed with the defective smartphone case return and replacement.
-    ```
-
-    ```
-    <copy>
-    
-    DECLARE
-      v_response VARCHAR2(4000);
-    BEGIN
-      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-        team_name    => 'Return_Agency_Team',
-        user_prompt => 'I''m Bob Martinez and my order number is 7820',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-      );
-      DBMS_OUTPUT.PUT_LINE(v_response);
-    END;
-    </copy>
-    ```
-**Result:**
-    ```
-    Thank you, Bob Martinez. Your order 7820 has been updated for a replacement due to the defective item. The closest pickup location is Folsom Mall, a 9-minute drive. Can I help with anything else?
-    ```
-
-    ```
-    <copy>
-    
-    DECLARE
-      v_response VARCHAR2(4000);
-    BEGIN
-      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-        team_name => 'Return_Agency_Team',
-        user_prompt => 'No, thank you',
-        params => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-      );
-      DBMS_OUTPUT.PUT_LINE(v_response);
-    END;
-    </copy>
-    ```
-**Result:**
-    ```
-    Thank you for your return request. Have a great day!
-    ```
+  d. _select ai agent No, I''m all set. Thanks_
 
 You may now proceed to the next lab.
 

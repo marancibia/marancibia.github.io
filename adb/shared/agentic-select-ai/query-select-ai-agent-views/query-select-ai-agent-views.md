@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you’ll inspect what happened during an agent run. You will read Select AI Agent Framework history views to see team, task, and tool. You’ll also add a small helper procedure that prints the task, agent, prompt and prompt response for any conversation.
+In this lab, you’ll inspect what happened during an agent run. You will read Select AI Agent Framework history views to see team, task, and tool operations. You’ll also run a short query that prints the task, agent, prompt and prompt response for any conversation.
 
-Estimated Time: x
+Estimated Time: 10 minutes
 
 ### Objectives
 
@@ -34,7 +34,7 @@ Replace _`USER`_ with your user name.
 
 ## Task 1: Query the Latest Team Processing Details
 
-You are building a quick debugging query that shows a readable timeline of a conversation: team, agent, task, prompt, and final response.
+You are building a quick debugging query that shows the task, agent, prompts, and responses from the most recent agent run.
 
 Run the following query:
 ```
@@ -86,7 +86,7 @@ describe USER_AI_AGENT_TEAM_HISTORY;
 
 ## Task 3: Query the `USER_AI_AGENT_` Views
 
-See each tool call the agent made which tool, with what inputs, and what came back. Review task-level flow: which tasks ran, their order, what inputs were used, what were the results, were there any error messages, and what parameters were used. Summarize each end-to-end run: when it started, their status, and conversation context used.
+See each tool call the agent made. Which tool, with what inputs, and what came back. Review task-level flow: which tasks ran, their order, what inputs were used, what were the results, were there any error messages, and what parameters were used. Summarize each end-to-end run: when it started, its status, and conversation context used.
 
 1. Query `USER_AI_AGENT_TOOL_HISTORY`.
 
@@ -106,7 +106,7 @@ select * from USER_AI_AGENT_TASK_HISTORY
 </copy>
 ```
 
-3. Query `USER_AI_AGENT_TEAM_HISTORY`
+3. Query `USER_AI_AGENT_TEAM_HISTORY`.
 
 ```
 <copy>
