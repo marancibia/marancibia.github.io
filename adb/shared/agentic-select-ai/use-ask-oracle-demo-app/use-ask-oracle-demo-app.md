@@ -1,8 +1,8 @@
-# Use the AskOracle Select AI Chatbot App
+# Use the Ask Oracle Select AI Chatbot App
 
 ## Introduction
 
-This lab provides a hands-on tour of the “AskOracle Select AI” demo chatbot app. Here, you’ll use the chatbot to run the agent team created and enhanced in the previous labs. While we’ll focus on interacting with an agent team, this APEX-based app allows you to interact with your data using natural language prompts for RAG and NL2SQL with AI profiles already defined. You’ll open the app, review the settings, specify NL2SQL   and RAG AI profiles, and pick an AI Agent. Then, try a few prompts - just click and chat.
+This lab provides a hands-on tour of the “Ask Oracle Select AI” demo chatbot app. Here, you’ll use the chatbot to run the agent team created and enhanced in the previous labs. While we’ll focus on interacting with an agent team, this APEX-based app allows you to interact with your data using natural language prompts for RAG and NL2SQL with AI profiles already defined. You’ll open the app, review the settings, specify NL2SQL   and RAG AI profiles, and pick an AI Agent. Then, try a few prompts - just click and chat.
 
 
 Estimated Time: 20 minutes
@@ -10,7 +10,7 @@ Estimated Time: 20 minutes
 ### Objectives
 
 In this lab, you will:
-* Access the AskOracle Select AI chatbot app.
+* Access the Ask Oracle Select AI chatbot app.
 * Review the **Settings**.
 * Choose an AI Agent to chat with.
 * Run some sample prompts.
@@ -23,23 +23,23 @@ In this lab, you will:
 
 ## Task 1: Access the Application
 
-1. We will launch the **AskOracle Select AI Application**. 
+1. We will launch the **Ask Oracle Select AI Application**. 
 <if type="tenancy">
-   The application and its URL were created during the installation of the AskOracle Select AI Chatbot Application in **Lab 1** -> **Task 4**.
+   The application and its URL were created during the installation of the Ask Oracle Select AI Chatbot Application in **Lab 1** -> **Task 4**.
    Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. 
 </if>
 <if type="sandbox">
-   The URL for the AskOracle Sekect AI Chatbot is available in your LiveLabs reservation information.  
+   The URL for the Ask Oracle Sekect AI Chatbot is available in your LiveLabs reservation information.  
    You can check the section Get Started with LiveLabs as a reminder on how to find your reservation information.
 
-   ![Open AskOracle Select AI Chatbot link](./images/sandbox-open-ask-oracle.png =70%x*)
+   ![Open Ask Oracle Select AI Chatbot link](./images/sandbox-open-ask-oracle.png =70%x*)
 </if>
 
-In the **AskOracle** page, enter the username and password, and then click **Sign In**. 
+In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. 
 
-  ![Enter AskOracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
+  ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
 
-2. Since it's the first time you sign in, the **Set Admin Users** window in the **AskOracle Select AI** application is displayed. You can click __SKIP__ and the current signed-in username will be stored as an **Admin Users**. Otherwise you can enter the desired username as ADMIN and click **Save Admin Users**.
+2. Since it's the first time you sign in, the **Set Admin Users** window in the **Ask Oracle Select AI** application is displayed. You can click __SKIP__ and the current signed-in username will be stored as an **Admin Users**. Otherwise you can enter the desired username as ADMIN and click **Save Admin Users**.
 
 <if type="sandbox">
    ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users.png =70%x*)
@@ -48,7 +48,7 @@ In the **AskOracle** page, enter the username and password, and then click **Sig
    ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users-adbuser.png =70%x*)
 </if>
 
-3. The **AskOracle Select AI Chatbot** application is displayed.
+3. The **Ask Oracle Select AI Chatbot** application is displayed.
     
 4. In the **Ask Question** prompt field, click the **+** menu and select **Agent Team**.  Notice that the bottom right indicates that agent team is `RETURN_AGENCY_TEAM`. You will see a section on the right of the conversation prompt that allows you to switch the Agent Team Profile. If you have configured other agent profiles using Select AI Agent framework, click the pull-down menu and select `RETURN_AGENCY_TEAM` profile. <if type="tenancy">  This profile was created in **Task 9 of Lab 2**. </if><if type="sandbox"> This profile was created in **Task 9 of Lab 1**. </if>
 
@@ -98,7 +98,7 @@ To create NL2SQL profile:
 
 ## Task 4: (Optional) Ask Natural Language and Database Questions Using the Application
 
-You use the AskOracle Select AI chatbot application to interact with both a large language model (LLM) and your Autonomous AI Database through a single conversational interface.
+You use the Ask Oracle Select AI chatbot application to interact with both a large language model (LLM) and your Autonomous AI Database through a single conversational interface.
 The application supports two modes of interaction:
 
 - **Ask the LLM Directly:**
@@ -219,7 +219,7 @@ You may now proceed to the next lab.
 
 ## Want to Learn More?
 
-* [AskOracle Select AI Application available in Github](https://github.com/oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle-Select-AI-Chatbot)
+* [Ask Oracle Select AI Application available in Github](https://github.com/oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle-Select-AI-Chatbot)
 * [Select AI Agent Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html) 
 * [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
